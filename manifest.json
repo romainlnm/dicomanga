@@ -1,7 +1,7 @@
 {
   "name": "Dico.Manga - Le Dictionnaire des Mangas",
   "short_name": "Dico.Manga",
-  "description": "Un dictionnaire complet de mangas avec favoris, quiz et statistiques",
+  "description": "Un dictionnaire complet de mangas avec favoris et statistiques",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0a0a0a",

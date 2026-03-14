@@ -92,7 +92,7 @@ const mangas = [
   "annee": 2012,
   "statut": "Terminé",
   "volumes": 21,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/assassinationclassroom/images/0/0f/Volume_01.png",
+  "couverture": "https://static.wikia.nocookie.net/assassinationclassroom/images/0/0f/Volume_01.png",
   "resume": "Après avoir détruit 70% de la Lune, une mystérieuse créature tentaculaire capable de se déplacer à Mach 20 fait une demande surprenante : devenir le professeur principal de la classe 3-E du collège Kunugigaoka, considérée comme la classe des cancres. Le gouvernement accepte, à condition que les élèves tentent de l'assassiner avant la fin de l'année scolaire, date à laquelle il promet de détruire la Terre. Une prime de 10 milliards de yens est offerte. Mais ce professeur surnommé Koro-sensei s'avère être le meilleur enseignant que ces élèves rejetés n'aient jamais eu, les aidant à développer leurs talents tout en leur apprenant l'art de l'assassinat.",
   "bioAuteur": "Yusei Matsui est né le 31 janvier 1979. Après Neuro, il crée Assassination Classroom, mêlant comédie, action et une réflexion touchante sur l'éducation.",
   "personnages": [
@@ -133,7 +133,7 @@ const mangas = [
   "annee": 2009,
   "statut": "Terminé",
   "volumes": 34,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/shingekinokyojin/images/d/db/Volume_1_Cover.png",
+  "couverture": "https://static.wikia.nocookie.net/shingekinokyojin/images/d/db/Volume_1_Cover.png",
   "resume": "Il y a un siècle, l'humanité a été décimée par des géants humanoïdes appelés Titans qui dévorent les humains sans raison apparente. Les survivants se sont réfugiés derrière trois murs concentriques de 50 mètres de haut : Maria, Rose et Sina. Eren Jäger, 10 ans, vit paisiblement dans le district de Shiganshina quand le Titan Colossal, haut de 60 mètres, détruit le mur Maria. Dans le chaos, Eren voit sa mère se faire dévorer. Il jure alors d'exterminer tous les Titans et s'engage dans l'armée avec sa sœur adoptive Mikasa et son ami Armin. Mais au fil de son entraînement et des batailles, Eren découvrira que les Titans cachent un secret bien plus terrible que tout ce qu'il imaginait.",
   "bioAuteur": "Hajime Isayama est né le 29 août 1986 à Ōyama, Japon. Inspiré par son environnement montagneux et ses lectures de manga, il crée Attack on Titan à 19 ans. L'œuvre devient un phénomène mondial.",
   "personnages": [
@@ -338,7 +338,7 @@ const mangas = [
   "annee": 2016,
   "statut": "En cours",
   "volumes": 21,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/01/boruto_-_naruto_next_generations_5910.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/01/boruto_-_naruto_next_generations_5910.webp",
   "resume": "Dans une ère de paix, Boruto Uzumaki est le fils du Septième Hokage Naruto. Contrairement à son père qui n avait rien, Boruto a tout mais ressent le manque d attention de Naruto, trop occupé par ses devoirs de Hokage. Élève prodige à l Académie Ninja, il rejette l héritage de son père tout en portant le poids de son nom. Quand la menace Otsutsuki, clan extraterrestre à l origine du chakra, refait surface, Boruto découvre un pouvoir mystérieux dans son œil : le Jougan. Avec ses coéquipiers Sarada (fille de Sasuke) et Mitsuki (fils d Orochimaru), il affronte des ennemis qui menacent l équilibre du monde shinobi.",
   "bioAuteur": "Masashi Kishimoto supervise l histoire en tant que superviseur éditorial, tandis que Mikio Ikemoto, son ancien assistant, dessine le manga. Ukyo Kodachi a écrit le scénario jusqu au chapitre 51.",
   "personnages": [
@@ -424,7 +424,7 @@ const mangas = [
   "annee": 1996,
   "statut": "Terminé",
   "volumes": 12,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/ccs/images/9/97/CCS_Vol1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/ccs/images/9/97/CCS_Vol1.jpg",
   "resume": "Sakura Kinomoto, 10 ans, découvre dans le sous-sol de sa maison un mystérieux livre contenant des cartes magiques. En l'ouvrant, elle libère accidentellement les Cartes de Clow, créées par le puissant sorcier Clow Reed, qui se dispersent dans la ville. Keroberos, le gardien du livre, se réveille et la désigne comme Chasseuse de Cartes. Chaque carte possède une personnalité et des pouvoirs uniques - le Vent, le Vol, l'Eau, le Feu, et bien d'autres. Sakura doit toutes les récupérer avant qu'elles ne causent des catastrophes, tout en gardant son identité secrète. Aidée de sa meilleure amie Tomoyo et du mystérieux Shaolan Li, elle apprendra à maîtriser la magie et découvrira son propre pouvoir.",
   "bioAuteur": "CLAMP est un collectif de mangakas féminin formé en 1987. Connues pour leurs œuvres variées, Cardcaptor Sakura est l'une de leurs séries les plus populaires.",
   "personnages": [
@@ -507,7 +507,7 @@ const mangas = [
   "annee": 2001,
   "statut": "Terminé",
   "volumes": 27,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/claymore/images/4/44/Claymore_manga_v01.jpg",
+  "couverture": "https://static.wikia.nocookie.net/claymore/images/4/44/Claymore_manga_v01.jpg",
   "resume": "Dans un monde médiéval, des créatures appelées Yoma prennent forme humaine pour dévorer les gens. Pour les combattre, une organisation mystérieuse crée les Claymores, des guerrières mi-humaines mi-Yoma reconnaissables à leurs yeux d'argent et leur grande épée. Clare, Claymore de rang le plus bas, est la seule à avoir choisi ce destin : enfant, elle a été sauvée par Teresa, la plus puissante Claymore de tous les temps, assassinée par sa propre organisation. Clare a implanté en elle la chair de Teresa et vit pour venger sa protectrice. Accompagnée de Raki, un jeune orphelin, elle découvrira les sombres secrets de l'Organisation et la vérité sur l'origine des Yoma.",
   "bioAuteur": "Norihiro Yagi est né le 11 juin 1968. Claymore est son œuvre majeure, reconnue pour son univers sombre et ses personnages féminins forts.",
   "personnages": [
@@ -548,7 +548,7 @@ const mangas = [
   "annee": 2021,
   "statut": "En cours",
   "volumes": 17,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/dandadan/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/dandadan/images/0/0e/Volume_1.png",
   "resume": "Momo Ayase, lycéenne capable de voir les esprits, et Ken Takakura dit 'Okarun', otaku obsédé par les extraterrestres, se défient mutuellement : elle l'emmène dans un tunnel hanté tandis qu'il l'emmène voir un site d'atterrissage d'OVNI. Résultat : les deux avaient raison ! Momo est enlevée par des aliens pervers, Okarun est maudit par l'esprit de Turbo Granny qui lui vole ses attributs masculins. Pour les récupérer, il doit exorciser des esprits et collecter des boules de dragon spirituelles. Dotés de pouvoirs surnaturels - Momo peut canaliser les esprits, Okarun peut invoquer la vitesse de Turbo Granny - ils affrontent ensemble fantômes terrifiants et extraterrestres déjantés dans un mélange explosif d'action, d'horreur et de comédie romantique.",
   "bioAuteur": "Yukinobu Tatsu est un ancien assistant de Tatsuki Fujimoto. Son style dynamique et son humour font de Dandadan l'un des mangas les plus populaires de sa génération.",
   "personnages": [
@@ -589,7 +589,7 @@ const mangas = [
   "annee": 2003,
   "statut": "Terminé",
   "volumes": 12,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/deathnote/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/deathnote/images/b/b1/Volume_1.jpg",
   "resume": "Light Yagami est un lycéen surdoué qui s'ennuie dans un monde qu'il juge pourri. Sa vie change quand il trouve le Death Note, un carnet appartenant au Shinigami Ryuk : quiconque voit son nom écrit dedans meurt d'une crise cardiaque en 40 secondes. Light décide de devenir le dieu d'un nouveau monde en éliminant tous les criminels. Sous le pseudonyme de 'Kira', il devient vénéré par certains, craint par d'autres. Mais L, le plus grand détective du monde, est chargé de l'arrêter. S'engage alors un duel psychologique intense entre deux génies, chacun tentant de découvrir l'identité de l'autre tout en protégeant la sienne. Une partie d'échecs mortelle où le moindre faux pas signifie la mort.",
   "bioAuteur": "Tsugumi Ohba est le pseudonyme du scénariste de Death Note. Son identité reste mystérieuse. Il a collaboré avec le dessinateur Takeshi Obata pour créer ce manga culte, puis Bakuman et Platinum End.",
   "personnages": [
@@ -630,7 +630,7 @@ const mangas = [
   "annee": 2016,
   "statut": "Terminé",
   "volumes": 23,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/8/83/Kimetsu_no_Yaiba_V1.png",
+  "couverture": "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/8/83/Kimetsu_no_Yaiba_V1.png",
   "resume": "À l'ère Taisho, Tanjiro Kamado vit paisiblement dans les montagnes avec sa famille, vendant du charbon au village voisin. Un jour, il rentre chez lui pour découvrir que sa famille a été massacrée par un démon. Seule sa sœur Nezuko a survécu, mais elle a été transformée en démon. Contrairement aux autres, elle résiste à ses instincts cannibales et reconnaît son frère. Tanjiro jure de trouver un remède pour la guérir et de venger sa famille. Il rejoint les Pourfendeurs de Démons, une organisation secrète qui combat ces créatures depuis des siècles. Maîtrisant le Souffle de l'Eau puis découvrant le Souffle du Soleil de ses ancêtres, il affronte les Douze Lunes Démoniaques au service de Muzan Kibutsuji, le premier démon.",
   "bioAuteur": "Koyoharu Gotouge est née vers 1989. Très discrète, elle évite les apparitions publiques. Demon Slayer est son premier manga à succès, devenant un phénomène culturel au Japon et dans le monde.",
   "personnages": [
@@ -671,7 +671,7 @@ const mangas = [
   "annee": 2000,
   "statut": "Terminé",
   "volumes": 23,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/dorohedoro/images/0/0f/Volume_01.png",
+  "couverture": "https://static.wikia.nocookie.net/dorohedoro/images/0/0f/Volume_01.png",
   "resume": "Le Trou est un quartier misérable où les sorciers du monde magique viennent pratiquer leurs expériences sur les humains. Caiman est l'une de leurs victimes : transformé en homme-lézard amnésique, il cherche le sorcier responsable pour retrouver son apparence et ses souvenirs. À l'intérieur de sa gueule vit un mystérieux homme qui identifie les sorciers. Avec son amie Nikaido, propriétaire du restaurant Hungry Bug, Caiman traque et décapite les sorciers un par un. Dans le monde des sorciers, En, puissant parrain mafieux capable de transformer tout en champignons, s'intéresse à ce tueur de sorciers. Dans ce monde crasseux où la violence côtoie l'humour absurde, Caiman découvrira que son passé est bien plus complexe qu'une simple malédiction.",
   "bioAuteur": "Q Hayashida est une mangaka née le 5 mars 1977. Son style unique et son humour noir font de Dorohedoro une œuvre culte pour les amateurs de dark fantasy.",
   "personnages": [
@@ -753,7 +753,7 @@ const mangas = [
   "annee": 1984,
   "statut": "Terminé",
   "volumes": 42,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/dragonuniverse/images/e/e3/DBVol01.png",
+  "couverture": "https://static.wikia.nocookie.net/dragonuniverse/images/e/e3/DBVol01.png",
   "resume": "Son Goku est un petit garçon à la queue de singe vivant seul dans la montagne, doté d'une force surhumaine. Il rencontre Bulma, jeune scientifique à la recherche des Dragon Balls, sept boules de cristal qui, réunies, invoquent le dragon Shenron capable d'exaucer n'importe quel souhait. Ensemble, ils parcourent le monde, affrontant bandits, armée du Ruban Rouge et démons. En grandissant, Goku s'entraîne auprès de maîtres légendaires, participe aux Championnats d'arts martiaux et découvre ses origines : il est un Saiyan, guerrier extraterrestre envoyé bébé pour conquérir la Terre. Face à des menaces de plus en plus puissantes - Freezer, Cell, Buu - Goku repoussera sans cesse ses limites pour protéger ses proches et la planète.",
   "bioAuteur": "Akira Toriyama (1955-2024) était un mangaka légendaire. Créateur de Dragon Ball et Dr. Slump, il a révolutionné le manga et influencé des générations d'artistes. Son style unique et son humour ont fait de lui une icône mondiale.",
   "personnages": [
@@ -837,7 +837,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 13,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/frieren/images/6/64/Volume_1_ENG.jpg",
+  "couverture": "https://static.wikia.nocookie.net/frieren/images/6/64/Volume_1_ENG.jpg",
   "resume": "Il y a dix ans, l'elfe Frieren a vaincu le Roi Démon aux côtés du héros Himmel, du prêtre Heiter et du guerrier Eisen. Pour elle qui vit depuis plus de mille ans, cette décennie d'aventure n'était qu'un bref instant. Quand Himmel meurt de vieillesse, Frieren réalise qu'elle ne le connaissait pas vraiment et pleure pour la première fois. Elle entreprend alors un voyage pour mieux comprendre les humains et retrouver les souvenirs de ses compagnons. Accompagnée de Fern, apprentie magicienne recueillie par Heiter, et de Stark, disciple guerrier d'Eisen, elle refait le trajet de son ancienne aventure. Cette quête contemplative l'amène à réfléchir sur le temps, la mémoire et la valeur des connexions éphémères avec les mortels.",
   "bioAuteur": "Kanehito Yamada (scénario) et Tsukasa Abe (dessin) créent Frieren, une œuvre contemplative sur le temps, la mémoire et les connexions humaines.",
   "personnages": [
@@ -878,7 +878,7 @@ const mangas = [
   "annee": 1998,
   "statut": "Terminé",
   "volumes": 23,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/fruitsbasket/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/fruitsbasket/images/b/b1/Volume_1.jpg",
   "resume": "Tohru Honda, orpheline de 16 ans vivant sous une tente depuis la mort de sa mère, découvre par hasard le secret de la famille Soma : douze membres sont possédés par les esprits du zodiaque chinois et se transforment en animal quand ils sont stressés ou enlacés par le sexe opposé. Accueillie par Shigure (chien), Yuki (rat) et Kyo (chat maudit, exclu du zodiaque), Tohru s'intègre à cette famille dysfonctionnelle. Chaque membre porte le poids d'un traumatisme lié à leur malédiction et à Akito, chef de famille tyrannique. Avec sa gentillesse et son optimisme, Tohru touchera leurs cœurs un à un et cherchera à briser la malédiction qui les enchaîne depuis des générations.",
   "bioAuteur": "Natsuki Takaya est née le 7 juillet 1973. Fruits Basket est son œuvre majeure, devenue un classique du shojo avec des thèmes de guérison et d'acceptation.",
   "personnages": [
@@ -919,7 +919,7 @@ const mangas = [
   "annee": 2001,
   "statut": "Terminé",
   "volumes": 27,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/fma/images/8/8a/Fmavol1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/fma/images/8/8a/Fmavol1.jpg",
   "resume": "Edward et Alphonse Elric ont tenté l'interdit : ressusciter leur mère par alchimie. L'échec leur a coûté cher - Edward a perdu un bras et une jambe, Alphonse son corps entier, son âme étant liée à une armure. Edward, devenu le plus jeune Alchimiste d'État à 12 ans sous le nom de Fullmetal, parcourt le pays avec son frère à la recherche de la Pierre Philosophale, seul artefact capable de leur rendre leurs corps. Mais ils découvrent que cette pierre est créée à partir de sacrifices humains. Leur quête les plonge dans une conspiration impliquant les plus hauts échelons du gouvernement militaire d'Amestris, des êtres artificiels appelés Homonculus, et un plan vieux de plusieurs siècles visant à sacrifier toute une nation.",
   "bioAuteur": "Hiromu Arakawa est née le 8 mai 1973 à Hokkaido. Issue d'une famille d'agriculteurs, elle apporte une vision unique au manga. Fullmetal Alchemist est considéré comme l'un des meilleurs mangas jamais écrits.",
   "personnages": [
@@ -960,7 +960,7 @@ const mangas = [
   "annee": 2003,
   "statut": "Terminé",
   "volumes": 77,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/gintama/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/gintama/images/b/b1/Volume_1.jpg",
   "resume": "L'ère Edo a pris une tournure inattendue : des aliens appelés Amanto ont envahi le Japon, interdisant le port du sabre aux samouraïs. Gintoki Sakata, ancien héros de la guerre contre les Amanto, est maintenant un vagabond qui fait des petits boulots via son agence Odd Jobs Gin. Avec Shinpachi, adolescent lunettes servant de voix de la raison, et Kagura, alien Yato surpuissante obsédée par la nourriture, il accepte les missions les plus absurdes : retrouver un scarabée, affronter une secte de perruques, jouer aux jeux vidéo... Mais sous la comédie parodique se cache un passé douloureux et des enjeux sérieux, quand les anciens compagnons de Gintoki réapparaissent avec des intentions bien différentes.",
   "bioAuteur": "Hideaki Sorachi est né le 25 mai 1979. Son humour absurde et ses parodies de la culture otaku ont fait de Gintama un manga culte unique en son genre.",
   "personnages": [
@@ -1001,7 +1001,7 @@ const mangas = [
   "annee": 2014,
   "statut": "En cours",
   "volumes": 22,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/grand-blue/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/grand-blue/images/b/b1/Volume_1.jpg",
   "resume": "Iori Kitahara emménage chez son oncle à Izu pour ses études universitaires, rêvant d'une vie étudiante idyllique en bord de mer. Mais l'oncle tient un magasin de plongée, Peek-a-Boo, qui sert de local au club de plongée de l'université. Ce club est peuplé de fêtards alcooliques qui passent plus de temps à boire de l'alcool pur (qu'ils appellent 'eau') et à se mettre nus qu'à plonger. Malgré lui, Iori est entraîné dans leurs beuveries délirantes, sabotant toutes ses tentatives de mener une vie universitaire normale et de séduire des filles. Avec son ami otaku Kohei, il tente de survivre entre soirées catastrophiques, virées en mer, et les regards méprisants de sa cousine Chisa, seule membre sérieuse du club.",
   "bioAuteur": "Kenji Inoue est le scénariste, Kimitake Yoshioka le dessinateur. Grand Blue est devenu culte pour son humour absurde et ses situations hilarantes.",
   "personnages": [
@@ -1083,7 +1083,7 @@ const mangas = [
   "annee": 1998,
   "statut": "En pause",
   "volumes": 37,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/hunterxhunter/images/7/7a/Volume_1_cover.png",
+  "couverture": "https://static.wikia.nocookie.net/hunterxhunter/images/7/7a/Volume_1_cover.png",
   "resume": "Gon Freecss, 12 ans, a toujours cru son père mort. En apprenant qu'il est en fait un Hunter légendaire, il décide de passer le dangereux examen de Hunter pour le retrouver et comprendre ce métier qui vaut plus que sa famille. L'examen, où la mort est courante, lui fait rencontrer Killua, héritier assassin en fuite, Kurapika, dernier survivant d'un clan massacré, et Leorio, aspirant médecin. Obtenir la licence n'est que le début : Gon découvrira le Nen, énergie vitale aux applications infinies, affrontera la Brigade Fantôme qui a massacré le clan de Kurapika, et pénètrera le jeu mortel Greed Island. Chaque arc révèle un monde plus vaste et plus dangereux, où la force seule ne suffit jamais.",
   "bioAuteur": "Yoshihiro Togashi est né le 27 avril 1966. Créateur de Yu Yu Hakusho et Hunter x Hunter, il est connu pour son génie narratif mais aussi ses longues pauses dues à des problèmes de santé.",
   "personnages": [
@@ -1124,7 +1124,7 @@ const mangas = [
   "annee": 2018,
   "statut": "Terminé",
   "volumes": 27,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/jujutsu-kaisen/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/jujutsu-kaisen/images/0/0e/Volume_1.png",
   "resume": "Yuji Itadori est un lycéen à la force physique hors norme. Quand ses amis du club d'occultisme ouvrent une relique maudite - un doigt momifié - ils attirent des fléaux, créatures nées des émotions négatives humaines. Pour les sauver, Yuji avale le doigt, devenant l'hôte de Ryomen Sukuna, le roi des fléaux millénaire. Normalement, il devrait être exécuté, mais Satoru Gojo, l'exorciste le plus puissant, propose une alternative : que Yuji consomme les 20 doigts de Sukuna avant d'être exécuté, éliminant définitivement cette menace. Inscrit à l'école d'exorcisme de Tokyo, Yuji apprend à maîtriser l'énergie occulte aux côtés de Megumi et Nobara, alors qu'une guerre se prépare dans l'ombre entre exorcistes et fléaux.",
   "bioAuteur": "Gege Akutami est né le 26 février 1992. Fan de manga depuis l'enfance, il crée Jujutsu Kaisen après un one-shot. Son style dynamique et ses personnages charismatiques font de lui un auteur majeur de sa génération.",
   "personnages": [
@@ -1166,7 +1166,7 @@ const mangas = [
   "annee": 2015,
   "statut": "Terminé",
   "volumes": 28,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/e/e7/Volume1.png",
+  "couverture": "https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/e/e7/Volume1.png",
   "resume": "À l'académie Shuchiin, établissement d'élite, Miyuki Shirogane et Kaguya Shinomiya forment un duo de président et vice-présidente du conseil des élèves admiré de tous. En réalité, tous deux sont éperdument amoureux l'un de l'autre. Mais leur fierté les empêche d'avouer leurs sentiments : pour eux, celui qui confesse son amour en premier 'perd' et se retrouve en position de faiblesse. Chaque jour devient un champ de bataille psychologique où ils multiplient les stratagèmes pour faire craquer l'autre. Leurs guerres absurdes sont commentées par un narrateur dramatique, tandis que Chika Fujiwara, secrétaire chaotique, et Yu Ishigami, trésorier dépressif, se retrouvent mêlés à leurs plans sans rien comprendre.",
   "bioAuteur": "Aka Akasaka est né le 29 janvier 1986. Créateur de Kaguya-sama et Oshi no Ko, son humour intelligent et ses personnages complexes lui ont valu un succès mondial.",
   "personnages": [
@@ -1248,7 +1248,7 @@ const mangas = [
   "annee": 2006,
   "statut": "En cours",
   "volumes": 72,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kingdom-anime/images/4/46/Volume_1_cover.PNG",
+  "couverture": "https://static.wikia.nocookie.net/kingdom-anime/images/4/46/Volume_1_cover.PNG",
   "resume": "En 245 avant J.-C., la Chine est divisée en sept royaumes en guerre permanente. Shin et Hyou sont deux orphelins esclaves rêvant de devenir les plus grands généraux de l'histoire. Quand Hyou est recruté au palais et assassiné lors d'un coup d'État, Shin rencontre Ei Sei, le jeune roi de Qin qui ressemble à son ami. Ce roi de 13 ans a une ambition folle : unifier toute la Chine pour mettre fin aux guerres. Shin rejoint son armée et gravit les échelons, passant de simple fantassin à commandant, participant aux batailles les plus sanglantes de l'histoire. Basé sur la vie réelle de Li Xin et Qin Shi Huang, le premier empereur de Chine, Kingdom dépeint une épopée militaire d'une ampleur colossale.",
   "bioAuteur": "Yasuhisa Hara est né le 9 mai 1975. Kingdom est son œuvre maîtresse, basée sur l'histoire réelle de l'unification de la Chine par Qin Shi Huang.",
   "personnages": [
@@ -1372,7 +1372,7 @@ const mangas = [
   "annee": 2012,
   "statut": "En cours",
   "volumes": 13,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/madeinabyss/images/2/24/Volume-1-cover-eng.jpg",
+  "couverture": "https://static.wikia.nocookie.net/madeinabyss/images/2/24/Volume-1-cover-eng.jpg",
   "resume": "L'Abysse est un gouffre géant et mystérieux au centre de la ville d'Orth. Ses profondeurs recèlent des reliques d'une civilisation ancienne et des créatures extraordinaires, mais aussi une malédiction : remonter provoque des effets allant de la nausée à la mort selon la profondeur atteinte. Riko, 12 ans, est une exploratrice novice dont la mère, Sifflet Blanc légendaire, a disparu au fond de l'Abysse. Quand elle trouve Reg, un robot amnésique aux bras extensibles venu des profondeurs, et reçoit un message de sa mère, elle décide de descendre. Leur voyage les confrontera à la beauté terrifiante de l'Abysse, à ses créatures mortelles, et aux Sifflets Blancs prêts à tout sacrifier pour percer ses secrets.",
   "bioAuteur": "Akihito Tsukushi est un mangaka connu pour son style mignon qui cache une histoire sombre. Made in Abyss est son œuvre majeure, acclamée pour son world-building.",
   "personnages": [
@@ -1495,7 +1495,7 @@ const mangas = [
   "annee": 2014,
   "statut": "Terminé",
   "volumes": 42,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/bokunoheroacademia/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/bokunoheroacademia/images/0/0e/Volume_1.png",
   "resume": "Dans un monde où 80% de l'humanité possède des super-pouvoirs appelés 'Alters', être un héros professionnel est un métier comme un autre. Izuku Midoriya fait partie des 20% sans pouvoir, mais idolâtre All Might, le héros n°1, symbole de la paix. Quand il tente de sauver son ami Katsuki d'un vilain malgré son absence de pouvoir, All Might le remarque et lui transmet son Alter, le One For All, pouvoir qui se transmet de génération en génération et accumule la force de ses porteurs. Izuku intègre Yuei, le prestigieux lycée de héros, pour succéder à All Might. Mais l'ombre de All For One, vilain immortel ennemi juré de son mentor, plane sur son parcours.",
   "bioAuteur": "Kohei Horikoshi est né le 20 novembre 1986. Grand fan de comics américains et de manga, il fusionne ces influences dans My Hero Academia, créant une œuvre unique qui conquiert le monde entier.",
   "personnages": [
@@ -1537,7 +1537,7 @@ const mangas = [
   "annee": 2000,
   "statut": "En pause",
   "volumes": 21,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/nana/images/0/01/Nana-vol-1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/nana/images/0/01/Nana-vol-1.jpg",
   "resume": "Deux jeunes femmes de 20 ans, toutes deux prénommées Nana, se rencontrent dans un train vers Tokyo et finissent colocataires. Nana Komatsu, surnommée 'Hachi', est une fille romantique et dépendante, venue à Tokyo rejoindre son petit ami. Nana Osaki est une punk-rocker déterminée, chanteuse du groupe Blast, venue conquérir la scène musicale. Leurs personnalités opposées créent une amitié intense. Mais l'amour complique tout : Hachi papillonne entre plusieurs hommes, tandis que Nana retrouve son ex Ren, devenu guitariste du groupe rival Trapnest. Le succès, la jalousie, les grossesses non désirées et les addictions mettront leur amitié à rude épreuve.",
   "bioAuteur": "Ai Yazawa est née le 7 mars 1967. Nana est son œuvre majeure, stoppée en 2009 pour raisons de santé. Le manga reste un classique incontournable du shojo.",
   "personnages": [
@@ -1578,7 +1578,7 @@ const mangas = [
   "annee": 1999,
   "statut": "Terminé",
   "volumes": 72,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/naruto/images/2/2b/Vol1.png",
+  "couverture": "https://static.wikia.nocookie.net/naruto/images/2/2b/Vol1.png",
   "resume": "Naruto Uzumaki est le paria du village de Konoha : à sa naissance, le démon renard à neuf queues Kyubi, qui avait failli détruire le village, a été scellé en lui par le Quatrième Hokage. Ignorant ce secret, Naruto ne comprend pas pourquoi tout le monde le rejette. Il rêve de devenir Hokage, le chef du village, pour être enfin reconnu. Diplômé ninja de justesse, il intègre l'équipe 7 avec Sasuke Uchiha, génie tourmenté par le massacre de son clan, et Sakura Haruno, sous la direction de Kakashi Hatake. Au fil des missions, Naruto découvrira les secrets de ses parents, affrontera l'organisation criminelle Akatsuki qui convoite les démons à queues, et tentera de ramener Sasuke parti vers les ténèbres.",
   "bioAuteur": "Masashi Kishimoto est né le 8 novembre 1974 à Okayama, Japon. Fan d'Akira Toriyama, il a créé Naruto en 1999 après plusieurs tentatives. Le manga est devenu un phénomène mondial avec plus de 250 millions de copies vendues.",
   "personnages": [
@@ -1662,7 +1662,7 @@ const mangas = [
   "annee": 1997,
   "statut": "En cours",
   "volumes": 107,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/onepiece/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/onepiece/images/0/0e/Volume_1.png",
   "resume": "Monkey D. Luffy, jeune pirate dont le corps a acquis les propriétés du caoutchouc après avoir mangé le Fruit du Démon Gomu Gomu, a un rêve : trouver le One Piece, le légendaire trésor du Roi des Pirates Gol D. Roger, et devenir le prochain Roi des Pirates. Pour cela, il forme l'équipage du Chapeau de Paille, recrutant des nakamas aux rêves aussi fous que le sien : Zoro veut devenir le meilleur sabreur, Nami cartographier le monde entier, Usopp devenir un brave guerrier des mers, Sanji trouver All Blue... Leur voyage à travers Grand Line les confronte au Gouvernement Mondial corrompu, aux Quatre Empereurs qui règnent sur le Nouveau Monde, et aux mystères de l'Histoire Oubliée.",
   "bioAuteur": "Eiichiro Oda est né le 1er janvier 1975 à Kumamoto, Japon. Il a commencé à dessiner des mangas dès l'âge de 4 ans. Il a travaillé comme assistant pour plusieurs mangakas avant de créer One Piece en 1997, qui est devenu le manga le plus vendu de l'histoire.",
   "personnages": [
@@ -1786,7 +1786,7 @@ const mangas = [
   "annee": 2002,
   "statut": "Terminé",
   "volumes": 18,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/ouran/images/8/8d/BN_manga_cover_v1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/ouran/images/8/8d/BN_manga_cover_v1.jpg",
   "resume": "Haruhi Fujioka, fille de milieu modeste, a intégré le prestigieux lycée Ouran grâce à une bourse d'études. En cherchant un endroit calme pour étudier, elle entre dans le salon de musique n°3 occupé par le Host Club, groupe de beaux garçons riches qui divertissent les élèves féminines. En brisant un vase de 8 millions de yens, Haruhi doit rembourser sa dette en travaillant comme hôte. Prise pour un garçon à cause de son apparence androgyne, elle joue le jeu et devient populaire pour sa sincérité rafraîchissante. Entre Tamaki le prince narcissique, les jumeaux Hikaru et Kaoru, et les autres membres excentriques, Haruhi découvre que ces riches cachent leurs propres failles.",
   "bioAuteur": "Bisco Hatori est née le 18 septembre 1975. Ouran est son œuvre majeure, connue pour son humour et sa déconstruction des clichés du shojo.",
   "personnages": [
@@ -1827,7 +1827,7 @@ const mangas = [
   "annee": 1988,
   "statut": "Terminé",
   "volumes": 10,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kiseijuu/images/3/34/Kanzenban_01.jpg",
+  "couverture": "https://static.wikia.nocookie.net/kiseijuu/images/3/34/Kanzenban_01.jpg",
   "resume": "Une nuit, des parasites extraterrestres envahissent la Terre en s'introduisant dans les cerveaux humains par les oreilles ou le nez, prenant le contrôle total de leurs hôtes. Shinichi Izumi, lycéen, est attaqué dans son sommeil mais le parasite, bloqué par ses écouteurs, s'installe dans sa main droite. Incapable de fusionner avec le cerveau, le parasite 'Migi' (droite en japonais) développe sa propre personnalité : logique, curieux, dénué d'émotions. Cette cohabitation forcée les oblige à coopérer pour survivre face aux autres parasites qui les considèrent comme une menace. Shinichi, de plus en plus déshumanisé par cette symbiose, doit affronter des questions existentielles sur ce qui définit vraiment l'humanité.",
   "bioAuteur": "Hitoshi Iwaaki est né le 28 juillet 1960. Parasyte est son œuvre majeure, explorant la nature humaine à travers le prisme de l'horreur science-fictionnelle.",
   "personnages": [
@@ -2031,7 +2031,7 @@ const mangas = [
   "annee": 1991,
   "statut": "Terminé",
   "volumes": 18,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/sailormoon/images/e/e9/TankoubonVol1Cover.jpg",
+  "couverture": "https://static.wikia.nocookie.net/sailormoon/images/e/e9/TankoubonVol1Cover.jpg",
   "resume": "Usagi Tsukino, 14 ans, est une collégienne pleurnicharde et maladroite qui rêve de romance. Sa vie bascule quand elle sauve un chat nommé Luna qui lui révèle sa vraie identité : elle est Sailor Moon, gardienne de la Lune, réincarnation de la princesse du Royaume Lunaire. Elle doit retrouver la Princesse de la Lune, le Cristal d'Argent, et ses compagnes Sailor Guardians pour combattre le Negaverse qui cherche à conquérir la Terre. Rejointe par Sailors Mercury, Mars, Jupiter et Venus, elle affronte des menaces de plus en plus puissantes tout en vivant une romance compliquée avec le mystérieux Tuxedo Mask. Une œuvre fondatrice du magical girl moderne.",
   "bioAuteur": "Naoko Takeuchi est née le 15 mars 1967. Sailor Moon a révolutionné le genre magical girl et inspiré des générations de créateurs dans le monde entier.",
   "personnages": [
@@ -2072,7 +2072,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 19,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/sakamoto-days/images/0/0f/Volume_01.png",
+  "couverture": "https://static.wikia.nocookie.net/sakamoto-days/images/0/0f/Volume_01.png",
   "resume": "Taro Sakamoto était le tueur à gages le plus redouté du monde, une légende du milieu criminel. Puis il est tombé amoureux, s'est marié, a eu une fille, et a ouvert une épicerie de quartier. Cinq ans plus tard, il a pris 30 kilos et vit paisiblement. Mais quand son ancien monde le rattrape - contrats sur sa tête, anciens collègues, organisations criminelles - Sakamoto prouve qu'il n'a rien perdu de ses talents, neutralisant des tueurs professionnels avec des objets du quotidien : rouleaux de papier toilette, magazines, légumes. Avec Shin, télépathe devenu son employé, et Lu, jeune tueuse chinoise réformée, il protège sa famille tout en refusant de tuer.",
   "bioAuteur": "Yuto Suzuki est un nouveau mangaka dont Sakamoto Days est la première série. Son style d'action dynamique a immédiatement conquis les lecteurs.",
   "personnages": [
@@ -2652,7 +2652,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 8,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/01/cheat_skill_level_up_16110.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/01/cheat_skill_level_up_16110.webp",
   "resume": "Dans un monde où chaque personne obtient une compétence unique à ses 15 ans, Yuuto Kashiwagi reçoit la pire compétence possible : 'Coup de Poing Enfantin', considérée inutile car elle ne fait presque aucun dégât. Méprisé et abandonné par son groupe d'aventuriers, il découvre par hasard que sa compétence peut évoluer en tuant des monstres. Chaque niveau augmente exponentiellement sa puissance, jusqu'à atteindre des sommets inimaginables. Accompagné de Luna, une magicienne qui croit en lui, Yuuto gravit les rangs des aventuriers tout en cachant l'étendue de ses véritables pouvoirs. Un récit classique de progression où le héros sous-estimé devient surpuissant.",
   "bioAuteur": "Miku est l'auteur du light novel original, tandis que Nano Shinozaki réalise l'adaptation manga. L'œuvre s'inscrit dans le genre populaire des héros sous-estimés qui deviennent overpowered.",
   "personnages": [
@@ -2673,7 +2673,7 @@ const mangas = [
   "annee": 2019,
   "statut": "En cours",
   "volumes": 6,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/20/my_hero_academia_-_team_up_mission_11002.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/20/my_hero_academia_-_team_up_mission_11002.webp",
   "resume": "Spin-off officiel de My Hero Academia, Team Up Mission explore les missions collaboratives entre les élèves de l'académie Yuei et les héros professionnels. Chaque chapitre met en scène des duos ou équipes inédits : Deku avec Endeavor, Bakugo avec Hawks, Todoroki avec Gang Orca, et bien d'autres combinaisons. Ces missions permettent aux étudiants d'apprendre auprès de différents mentors et de développer leurs Alters dans des situations variées. Le format épisodique offre des aventures légères et humoristiques, tout en approfondissant les relations entre personnages qui interagissent peu dans la série principale.",
   "bioAuteur": "Yoco Akiyama réalise le manga sous la supervision de Kohei Horikoshi, créateur de My Hero Academia. Ce spin-off permet d'explorer l'univers MHA avec un ton plus léger et des interactions inédites.",
   "personnages": [
@@ -2695,7 +2695,7 @@ const mangas = [
   "annee": 2022,
   "statut": "En cours",
   "volumes": 9,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/70/gachiakuta_21207.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/70/gachiakuta_21207.webp",
   "resume": "Dans un monde divisé entre la cité céleste et le Pit, une décharge géante en contrebas, Rudo vit heureux avec son père adoptif Regto malgré leur pauvreté. Quand Regto est assassiné et Rudo faussement accusé du crime, il est 'déchu' - jeté dans le Pit pour y mourir. Dans cet enfer de déchets peuplé de monstres appelés Juggernauts, Rudo découvre qu'il peut transformer les ordures en armes grâce à un pouvoir mystérieux. Recueilli par un groupe de survivants, il apprend à maîtriser cette capacité pour survivre et jure de remonter dans la cité pour venger son père et prouver son innocence. Un shonen brutal au style visuel unique.",
   "bioAuteur": "Kei Urana est un mangaka dont Gachiakuta est la première série majeure. Son style graphique distinctif et ses designs de monstres impressionnants ont rapidement attiré l'attention des lecteurs.",
   "personnages": [
@@ -2716,7 +2716,7 @@ const mangas = [
   "annee": 2019,
   "statut": "Terminé",
   "volumes": 29,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/56/mission_yozakura_family_11465.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/56/mission_yozakura_family_11465.webp",
   "resume": "Taiyo Asano est un lycéen introverti dont la seule amie est Mutsumi Yozakura, sa voisine depuis l'enfance. Quand il découvre que Mutsumi appartient à la plus puissante famille d'espions du Japon, sa vie bascule. Le frère aîné surprotecteur de Mutsumi, Kyoichiro, menace de le tuer pour l'éloigner de sa sœur. La seule solution pour Taiyo : épouser Mutsumi et devenir officiellement membre de la famille Yozakura. Désormais marié à 17 ans, il doit survivre à un entraînement d'espion intensif dispensé par ses nouveaux beaux-frères et belles-sœurs, chacun maîtrisant une spécialité mortelle. Entre missions dangereuses et vie de couple naissante, Taiyo découvre les secrets de la famille Yozakura et une menace ancestrale qui les guette.",
   "bioAuteur": "Hitsuji Gondaira est un mangaka japonais. Mission: Yozakura Family est sa première série à succès, publiée dans le Weekly Shonen Jump de 2019 à 2025.",
   "personnages": [
@@ -2738,7 +2738,7 @@ const mangas = [
   "annee": 2008,
   "statut": "Terminé",
   "volumes": 10,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/19/inazuma_eleven_1891.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/19/inazuma_eleven_1891.webp",
   "resume": "Mamoru Endo est le gardien passionné du club de football du collège Raimon, une équipe si faible qu'elle risque la dissolution. Petit-fils d'un légendaire gardien, il rêve de maîtriser la technique secrète de son grand-père : la Main Céleste. Quand l'équipe d'élite de Teikoku, menée par le redoutable Shuya Gouenji, défie Raimon, Endo doit recruter des joueurs talentueux pour sauver son club. Avec l'aide de Gouenji lui-même, qui rejoint l'équipe, et d'autres joueurs aux techniques spéciales surpuissantes, Raimon entame un parcours épique vers le sommet du football japonais. Un manga où les tirs et les arrêts deviennent des techniques spectaculaires aux noms évocateurs.",
   "bioAuteur": "Tenya Yabuno est un mangaka japonais connu pour ses adaptations de jeux vidéo Level-5. Inazuma Eleven est basé sur le jeu vidéo du même nom et a connu un immense succès.",
   "personnages": [
@@ -2782,7 +2782,7 @@ const mangas = [
   "annee": 2022,
   "statut": "En cours",
   "volumes": 13,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/40/akane-banashi_21104.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/40/akane-banashi_21104.webp",
   "resume": "Le rakugo est un art traditionnel japonais où un conteur seul, assis sur scène, interprète tous les personnages d'une histoire comique. Akane Osaki a grandi en admirant son père Shiguma, rakugoka talentueux. Mais lors de l'examen pour devenir maître (shin'uchi), son père est injustement recalé par Issho Arakawa, grand maître influent, et doit abandonner le rakugo. Six ans plus tard, Akane, 17 ans, devient apprentie rakugoka avec un objectif : atteindre le rang de shin'uchi et prouver que le rakugo de son père était légitime. Dans un monde traditionaliste dominé par les hommes, elle doit faire ses preuves par son talent et sa détermination.",
   "bioAuteur": "Yuki Suenaga (scénario) et Takamasa Moue (dessin) créent Akane-banashi, une œuvre qui démocratise le rakugo auprès d'un public jeune tout en respectant ses traditions.",
   "personnages": [
@@ -2803,7 +2803,7 @@ const mangas = [
   "annee": 2024,
   "statut": "En cours",
   "volumes": 4,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/38/kill_blue_24783.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/38/kill_blue_24783.webp",
   "resume": "Dans un futur où l'humanité a colonisé l'espace, les criminels les plus dangereux sont envoyés sur des planètes-prisons. Lorsqu'un vaisseau transportant des prisonniers s'écrase sur une planète hostile, le jeune Ciel se retrouve coincé parmi les pires assassins de la galaxie. Pour survivre, il doit faire équipe avec Blue, un tueur légendaire au caractère imprévisible. Ensemble, ils affrontent les dangers de cette planète mortelle et les autres prisonniers qui veulent leur peau. Le créateur de Kuroko's Basket revient avec une série d'action survoltée mêlant science-fiction et humour décalé.",
   "bioAuteur": "Tadatoshi Fujimaki est le créateur de Kuroko's Basket, l'un des mangas de sport les plus populaires des années 2010. Kill Blue marque son retour avec un genre différent.",
   "personnages": [
@@ -2824,7 +2824,7 @@ const mangas = [
   "annee": 2020,
   "statut": "Terminé",
   "volumes": 18,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/94/mashle_13249.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/94/mashle_13249.webp",
   "resume": "Dans un monde où la magie est tout, ceux qui ne peuvent pas l'utiliser sont éliminés. Mash Burnedead est un jeune homme né sans pouvoirs magiques, élevé en secret par son père adoptif dans la forêt. Pour compenser son absence de magie, il s'est entraîné jusqu'à développer une force physique surhumaine. Quand son existence est découverte, la seule façon de survivre est de devenir un Divin Visionnaire, le plus haut titre de l'académie de magie Easton. Mash intègre donc cette école prestigieuse où il résout tous les problèmes magiques... à coups de poings. Une parodie hilarante de Harry Potter où les muscles remplacent la baguette.",
   "bioAuteur": "Hajime Komoto est un mangaka japonais. Mashle est sa première série majeure, publiée dans le Weekly Shonen Jump de 2020 à 2023. Son humour absurde et ses références à Harry Potter ont conquis les lecteurs.",
   "personnages": [
@@ -2846,7 +2846,7 @@ const mangas = [
   "annee": 2009,
   "statut": "Terminé",
   "volumes": 29,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/aonoexorcist/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/aonoexorcist/images/0/0e/Volume_1.png",
   "resume": "Rin Okumura est un adolescent bagarreur élevé par le père Shiro Fujimoto dans un monastère. Le jour où des démons l'attaquent, il découvre la vérité : il est le fils de Satan, né d'une humaine. Son père adoptif meurt en le protégeant de Satan qui veut récupérer son fils. Rin hérite des flammes bleues de Satan et décide de devenir exorciste pour venger Shiro et vaincre son père biologique. Il intègre l'Académie de la Croix-Vraie avec son frère jumeau Yukio, qui est déjà exorciste. Rin doit cacher sa nature démoniaque tout en apprenant à contrôler ses pouvoirs et à combattre les démons de Gehenna.",
   "bioAuteur": "Kazue Kato est née le 20 juillet 1980. Blue Exorcist est son œuvre majeure, sérialisée de 2009 à 2024. Elle mélange action, humour et thèmes familiaux dans un univers riche.",
   "personnages": [
@@ -2868,7 +2868,7 @@ const mangas = [
   "annee": 2006,
   "statut": "En cours",
   "volumes": 34,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kuroshitsuji/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/kuroshitsuji/images/0/0e/Volume_1.png",
   "resume": "Angleterre, époque victorienne. Ciel Phantomhive, 12 ans, est le comte de la maison Phantomhive, chien de garde de la reine Victoria chargé de résoudre les affaires sombres de l'empire. Après le meurtre de ses parents et sa propre torture, Ciel a passé un pacte avec un démon : en échange de son âme, le démon Sebastian Michaelis lui sert de majordome parfait et l'aide dans sa vengeance. Sebastian est un serviteur impeccable : cuisine, combat, enquête, rien ne lui est impossible. Ensemble, ils résolvent des affaires criminelles pour la reine tout en traquant ceux qui ont détruit la famille Phantomhive.",
   "bioAuteur": "Yana Toboso est née le 24 janvier 1984. Black Butler est son œuvre principale, connue pour son esthétique gothique victorienne et ses personnages charismatiques.",
   "personnages": [
@@ -2890,7 +2890,7 @@ const mangas = [
   "annee": 2018,
   "statut": "Terminé",
   "volumes": 15,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/sono-bisque-doll-wa-koi-wo-suru/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/sono-bisque-doll-wa-koi-wo-suru/images/0/0e/Volume_1.png",
   "resume": "Wakana Gojo est un lycéen solitaire passionné par la fabrication de poupées hina traditionnelles, un hobby qu'il cache par peur d'être moqué. Un jour, Marin Kitagawa, la fille la plus populaire de sa classe, découvre ses talents de couture. Fan de jeux vidéo et d'anime, elle rêve de faire du cosplay mais ne sait pas coudre. Elle demande à Wakana de créer ses costumes. Malgré leurs personnalités opposées, une complicité naît entre le discret artisan et l'extravertie otaku. Au fil des cosplays de plus en plus élaborés, leur relation évolue vers quelque chose de plus profond.",
   "bioAuteur": "Shinichi Fukuda est un mangaka japonais. My Dress-Up Darling est son œuvre la plus connue, acclamée pour sa représentation positive du cosplay et sa romance attachante.",
   "personnages": [
@@ -2912,7 +2912,7 @@ const mangas = [
   "annee": 2004,
   "statut": "En cours",
   "volumes": 29,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/20/d_gray-man_2.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/20/d_gray-man_2.webp",
   "resume": "À la fin du XIXe siècle, le Comte Millénaire crée des armes démoniaques appelées Akuma en exploitant le désespoir des humains endeuillés. L'Ordre Noir combat ces démons grâce aux Exorcistes, porteurs d'Innocence, une substance divine. Allen Walker, 15 ans, possède un bras gauche transformé en arme anti-Akuma et un œil maudit qui voit les âmes piégées dans les Akuma. Exorciste au cœur pur, il veut sauver les Akuma autant que les humains. Mais une prophétie annonce qu'il pourrait être le destructeur du temps. Entre combats contre le Comte et mystères de son passé, Allen cherche sa voie dans cette guerre sainte.",
   "bioAuteur": "Katsura Hoshino est née le 21 avril 1980. D.Gray-man est son œuvre majeure, connue pour son style graphique unique et son histoire complexe, malgré des pauses fréquentes pour raisons de santé.",
   "personnages": [
@@ -2934,7 +2934,7 @@ const mangas = [
   "annee": 2018,
   "statut": "Terminé",
   "volumes": 33,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/30/edens_zero_8803.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/30/edens_zero_8803.webp",
   "resume": "Shiki Granbell a grandi seul sur la planète Granbell, entouré uniquement de robots dans un parc d'attractions abandonné. Quand Rebecca, une vidéaste B-Cuber, et son chat bleu Happy arrivent sur la planète, Shiki découvre l'amitié humaine pour la première fois. Mais les robots se rebellent pour forcer Shiki à partir et vivre parmi les humains avant qu'ils ne s'éteignent définitivement. Shiki, Rebecca et Happy embarquent à bord du vaisseau Edens Zero pour explorer le cosmos Sakura et trouver Mother, une déesse cosmique légendaire. Shiki possède l'Ether Gear Gravity, lui permettant de contrôler la gravité.",
   "bioAuteur": "Hiro Mashima est né le 3 mai 1977. Créateur de Rave, Fairy Tail et Edens Zero, il est connu pour son style dynamique et ses univers riches en aventures.",
   "personnages": [
@@ -2956,7 +2956,7 @@ const mangas = [
   "annee": 2025,
   "statut": "Terminé",
   "volumes": 1,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/70/enma_motomiya_hiroshi_30407.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/70/enma_motomiya_hiroshi_30407.webp",
   "resume": "Ken Ōshima est un homme au grand cœur qui se retrouve à exercer le métier de collecteur de dettes. Mais pas n'importe quel collecteur : il s'attaque aux plus puissants, des yakuzas aux politiciens corrompus, pour récupérer un total de cinq milliards de yens de prêts impayés. Armé de sa détermination et de son sens de la justice, Ken affronte les élites qui pensaient être au-dessus des lois. Une histoire de vengeance sociale où un homme ordinaire défie les puissants.",
   "bioAuteur": "Hiroshi Motomiya est né le 26 juin 1947. Vétéran du manga avec plus de 50 ans de carrière, il est célèbre pour Salaryman Kintaro. Enma est l'une de ses dernières œuvres.",
   "personnages": [
@@ -2977,7 +2977,7 @@ const mangas = [
   "annee": 2002,
   "statut": "Terminé",
   "volumes": 5,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/52/zero_one_2625.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/52/zero_one_2625.webp",
   "resume": "Dans un futur où la réalité virtuelle est omniprésente, un jeune garçon découvre un monde numérique peuplé de créatures et de dangers. Armé de ses compétences et de sa détermination, il doit naviguer entre le monde réel et le monde virtuel pour protéger ceux qu'il aime. Une aventure mêlant action, mystère et réflexion sur la frontière entre réalité et virtualité.",
   "bioAuteur": "Takatoshi Shiozawa est un mangaka japonais connu pour ses œuvres de science-fiction. Zero One explore les thèmes de la réalité virtuelle et de l'identité.",
   "personnages": [
@@ -2998,7 +2998,7 @@ const mangas = [
   "annee": 2015,
   "statut": "En cours",
   "volumes": 21,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/queensquality/images/a/a3/QQ_Vol_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/queensquality/images/a/a3/QQ_Vol_1.jpg",
   "resume": "Fumi Nishioka est une orpheline recueillie par la famille Horikita, des 'Sweepers' ou 'Nettoyeurs' qui purifient l'esprit des personnes envahies par des énergies négatives et des esprits maléfiques. Elle devient l'assistante de Kyutaro Horikita, jeune Sweeper talentueux. Mais Fumi cache un secret : elle possède en elle à la fois une Reine Blanche capable de sauver les gens et une Reine Noire capable de les détruire. Alors qu'elle apprend à maîtriser ses pouvoirs, une romance naît entre elle et Kyutaro. Suite de QQ Sweeper.",
   "bioAuteur": "Kyousuke Motomi est une mangaka japonaise connue pour ses shojo romantiques avec une touche surnaturelle. Queen's Quality est la suite de son manga QQ Sweeper.",
   "personnages": [
@@ -3019,7 +3019,7 @@ const mangas = [
   "annee": 2021,
   "statut": "En cours",
   "volumes": 7,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/01/undead_girl_murder_farce_25610.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/01/undead_girl_murder_farce_25610.webp",
   "resume": "Fin du XIXe siècle, dans un monde où vampires, loups-garous et autres créatures surnaturelles existent. Aya Rindo est une immortelle dont le corps a été volé : seule sa tête survit, conservée dans une cage. Accompagnée de Tsugaru Shinuchi, un demi-oni expert en combat, elle résout des mystères impliquant des créatures surnaturelles. Leur premier cas : prouver l'innocence d'une vampire accusée de meurtre dans un village reculé. Une série de détective où les règles du surnaturel servent d'indices pour résoudre des crimes impossibles.",
   "bioAuteur": "Yugo Aosaki est l'auteur du roman original, Haruka Tomoyama réalise l'adaptation manga. L'œuvre mélange mystère à la Sherlock Holmes et folklore surnaturel européen.",
   "personnages": [
@@ -3041,7 +3041,7 @@ const mangas = [
   "annee": 1992,
   "statut": "En pause",
   "volumes": 18,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/93/x_139.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/93/x_139.webp",
   "resume": "1999, Tokyo. Kamui Shiro, 15 ans, revient dans la capitale après six ans d'absence. Son retour déclenche une guerre apocalyptique entre deux factions : les Dragons du Ciel, qui veulent protéger l'humanité, et les Dragons de la Terre, qui souhaitent purifier la planète en éliminant les humains. Kamui doit choisir son camp, mais son choix déterminera le destin du monde. Ses amis d'enfance Fuma et Kotori sont au cœur de la prophétie : l'un deviendra son allié, l'autre son ennemi mortel. Un manga apocalyptique où amour, destin et sacrifice s'entremêlent dans une Tokyo en ruines.",
   "bioAuteur": "CLAMP est un collectif de quatre mangakas japonaises formé en 1987. Connues pour Card Captor Sakura, Tsubasa et xxxHolic, elles excellent dans les récits complexes aux designs élégants. X est en pause depuis 2003.",
   "personnages": [
@@ -3063,7 +3063,7 @@ const mangas = [
   "annee": 1996,
   "statut": "Terminé",
   "volumes": 38,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/95/yu-gi-oh_duel_monsters_59.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/95/yu-gi-oh_duel_monsters_59.webp",
   "resume": "Yugi Muto est un lycéen timide passionné de jeux. Quand il résout le Puzzle du Millénium, un artefact égyptien ancien, il libère l'esprit d'un pharaon sans mémoire qui partage désormais son corps. Ce 'Yami Yugi' apparaît quand Yugi est menacé, défiant ses ennemis dans des 'Jeux des Ténèbres' aux enjeux mortels. L'histoire évolue vers le jeu de cartes Duel Monsters, où Yugi et ses amis affrontent des duellistes du monde entier. Mais le passé du Pharaon et les autres détenteurs d'objets du Millénium menacent le monde. Yugi doit aider le Pharaon à retrouver sa mémoire et son nom.",
   "bioAuteur": "Kazuki Takahashi (1961-2022) est le créateur de Yu-Gi-Oh!, devenu un phénomène mondial. Le jeu de cartes dérivé est l'un des plus vendus au monde. Il est décédé tragiquement en tentant de sauver des personnes de la noyade.",
   "personnages": [
@@ -3085,7 +3085,7 @@ const mangas = [
   "annee": 2015,
   "statut": "Terminé",
   "volumes": 34,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/fire-brigade-of-flames/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/fire-brigade-of-flames/images/0/0e/Volume_1.png",
   "resume": "Dans un Tokyo futuriste, le phénomène de Combustion Humaine Spontanée transforme des gens ordinaires en Infernaux, des créatures de feu incontrôlables. Les Brigades Spéciales du Feu combattent ces menaces et libèrent les âmes des victimes. Shinra Kusakabe, surnommé 'Devil's Footprints' pour sa capacité à enflammer ses pieds, rejoint la 8e Brigade. Il cherche la vérité sur l'incendie qui a tué sa mère et fait disparaître son frère il y a 12 ans. Ses investigations révèlent une conspiration impliquant les plus hautes sphères religieuses et un culte cherchant à provoquer un second Grand Cataclysme.",
   "bioAuteur": "Atsushi Ohkubo est né le 24 septembre 1979. Créateur de Soul Eater et Fire Force, il est connu pour son style graphique dynamique et ses univers originaux.",
   "personnages": [
@@ -3107,7 +3107,7 @@ const mangas = [
   "annee": 1994,
   "statut": "Terminé",
   "volumes": 28,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kenshin/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/kenshin/images/b/b1/Volume_1.jpg",
   "resume": "Japon, ère Meiji (1878). Kenshin Himura, ancien assassin légendaire connu sous le nom de Battosai, erre sur les routes avec un sabre à lame inversée, symbole de son vœu de ne plus jamais tuer. Il rencontre Kaoru Kamiya, maître d'un dojo en difficulté, et décide de s'y installer. Son passé sanglant le rattrape constamment : anciens ennemis, rivaux et victimes surgissent pour le défier. Kenshin doit protéger ses nouveaux amis tout en résistant à la tentation de redevenir l'assassin qu'il était, même face aux pires criminels de l'ère.",
   "bioAuteur": "Nobuhiro Watsuki est né le 26 mai 1970. Rurouni Kenshin est son œuvre majeure, mêlant histoire du Japon et combats de sabre spectaculaires.",
   "personnages": [
@@ -3173,7 +3173,7 @@ const mangas = [
   "annee": 2013,
   "statut": "En cours",
   "volumes": 27,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/39/world_trigger_3793.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/39/world_trigger_3793.webp",
   "resume": "Il y a quatre ans, une porte vers un autre monde s'est ouverte à Mikado City, libérant des créatures appelées Neighbors. L'organisation Border a été créée pour protéger la ville grâce à des armes spéciales appelées Triggers. Osamu Mikumo, agent Border médiocre mais déterminé, rencontre Yuma Kuga, un mystérieux transfert qui s'avère être lui-même un Neighbor. Ensemble, ils visent l'équipe d'élite pour participer aux expéditions vers le monde voisin. Un manga tactique où la stratégie prime sur la force brute.",
   "bioAuteur": "Daisuke Ashihara est un mangaka japonais. World Trigger se distingue par ses combats stratégiques et son système de pouvoirs cohérent, malgré des pauses pour raisons de santé.",
   "personnages": [
@@ -3195,7 +3195,7 @@ const mangas = [
   "annee": 2009,
   "statut": "Terminé",
   "volumes": 37,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/magi/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/magi/images/0/0e/Volume_1.png",
   "resume": "Aladdin est un jeune garçon mystérieux accompagné d'un djinn nommé Ugo qui vit dans sa flûte. Il rencontre Alibaba, un jeune homme rêvant de conquérir un donjon pour devenir riche. Ensemble, ils découvrent que les donjons sont des structures créées par les Magi, des magiciens surpuissants qui choisissent les rois. Aladdin est lui-même un Magi, et son destin est lié à celui du monde entier. Inspiré des Mille et Une Nuits, le manga explore des thèmes de guerre, d'esclavage et de libre arbitre à travers un monde de magie et d'aventure.",
   "bioAuteur": "Shinobu Ohtaka est née le 8 juin 1983. Magi est son œuvre majeure, saluée pour son worldbuilding riche et ses thèmes matures.",
   "personnages": [
@@ -3217,7 +3217,7 @@ const mangas = [
   "annee": 2002,
   "statut": "Terminé",
   "volumes": 37,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/76/eyeshield_21_167.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/76/eyeshield_21_167.webp",
   "resume": "Sena Kobayakawa est un lycéen chétif habitué à fuir les brutes. Sa vitesse exceptionnelle attire l'attention de Yoichi Hiruma, quarterback démoniaque de l'équipe de football américain des Devil Bats. Hiruma le recrute de force comme running back sous l'identité secrète d'Eyeshield 21. Sena découvre sa passion pour ce sport et, avec une équipe de bric et de broc, vise le Christmas Bowl, le championnat national lycéen. Un manga sportif explosif où chaque match est un combat stratégique et spectaculaire.",
   "bioAuteur": "Riichiro Inagaki (scénario) et Yusuke Murata (dessin) forment un duo légendaire. Murata est aussi connu pour One Punch Man. Eyeshield 21 a popularisé le football américain au Japon.",
   "personnages": [
@@ -3239,7 +3239,7 @@ const mangas = [
   "annee": 1999,
   "statut": "Terminé",
   "volumes": 23,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/40/hikaru_no_go_104.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/40/hikaru_no_go_104.webp",
   "resume": "Hikaru Shindo, 12 ans, trouve un vieux goban dans le grenier de son grand-père. Il éveille accidentellement Sai, fantôme d'un génie du Go de l'ère Heian qui a hanté le plateau pendant mille ans. Sai ne rêve que d'atteindre le 'coup divin', la partie parfaite. Au début simple médium pour Sai, Hikaru développe sa propre passion pour le Go et décide de devenir joueur professionnel. Son parcours croise celui d'Akira Toya, prodige fils d'un champion, qui devient son rival obsessionnel. Un manga qui a relancé l'intérêt pour le Go au Japon.",
   "bioAuteur": "Yumi Hotta (scénario) et Takeshi Obata (dessin, aussi connu pour Death Note). Hikaru no Go a provoqué un boom du Go chez les jeunes japonais.",
   "personnages": [
@@ -3261,7 +3261,7 @@ const mangas = [
   "annee": 2012,
   "statut": "Terminé",
   "volumes": 36,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/shokugekinosoma/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/shokugekinosoma/images/b/b1/Volume_1.jpg",
   "resume": "Soma Yukihira rêve de surpasser son père, chef du restaurant familial. Quand celui-ci part travailler à l'étranger, il envoie Soma à Totsuki, l'académie culinaire la plus élitiste du Japon où seuls 10% des élèves sont diplômés. Soma y découvre les Shokugeki, des duels culinaires où les étudiants parient leur avenir. Avec son style de cuisine créatif et économique, il défie l'élite gastronomique de l'école. Les plats sont si délicieux qu'ils provoquent des 'foodgasms' aux dégustateurs. Un manga qui mêle compétition intense et humour épicé.",
   "bioAuteur": "Yuto Tsukuda (scénario) et Shun Saeki (dessin) avec la collaboration du chef Yuki Morisaki pour les recettes. Food Wars a popularisé les mangas culinaires.",
   "personnages": [
@@ -3283,7 +3283,7 @@ const mangas = [
   "annee": 2004,
   "statut": "Terminé",
   "volumes": 25,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/14/soul_eater_41.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/14/soul_eater_41.webp",
   "resume": "À Death City, l'académie Shibusen forme des binômes meister/arme pour combattre les forces du mal. Les armes sont des humains capables de se transformer en instruments de combat. Maka Albarn et sa faux Soul Eater visent à collecter 99 âmes de démons et une âme de sorcière pour transformer Soul en Death Scythe, l'arme personnelle du Dieu de la Mort. Aux côtés de Black Star et son arme ninja Tsubaki, et de Death the Kid avec ses pistolets jumelles, ils affrontent sorcières et menaces contre la folie qui menace de consumer le monde.",
   "bioAuteur": "Atsushi Ohkubo est né le 24 septembre 1979. Soul Eater est son premier grand succès, reconnu pour son style graphique unique inspiré de Tim Burton.",
   "personnages": [
@@ -3305,7 +3305,7 @@ const mangas = [
   "annee": 2016,
   "statut": "Terminé",
   "volumes": 21,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/moriarty-the-patriot/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/moriarty-the-patriot/images/b/b1/Volume_1.jpg",
   "resume": "Angleterre, fin du XIXe siècle. William James Moriarty est un noble orphelin adopté par la famille Moriarty. Derrière son apparence de gentleman et de professeur de mathématiques se cache le 'Seigneur du Crime', un génie criminel qui orchestre des meurtres parfaits pour éliminer les aristocrates corrompus qui oppriment le peuple. Avec ses frères Albert et Louis, il mène une révolution silencieuse contre le système de classes britannique. Son chemin finit par croiser celui de Sherlock Holmes, et leur affrontement intellectuel devient légendaire. Une réinterprétation brillante de l'univers de Conan Doyle du point de vue du méchant.",
   "bioAuteur": "Ryosuke Takeuchi (scénario) et Hikaru Miyoshi (dessin) réinventent le personnage de Moriarty en antihéros charismatique dans ce manga publié dans Jump SQ.",
   "personnages": [
@@ -3327,7 +3327,7 @@ const mangas = [
   "annee": 1987,
   "statut": "En cours",
   "volumes": 131,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/jjba/images/b/b1/Volume_1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/jjba/images/b/b1/Volume_1.jpg",
   "resume": "Une saga multigénérationnelle suivant la lignée Joestar dans leur combat contre le mal. Tout commence en 1880 quand Jonathan Joestar affronte Dio Brando, son frère adoptif devenu vampire grâce au Masque de Pierre. À travers les décennies, chaque partie suit un nouveau JoJo : Joseph dans les années 40 contre les Hommes du Pilier, Jotaro dans les années 80 avec les Stands (pouvoirs psychiques), Josuke à Morioh, Giorno dans la mafia italienne, Jolyne en prison, et au-delà. Chaque partie réinvente le genre avec des combats stratégiques uniques et un style visuel flamboyant.",
   "bioAuteur": "Hirohiko Araki est né le 7 juin 1960. JoJo's Bizarre Adventure est son œuvre principale depuis 1987, reconnue pour son style artistique unique influencé par la mode et l'art occidental.",
   "personnages": [
@@ -3349,7 +3349,7 @@ const mangas = [
   "annee": 2013,
   "statut": "Terminé",
   "volumes": 7,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/koenokatachi/images/2/2b/Vol1cover.jpeg",
+  "couverture": "https://static.wikia.nocookie.net/koenokatachi/images/2/2b/Vol1cover.jpeg",
   "resume": "À l'école primaire, Shoya Ishida était le meneur d'un groupe qui harcelait Shoko Nishimiya, une élève sourde. Quand Shoko change d'école, Shoya devient à son tour le bouc émissaire et passe son collège et lycée isolé, rongé par la culpabilité. À 17 ans, au bord du suicide, il décide d'abord de retrouver Shoko pour s'excuser. Cette rencontre va changer leurs deux vies et les aider à affronter leurs démons : la culpabilité pour Shoya, le sentiment d'être un fardeau pour Shoko. Un manga poignant sur l'intimidation, le handicap, la rédemption et l'apprentissage de l'empathie.",
   "bioAuteur": "Yoshitoki Oima est née le 15 mars 1989. A Silent Voice est son premier manga à succès, adapté en film d'animation acclamé par Kyoto Animation.",
   "personnages": [
@@ -3371,7 +3371,7 @@ const mangas = [
   "annee": 2009,
   "statut": "En cours",
   "volumes": 27,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/swordartonline/images/5/52/Sword_Art_Online_Volume_01.png",
+  "couverture": "https://static.wikia.nocookie.net/swordartonline/images/5/52/Sword_Art_Online_Volume_01.png",
   "resume": "En 2022, le premier VRMMORPG au monde, Sword Art Online, est lancé. Mais le créateur Akihiko Kayaba révèle aux 10 000 joueurs qu'ils sont prisonniers : se déconnecter signifie mourir, et la seule issue est de terminer les 100 étages du jeu. Kirito, joueur solo et bêta-testeur, décide de survivre seul. Mais sa rencontre avec Asuna, épéiste talentueuse, change tout. Ensemble, ils affrontent les boss, les guildes hostiles et leurs propres limites. Après SAO, d'autres mondes virtuels les attendent : ALO, GGO, Underworld... Une épopée sur l'identité dans les mondes virtuels.",
   "bioAuteur": "Reki Kawahara a écrit SAO comme web novel en 2002 avant sa publication officielle. Le light novel illustré par abec a engendré mangas, anime et jeux vidéo.",
   "personnages": [
@@ -3393,7 +3393,7 @@ const mangas = [
   "annee": 1996,
   "statut": "Terminé",
   "volumes": 56,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/inuyasha/images/9/9d/ShogakukanVol1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/inuyasha/images/9/9d/ShogakukanVol1.jpg",
   "resume": "Kagome Higurashi, lycéenne de 15 ans, tombe dans un ancien puits et se retrouve transportée dans le Japon de l'ère Sengoku, 500 ans en arrière. Elle y libère Inuyasha, un demi-démon mi-humain mi-chien scellé à un arbre depuis 50 ans. La Perle de Shikon, joyau aux pouvoirs immenses caché dans le corps de Kagome, se brise en fragments dispersés à travers le pays. Kagome et Inuyasha, d'abord rivaux, doivent s'allier pour récupérer les fragments avant le maléfique Naraku. Rejoints par le moine Miroku, la chasseuse de démons Sango et le jeune renard Shippo, ils vivent une aventure épique mêlant action et romance.",
   "bioAuteur": "Rumiko Takahashi est née le 10 octobre 1957. Légende du manga avec Urusei Yatsura, Ranma ½ et Inuyasha, elle excelle dans les comédies romantiques à éléments fantastiques.",
   "personnages": [
@@ -3415,7 +3415,7 @@ const mangas = [
   "annee": 2012,
   "statut": "Terminé",
   "volumes": 9,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/bokudakegainaimachi/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/bokudakegainaimachi/images/0/0e/Volume_1.png",
   "resume": "Satoru Fujinuma possède un pouvoir involontaire appelé 'Revival' : il est renvoyé quelques minutes dans le passé juste avant qu'un accident mortel ne se produise, lui donnant une chance de l'empêcher. Quand sa mère est assassinée, Satoru est renvoyé non pas de quelques minutes mais de 18 ans, dans son corps d'enfant de 10 ans. Il réalise que le meurtre est lié à une série d'enlèvements d'enfants de son école primaire en 1988. Pour sauver sa mère, il doit d'abord sauver Kayo Hinazuki, sa camarade de classe maltraitée qui fut la première victime. Un thriller haletant sur le temps et les regrets.",
   "bioAuteur": "Kei Sanbe est un mangaka japonais. Erased (Boku dake ga Inai Machi) est son œuvre la plus connue, adaptée en anime et film live acclamés.",
   "personnages": [
@@ -3437,7 +3437,7 @@ const mangas = [
   "annee": 2008,
   "statut": "Terminé",
   "volumes": 43,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/87/toriko_678.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/87/toriko_678.webp",
   "resume": "Dans un monde où la gastronomie est reine, les Chasseurs de Gourmet traquent les ingrédients les plus rares et dangereux. Toriko est l'un des Quatre Rois Célestes, chasseurs légendaires aux capacités surhumaines. Avec Komatsu, un chef cuisinier talentueux, il parcourt le monde à la recherche des ingrédients de son Menu Complet ultime. Chaque créature est classée par niveau de capture, allant de 1 à des millions. Dans l'Ère Gourmet, la nourriture est pouvoir, et Toriko devra affronter organisations criminelles et créatures divines pour atteindre le légendaire GOD, l'ingrédient suprême.",
   "bioAuteur": "Mitsutoshi Shimabukuro est né le 3 mai 1975. Créateur de Toriko, il mélange action shonen et thématique culinaire dans un univers délirant et créatif.",
   "personnages": [
@@ -3459,7 +3459,7 @@ const mangas = [
   "annee": 2009,
   "statut": "Terminé",
   "volumes": 28,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/57/beelzebub_675.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/57/beelzebub_675.webp",
   "resume": "Tatsumi Oga est le délinquant le plus fort du lycée Ishiyama, réputé pour sa violence. Un jour, il repêche un homme de la rivière qui se fend en deux pour révéler un bébé : Baby Beel, fils du Roi des Démons. Ce bébé s'attache à Oga, le choisissant comme père adoptif pour le former à détruire l'humanité. Problème : Baby Beel électrocute quiconque tente de le séparer d'Oga. Avec Hildegarde, la servante démoniaque, Oga doit élever ce bébé démoniaque tout en affrontant délinquants, démons et autres prétendants au trône des Enfers.",
   "bioAuteur": "Ryuhei Tamura est un mangaka japonais. Beelzebub est son œuvre principale, mêlant humour absurde et action dans un cadre de délinquants.",
   "personnages": [
@@ -3481,7 +3481,7 @@ const mangas = [
   "annee": 2008,
   "statut": "Terminé",
   "volumes": 20,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/bakuman/images/6/6e/Bakumanvolume1cover.png",
+  "couverture": "https://static.wikia.nocookie.net/bakuman/images/6/6e/Bakumanvolume1cover.png",
   "resume": "Moritaka Mashiro, dessinateur talentueux, et Akito Takagi, scénariste brillant, décident de devenir mangakas professionnels. Leur objectif : créer un manga assez populaire pour être adapté en anime. Mashiro a une motivation supplémentaire : il a promis à Miho Azuki, son amour de jeunesse qui rêve de devenir doubleuse, qu'ils se marieraient quand leurs rêves respectifs se réaliseraient. Le manga suit leur parcours dans l'industrie impitoyable du manga, des one-shots aux sérialisations, face à des rivaux talentueux et aux exigences du Weekly Shonen Jump.",
   "bioAuteur": "Tsugumi Ohba (scénario) et Takeshi Obata (dessin), le duo derrière Death Note, offrent un regard réaliste sur l'industrie du manga dans Bakuman.",
   "personnages": [
@@ -3503,7 +3503,7 @@ const mangas = [
   "annee": 2012,
   "statut": "Terminé",
   "volumes": 41,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/nanatsu-no-taizai/images/0/0e/Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/nanatsu-no-taizai/images/0/0e/Volume_1.png",
   "resume": "Dans le royaume de Liones, les Sept Péchés Capitaux étaient les chevaliers les plus puissants avant d'être accusés de trahison et dispersés. Dix ans plus tard, la princesse Elizabeth cherche leur aide pour libérer le royaume des Chevaliers Sacrés corrompus. Elle trouve Meliodas, le Péché de la Colère, qui tient un bar ambulant avec son cochon parlant Hawk. Ensemble, ils partent réunir les autres Péchés : Diane, Ban, King, Gowther, Merlin et Escanor. Mais le passé de Meliodas cache des secrets liés au clan des Démons et à une guerre millénaire.",
   "bioAuteur": "Nakaba Suzuki est né le 8 février 1977. Seven Deadly Sins est son œuvre majeure, mêlant mythologie arthurienne et combat fantasy.",
   "personnages": [
@@ -3525,7 +3525,7 @@ const mangas = [
   "annee": 1981,
   "statut": "En cours",
   "volumes": 37,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/85/captain_tsubasa_458.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/85/captain_tsubasa_458.webp",
   "resume": "Tsubasa Ozora est un prodige du football avec un rêve : remporter la Coupe du Monde avec le Japon. Depuis son enfance à Nankatsu jusqu'aux compétitions internationales, Tsubasa affronte des rivaux comme Kojiro Hyuga, attaquant puissant du Toho, et Genzo Wakabayashi, gardien légendaire. Ses techniques spectaculaires comme le Tir du Tigre ou le Drive Shoot défient les lois de la physique. Le manga qui a inspiré des générations de footballeurs réels, de Zinedine Zidane à Lionel Messi, et popularisé le football au Japon.",
   "bioAuteur": "Yoichi Takahashi est né le 28 juillet 1960. Captain Tsubasa a révolutionné le manga de football et influencé le sport mondial.",
   "personnages": [
@@ -3547,7 +3547,7 @@ const mangas = [
   "annee": 2018,
   "statut": "Terminé",
   "volumes": 13,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/jigokuraku/images/0/0f/Volume_01.png",
+  "couverture": "https://static.wikia.nocookie.net/jigokuraku/images/0/0f/Volume_01.png",
   "resume": "Gabimaru le Vide est un ninja assassin condamné à mort, mais aucune exécution ne fonctionne sur lui. On lui propose un mardon : ramener l'Élixir d'Immortalité de Shinsenkyo, une île mystérieuse d'où personne n'est jamais revenu. Accompagné de Sagiri, une femme bourreau chargée de le surveiller, Gabimaru découvre une île peuplée de créatures immortelles et de dangers mortels. D'autres condamnés et leurs gardiens sont aussi en compétition. Gabimaru doit survivre pour retrouver sa femme, la seule personne pour qui il veut vivre.",
   "bioAuteur": "Yuji Kaku est un ancien assistant de Tatsuki Fujimoto (Chainsaw Man). Hell's Paradise est son premier manga à succès, salué pour son action et son horreur.",
   "personnages": [
@@ -3569,7 +3569,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 20,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/69/undead_unluck_14596.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/69/undead_unluck_14596.webp",
   "resume": "Fuuko Izumo possède le pouvoir Unluck : elle cause la malchance à quiconque la touche. Après avoir provoqué la mort de ses parents, elle décide de se suicider. Mais elle rencontre Andy, un homme immortel (Undead) qui cherche à mourir pour de bon. Ils réalisent que sa malchance pourrait enfin le tuer. Rejoignant l'Union, organisation secrète de Negators (possesseurs de pouvoirs niant des concepts), ils affrontent les UMA, créatures apocalyptiques, et Dieu lui-même qui impose des règles absurdes à l'univers. Un manga déjanté où les pouvoirs défient la logique.",
   "bioAuteur": "Yoshifumi Tozuka est un mangaka dont Undead Unluck est la première série à succès, saluée pour sa créativité et son système de pouvoirs unique.",
   "personnages": [
@@ -3591,7 +3591,7 @@ const mangas = [
   "annee": 2001,
   "statut": "Terminé",
   "volumes": 33,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/konjiki-no-gash/images/9/9a/KNG-Tanko-Vol-01.jpg",
+  "couverture": "https://static.wikia.nocookie.net/konjiki-no-gash/images/9/9a/KNG-Tanko-Vol-01.jpg",
   "resume": "Tous les 1000 ans, 100 enfants démons (Mamodo) sont envoyés sur Terre pour une bataille royale. Chacun possède un livre de sorts qui ne peut être lu que par un partenaire humain. Quand un livre brûle, le Mamodo retourne au monde des démons. Le dernier survivant devient Roi des Démons. Zatch Bell, un Mamodo amnésique au cœur pur, fait équipe avec Kiyomaro Takamine, un génie solitaire. Ensemble, ils décident de faire de Zatch un roi bienveillant. Un manga émouvant sur l'amitié et la force du cœur.",
   "bioAuteur": "Makoto Raiku est né le 8 août 1974. Zatch Bell (Konjiki no Gash!!) est son œuvre majeure, connue pour son émotion et ses combats créatifs.",
   "personnages": [
@@ -3613,7 +3613,7 @@ const mangas = [
   "annee": 2008,
   "statut": "Terminé",
   "volumes": 25,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/nurarihyonnomago/images/a/ab/Nurarihyon_Volume_1.png",
+  "couverture": "https://static.wikia.nocookie.net/nurarihyonnomago/images/a/ab/Nurarihyon_Volume_1.png",
   "resume": "Rikuo Nura est un collégien d'apparence normale, mais il est en réalité le petit-fils de Nurarihyon, le Seigneur Suprême des Yokai. Un quart de son sang est yokai, ce qui lui permet de se transformer en puissant chef yokai la nuit. Rikuo doit accepter son héritage et prendre la tête du Clan Nura, composé de centaines de yokai du folklore japonais. Mais d'autres clans yokai convoitent son territoire, et Rikuo devra prouver qu'il est digne de diriger le Hyakki Yako, le défilé nocturne des cent démons.",
   "bioAuteur": "Hiroshi Shiibashi est un mangaka japonais passionné de folklore yokai. Nura est son œuvre principale, célébrant les légendes japonaises.",
   "personnages": [
@@ -3635,7 +3635,7 @@ const mangas = [
   "annee": 2002,
   "statut": "Terminé",
   "volumes": 61,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/kenichi/images/0/04/Kenichi_The_Mightiest_Disciple_vol01.jpg",
+  "couverture": "https://static.wikia.nocookie.net/kenichi/images/0/04/Kenichi_The_Mightiest_Disciple_vol01.jpg",
   "resume": "Kenichi Shirahama est un lycéen faible constamment harcelé. Quand il rencontre Miu Furinji, il découvre le dojo Ryozanpaku où vivent des maîtres en arts martiaux de classe mondiale. Il devient leur disciple et suit un entraînement infernal pour se défendre. Mais plus il progresse, plus il attire l'attention de Ragnarok, un gang de délinquants, puis de Yami, une organisation mondiale de maîtres du Satsujinken (poing assassin). Kenichi, fidèle au Katsujinken (poing protecteur), devra prouver que sa voie peut triompher.",
   "bioAuteur": "Syun Matsuena est un mangaka spécialisé dans les mangas d'arts martiaux. Kenichi est son œuvre la plus longue et populaire.",
   "personnages": [
@@ -3657,7 +3657,7 @@ const mangas = [
   "annee": 1999,
   "statut": "Terminé",
   "volumes": 42,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/princeoftennis/images/4/40/230px-Prince_of_Tennis_Volume_01.jpg",
+  "couverture": "https://static.wikia.nocookie.net/princeoftennis/images/4/40/230px-Prince_of_Tennis_Volume_01.jpg",
   "resume": "Ryoma Echizen, 12 ans, est un prodige du tennis qui revient au Japon après avoir remporté quatre tournois junior consécutifs aux États-Unis. Il intègre le prestigieux collège Seishun Gakuen (Seigaku) et rejoint son équipe de tennis, composée de joueurs aux styles uniques. Malgré son jeune âge et son arrogance, Ryoma doit prouver sa valeur aux côtés de ses senpai pour atteindre le tournoi national. Chaque adversaire possède des techniques spectaculaires qui défient parfois les lois de la physique. Le manga qui a popularisé le tennis au Japon.",
   "bioAuteur": "Takeshi Konomi est né le 26 juin 1970. Prince of Tennis est son œuvre majeure, ayant engendré anime, films et une suite (New Prince of Tennis).",
   "personnages": [
@@ -3679,7 +3679,7 @@ const mangas = [
   "annee": 2000,
   "statut": "Terminé",
   "volumes": 20,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/16/black_cat_361.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/16/black_cat_361.webp",
   "resume": "Train Heartnet était le légendaire assassin numéro 13 de Chronos, une organisation secrète contrôlant un tiers de l'économie mondiale. Surnommé Black Cat pour sa rapidité mortelle, il a abandonné cette vie après avoir rencontré Saya, une sweeper (chasseuse de primes) qui lui a montré une autre voie. Deux ans plus tard, Train est devenu sweeper avec son partenaire Sven et la jeune Ève, une arme biologique qu'ils ont sauvée. Mais Creed, ancien collègue obsédé par Train, veut le ramener dans les ténèbres en créant les Apôtres des Étoiles.",
   "bioAuteur": "Kentaro Yabuki est né le 4 février 1980. Connu pour Black Cat et To Love-Ru, il excelle dans l'action et le character design.",
   "personnages": [
@@ -3701,7 +3701,7 @@ const mangas = [
   "annee": 1999,
   "statut": "Terminé",
   "volumes": 35,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/46/rave_64.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/46/rave_64.webp",
   "resume": "Il y a 50 ans, l'Overdrive a failli détruire le monde à cause des Dark Brings, pierres maléfiques aux pouvoirs terribles. Shiba, le premier Rave Master, a utilisé les Raves (pierres sacrées) pour stopper la catastrophe, mais les deux types de pierres ont été dispersées. Haru Glory, 16 ans, trouve par hasard Plue, le gardien de la Rave, et devient le second Rave Master. Avec une épée capable de changer de forme et ses amis, dont la mystérieuse Elie sans mémoire, il doit rassembler les cinq Raves et détruire les Dark Brings avant que Demon Card, organisation criminelle, ne plonge le monde dans le chaos.",
   "bioAuteur": "Hiro Mashima est né le 3 mai 1977. Rave est sa première œuvre majeure, précédant Fairy Tail. On y retrouve déjà son style reconnaissable.",
   "personnages": [
@@ -3723,7 +3723,7 @@ const mangas = [
   "annee": 2002,
   "statut": "Terminé",
   "volumes": 37,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/43/air_gear_134.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/43/air_gear_134.webp",
   "resume": "Dans un futur proche, les Air Treck (AT), rollers motorisés permettant de défier la gravité, sont devenus un phénomène. Les Storm Riders s'affrontent dans des courses et batailles aériennes pour conquérir des territoires et atteindre la Trophaeum Tower. Itsuki 'Ikki' Minami, délinquant adoptif de quatre sœurs, découvre les AT et son talent naturel. Il forme l'équipe Kogarasumaru avec ses amis pour gravir les rangs et affronter les huit Roads vers le sommet. Un manga spectaculaire aux dessins vertigineux sur la liberté et le vol.",
   "bioAuteur": "Oh! Great (Ito Ogure) est né le 17 février 1972. Connu pour son style visuel détaillé et dynamique, Air Gear est son œuvre la plus populaire.",
   "personnages": [
@@ -3745,7 +3745,7 @@ const mangas = [
   "annee": 2003,
   "statut": "Terminé",
   "volumes": 35,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/20/kekkaishi_1302.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/20/kekkaishi_1302.webp",
   "resume": "Le collège Karasumori est construit sur un site mystique qui attire les Ayakashi (démons). Les Kekkaishi, exorcistes créant des barrières (Kekkai), protègent ce lieu depuis des générations. Yoshimori Sumimura et Tokine Yukimura, héritiers de deux familles rivales de Kekkaishi, chassent ensemble les Ayakashi chaque nuit. Yoshimori, bien que doué, préfère faire des gâteaux. Mais quand Tokine est blessée à cause de son manque de sérieux, il jure de devenir assez fort pour la protéger. Une intrigue se tisse autour du secret de Karasumori.",
   "bioAuteur": "Yellow Tanabe est une mangaka japonaise. Kekkaishi est son œuvre majeure, équilibrant action surnaturelle et développement de personnages.",
   "personnages": [
@@ -3767,7 +3767,7 @@ const mangas = [
   "annee": 2007,
   "statut": "Terminé",
   "volumes": 16,
-  "couverture": "https://wsrv.nl/?url=https://www.nautiljon.com/images/manga/00/77/psyren_677.webp",
+  "couverture": "https://www.nautiljon.com/images/manga/00/77/psyren_677.webp",
   "resume": "Ageha Yoshina trouve une carte téléphonique rouge mystérieuse liée aux disparitions de Psyren. En l'utilisant, il est transporté dans un monde post-apocalyptique : le Japon du futur, dévasté et peuplé de monstres appelés Taboo. Les 'joueurs' de Psyren doivent survivre et accomplir des missions pour rentrer chez eux. Ageha découvre qu'il peut développer des pouvoirs PSI (psychiques) et que le but est de changer le futur. Avec d'autres joueurs dont Sakurako, son amie d'enfance, il doit découvrir ce qui a détruit le monde et l'empêcher.",
   "bioAuteur": "Toshiaki Iwashiro est un mangaka japonais. Psyren est son œuvre la plus connue, mêlant mystère, action et pouvoirs psychiques.",
   "personnages": [
@@ -3788,7 +3788,7 @@ const mangas = [
   "annee": 2009,
   "statut": "Terminé",
   "volumes": 22,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/medakabox/images/0/00/Volume1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/medakabox/images/0/00/Volume1.jpg",
   "resume": "Medaka Kurokami est la présidente du conseil des élèves élue avec 98% des voix. Parfaite en tout, elle installe une boîte à suggestions pour aider tous les élèves. Son ami d'enfance Zenkichi l'assiste dans ces missions. Ce qui commence comme une comédie scolaire évolue en batailles shonen quand apparaissent les Abnormals (élèves aux capacités surhumaines) puis les Minuses (personnes aux talents négatifs). Le manga déconstruit et parodie les codes du shonen avec la plume unique de Nisio Isin, maître des dialogues et des retournements.",
   "bioAuteur": "Nisio Isin (scénario), célèbre pour Monogatari et Katanagatari, et Akira Akatsuki (dessin) créent un manga méta et unique.",
   "personnages": [
@@ -3810,7 +3810,7 @@ const mangas = [
   "annee": 2003,
   "statut": "Terminé",
   "volumes": 10,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/busorenkin/images/4/43/Busorenkin1.jpg",
+  "couverture": "https://static.wikia.nocookie.net/busorenkin/images/4/43/Busorenkin1.jpg",
   "resume": "Kazuki Muto meurt en protégeant une fille d'un monstre. Il est ressuscité grâce à un Kakugane (noyau alchimique) placé dans son cœur par Tokiko Tsumura, guerrière alchimiste. Ce Kakugane lui permet de créer un Busou Renkin (arme alchimique) : une lance nommée Sunlight Heart. Kazuki rejoint le combat contre les Homunculus, créatures artificielles dévorant les humains, créées par des alchimistes renégats. Mais son Kakugane cache un secret qui pourrait le transformer en menace pour l'humanité.",
   "bioAuteur": "Nobuhiro Watsuki, créateur de Rurouni Kenshin, revient avec Busou Renkin, un shonen d'action alchimique dynamique.",
   "personnages": [
@@ -4029,7 +4029,7 @@ const mangas = [
   "annee": 2012,
   "statut": "Terminé",
   "volumes": 26,
-  "couverture": "https://wsrv.nl/?url=https://static.wikia.nocookie.net/saikikusounosainan/images/b/b7/Vol_1.jpg/revision/latest/scale-to-width-down/280?cb=20190831201334",
+  "couverture": "https://static.wikia.nocookie.net/saikikusounosainan/images/b/b7/Vol_1.jpg/revision/latest/scale-to-width-down/280?cb=20190831201334",
   "anime": "https://www.netflix.com/title/80177780",
   "resume": "Kusuo Saiki est né avec tous les pouvoirs psychiques imaginables : télépathie, télékinésie, téléportation, clairvoyance, et bien d'autres. Son seul souhait ? Vivre une vie ordinaire et tranquille. Malheureusement, il est constamment entouré d'idiots qui perturbent sa paix : Nendo le crétin, Kaido le chuunibyou, Hairo l'hyperactif, et bien d'autres camarades de classe tous plus bizarres les uns que les autres. Une comédie où le protagoniste surpuissant ne veut qu'une chose : qu'on le laisse tranquille.",
   "bioAuteur": "Shuichi Aso est un mangaka japonais. Saiki K. est son œuvre majeure, publiée dans le Weekly Shonen Jump de 2012 à 2018. Son humour rapide et ses parodies sont sa marque de fabrique.",

@@ -90,7 +90,7 @@ function afficherDetailManga(id) {
           src="${manga.couverture}"
           alt="${manga.titre}"
           class="manga-detail-cover"
-          onerror="this.src='https://placehold.co/300x450/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+          onerror="this.style.display='none'"
         >
       </div>
 
@@ -219,7 +219,7 @@ function afficherDetailManga(id) {
               if (!connexionManga) return '';
               return `
                 <div class="connexion-card" onclick="window.location.href='manga.html?id=${connexionManga.id}'">
-                  <img src="${connexionManga.couverture}" alt="${connexionManga.titre}" class="connexion-cover" onerror="this.src='https://placehold.co/60x90/1a1a1a/e63946?text=${encodeURIComponent(connexionManga.titre)}'">
+                  <img src="${connexionManga.couverture}" alt="${connexionManga.titre}" class="connexion-cover" onerror="this.style.display='none'">
                   <div class="connexion-info">
                     <h3 class="connexion-title">${connexionManga.titre}</h3>
                     <p class="connexion-univers">${connexionManga.univers || ''}</p>
@@ -237,7 +237,7 @@ function afficherDetailManga(id) {
           <div class="similar-grid">
             ${getRecommandations(manga).map(rec => `
               <div class="similar-card" onclick="window.location.href='manga.html?id=${rec.id}'">
-                <img src="${rec.couverture}" alt="${rec.titre}" class="similar-cover" onerror="this.src='https://placehold.co/120x180/1a1a1a/e63946?text=${encodeURIComponent(rec.titre)}'">
+                <img src="${rec.couverture}" alt="${rec.titre}" class="similar-cover" onerror="this.style.display='none'">
                 <div class="similar-info">
                   <h3 class="similar-title">${rec.titre}</h3>
                   <p class="similar-genres">${rec.genre.slice(0, 2).join(', ')}</p>

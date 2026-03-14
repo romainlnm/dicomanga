@@ -4381,7 +4381,7 @@ const mangas = [
   "annee": 2017,
   "statut": "En cours",
   "volumes": 21,
-  "couverture": "images/covers/145.jpg",
+  "couverture": "images/covers/record_of_ragnarok.jpg",
   "resume": "Tous les 1000 ans, les dieux de toutes les mythologies se réunissent pour décider du sort de l'humanité. Cette fois, ils votent unanimement pour son extinction. Mais Brunhilde, la Valkyrie aînée, invoque une clause oubliée : le Ragnarok, un tournoi de 13 combats singuliers opposant les dieux aux plus grands héros de l'histoire humaine. Si l'humanité remporte 7 victoires, elle sera épargnée. Les règles sont simples : un dieu contre un humain, combat à mort. Pour permettre aux mortels de blesser les dieux, les Valkyries se transforment en armes divines appelées Volund. Zeus affronte Adam, le premier homme. Thor combat Lü Bu, le guerrier chinois invincible. Poséidon fait face à Sasaki Kojiro, l'éternel perdant devenu maître de l'épée. Chaque combat explore l'histoire et la philosophie des combattants, leurs motivations, leurs regrets et leur détermination. Le manga revisite les mythologies du monde entier tout en célébrant le potentiel infini de l'esprit humain face à des êtres considérés comme invincibles.",
   "bioAuteur": "Record of Ragnarok est écrit par Shinya Umemura et Takumi Fukui, avec les dessins d'Ajichika. Le trio a créé une oeuvre qui combine mythologie, histoire et action spectaculaire, devenue un phénomène mondial grâce à son concept original et ses combats épiques.",
   "personnages": [

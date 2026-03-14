@@ -602,7 +602,7 @@ function afficherFavoris() {
   const favorisMangas = mangas.filter(m => favorisIds.includes(m.id));
 
   grid.innerHTML = favorisMangas.map(manga => `
-    <div class="manga-card" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
+    <div class="manga-card visible" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
       <img
         src="${manga.couverture}"
         alt="${manga.titre}"
@@ -688,7 +688,7 @@ function afficherALire() {
   const aLireMangas = mangas.filter(m => aLireIds.includes(m.id));
 
   grid.innerHTML = aLireMangas.map(manga => `
-    <div class="manga-card" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
+    <div class="manga-card visible" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
       <img
         src="${manga.couverture}"
         alt="${manga.titre}"

@@ -338,7 +338,7 @@ const mangas = [
   "annee": 2016,
   "statut": "En cours",
   "volumes": 21,
-  "couverture": "https://www.nautiljon.com/images/manga/00/01/boruto_-_naruto_next_generations_5910.webp",
+  "couverture": "images/covers/9.jpg",
   "resume": "Dans une ère de paix, Boruto Uzumaki est le fils du Septième Hokage Naruto. Contrairement à son père qui n avait rien, Boruto a tout mais ressent le manque d attention de Naruto, trop occupé par ses devoirs de Hokage. Élève prodige à l Académie Ninja, il rejette l héritage de son père tout en portant le poids de son nom. Quand la menace Otsutsuki, clan extraterrestre à l origine du chakra, refait surface, Boruto découvre un pouvoir mystérieux dans son œil : le Jougan. Avec ses coéquipiers Sarada (fille de Sasuke) et Mitsuki (fils d Orochimaru), il affronte des ennemis qui menacent l équilibre du monde shinobi.",
   "bioAuteur": "Masashi Kishimoto supervise l histoire en tant que superviseur éditorial, tandis que Mikio Ikemoto, son ancien assistant, dessine le manga. Ukyo Kodachi a écrit le scénario jusqu au chapitre 51.",
   "personnages": [
@@ -2652,7 +2652,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 8,
-  "couverture": "https://www.nautiljon.com/images/manga/00/01/cheat_skill_level_up_16110.webp",
+  "couverture": "images/covers/66.jpg",
   "resume": "Dans un monde où chaque personne obtient une compétence unique à ses 15 ans, Yuuto Kashiwagi reçoit la pire compétence possible : 'Coup de Poing Enfantin', considérée inutile car elle ne fait presque aucun dégât. Méprisé et abandonné par son groupe d'aventuriers, il découvre par hasard que sa compétence peut évoluer en tuant des monstres. Chaque niveau augmente exponentiellement sa puissance, jusqu'à atteindre des sommets inimaginables. Accompagné de Luna, une magicienne qui croit en lui, Yuuto gravit les rangs des aventuriers tout en cachant l'étendue de ses véritables pouvoirs. Un récit classique de progression où le héros sous-estimé devient surpuissant.",
   "bioAuteur": "Miku est l'auteur du light novel original, tandis que Nano Shinozaki réalise l'adaptation manga. L'œuvre s'inscrit dans le genre populaire des héros sous-estimés qui deviennent overpowered.",
   "personnages": [
@@ -2673,7 +2673,7 @@ const mangas = [
   "annee": 2019,
   "statut": "En cours",
   "volumes": 6,
-  "couverture": "https://www.nautiljon.com/images/manga/00/20/my_hero_academia_-_team_up_mission_11002.webp",
+  "couverture": "images/covers/67.jpg",
   "resume": "Spin-off officiel de My Hero Academia, Team Up Mission explore les missions collaboratives entre les élèves de l'académie Yuei et les héros professionnels. Chaque chapitre met en scène des duos ou équipes inédits : Deku avec Endeavor, Bakugo avec Hawks, Todoroki avec Gang Orca, et bien d'autres combinaisons. Ces missions permettent aux étudiants d'apprendre auprès de différents mentors et de développer leurs Alters dans des situations variées. Le format épisodique offre des aventures légères et humoristiques, tout en approfondissant les relations entre personnages qui interagissent peu dans la série principale.",
   "bioAuteur": "Yoco Akiyama réalise le manga sous la supervision de Kohei Horikoshi, créateur de My Hero Academia. Ce spin-off permet d'explorer l'univers MHA avec un ton plus léger et des interactions inédites.",
   "personnages": [
@@ -2695,7 +2695,7 @@ const mangas = [
   "annee": 2022,
   "statut": "En cours",
   "volumes": 9,
-  "couverture": "https://www.nautiljon.com/images/manga/00/70/gachiakuta_21207.webp",
+  "couverture": "images/covers/68.jpg",
   "resume": "Dans un monde divisé entre la cité céleste et le Pit, une décharge géante en contrebas, Rudo vit heureux avec son père adoptif Regto malgré leur pauvreté. Quand Regto est assassiné et Rudo faussement accusé du crime, il est 'déchu' - jeté dans le Pit pour y mourir. Dans cet enfer de déchets peuplé de monstres appelés Juggernauts, Rudo découvre qu'il peut transformer les ordures en armes grâce à un pouvoir mystérieux. Recueilli par un groupe de survivants, il apprend à maîtriser cette capacité pour survivre et jure de remonter dans la cité pour venger son père et prouver son innocence. Un shonen brutal au style visuel unique.",
   "bioAuteur": "Kei Urana est un mangaka dont Gachiakuta est la première série majeure. Son style graphique distinctif et ses designs de monstres impressionnants ont rapidement attiré l'attention des lecteurs.",
   "personnages": [
@@ -2716,7 +2716,7 @@ const mangas = [
   "annee": 2019,
   "statut": "Terminé",
   "volumes": 29,
-  "couverture": "https://www.nautiljon.com/images/manga/00/56/mission_yozakura_family_11465.webp",
+  "couverture": "images/covers/69.jpg",
   "resume": "Taiyo Asano est un lycéen introverti dont la seule amie est Mutsumi Yozakura, sa voisine depuis l'enfance. Quand il découvre que Mutsumi appartient à la plus puissante famille d'espions du Japon, sa vie bascule. Le frère aîné surprotecteur de Mutsumi, Kyoichiro, menace de le tuer pour l'éloigner de sa sœur. La seule solution pour Taiyo : épouser Mutsumi et devenir officiellement membre de la famille Yozakura. Désormais marié à 17 ans, il doit survivre à un entraînement d'espion intensif dispensé par ses nouveaux beaux-frères et belles-sœurs, chacun maîtrisant une spécialité mortelle. Entre missions dangereuses et vie de couple naissante, Taiyo découvre les secrets de la famille Yozakura et une menace ancestrale qui les guette.",
   "bioAuteur": "Hitsuji Gondaira est un mangaka japonais. Mission: Yozakura Family est sa première série à succès, publiée dans le Weekly Shonen Jump de 2019 à 2025.",
   "personnages": [
@@ -2738,7 +2738,7 @@ const mangas = [
   "annee": 2008,
   "statut": "Terminé",
   "volumes": 10,
-  "couverture": "https://www.nautiljon.com/images/manga/00/19/inazuma_eleven_1891.webp",
+  "couverture": "images/covers/70.jpg",
   "resume": "Mamoru Endo est le gardien passionné du club de football du collège Raimon, une équipe si faible qu'elle risque la dissolution. Petit-fils d'un légendaire gardien, il rêve de maîtriser la technique secrète de son grand-père : la Main Céleste. Quand l'équipe d'élite de Teikoku, menée par le redoutable Shuya Gouenji, défie Raimon, Endo doit recruter des joueurs talentueux pour sauver son club. Avec l'aide de Gouenji lui-même, qui rejoint l'équipe, et d'autres joueurs aux techniques spéciales surpuissantes, Raimon entame un parcours épique vers le sommet du football japonais. Un manga où les tirs et les arrêts deviennent des techniques spectaculaires aux noms évocateurs.",
   "bioAuteur": "Tenya Yabuno est un mangaka japonais connu pour ses adaptations de jeux vidéo Level-5. Inazuma Eleven est basé sur le jeu vidéo du même nom et a connu un immense succès.",
   "personnages": [

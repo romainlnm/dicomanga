@@ -203,7 +203,7 @@ function afficherNotesPersonnelles() {
 
   container.innerHTML = mangasNotes.map(manga => `
     <div class="encours-card" onclick="window.location.href='manga.html?id=${manga.id}'">
-      <img src="${manga.couverture}" alt="${manga.titre}" class="encours-cover" onerror="this.src='https://via.placeholder.com/80x120/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
+      <img src="${manga.couverture}" alt="${manga.titre}" class="encours-cover" onerror="this.src='https://placehold.co/80x120/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
       <div class="encours-info">
         <h3 class="encours-title">${manga.titre}</h3>
         <div class="encours-progress">

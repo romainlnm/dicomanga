@@ -206,7 +206,7 @@ function afficherQuestion() {
       questionHTML += `
         <div class="quiz-image-container">
           <img src="${q.image}" alt="Couverture mystère" class="quiz-image quiz-image-blur" id="quizImage"
-               onerror="this.src='https://via.placeholder.com/200x300/1a1a1a/e63946?text=?'">
+               onerror="this.src='https://placehold.co/200x300/1a1a1a/e63946?text=?'">
         </div>
       `;
       break;

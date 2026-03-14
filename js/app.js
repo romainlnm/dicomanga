@@ -352,7 +352,7 @@ function afficherMangas(listMangas) {
           src="${manga.couverture}"
           alt="${manga.titre}"
           class="manga-cover"
-          onerror="this.src='https://via.placeholder.com/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+          onerror="this.src='https://placehold.co/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
         >
         <div class="manga-info">
           <h3 class="manga-title">${manga.titre}</h3>
@@ -607,7 +607,7 @@ function afficherFavoris() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="manga-cover"
-        onerror="this.src='https://via.placeholder.com/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+        onerror="this.src='https://placehold.co/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
       >
       <div class="manga-info">
         <h3 class="manga-title">${manga.titre}</h3>
@@ -693,7 +693,7 @@ function afficherALire() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="manga-cover"
-        onerror="this.src='https://via.placeholder.com/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+        onerror="this.src='https://placehold.co/180x270/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
       >
       <div class="manga-info">
         <h3 class="manga-title">${manga.titre}</h3>
@@ -869,7 +869,7 @@ function afficherActualites() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="actualite-cover"
-        onerror="this.src='https://via.placeholder.com/120x180/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+        onerror="this.src='https://placehold.co/120x180/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
       >
       <div class="actualite-info">
         <h3 class="actualite-title">${manga.titre}</h3>
@@ -917,7 +917,7 @@ function afficherHistorique() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="historique-cover"
-        onerror="this.src='https://via.placeholder.com/120x180/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
+        onerror="this.src='https://placehold.co/120x180/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'"
       >
       <div class="historique-info">
         <h3 class="historique-title">${manga.titre}</h3>
@@ -1158,7 +1158,7 @@ function afficherMangaDuJour() {
 
   content.innerHTML = `
     <img src="${manga.couverture}" alt="${manga.titre}" class="mdj-cover"
-         onerror="this.src='https://via.placeholder.com/150x225/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
+         onerror="this.src='https://placehold.co/150x225/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
     <div class="mdj-info">
       <h2 class="mdj-title">${manga.titre}</h2>
       <p class="mdj-author">Par ${manga.auteur}</p>
@@ -1672,7 +1672,7 @@ function afficherClassement(category = 'all') {
       <div class="classement-card" onclick="allerVersManga(${manga.id})">
         <div class="classement-rank ${rankClass}">${index + 1}</div>
         <img src="${manga.couverture}" alt="${manga.titre}" class="classement-cover"
-             onerror="this.src='https://via.placeholder.com/60x90/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
+             onerror="this.src='https://placehold.co/60x90/1a1a1a/e63946?text=${encodeURIComponent(manga.titre)}'">
         <div class="classement-info">
           <div class="classement-title">${manga.titre}</div>
           <div class="classement-meta">${manga.auteur} · ${manga.annee}</div>
@@ -1754,7 +1754,7 @@ function genererRecommandations() {
       ${recommandations.map((rec, index) => `
         <div class="manga-card" onclick="allerVersManga(${rec.id})" style="animation-delay: ${index * 0.1}s">
           <img src="${rec.couverture}" alt="${rec.titre}" class="manga-cover"
-               onerror="this.src='https://via.placeholder.com/180x270/1a1a1a/e63946?text=${encodeURIComponent(rec.titre)}'">
+               onerror="this.src='https://placehold.co/180x270/1a1a1a/e63946?text=${encodeURIComponent(rec.titre)}'">
           <div class="manga-info">
             <h3 class="manga-title">${rec.titre}</h3>
             <p class="manga-author">${rec.auteur}</p>

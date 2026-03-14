@@ -1,5 +1,5 @@
 // Service Worker pour Dico.Manga - Mode hors-ligne
-const CACHE_NAME = 'dico-manga-v6';
+const CACHE_NAME = 'dico-manga-v7';
 
 // Fichiers à mettre en cache
 const ASSETS_TO_CACHE = [
@@ -77,9 +77,12 @@ self.addEventListener('fetch', (event) => {
             return cachedResponse;
           }
           // Page hors-ligne par défaut pour les pages HTML
-          if (event.request.headers.get('accept').includes('text/html')) {
+          const acceptHeader = event.request.headers.get('accept') || '';
+          if (acceptHeader.includes('text/html')) {
             return caches.match('/index.html');
           }
+          // Retourner une réponse vide pour les autres ressources non trouvées
+          return new Response('', { status: 404, statusText: 'Not Found' });
         });
       })
   );

@@ -4337,7 +4337,7 @@ const mangas = [
   "annee": 1985,
   "statut": "Terminé",
   "volumes": 35,
-  "couverture": "images/covers/143.jpg",
+  "couverture": "images/covers/city_hunter.jpg",
   "resume": "Ryo Saeba est le meilleur nettoyeur de Tokyo, un tireur d'élite aux compétences inégalées qui accepte les missions les plus dangereuses : protection de personnalités, enquêtes périlleuses, affrontements avec la pègre. Pour le contacter, il suffit d'écrire 'XYZ' sur le tableau des messages de la gare de Shinjuku. Mais Ryo a un défaut majeur : c'est un pervers obsessionnel qui ne peut s'empêcher de draguer outrageusement chaque jolie femme qu'il croise, au point d'en oublier parfois ses missions. Heureusement, sa partenaire Kaori Makimura le maintient en ligne avec son légendaire marteau de 100 tonnes qu'elle sort de nulle part pour le punir. Derrière l'humour grivois se cachent des histoires souvent émouvantes : femmes en détresse, criminels repentis, enfants perdus. Ryo, malgré son attitude de coureur de jupons, possède un code d'honneur strict et un passé mystérieux lié au monde des mercenaires. Le manga alterne brillamment entre comédie légère, action spectaculaire et moments dramatiques, le tout dans un Tokyo des années 80 magnifiquement représenté.",
   "bioAuteur": "Tsukasa Hojo est un mangaka japonais né en 1959. Avant City Hunter, il avait créé Cat's Eye. Son style élégant et ses personnages féminins séduisants sont devenus sa marque de fabrique. Il a reçu de nombreux prix pour son travail et City Hunter reste l'un des mangas les plus populaires des années 80.",
   "personnages": [

@@ -146,45 +146,6 @@
   </header>
 
   <main>
-    <!-- Modal À lire -->
-    <div class="modal-overlay" id="alireModal" onclick="fermerALire(event)">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 data-i18n="toRead">Ma Liste À lire 📚</h2>
-          <button class="modal-close" onclick="fermerALireBtn()">✕</button>
-        </div>
-        <div class="modal-body" id="alireGrid">
-          <!-- À lire générés par JS -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Favoris -->
-    <div class="modal-overlay" id="favoritesModal" onclick="fermerFavoris(event)">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 data-i18n="favorites">Mes Favoris ★</h2>
-          <button class="modal-close" onclick="fermerFavorisBtn()">✕</button>
-        </div>
-        <div class="modal-body" id="favoritesGrid">
-          <!-- Favoris générés par JS -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Comparaison -->
-    <div class="modal-overlay" id="comparaisonModal" onclick="fermerComparaison(event)">
-      <div class="modal-content modal-large">
-        <div class="modal-header">
-          <h2>Comparaison ⚖️</h2>
-          <button class="modal-close" onclick="fermerComparaisonBtn()">✕</button>
-        </div>
-        <div class="modal-body" id="comparaisonGrid">
-          <!-- Comparaison générée par JS -->
-        </div>
-      </div>
-    </div>
-
     <!-- Manga du jour -->
     <section class="manga-du-jour" id="mangaDuJourSection">
       <div class="mdj-badge" data-i18n="mangaOfDay">Manga du jour</div>
@@ -341,5 +302,45 @@
     window.addEventListener('offline', updateOnlineStatus);
     updateOnlineStatus();
   </script>
+
+  <!-- Modals (en dehors de main pour eviter les problemes de stacking context) -->
+  <!-- Modal À lire -->
+  <div class="modal-overlay" id="alireModal" onclick="fermerALire(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-i18n="toRead">Ma Liste À lire 📚</h2>
+        <button class="modal-close" onclick="fermerALireBtn()">✕</button>
+      </div>
+      <div class="modal-body" id="alireGrid">
+        <!-- À lire générés par JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Favoris -->
+  <div class="modal-overlay" id="favoritesModal" onclick="fermerFavoris(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-i18n="favorites">Mes Favoris ★</h2>
+        <button class="modal-close" onclick="fermerFavorisBtn()">✕</button>
+      </div>
+      <div class="modal-body" id="favoritesGrid">
+        <!-- Favoris générés par JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Comparaison -->
+  <div class="modal-overlay" id="comparaisonModal" onclick="fermerComparaison(event)">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h2>Comparaison ⚖️</h2>
+        <button class="modal-close" onclick="fermerComparaisonBtn()">✕</button>
+      </div>
+      <div class="modal-body" id="comparaisonGrid">
+        <!-- Comparaison générée par JS -->
+      </div>
+    </div>
+  </div>
 </body>
 </html>

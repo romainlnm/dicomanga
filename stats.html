@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Statistiques - Dico.Manga</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63946">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-group">
+        <a href="index.html" class="logo">
+          <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
+          <span>Un dictionnaire de mangas</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-btn">
+      ← Retour à la bibliothèque
+    </a>
+
+    <h1 class="page-title">Mes Statistiques</h1>
+
+    <!-- Stats globales -->
+    <div class="stats-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">★</div>
+          <div class="stat-value" id="totalFavoris">0</div>
+          <div class="stat-label">Favoris</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-value" id="totalALire">0</div>
+          <div class="stat-label">À lire</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-value" id="mangasNotes">0</div>
+          <div class="stat-label">Mangas notés</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-value" id="noteMoyenne">-</div>
+          <div class="stat-label">Note moyenne</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div class="stat-value" id="mangasVus">0</div>
+          <div class="stat-label">Consultés</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-value" id="streakJours">0</div>
+          <div class="stat-label">Jours actif</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Genres préférés -->
+    <section class="stats-section">
+      <h2>Genres préférés</h2>
+      <div class="genres-chart" id="genresChart">
+        <!-- Généré par JS -->
+      </div>
+    </section>
+
+    <!-- Top auteurs -->
+    <section class="stats-section">
+      <h2>Top 3 Auteurs</h2>
+      <div class="auteurs-list" id="auteursList">
+        <!-- Généré par JS -->
+      </div>
+    </section>
+
+    <!-- Notes données -->
+    <section class="stats-section">
+      <h2>Mes notes personnelles</h2>
+      <div class="notes-grid" id="notesGrid">
+        <!-- Généré par JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/stats.js"></script>
+</body>
+</html>

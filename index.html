@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dico.Manga - Le Dictionnaire des Mangas</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63946">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-group">
+        <a href="index.html" class="logo">
+          <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
+          <span>Un dictionnaire de mangas</span>
+        </a>
+        <div class="theme-controls">
+          <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <span id="themeIcon">☀️</span>
+          </button>
+          <div class="lang-picker-wrapper">
+            <button class="lang-picker-btn" id="langPickerBtn" onclick="toggleLangPicker()">
+              <span class="lang-flag" id="langFlag">🇫🇷</span>
+            </button>
+            <div class="lang-picker" id="langPicker">
+              <button class="lang-option" data-lang="fr" onclick="setLanguage('fr')">
+                <span class="lang-flag">🇫🇷</span>
+                <span>Français</span>
+              </button>
+              <button class="lang-option" data-lang="en" onclick="setLanguage('en')">
+                <span class="lang-flag">🇬🇧</span>
+                <span>English</span>
+              </button>
+              <button class="lang-option" data-lang="es" onclick="setLanguage('es')">
+                <span class="lang-flag">🇪🇸</span>
+                <span>Español</span>
+              </button>
+              <button class="lang-option" data-lang="ja" onclick="setLanguage('ja')">
+                <span class="lang-flag">🇯🇵</span>
+                <span>日本語</span>
+              </button>
+            </div>
+          </div>
+          <div class="color-picker-wrapper">
+            <button class="color-picker-btn" id="colorPickerBtn" onclick="toggleColorPicker()">
+              <span class="color-picker-icon">🎨</span>
+            </button>
+            <div class="color-picker" id="colorPicker">
+              <button class="color-dot" data-color="red" style="--dot-color: #e63946" onclick="setColorTheme('red')"></button>
+              <button class="color-dot" data-color="pink" style="--dot-color: #e91e63" onclick="setColorTheme('pink')"></button>
+              <button class="color-dot" data-color="orange" style="--dot-color: #ff6b35" onclick="setColorTheme('orange')"></button>
+              <button class="color-dot" data-color="yellow" style="--dot-color: #ffc107" onclick="setColorTheme('yellow')"></button>
+              <button class="color-dot" data-color="green" style="--dot-color: #28a745" onclick="setColorTheme('green')"></button>
+              <button class="color-dot" data-color="teal" style="--dot-color: #20c997" onclick="setColorTheme('teal')"></button>
+              <button class="color-dot" data-color="cyan" style="--dot-color: #17a2b8" onclick="setColorTheme('cyan')"></button>
+              <button class="color-dot" data-color="blue" style="--dot-color: #4a90d9" onclick="setColorTheme('blue')"></button>
+              <button class="color-dot" data-color="purple" style="--dot-color: #9b5de5" onclick="setColorTheme('purple')"></button>
+              <button class="color-dot" data-color="violet" style="--dot-color: #7c3aed" onclick="setColorTheme('violet')"></button>
+            </div>
+          </div>
+          <div class="font-picker-wrapper">
+            <button class="font-picker-btn" id="fontPickerBtn" onclick="toggleFontPicker()" title="Police">
+              Aa
+            </button>
+            <div class="font-picker" id="fontPicker">
+              <button class="font-option" data-font="system" onclick="setFont('system')">
+                System <span>Police par défaut</span>
+              </button>
+              <button class="font-option" data-font="serif" onclick="setFont('serif')">
+                Serif <span>Georgia, Times</span>
+              </button>
+              <button class="font-option" data-font="mono" onclick="setFont('mono')">
+                Mono <span>Monospace</span>
+              </button>
+              <button class="font-option" data-font="manga" onclick="setFont('manga')">
+                Manga <span>Style BD</span>
+              </button>
+              <button class="font-option" data-font="elegant" onclick="setFont('elegant')">
+                Elegant <span>Palatino</span>
+              </button>
+            </div>
+          </div>
+          <div class="custom-theme-wrapper">
+            <button class="custom-theme-btn" id="customThemeBtn" onclick="toggleCustomTheme()" title="Thème personnalisé">
+              ⚙️
+            </button>
+            <div class="custom-theme-panel" id="customThemePanel">
+              <h3>Thème personnalisé</h3>
+              <div class="color-input-group">
+                <label>Couleur d'accent</label>
+                <div class="color-input-row">
+                  <input type="color" id="customAccent" value="#e63946" onchange="updateCustomTheme()">
+                  <input type="text" id="customAccentText" value="#e63946" oninput="syncColorInput('customAccent')">
+                </div>
+              </div>
+              <div class="color-input-group">
+                <label>Couleur de fond</label>
+                <div class="color-input-row">
+                  <input type="color" id="customBg" value="#121212" onchange="updateCustomTheme()">
+                  <input type="text" id="customBgText" value="#121212" oninput="syncColorInput('customBg')">
+                </div>
+              </div>
+              <div class="custom-theme-actions">
+                <button class="theme-apply-btn" onclick="applyCustomTheme()">Appliquer</button>
+                <button class="theme-reset-btn" onclick="resetCustomTheme()">Réinitialiser</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" class="search-bar" id="searchInput" placeholder="Rechercher un manga, auteur, genre...">
+        <button class="voice-search-btn" id="voiceSearchBtn" onclick="toggleVoiceSearch()" title="Recherche vocale">
+          <span class="voice-icon">🎤</span>
+        </button>
+      </div>
+      <div class="dropdown" id="genreDropdown">
+        <button class="dropdown-btn" id="dropdownBtn">
+          <span id="selectedGenre">Tous les genres</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <!-- Les filtres seront générés par JavaScript -->
+        </div>
+      </div>
+      <button class="alire-toggle" onclick="ouvrirALire()">
+        <span>📚</span>
+        <span class="alire-count" id="alireCount">0</span>
+      </button>
+      <button class="favorites-toggle" onclick="ouvrirFavoris()">
+        <span>★</span>
+        <span class="fav-count" id="favCount">0</span>
+      </button>
+      <button class="compare-toggle" onclick="toggleModeComparaison()">
+        <span>⚖️</span>
+        <span id="compareText">Comparer</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Modal À lire -->
+    <div class="modal-overlay" id="alireModal" onclick="fermerALire(event)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-i18n="toRead">Ma Liste À lire 📚</h2>
+          <button class="modal-close" onclick="fermerALireBtn()">✕</button>
+        </div>
+        <div class="modal-body" id="alireGrid">
+          <!-- À lire générés par JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Favoris -->
+    <div class="modal-overlay" id="favoritesModal" onclick="fermerFavoris(event)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-i18n="favorites">Mes Favoris ★</h2>
+          <button class="modal-close" onclick="fermerFavorisBtn()">✕</button>
+        </div>
+        <div class="modal-body" id="favoritesGrid">
+          <!-- Favoris générés par JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Comparaison -->
+    <div class="modal-overlay" id="comparaisonModal" onclick="fermerComparaison(event)">
+      <div class="modal-content modal-large">
+        <div class="modal-header">
+          <h2>Comparaison ⚖️</h2>
+          <button class="modal-close" onclick="fermerComparaisonBtn()">✕</button>
+        </div>
+        <div class="modal-body" id="comparaisonGrid">
+          <!-- Comparaison générée par JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Manga du jour -->
+    <section class="manga-du-jour" id="mangaDuJourSection">
+      <div class="mdj-badge" data-i18n="mangaOfDay">Manga du jour</div>
+      <div class="mdj-content" id="mangaDuJourContent">
+        <!-- Généré par JS -->
+      </div>
+    </section>
+
+    <!-- Section Actualités -->
+    <section class="actualites" id="actualitesSection">
+      <h2 class="section-title" data-i18n="latestReleases">Dernières sorties</h2>
+      <div class="actualites-carousel" id="actualitesCarousel">
+        <!-- Cartes générées par JS -->
+      </div>
+    </section>
+
+    <!-- Section Récemment vus -->
+    <section class="historique" id="historiqueSection" style="display: none;">
+      <h2 class="section-title" data-i18n="recentlyViewed">Récemment consultés</h2>
+      <div class="historique-carousel" id="historiqueCarousel">
+        <!-- Cartes générées par JS -->
+      </div>
+    </section>
+
+    <!-- Section Recommandations -->
+    <section class="recommendations-hero" id="recommendationsSection">
+      <span class="reco-icon">🔮</span>
+      <h2>Découvre ton prochain manga</h2>
+      <p>Sélectionne un manga que tu adores et laisse la magie opérer</p>
+      <div class="reco-input-group">
+        <select id="recoSelect">
+          <option value="">Choisir un manga...</option>
+        </select>
+        <button onclick="genererRecommandations()">✨ Recommander</button>
+      </div>
+      <div class="recommendations-result" id="recoResult" style="display: none;">
+        <!-- Résultats générés par JS -->
+      </div>
+    </section>
+
+    <!-- Section Classements -->
+    <section class="classements" id="classementsSection">
+      <h2 class="section-title">Top Mangas</h2>
+      <div class="classements-tabs" id="classementsTabs">
+        <button class="classement-tab active" data-category="all" onclick="afficherClassement('all')">Meilleurs notés</button>
+        <button class="classement-tab" data-category="shonen" onclick="afficherClassement('shonen')">Shonen</button>
+        <button class="classement-tab" data-category="seinen" onclick="afficherClassement('seinen')">Seinen</button>
+        <button class="classement-tab" data-category="shojo" onclick="afficherClassement('shojo')">Shojo</button>
+        <button class="classement-tab" data-category="action" onclick="afficherClassement('action')">Action</button>
+        <button class="classement-tab" data-category="recent" onclick="afficherClassement('recent')">Plus récents</button>
+      </div>
+      <div class="classement-grid" id="classementGrid">
+        <!-- Généré par JS -->
+      </div>
+    </section>
+
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="library">Bibliothèque</h2>
+      <div class="header-actions">
+        <!-- Contrôles de vue -->
+        <div class="view-controls">
+          <div class="view-mode">
+            <button class="view-btn active" id="gridViewBtn" onclick="setViewMode('grid')" title="Vue grille">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </button>
+            <button class="view-btn" id="listViewBtn" onclick="setViewMode('list')" title="Vue liste">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="4" width="18" height="4" rx="1"/>
+                <rect x="3" y="10" width="18" height="4" rx="1"/>
+                <rect x="3" y="16" width="18" height="4" rx="1"/>
+              </svg>
+            </button>
+          </div>
+          <div class="size-controls">
+            <button class="size-btn" data-size="small" onclick="setCardSize('small')" title="Petit">S</button>
+            <button class="size-btn active" data-size="medium" onclick="setCardSize('medium')" title="Moyen">M</button>
+            <button class="size-btn" data-size="large" onclick="setCardSize('large')" title="Grand">L</button>
+          </div>
+        </div>
+        <a href="stats.html" class="nav-btn">📊 Mes Stats</a>
+        <a href="quiz.html" class="nav-btn">🎮 Quiz</a>
+        <button class="random-btn" onclick="mangaAleatoire()">🎲 Manga aléatoire</button>
+      </div>
+    </div>
+
+    <div class="content-with-sidebar">
+      <aside class="alphabet-sidebar" id="alphabetSidebar">
+        <!-- Généré par JavaScript -->
+      </aside>
+
+      <div class="manga-content">
+        <div class="manga-grid" id="mangaGrid">
+          <!-- Les cartes manga seront générées par JavaScript -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+          <h2>Aucun manga trouvé</h2>
+          <p>Essayez une autre recherche ou un autre filtre.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-stats"><span id="totalMangas">0</span> mangas · <span id="totalAuteurs">0</span> auteurs</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <div class="offline-indicator" id="offlineIndicator">
+    Mode hors-ligne
+  </div>
+
+  <!-- Pull to refresh indicator -->
+  <div class="pull-indicator" id="pullIndicator">
+    <span class="pull-indicator-icon">↓</span>
+  </div>
+
+  <!-- Swipe hints -->
+  <div class="swipe-hint left" id="swipeLeft">←</div>
+  <div class="swipe-hint right" id="swipeRight">→</div>
+
+  <!-- Download progress -->
+  <div class="download-progress" id="downloadProgress">
+    <div class="download-progress-text" id="downloadText">Téléchargement en cours...</div>
+    <div class="download-progress-bar">
+      <div class="download-progress-fill" id="downloadFill" style="width: 0%"></div>
+    </div>
+  </div>
+  <script>
+    // Enregistrement du Service Worker pour le mode hors-ligne
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => console.log('Service Worker enregistré'))
+          .catch((err) => console.log('Erreur SW:', err));
+      });
+    }
+
+    // Indicateur hors-ligne
+    function updateOnlineStatus() {
+      const indicator = document.getElementById('offlineIndicator');
+      if (!navigator.onLine) {
+        indicator.classList.add('show');
+      } else {
+        indicator.classList.remove('show');
+      }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+  </script>
+</body>
+</html>

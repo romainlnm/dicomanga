@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dico.Manga - Détail</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63946">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-group">
+        <a href="index.html" class="logo">
+          <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
+          <span>Un dictionnaire de mangas</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-btn">
+      ← Retour à la bibliothèque
+    </a>
+
+    <div id="mangaDetail">
+      <!-- Le contenu sera généré par JavaScript -->
+      <div class="loading"></div>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/manga.js"></script>
+  <div class="offline-indicator" id="offlineIndicator">
+    Mode hors-ligne
+  </div>
+  <script>
+    // Enregistrement du Service Worker pour le mode hors-ligne
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => console.log('Service Worker enregistré'))
+          .catch((err) => console.log('Erreur SW:', err));
+      });
+    }
+
+    // Indicateur hors-ligne
+    function updateOnlineStatus() {
+      const indicator = document.getElementById('offlineIndicator');
+      if (!navigator.onLine) {
+        indicator.classList.add('show');
+      } else {
+        indicator.classList.remove('show');
+      }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+  </script>
+</body>
+</html>

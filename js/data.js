@@ -382,7 +382,7 @@ const mangas = [
   "annee": 2019,
   "statut": "Terminé",
   "volumes": 20,
-  "couverture": "https://covers.openlibrary.org/b/isbn/9781974720514-L.jpg",
+  "couverture": "images/covers/call_of_the_night.jpg",
   "resume": "Ko Yamori, 14 ans, est un collégien insomniaque qui ne comprend pas les relations humaines. Une nuit, incapable de dormir, il sort se promener et découvre la beauté de la nuit. Il rencontre Nazuna Nanakusa, une jeune femme mystérieuse qui s'avère être une vampire. Fasciné par elle et par la liberté nocturne, Ko décide qu'il veut devenir vampire. Mais il y a une condition : pour se transformer, il doit tomber véritablement amoureux de Nazuna. Commence alors une relation étrange entre le garçon solitaire et la vampire décontractée, explorant les thèmes de l'amour, de l'appartenance et de ce que signifie vraiment vivre.",
   "bioAuteur": "Kotoyama est un mangaka connu pour Dagashi Kashi. Call of the Night se distingue par son atmosphère nocturne unique et son exploration des sentiments adolescents avec une touche surnaturelle.",
   "personnages": [
@@ -1908,7 +1908,7 @@ const mangas = [
   "annee": 2004,
   "statut": "Terminé",
   "volumes": 42,
-  "couverture": "https://covers.openlibrary.org/b/isbn/9781421521824-L.jpg",
+  "couverture": "images/covers/reborn.jpg",
   "resume": "Tsunayoshi Sawada est un collégien maladroit, nul en sport et en études, surnommé 'Tsuna-bon-à-rien'. Sa vie bascule quand Reborn, un bébé tueur à gages portant un costume et un caméléon, débarque chez lui. Reborn annonce que Tsuna est le candidat désigné pour devenir le dixième boss des Vongola, la plus puissante famille mafieuse d'Italie. Pour le former, Reborn utilise des balles spéciales qui libèrent le potentiel caché de Tsuna. Entouré de gardiens excentriques - le délinquant Gokudera, le sportif Yamamoto, le boxeur Ryohei - Tsuna devra affronter des familles rivales et accepter son destin, tout en essayant de mener une vie de collégien normal.",
   "bioAuteur": "Akira Amano est née le 29 juillet 1973 à Aichi, Japon. Reborn! est sa première série longue à succès, publiée dans le Weekly Shonen Jump de 2004 à 2012. Son style mélange comédie absurde et action intense.",
   "personnages": [
@@ -2196,7 +2196,7 @@ const mangas = [
   "annee": 2019,
   "statut": "En cours",
   "volumes": 8,
-  "couverture": "https://www.editions-delcourt.fr/sites/default/files/product/9782413047360-001-X.jpeg",
+  "couverture": "images/covers/sorciere.jpg",
   "resume": "Après avoir été tuée en sauvant une petite fille d'un accident de voiture, Azusa Aizawa, employée de bureau japonaise épuisée par le surmenage, se réincarne dans un autre monde en tant que sorcière immortelle. Elle décide de vivre une vie tranquille et paisible dans une petite maison à la campagne, loin du stress de sa vie passée. Chaque jour, elle chasse des slimes de bas niveau et vend leurs cristaux pour subvenir à ses besoins. Après 300 ans de cette routine paisible, elle découvre qu'elle est devenue la sorcière la plus puissante du monde avec un niveau maximum de 99. Sa vie tranquille se complique quand des guerriers, dragons et autres personnages viennent la défier ou chercher son aide.",
   "bioAuteur": "Sora est l'auteur du light novel original 'Slime Taoshite 300-nen, Shiranai Uchi ni Level Max ni Nattemashita'. Tail Yuzuhara réalise l'adaptation manga. L'œuvre a aussi été adaptée en anime en 2021.",
   "personnages": [
@@ -2571,7 +2571,7 @@ const mangas = [
   "annee": 2020,
   "statut": "En cours",
   "volumes": 11,
-  "couverture": "https://covers.openlibrary.org/b/isbn/9781646515608-L.jpg",
+  "couverture": "images/covers/wistoria.jpg",
   "resume": "Dans un monde où la magie est tout, Will Serfort est un étudiant de l'académie magique de Regarden incapable d'utiliser la moindre magie. Méprisé par ses camarades et ses professeurs, il refuse d'abandonner son rêve de devenir Magia Vander, le plus haut rang de sorcier, pour tenir une promesse faite à son amie d'enfance Elfaria, devenue une puissante sorcière. Pour compenser son absence de magie, Will s'entraîne sans relâche au combat à l'épée et aux arts martiaux. Quand il découvre qu'il peut obtenir des crédits en nettoyant des donjons, il se lance dans des aventures périlleuses où son courage et sa force physique surprennent tous ceux qui le sous-estimaient.",
   "bioAuteur": "Fujino Omori est le créateur de DanMachi (Is It Wrong to Try to Pick Up Girls in a Dungeon?). Toshi Aoi réalise les illustrations. Wistoria combine action épique et thème de persévérance face à l'adversité.",
   "personnages": [

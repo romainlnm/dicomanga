@@ -424,7 +424,7 @@ const mangas = [
   "annee": 1996,
   "statut": "Terminé",
   "volumes": 12,
-  "couverture": "images/covers/10.jpg",
+  "couverture": "images/covers/cardcaptor_sakura.jpg",
   "resume": "Sakura Kinomoto, 10 ans, découvre dans le sous-sol de sa maison un mystérieux livre contenant des cartes magiques. En l'ouvrant, elle libère accidentellement les Cartes de Clow, créées par le puissant sorcier Clow Reed, qui se dispersent dans la ville. Keroberos, le gardien du livre, se réveille et la désigne comme Chasseuse de Cartes. Chaque carte possède une personnalité et des pouvoirs uniques - le Vent, le Vol, l'Eau, le Feu, et bien d'autres. Sakura doit toutes les récupérer avant qu'elles ne causent des catastrophes, tout en gardant son identité secrète. Aidée de sa meilleure amie Tomoyo et du mystérieux Shaolan Li, elle apprendra à maîtriser la magie et découvrira son propre pouvoir.",
   "bioAuteur": "CLAMP est un collectif de mangakas féminin formé en 1987. Connues pour leurs œuvres variées, Cardcaptor Sakura est l'une de leurs séries les plus populaires.",
   "personnages": [
@@ -739,7 +739,7 @@ const mangas = [
   ],
   "avis": "Un manga unique célébrant la science et l'ingéniosité humaine. Éducatif et passionnant.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/dr-stone-50"
+  "anime": "https://aniwatchtv.to/dr-stone-175"
 },
   {
   "id": 19,
@@ -780,7 +780,7 @@ const mangas = [
   ],
   "avis": "Le père de tous les shonens modernes. Dragon Ball a défini les codes du genre et reste une œuvre intemporelle.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/dragon-ball-702",
+  "anime": "https://aniwatchtv.to/dragon-ball-509",
   "univers": "Dragon Ball",
   "connexions": []
 },
@@ -823,7 +823,7 @@ const mangas = [
   ],
   "avis": "Un shonen fun et divertissant avec une ambiance de camaraderie chaleureuse. Idéal pour se détendre.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/fairy-tail-1273"
+  "anime": "https://aniwatchtv.to/fairy-tail-930"
 },
   {
   "id": 21,
@@ -946,7 +946,7 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre absolu. Histoire parfaitement construite, personnages profonds, thèmes matures. Aucun défaut.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/fullmetal-alchemist-brotherhood-42"
+  "anime": "https://aniwatchtv.to/fullmetal-alchemist-brotherhood-1"
 },
   {
   "id": 24,
@@ -987,7 +987,7 @@ const mangas = [
   ],
   "avis": "La meilleure comédie manga. Capable de vous faire pleurer de rire puis d'émotion dans le même chapitre.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/gintama-58"
+  "anime": "https://aniwatchtv.to/gintama-13"
 },
   {
   "id": 25,
@@ -1069,7 +1069,7 @@ const mangas = [
   ],
   "avis": "Le meilleur manga de sport moderne. Chaque match est haletant, chaque personnage est mémorable.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/haikyuu-161"
+  "anime": "https://aniwatchtv.to/haikyu-76"
 },
   {
   "id": 27,
@@ -1110,7 +1110,7 @@ const mangas = [
   ],
   "avis": "Un manga d'une intelligence rare. Le système de Nen est le meilleur système de pouvoir du manga. Dommage pour les pauses.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/hunter-x-hunter-2011-36"
+  "anime": "https://aniwatchtv.to/hunter-x-hunter-2"
 },
   {
   "id": 28,
@@ -1193,7 +1193,7 @@ const mangas = [
   ],
   "avis": "La meilleure rom-com manga. Les mind games sont hilarants et l'évolution de la romance est parfaite.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/kaguya-sama-love-is-war-258"
+  "anime": "https://aniwatchtv.to/kaguya-sama-love-is-war-123"
 },
   {
   "id": 30,
@@ -1275,7 +1275,7 @@ const mangas = [
   ],
   "avis": "L'épopée historique ultime. Les batailles sont grandioses et l'ambition de l'histoire est sans égale.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/kingdom-1340"
+  "anime": "https://aniwatchtv.to/kingdom-448"
 },
   {
   "id": 32,
@@ -1316,7 +1316,7 @@ const mangas = [
   ],
   "avis": "Un manga de sport spectaculaire avec des pouvoirs quasi-surnaturels. Très divertissant.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kurokos-basketball-92"
+  "anime": "https://aniwatchtv.to/kurokos-basketball-312"
 },
   {
   "id": 33,
@@ -1399,7 +1399,7 @@ const mangas = [
   ],
   "avis": "Ne vous fiez pas au style mignon. Made in Abyss est une aventure sombre, émouvante et impitoyable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/made-in-abyss-1223"
+  "anime": "https://aniwatchtv.to/made-in-abyss-32"
 },
   {
   "id": 35,
@@ -1440,7 +1440,7 @@ const mangas = [
   ],
   "avis": "Une réflexion touchante sur la croissance personnelle. Les explosions de Mob à 100% sont légendaires.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/mob-psycho-100-1498"
+  "anime": "https://aniwatchtv.to/mob-psycho-100-101"
 },
   {
   "id": 36,
@@ -1563,8 +1563,7 @@ const mangas = [
     }
   ],
   "avis": "Un drame mature sur l'amour, l'amitié et les rêves brisés. Tragique que la série soit en pause.",
-  "note": 9,
-  "anime": "https://aniwatchtv.to/nana-46"
+  "note": 9
 },
   {
   "id": 39,
@@ -1605,7 +1604,7 @@ const mangas = [
   ],
   "avis": "Un manga emblématique qui a marqué toute une génération. Les thèmes de persévérance et d'amitié sont traités avec brio.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/naruto-97",
+  "anime": "https://aniwatchtv.to/naruto-677",
   "univers": "Naruto",
   "connexions": [9]
 },
@@ -1648,7 +1647,7 @@ const mangas = [
   ],
   "avis": "Une déconstruction brillante du genre mecha. Les thèmes psychologiques sont traités avec une profondeur rare.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/neon-genesis-evangelion-106"
+  "anime": "https://aniwatchtv.to/neon-genesis-evangelion-209"
 },
   {
   "id": 41,
@@ -1731,7 +1730,7 @@ const mangas = [
   ],
   "avis": "Une parodie brillante des shonens. L'humour est parfait et les dessins de Murata sont incroyables.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/one-punch-man-1559"
+  "anime": "https://aniwatchtv.to/one-punch-man-63"
 },
   {
   "id": 43,
@@ -1772,7 +1771,7 @@ const mangas = [
   ],
   "avis": "Une plongée fascinante dans l'industrie du divertissement. Le mystère est captivant, le premier chapitre est inoubliable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/oshi-no-ko-18239"
+  "anime": "https://aniwatchtv.to/my-star-18330"
 },
   {
   "id": 44,
@@ -1936,7 +1935,7 @@ const mangas = [
   "avis": "Un shonen qui commence comme une comédie absurde avant de devenir un manga d action épique. Les arcs des Varia et du Futur sont excellents.",
   "note": 8,
   "id": 47,
-  "anime": "https://aniwatchtv.to/reborn-114"
+  "anime": "https://aniwatchtv.to/reborn-311"
 },
   {
   "titre": "Roll Over and Die",
@@ -1949,7 +1948,7 @@ const mangas = [
   "annee": 2018,
   "statut": "En cours",
   "volumes": 7,
-  "couverture": "images/covers/47.jpg",
+  "couverture": "images/covers/roll_over_and_die.jpg",
   "resume": "Flum Apricot est une jeune fille sans talent particulier, invoquée par erreur avec un groupe de héros pour vaincre le Roi Démon. Considérée comme inutile car toutes ses statistiques sont à zéro, elle est vendue comme esclave par le sage du groupe. Achetée par un maître sadique, elle découvre une épée maudite qui inverse ses statistiques, transformant ses zéros en puissance maximale. Échappant à l'esclavage, Flum se lie avec Milkit, ancienne esclave défigurée qu'elle sauve. Ensemble, elles découvrent une conspiration liant l'Église, les héros et une entité maléfique. Un dark fantasy brutal explorant les thèmes de l'abus, de la résilience et de l'amour entre femmes.",
   "bioAuteur": "Kiki est l auteur du light novel original, tandis que Sunao Minakata réalise l adaptation manga. L œuvre se distingue par son ton sombre et sa protagoniste féminine forte.",
   "personnages": [
@@ -2238,7 +2237,7 @@ const mangas = [
   "annee": 2019,
   "statut": "En cours",
   "volumes": 14,
-  "couverture": "images/covers/54.jpeg",
+  "couverture": "images/covers/spy_x_family.jpg",
   "resume": "Twilight est le meilleur espion de Westalis, maître du déguisement. Pour sa nouvelle mission Opération Strix, il doit approcher Donovan Desmond, politicien belliciste de l'Est, via l'école privée de son fils. En une semaine, Twilight doit créer une famille : il adopte Anya, 6 ans, ignorant qu'elle est télépathe, et épouse Yor Briar, ignorant qu'elle est assassin professionnelle. Anya, elle, connaît les secrets de ses deux parents et s'amuse de la situation. Pour rester ensemble, chacun cache son identité. Une comédie familiale où une fausse famille devient vraie, malgré les mensonges qui la fondent.",
   "bioAuteur": "Tatsuya Endo est né le 23 juillet 1980. Après plusieurs séries courtes, il crée Spy x Family qui devient un succès mondial grâce à son mélange parfait d'action et de comédie familiale.",
   "personnages": [
@@ -2609,7 +2608,7 @@ const mangas = [
   "annee": 2015,
   "statut": "Terminé",
   "volumes": 17,
-  "couverture": "images/covers/63.jpg",
+  "couverture": "images/covers/chocolate_vampire.jpg",
   "resume": "Chiyo Chiyuki est une lycéenne ordinaire qui déteste le chocolat. Un jour, elle rencontre Setsu, un mystérieux et séduisant garçon qui s'avère être un vampire. Contrairement aux vampires classiques, Setsu ne boit pas de sang mais se nourrit du sang contenu dans le chocolat. Il révèle à Chiyo qu'elle possède un sang particulier, le 'sang de psyché', extrêmement rare et délicieux pour les vampires. Setsu décide de la protéger des autres vampires qui convoitent son sang. Entre romance, comédie et moments dramatiques, Chiyo découvre le monde caché des vampires tout en développant des sentiments pour son protecteur au caractère bien trempé.",
   "bioAuteur": "Kyoko Kumagai est une mangaka japonaise connue pour ses œuvres shojo romantiques. Elle a su renouveler le genre vampire avec Chocolate Vampire en y ajoutant une touche d'originalité avec le concept du chocolat.",
   "personnages": [

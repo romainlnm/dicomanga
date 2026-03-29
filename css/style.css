@@ -1207,6 +1207,25 @@ footer span {
   margin-bottom: 10px;
 }
 
+.footer-credit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+.footer-credit .heart {
+  color: var(--accent);
+  display: inline-block;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
 /* ===== MANGAS SIMILAIRES ===== */
 .similar-grid {
   display: grid;

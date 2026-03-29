@@ -1,43 +1,43 @@
 // Traductions anglaises pour les données des mangas
 const mangaTranslations = {
   en: {
-    // Hunter x Hunter (id: 27)
-    27: {
-      resume: "Twelve-year-old Gon Freecss discovers that his father, whom he thought was dead, is actually a legendary Hunter - a member of society's elite licensed to go anywhere and do almost anything. Despite being raised by his aunt, Gon decides to follow in his father's footsteps and take the notoriously difficult Hunter Examination. Along the way, he befriends the revenge-driven Kurapika, the aspiring doctor Leorio, and the enigmatic ex-assassin Killua. Together, they discover that the exam is just the beginning of a world filled with incredible powers, dangerous criminals, and life-threatening adventures.",
-      bioAuteur: "Yoshihiro Togashi was born April 27, 1966. Creator of Yu Yu Hakusho and Hunter x Hunter, he is known for his narrative genius but also his long hiatuses due to health problems.",
-      avis: "A manga of rare intelligence. The Nen system is the best power system in manga. Too bad about the hiatuses.",
+    // 20th Century Boys (id: 1)
+    1: {
+      resume: "In 1969, Kenji and his childhood friends create a symbol in their secret base and imagine an apocalyptic scenario to save the world. Thirty years later, Kenji has become a simple convenience store manager when he discovers that a mysterious cult led by someone called 'Friend' uses exactly their childhood symbol. Even more terrifying, the catastrophic predictions they invented are starting to come true one by one. Kenji realizes Friend is one of his old friends, but which one? To save humanity, he must dive back into his childhood memories and unmask the one who wants to destroy the world.",
+      bioAuteur: "Naoki Urasawa was born January 2, 1960. 20th Century Boys is considered his magnum opus, mixing childhood nostalgia and conspiracy thriller.",
+      avis: "An epic fresco about friendship and childhood dreams. The mystery of Friend is captivating until the end.",
       personnages: [
-        { nom: "Gon Freecss", description: "Young innocent but determined boy looking to find his father." },
-        { nom: "Killua Zoldyck", description: "Heir to an assassin family, Gon's best friend." },
-        { nom: "Kurapika", description: "Last survivor of the Kurta clan, seeking vengeance." },
-        { nom: "Leorio Paradinight", description: "Future doctor with a heart of gold beneath his gruff exterior." },
-        { nom: "Hisoka", description: "Psychopathic magician obsessed with powerful fighters." }
+        { nom: "Kenji Endo", description: "Former rocker turned shopkeeper, reluctant leader." },
+        { nom: "Friend", description: "The mysterious cult leader, hidden behind a mask." },
+        { nom: "Kanna Endo", description: "Kenji's niece, resistance fighter." },
+        { nom: "Otcho", description: "Kenji's childhood friend, man of action." },
+        { nom: "Yoshitsune", description: "Childhood friend, group strategist." }
       ]
     },
-    // One Piece (id: 42)
-    42: {
-      resume: "Gold Roger, the King of Pirates, possessed everything - wealth, fame, and power - before being executed. His last words revealed the existence of One Piece, the greatest treasure in the world, hidden somewhere in the Grand Line. This sparked the Great Pirate Era. Twenty-two years later, Monkey D. Luffy, a young man with a straw hat who gained rubber powers from eating a Devil Fruit, sets sail from his small village to become the King of Pirates. Along the way, he gathers a crew of unique individuals: a swordsman, a navigator, a sniper, a cook, a doctor, an archaeologist, a shipwright, a musician, and a helmsman.",
-      bioAuteur: "Eiichiro Oda was born January 1, 1975 in Kumamoto. His childhood dream was to become a pirate. He started manga at 17 and created One Piece at 22, which became the best-selling manga of all time.",
-      avis: "The GOAT. Unmatched worldbuilding, unforgettable characters, and a plot that keeps surpassing itself. A life's work.",
+    // Akira (id: 2)
+    2: {
+      resume: "In 2019, thirty years after a mysterious explosion destroyed Tokyo and triggered World War III, Neo-Tokyo is a corrupt megalopolis ruled by biker gangs and political corruption. Kaneda, young gang leader, watches his childhood friend Tetsuo develop extraordinary psychic powers after an accident. These powers attract the attention of the army conducting secret experiments on children with supernatural abilities. As Tetsuo descends into madness and megalomania, Kaneda allies with the resistance to save him and discover the truth about Akira, the child whose powers once annihilated Tokyo.",
+      bioAuteur: "Katsuhiro Otomo was born April 14, 1954. Akira revolutionized manga and Japanese animation. Its level of detail and futuristic vision influenced the entire world.",
+      avis: "A foundational work of cyberpunk. The vision of Neo-Tokyo and the artwork are revolutionary.",
       personnages: [
-        { nom: "Monkey D. Luffy", description: "Captain of the Straw Hats, rubber man dreaming of becoming Pirate King." },
-        { nom: "Roronoa Zoro", description: "Swordsman with three swords, aiming to become the world's greatest." },
-        { nom: "Nami", description: "Navigator and thief, expert in meteorology." },
-        { nom: "Sanji", description: "Cook with devastating kicks, searching for the All Blue." },
-        { nom: "Nico Robin", description: "Archaeologist who can read Poneglyphs, seeking true history." }
+        { nom: "Shotaro Kaneda", description: "Gang leader, he seeks to save his friend Tetsuo." },
+        { nom: "Tetsuo Shima", description: "Kaneda's friend, his psychic powers consume him." },
+        { nom: "Kei", description: "Resistance member, Kaneda's ally." },
+        { nom: "Colonel Shikishima", description: "Military officer seeking to control the espers." },
+        { nom: "Akira", description: "Child with immense powers, at the heart of the mystery." }
       ]
     },
-    // Naruto (id: 39)
-    39: {
-      resume: "Twelve years before the story begins, the Nine-Tailed Fox attacked the Hidden Leaf Village. To save the village, the Fourth Hokage sacrificed his life by sealing the demon inside a newborn baby: Naruto Uzumaki. Orphaned and shunned by the villagers who see him as the monster itself, Naruto grows up dreaming of becoming Hokage to earn everyone's recognition. He joins Team 7 with the genius Sasuke Uchiha and Sakura Haruno under the guidance of Kakashi Hatake. Through training, friendships, and battles, Naruto will discover the truth about his origins and face enemies who threaten not just his village, but the entire ninja world.",
-      bioAuteur: "Masashi Kishimoto was born November 8, 1974 in Okayama. Inspired by Dragon Ball and Akira, he created Naruto after several failed projects. The manga ran for 15 years and became a worldwide phenomenon.",
-      avis: "A ninja epic that marked a generation. Despite a controversial ending, the journey remains memorable.",
+    // Assassination Classroom (id: 3)
+    3: {
+      resume: "After destroying 70% of the Moon, a mysterious tentacled creature capable of moving at Mach 20 makes a surprising request: to become the homeroom teacher of Class 3-E at Kunugigaoka Middle School, considered the class for failures. The government accepts, on condition that the students try to assassinate him before the end of the school year, when he promises to destroy Earth. A bounty of 10 billion yen is offered. But this teacher nicknamed Koro-sensei turns out to be the best teacher these rejected students have ever had, helping them develop their talents while teaching them the art of assassination.",
+      bioAuteur: "Yusei Matsui was born January 31, 1979. After Neuro, he creates Assassination Classroom, mixing comedy, action and a touching reflection on education.",
+      avis: "A genius concept perfectly executed. Funny, moving, with a memorable ending.",
       personnages: [
-        { nom: "Naruto Uzumaki", description: "Jinchuriki of the Nine-Tails, dreaming of becoming Hokage." },
-        { nom: "Sasuke Uchiha", description: "Last of his clan, consumed by vengeance." },
-        { nom: "Sakura Haruno", description: "Medical ninja, student of Tsunade." },
-        { nom: "Kakashi Hatake", description: "Copy Ninja, mentor of Team 7." },
-        { nom: "Itachi Uchiha", description: "Mysterious criminal, Sasuke's brother." }
+        { nom: "Koro-sensei", description: "Tentacled teacher at Mach 20, assassination target." },
+        { nom: "Nagisa Shiota", description: "Discreet student with natural assassin talent." },
+        { nom: "Karma Akabane", description: "Delinquent genius, the most dangerous in class." },
+        { nom: "Kaede Kayano", description: "Mysterious student hiding a heavy secret." },
+        { nom: "Tadaomi Karasuma", description: "Military instructor of the class." }
       ]
     },
     // Attack on Titan (id: 4)
@@ -53,82 +53,134 @@ const mangaTranslations = {
         { nom: "Erwin Smith", description: "Survey Corps commander, charismatic leader and strategist." }
       ]
     },
-    // Spy x Family (id: 55)
-    55: {
-      resume: "Twilight is Westalis's best spy, master of disguise. For his new mission Operation Strix, he must approach Donovan Desmond, a warmongering politician from the East, through his son's private school. In one week, Twilight must create a family: he adopts Anya, 6 years old, unaware she is telepathic, and marries Yor Briar, unaware she is a professional assassin. Anya, however, knows both her parents' secrets and finds the situation amusing. To stay together, each hides their identity. A family comedy where a fake family becomes real, despite the lies that founded it.",
-      bioAuteur: "Tatsuya Endo was born July 23, 1980. After several short series, he created Spy x Family which became a worldwide success thanks to its perfect blend of action and family comedy.",
-      avis: "Hilarious and touching. The family dynamic is perfect, Anya is the best character of her generation.",
+    // Berserk (id: 5)
+    5: {
+      resume: "In a dark and brutal medieval world, Guts is a solitary mercenary born from a hanged woman, raised by a violent soldier who taught him to wield a sword. As an adult, he meets Griffith, charismatic leader of the Band of the Hawk, and finally finds a family. But during the Eclipse, a demonic ritual, Griffith sacrifices all his companions to demons of the God Hand to be reborn as Femto, fifth member of this evil entity. Sole survivor with Casca, now driven mad, Guts is marked with a stigma that attracts demons. Armed with a gigantic sword and a mechanical arm equipped with a cannon, he roams the world to avenge himself on Griffith and protect Casca.",
+      bioAuteur: "Kentaro Miura (1966-2021) was a manga genius. His work Berserk, begun in 1989, is considered one of the greatest dark fantasies ever created. His level of detail was unmatched.",
+      avis: "The pinnacle of dark fantasy. Stunning graphics, profound story, uncompromising violence. A monument.",
       personnages: [
-        { nom: "Loid Forger (Twilight)", description: "Westalis's best spy, devoted adoptive father." },
-        { nom: "Yor Forger (Thorn Princess)", description: "Deadly assassin, loving mother." },
-        { nom: "Anya Forger", description: "Telepathic child, the glue of the family." },
-        { nom: "Bond Forger", description: "Dog who can see the future." },
-        { nom: "Franky Franklin", description: "Loid's informant, unlucky in love." }
+        { nom: "Guts", description: "The Black Swordsman, traumatized mercenary carrying a giant sword." },
+        { nom: "Griffith", description: "Leader of the Band of the Hawk, became Femto after the Eclipse." },
+        { nom: "Casca", description: "Warrior of the Band, tragically linked to Guts." },
+        { nom: "Puck", description: "Elf accompanying Guts, bringing lightness to the story." },
+        { nom: "Schierke", description: "Young witch who became Guts's ally." }
       ]
     },
-    // Demon Slayer (id: 16)
-    16: {
-      resume: "In Taisho-era Japan, young Tanjiro Kamado lives in the mountains as a charcoal seller with his family. One day, returning from a sale, he discovers his entire family massacred by a demon. Only his sister Nezuko survived, but transformed into a demon herself. Against all odds, she retains some humanity. Tanjiro joins the Demon Slayer Corps to find a cure for his sister and avenge his family. He learns the Water Breathing technique and meets allies like the fearful Zenitsu and the boar-headed Inosuke. Together, they hunt demons while seeking Muzan Kibutsuji, the original demon.",
-      bioAuteur: "Koyoharu Gotouge was born May 5, 1989. Little is known about this mangaka. Demon Slayer is their first serialized work, and it became a historic phenomenon.",
-      avis: "Sublime art, simple but effective story. The fights are visual masterpieces, especially in anime.",
+    // Black Clover (id: 6)
+    6: {
+      resume: "In a world where magic is omnipresent, Asta is an orphan born without any magical power, an anomaly in a kingdom where even daily tasks require magic. His adoptive brother Yuno, on the contrary, is a prodigy blessed by the wind. Both dream of becoming the Wizard King, the most powerful sorcerer of the kingdom. At 15, during the grimoire attribution ceremony, Yuno receives the legendary four-leaf grimoire, while Asta receives nothing. But faced with danger, he inherits a five-leaf grimoire containing anti-magic swords, powered by a demon. Joining the Black Bulls, the worst brigade of magic knights, Asta will prove that hard work can surpass talent.",
+      bioAuteur: "Yuki Tabata was born July 30, 1984. Assistant to Toshiaki Iwashiro, he created Black Clover which established itself as one of the pillars of Shonen Jump.",
+      avis: "A classic but effective shonen. Character development and fights are excellent.",
       personnages: [
-        { nom: "Tanjiro Kamado", description: "Gentle demon slayer with enhanced sense of smell." },
-        { nom: "Nezuko Kamado", description: "Demon who protects humans, wears a bamboo muzzle." },
-        { nom: "Zenitsu Agatsuma", description: "Fearful swordsman, extremely powerful when asleep." },
-        { nom: "Inosuke Hashibira", description: "Wild beast wearing a boar head." },
-        { nom: "Muzan Kibutsuji", description: "Original demon, disguised as a human." }
+        { nom: "Asta", description: "Orphan without magic, he compensates with hard work." },
+        { nom: "Yuno", description: "Asta's rival and adoptive brother, wind magic genius." },
+        { nom: "Noelle Silva", description: "Princess with unstable magic control, Asta's teammate." },
+        { nom: "Yami Sukehiro", description: "Captain of the Black Bulls, Asta's gruff mentor." },
+        { nom: "Liebe", description: "Anti-magic demon residing in Asta's grimoire." }
       ]
     },
-    // My Hero Academia (id: 37)
-    37: {
-      resume: "In a world where 80% of the population has superpowers called 'Quirks,' Izuku Midoriya is born without any. Despite this, he dreams of becoming a hero like his idol All Might, the Symbol of Peace. After a fateful encounter where Izuku shows his heroic spirit, All Might chooses him as his successor and passes on his Quirk: One For All. Izuku enrolls at U.A. High School, the most prestigious hero academy, where he befriends rivals like the explosive Katsuki Bakugo and faces villains threatening to destroy the hero society.",
-      bioAuteur: "Kohei Horikoshi was born November 20, 1986. A huge fan of American comics and Japanese heroes, he created My Hero Academia after Oumagadoki Zoo and Barrage. The manga became a worldwide success.",
-      avis: "Excellent modern shonen. The characters are endearing, the fights spectacular, even if the end is rushed.",
+    // Bleach (id: 7)
+    7: {
+      resume: "Ichigo Kurosaki, 15-year-old high schooler, has always been able to see ghosts. His life changes when he meets Rukia Kuchiki, a Shinigami (Death God) who came to hunt a Hollow, an evil spirit that devours souls. Wounded while protecting him, Rukia transfers her powers to him. Ichigo becomes a Substitute Shinigami, tasked with protecting his town from Hollows and guiding souls to Soul Society. But when Rukia is sentenced to death for giving her powers to a human, Ichigo and his friends invade Soul Society to save her, discovering along the way a conspiracy threatening the balance between worlds.",
+      bioAuteur: "Tite Kubo was born June 26, 1977 in Hiroshima. His unique graphic style and sense of design made Bleach one of the Big Three of Shonen Jump alongside Naruto and One Piece.",
+      avis: "Exceptional design and epic fights. The Soul Society arc is legendary, even if the ending was rushed.",
       personnages: [
-        { nom: "Izuku Midoriya (Deku)", description: "Quirkless successor of One For All, analyzes everything." },
-        { nom: "Katsuki Bakugo", description: "Explosive prodigy, Deku's rival since childhood." },
-        { nom: "Ochaco Uraraka", description: "Gravity heroine, Deku's friend." },
-        { nom: "All Might", description: "Former Symbol of Peace, Deku's mentor." },
-        { nom: "Shoto Todoroki", description: "Son of Endeavor, master of ice and fire." }
+        { nom: "Ichigo Kurosaki", description: "Substitute Shinigami with immense power." },
+        { nom: "Rukia Kuchiki", description: "Shinigami who gave her powers to Ichigo." },
+        { nom: "Orihime Inoue", description: "Ichigo's friend with rejection powers." },
+        { nom: "Uryu Ishida", description: "Last Quincy, rival then ally of Ichigo." },
+        { nom: "Byakuya Kuchiki", description: "Noble captain and Rukia's adoptive brother." }
       ]
     },
-    // Jujutsu Kaisen (id: 28)
-    28: {
-      resume: "Yuji Itadori is an extraordinarily athletic high school student. When his occult club friends unseal a cursed object - a rotting finger - they attract Curses, supernatural monsters born from negative human emotions. To save them, Yuji swallows the finger and becomes the vessel of Ryomen Sukuna, the King of Curses. Sentenced to death by jujutsu society, he gets a reprieve: devour all of Sukuna's fingers before his execution. He joins Tokyo Jujutsu High with Megumi Fushiguro and Nobara Kugisaki, under the tutelage of the powerful Satoru Gojo, the blindfolded sorcerer.",
-      bioAuteur: "Gege Akutami was born February 26, 1992 in Iwate. After several one-shots, Jujutsu Kaisen began in 2018 and quickly became a phenomenon thanks to its charismatic characters and spectacular battles.",
-      avis: "A brutal modern shonen with a genius power system. Gojo is iconic. The manga ended in controversy but the ride was incredible.",
+    // Blue Lock (id: 8)
+    8: {
+      resume: "After yet another humiliating defeat of the Japanese national team at the World Cup, the Japanese Football Federation hires Jinpachi Ego, a coach with radical methods. His theory: Japan has never produced a world-class striker because its culture values teamwork too much. He creates Blue Lock, a program locking 300 young strikers in a high-tech prison where only the most selfish will survive. Yoichi Isagi, a high schooler who missed a decisive opportunity by passing instead of shooting, sees his chance to be reborn. In this hell where elimination is permanent, he must become the most egotistic striker in the world or forever abandon his football dreams.",
+      bioAuteur: "Muneyuki Kaneshiro is the writer, Yusuke Nomura the artist. Their unique vision of football, centered on egoism, has conquered the world.",
+      avis: "A revolution in sports manga. The egotistic angle is refreshing and the matches intense.",
       personnages: [
-        { nom: "Yuji Itadori", description: "Sukuna's vessel, with superhuman physical abilities." },
-        { nom: "Megumi Fushiguro", description: "Shadow technique user, summoning shikigami." },
-        { nom: "Nobara Kugisaki", description: "Fierce sorcerer from the countryside." },
-        { nom: "Satoru Gojo", description: "Most powerful sorcerer, master of Infinity." },
-        { nom: "Ryomen Sukuna", description: "King of Curses, resides in Yuji's body." }
+        { nom: "Yoichi Isagi", description: "Protagonist, his weapon is his spatial vision of the game." },
+        { nom: "Meguru Bachira", description: "Crazy dribbler guided by an inner 'monster'." },
+        { nom: "Seishiro Nagi", description: "Lazy genius with perfect ball control." },
+        { nom: "Rin Itoshi", description: "Elite striker, brother of Sae Itoshi." },
+        { nom: "Jinpachi Ego", description: "Creator of Blue Lock, controversial genius." }
       ]
     },
-    // Dragon Ball (id: 19)
-    19: {
-      resume: "Son Goku, a boy with a monkey tail living alone in the mountains, meets Bulma, a young genius searching for the Dragon Balls - seven magical orbs that summon a dragon granting any wish when gathered. Together, they begin an adventure that will take them around the world, facing the Red Ribbon Army, the demon Piccolo, and countless martial artists in legendary tournaments. As he grows up, Goku will discover his Saiyan origins, defend Earth against alien invaders and cosmic tyrants, and constantly push beyond his limits, from Super Saiyan to Ultra Instinct.",
-      bioAuteur: "Akira Toriyama (1955-2024) was a living legend. Creator of Dr. Slump and Dragon Ball, he revolutionized manga and influenced generations of artists worldwide. His sense of design and humor are unmatched.",
-      avis: "The grandfather of modern shonen. Without Dragon Ball, no Naruto, One Piece, or Demon Slayer. A founding classic.",
+    // Boruto (id: 9)
+    9: {
+      resume: "In an era of peace, Boruto Uzumaki is the son of the Seventh Hokage Naruto. Unlike his father who had nothing, Boruto has everything but feels the lack of attention from Naruto, too busy with his Hokage duties. A prodigy student at the Ninja Academy, he rejects his father's legacy while bearing the weight of his name. When the Otsutsuki threat, the extraterrestrial clan at the origin of chakra, resurfaces, Boruto discovers a mysterious power in his eye: the Jougan. With his teammates Sarada (Sasuke's daughter) and Mitsuki (Orochimaru's son), he faces enemies threatening the shinobi world's balance.",
+      bioAuteur: "Masashi Kishimoto supervises the story as editorial supervisor, while Mikio Ikemoto, his former assistant, draws the manga. Ukyo Kodachi wrote the script until chapter 51.",
+      avis: "A direct sequel to Naruto that sometimes struggles to emerge from its predecessor's shadow, but offers strong moments and an endearing new generation.",
       personnages: [
-        { nom: "Son Goku", description: "Saiyan raised on Earth, loves fighting and food." },
-        { nom: "Vegeta", description: "Proud Saiyan prince, eternal rival of Goku." },
-        { nom: "Bulma", description: "Scientific genius, Goku's first friend." },
-        { nom: "Piccolo", description: "Namekian, Gohan's mentor after being an enemy." },
-        { nom: "Frieza", description: "Galactic tyrant, destroyer of the Saiyan planet." }
+        { nom: "Boruto Uzumaki", description: "Naruto's son, ninja prodigy bearing the mysterious Jougan." },
+        { nom: "Sarada Uchiha", description: "Sasuke and Sakura's daughter, aspires to become Hokage." },
+        { nom: "Mitsuki", description: "Orochimaru's artificial clone, fascinated by Boruto whom he considers his sun." },
+        { nom: "Kawaki", description: "Former Kara vessel, adopted by Naruto, complex brotherly bond with Boruto." },
+        { nom: "Naruto Uzumaki", description: "Seventh Hokage, Boruto's father, torn between family and duties." }
       ]
     },
-    // Fullmetal Alchemist (id: 24)
-    24: {
-      resume: "Brothers Edward and Alphonse Elric, child prodigies in alchemy, attempt the forbidden: human transmutation to resurrect their deceased mother. The failed attempt costs Edward his left leg and Alphonse his entire body. Edward sacrifices his right arm to bind his brother's soul to a suit of armor. Years later, Edward becomes the youngest State Alchemist at 12, nicknamed 'Fullmetal,' and searches with his brother for the Philosopher's Stone to restore their bodies. Their quest leads them to discover a military conspiracy and face artificial humans with philosopher stone cores: the Homunculi.",
-      bioAuteur: "Hiromu Arakawa was born May 8, 1973 on a dairy farm in Hokkaido. Her agricultural experience influences her works. Fullmetal Alchemist is her masterpiece, adapted several times into anime.",
-      avis: "A perfect manga. Flawless plot, memorable characters, a satisfying ending. The reference for fantasy shonen.",
+    // Call of the Night (id: 10)
+    10: {
+      resume: "Ko Yamori, 14, is an insomniac middle schooler who doesn't understand human relationships. One night, unable to sleep, he goes for a walk and discovers the beauty of night. He meets Nazuna Nanakusa, a mysterious young woman who turns out to be a vampire. Fascinated by her and nocturnal freedom, Ko decides he wants to become a vampire. But there's one condition: to transform, he must truly fall in love with Nazuna. Thus begins a strange relationship between the lonely boy and the laid-back vampire, exploring themes of love, belonging, and what it truly means to live.",
+      bioAuteur: "Kotoyama is a mangaka known for Dagashi Kashi. Call of the Night stands out for its unique nocturnal atmosphere and its exploration of adolescent feelings with a supernatural touch.",
+      avis: "A refreshing vampire romance with an enchanting nocturnal atmosphere. The exploration of love and loneliness is touching and original.",
       personnages: [
-        { nom: "Edward Elric", description: "Fullmetal Alchemist, brilliant but hates being called short." },
-        { nom: "Alphonse Elric", description: "Soul bound to armor, gentle giant." },
-        { nom: "Roy Mustang", description: "Flame Alchemist, ambitious but righteous." },
-        { nom: "Winry Rockbell", description: "Automail mechanic, childhood friend of the Elrics." },
-        { nom: "King Bradley", description: "Fuhrer of Amestris, hides a dark secret." }
+        { nom: "Ko Yamori", description: "Insomniac middle schooler who wants to become a vampire and learns to love." },
+        { nom: "Nazuna Nanakusa", description: "Laid-back and mysterious vampire, she feeds on Ko." },
+        { nom: "Akira Asai", description: "Ko's childhood friend who worries about him." },
+        { nom: "Mahiru Seki", description: "Ko's classmate with his own problems." },
+        { nom: "Kiku Hoshimi", description: "Older vampire who knows the secrets of the vampire world." }
+      ]
+    },
+    // Cardcaptor Sakura (id: 11)
+    11: {
+      resume: "Sakura Kinomoto, 10, discovers in her basement a mysterious book containing magical cards. Upon opening it, she accidentally releases the Clow Cards, created by the powerful sorcerer Clow Reed, which scatter throughout the city. Keroberos, the book's guardian, awakens and designates her as Cardcaptor. Each card possesses a unique personality and powers - Wind, Fly, Water, Fire, and many more. Sakura must recapture them all before they cause disasters, while keeping her identity secret. Aided by her best friend Tomoyo and the mysterious Syaoran Li, she will learn to master magic and discover her own power.",
+      bioAuteur: "CLAMP is a female mangaka collective formed in 1987. Known for their varied works, Cardcaptor Sakura is one of their most popular series.",
+      avis: "A sweet and charming magical girl. The card and costume designs are magnificent.",
+      personnages: [
+        { nom: "Sakura Kinomoto", description: "Pure-hearted Cardcaptor, she captures the Clow cards." },
+        { nom: "Keroberos (Kero)", description: "Card guardian in the form of a gluttonous plush toy." },
+        { nom: "Tomoyo Daidouji", description: "Sakura's best friend, she films her adventures." },
+        { nom: "Syaoran Li", description: "Rival turned ally and Sakura's love." },
+        { nom: "Yukito Tsukishiro (Yue)", description: "Sakura's brother's friend, true guardian of the cards." }
+      ]
+    },
+    // Chainsaw Man (id: 12)
+    12: {
+      resume: "Denji is a miserable teenager, drowning in debt his deceased father owed to the yakuza. His only company is Pochita, a small chainsaw demon-dog he saved. When the yakuza betray and kill him, Pochita merges with his heart, allowing him to be reborn as Chainsaw Man, a half-human half-demon hybrid capable of sprouting chainsaws from his body. Recruited by Makima, mysterious chief of the Public Safety Division tasked with fighting demons, Denji pursues simple dreams: eating buttered toast, having a girlfriend, living normally. But in this brutal world where demons are born from human fears, normalcy doesn't exist.",
+      bioAuteur: "Tatsuki Fujimoto was born October 10, 1992. Atypical author known for Fire Punch and Chainsaw Man, his brutal and unpredictable style has revolutionized modern shonen.",
+      avis: "Brutal, unpredictable, emotional. Fujimoto breaks all shonen conventions with genius.",
+      personnages: [
+        { nom: "Denji", description: "Chainsaw Man, young man with simple dreams." },
+        { nom: "Makima", description: "Mysterious chief of the public safety division." },
+        { nom: "Power", description: "Blood demon, Denji's chaotic teammate." },
+        { nom: "Aki Hayakawa", description: "Serious demon hunter, Denji's mentor." },
+        { nom: "Pochita", description: "Chainsaw demon, Denji's faithful companion." }
+      ]
+    },
+    // Claymore (id: 13)
+    13: {
+      resume: "In a medieval world, creatures called Yoma take human form to devour people. To combat them, a mysterious organization creates Claymores, half-human half-Yoma warriors recognizable by their silver eyes and large swords. Clare, the lowest-ranked Claymore, is the only one who chose this fate: as a child, she was saved by Teresa, the most powerful Claymore of all time, assassinated by her own organization. Clare implanted Teresa's flesh in herself and lives to avenge her protector. Accompanied by Raki, a young orphan, she will discover the dark secrets of the Organization and the truth about the origin of Yoma.",
+      bioAuteur: "Norihiro Yagi was born June 11, 1968. Claymore is his major work, recognized for its dark universe and strong female characters.",
+      avis: "A dark fantasy with strong heroines. The universe is fascinating and the fights spectacular.",
+      personnages: [
+        { nom: "Clare", description: "Low-ranked Claymore, motivated by vengeance." },
+        { nom: "Raki", description: "Human saved by Clare, he accompanies her." },
+        { nom: "Teresa", description: "The most powerful Claymore in history, Clare's mentor." },
+        { nom: "Priscilla", description: "Claymore who became Awakened, main antagonist." },
+        { nom: "Miria", description: "Leader of the rebel Claymores." }
+      ]
+    },
+    // Dandadan (id: 14)
+    14: {
+      resume: "Momo Ayase, a high schooler who can see spirits, and Ken Takakura aka 'Okarun', an otaku obsessed with aliens, challenge each other: she takes him to a haunted tunnel while he takes her to a UFO landing site. Result: they were both right! Momo is abducted by perverted aliens, Okarun is cursed by Turbo Granny's spirit who steals his manly attributes. To get them back, he must exorcise spirits and collect spiritual dragon balls. Endowed with supernatural powers - Momo can channel spirits, Okarun can invoke Turbo Granny's speed - they face terrifying ghosts and crazy aliens together in an explosive mix of action, horror, and romantic comedy.",
+      bioAuteur: "Yukinobu Tatsu is a former assistant of Tatsuki Fujimoto. His dynamic style and humor make Dandadan one of the most popular manga of its generation.",
+      avis: "An explosive mix of action, humor and romance. The pace is frantic and the visual style incredible.",
+      personnages: [
+        { nom: "Momo Ayase", description: "High schooler with psychic powers, endearing tsundere." },
+        { nom: "Ken Takakura (Okarun)", description: "Shy otaku who gains powers from Turbo Granny." },
+        { nom: "Turbo Granny", description: "Speed spirit linked to Okarun." },
+        { nom: "Aira Shiratori", description: "Popular gyaru who joins the group." },
+        { nom: "Jiji", description: "Momo's ex-boyfriend, linked to the supernatural." }
       ]
     },
     // Death Note (id: 15)
@@ -144,17 +196,693 @@ const mangaTranslations = {
         { nom: "Near", description: "L's successor, equally brilliant." }
       ]
     },
-    // Bleach (id: 6)
-    6: {
-      resume: "Ichigo Kurosaki, 15, can see ghosts since childhood. One night, a Hollow - a corrupt spirit devouring souls - attacks his family. Rukia Kuchiki, a Shinigami (Death God) sent to slay it, is wounded. She transfers her powers to Ichigo so he can protect his family. Thus begins Ichigo's journey as a Substitute Shinigami, defending the living world from Hollows while discovering Soul Society, the realm of the dead, and the dark secrets surrounding Rukia, his own origins, and the original Shinigami who once tried to overthrow the King.",
-      bioAuteur: "Tite Kubo was born June 26, 1977 in Hiroshima. Before Bleach, he created Zombiepowder. Known for his unique aesthetic and character designs, he strongly influenced fashion in manga.",
-      avis: "Legendary aesthetics and iconic characters. The Soul Society arc is a masterpiece. The ending disappointed, but the Thousand-Year Blood War redeems it.",
+    // Demon Slayer (id: 16)
+    16: {
+      resume: "In Taisho-era Japan, young Tanjiro Kamado lives in the mountains as a charcoal seller with his family. One day, returning from a sale, he discovers his entire family massacred by a demon. Only his sister Nezuko survived, but transformed into a demon herself. Against all odds, she retains some humanity. Tanjiro joins the Demon Slayer Corps to find a cure for his sister and avenge his family. He learns the Water Breathing technique and meets allies like the fearful Zenitsu and the boar-headed Inosuke. Together, they hunt demons while seeking Muzan Kibutsuji, the original demon.",
+      bioAuteur: "Koyoharu Gotouge was born May 5, 1989. Little is known about this mangaka. Demon Slayer is their first serialized work, and it became a historic phenomenon.",
+      avis: "Sublime art, simple but effective story. The fights are visual masterpieces, especially in anime.",
       personnages: [
-        { nom: "Ichigo Kurosaki", description: "Substitute Shinigami with orange hair." },
-        { nom: "Rukia Kuchiki", description: "Shinigami who changed Ichigo's destiny." },
-        { nom: "Orihime Inoue", description: "Kind friend with rejection powers." },
-        { nom: "Uryu Ishida", description: "Last Quincy, rival then ally of Ichigo." },
-        { nom: "Sosuke Aizen", description: "Traitor captain, mastermind of deception." }
+        { nom: "Tanjiro Kamado", description: "Gentle demon slayer with enhanced sense of smell." },
+        { nom: "Nezuko Kamado", description: "Demon who protects humans, wears a bamboo muzzle." },
+        { nom: "Zenitsu Agatsuma", description: "Fearful swordsman, extremely powerful when asleep." },
+        { nom: "Inosuke Hashibira", description: "Wild beast wearing a boar head." },
+        { nom: "Muzan Kibutsuji", description: "Original demon, disguised as a human." }
+      ]
+    },
+    // Dorohedoro (id: 17)
+    17: {
+      resume: "The Hole is a miserable district where sorcerers from the magical world come to practice their experiments on humans. Caiman is one of their victims: transformed into an amnesiac lizard-man, he searches for the sorcerer responsible to regain his appearance and memories. Inside his mouth lives a mysterious man who identifies sorcerers. With his friend Nikaido, owner of the Hungry Bug restaurant, Caiman tracks and decapitates sorcerers one by one. In the sorcerer world, En, a powerful mafia boss capable of turning everything into mushrooms, takes interest in this sorcerer killer. In this grimy world where violence meets absurd humor, Caiman will discover that his past is far more complex than a simple curse.",
+      bioAuteur: "Q Hayashida is a mangaka born March 5, 1977. Her unique style and dark humor make Dorohedoro a cult work for dark fantasy fans.",
+      avis: "Unique in its genre. The grimy universe and dark humor create an incomparable atmosphere.",
+      personnages: [
+        { nom: "Caiman", description: "Amnesiac lizard-man searching for his identity." },
+        { nom: "Nikaido", description: "Owner of the Hungry Bug restaurant, Caiman's partner." },
+        { nom: "En", description: "Leader of the most powerful sorcerer gang." },
+        { nom: "Shin", description: "En's cleaner, cutting sorcerer." },
+        { nom: "Noi", description: "Healing sorceress, Shin's partner." }
+      ]
+    },
+    // Dr. Stone (id: 18)
+    18: {
+      resume: "3700 years ago, a petrifying flash transformed all of humanity into stone statues. In 5738, Senku Ishigami, a 16-year-old scientific genius, wakes up thanks to his will to count every second since his petrification. In this world returned to the Stone Age, he decides to rebuild civilization through science, inventing everything from scratch: soap, iron, electricity, antibiotics. But Tsukasa Shishio, the 'strongest primate high schooler,' has a different vision: creating a pure world where only the young would be awakened, without the corrupted adults. Between these two opposing ideals, a war breaks out. Senku will have to use every ounce of his scientific knowledge to win and resurrect the seven billion petrified humans.",
+      bioAuteur: "Riichiro Inagaki was born June 6, 1976. Writer of Eyeshield 21, he creates Dr. Stone with artist Boichi, uniquely mixing science and adventure.",
+      avis: "A unique manga celebrating science and human ingenuity. Educational and exciting.",
+      personnages: [
+        { nom: "Senku Ishigami", description: "Scientific genius, he wants to save humanity through science." },
+        { nom: "Taiju Oki", description: "Senku's best friend, the group's physical strength." },
+        { nom: "Yuzuriha Ogawa", description: "Childhood friend, expert in crafts." },
+        { nom: "Chrome", description: "Self-taught scientist of the Stone Age." },
+        { nom: "Tsukasa Shishio", description: "The strongest primate, Senku's ideological antagonist." }
+      ]
+    },
+    // Dragon Ball (id: 19)
+    19: {
+      resume: "Son Goku, a boy with a monkey tail living alone in the mountains, meets Bulma, a young genius searching for the Dragon Balls - seven magical orbs that summon a dragon granting any wish when gathered. Together, they begin an adventure that will take them around the world, facing the Red Ribbon Army, the demon Piccolo, and countless martial artists in legendary tournaments. As he grows up, Goku will discover his Saiyan origins, defend Earth against alien invaders and cosmic tyrants, and constantly push beyond his limits, from Super Saiyan to Ultra Instinct.",
+      bioAuteur: "Akira Toriyama (1955-2024) was a living legend. Creator of Dr. Slump and Dragon Ball, he revolutionized manga and influenced generations of artists worldwide. His sense of design and humor are unmatched.",
+      avis: "The grandfather of modern shonen. Without Dragon Ball, no Naruto, One Piece, or Demon Slayer. A founding classic.",
+      personnages: [
+        { nom: "Son Goku", description: "Saiyan raised on Earth, loves fighting and food." },
+        { nom: "Vegeta", description: "Proud Saiyan prince, eternal rival of Goku." },
+        { nom: "Bulma", description: "Scientific genius, Goku's first friend." },
+        { nom: "Piccolo", description: "Namekian, Gohan's mentor after being an enemy." },
+        { nom: "Frieza", description: "Galactic tyrant, destroyer of the Saiyan planet." }
+      ]
+    },
+    // Fairy Tail (id: 20)
+    20: {
+      resume: "Lucy Heartfilia, a young celestial spirit mage capable of summoning celestial spirits, dreams of joining Fairy Tail, the most famous and chaotic mage guild in the Kingdom of Fiore. She meets Natsu Dragneel, a fire dragon slayer raised by the dragon Igneel who mysteriously disappeared, and his companion Happy, a flying blue cat. Integrated into Fairy Tail, Lucy forms a team with Natsu, Happy, ice mage Gray, and the scarlet knight Erza. Together, they complete missions, face dark guilds and ancient threats, while searching for the missing dragons. Because Fairy Tail isn't just a guild: it's a family ready to do anything to protect its own.",
+      bioAuteur: "Hiro Mashima was born May 3, 1977. After Rave Master, he creates Fairy Tail, which becomes one of the most popular shonen of the 2000s-2010s.",
+      avis: "A fun and entertaining shonen with a warm camaraderie atmosphere. Ideal for relaxation.",
+      personnages: [
+        { nom: "Natsu Dragneel", description: "Fire dragon slayer, searching for his adoptive father Igneel." },
+        { nom: "Lucy Heartfilia", description: "Celestial mage, narrator and key team member." },
+        { nom: "Gray Fullbuster", description: "Ice mage, Natsu's friendly rival." },
+        { nom: "Erza Scarlet", description: "Strongest knight mage of the guild." },
+        { nom: "Happy", description: "Flying blue cat, Natsu's faithful companion." }
+      ]
+    },
+    // Frieren (id: 21)
+    21: {
+      resume: "Ten years ago, the elf Frieren defeated the Demon King alongside the hero Himmel, the priest Heiter, and the warrior Eisen. For her, who has lived for more than a thousand years, this decade of adventure was just a brief moment. When Himmel dies of old age, Frieren realizes she didn't really know him and cries for the first time. She then undertakes a journey to better understand humans and recover memories of her companions. Accompanied by Fern, an apprentice mage taken in by Heiter, and Stark, Eisen's warrior disciple, she retraces the path of her former adventure. This contemplative quest leads her to reflect on time, memory, and the value of ephemeral connections with mortals.",
+      bioAuteur: "Kanehito Yamada (story) and Tsukasa Abe (art) create Frieren, a contemplative work about time, memory, and human connections.",
+      avis: "A poetic meditation on time and mortality. Calm, profound, beautifully written.",
+      personnages: [
+        { nom: "Frieren", description: "Elf mage who has lived for over 1000 years." },
+        { nom: "Fern", description: "Frieren's apprentice, orphan taken in by Heiter." },
+        { nom: "Stark", description: "Fearful but powerful warrior, Eisen's student." },
+        { nom: "Himmel", description: "Deceased hero, his memories guide Frieren." },
+        { nom: "Serie", description: "Most powerful elf, Frieren's mentor." }
+      ]
+    },
+    // Fruits Basket (id: 22)
+    22: {
+      resume: "Tohru Honda, a 16-year-old orphan living in a tent since her mother's death, accidentally discovers the secret of the Soma family: twelve members are possessed by the spirits of the Chinese zodiac and transform into animals when stressed or embraced by the opposite sex. Taken in by Shigure (dog), Yuki (rat), and Kyo (cursed cat, excluded from the zodiac), Tohru integrates into this dysfunctional family. Each member carries the weight of trauma related to their curse and to Akito, the tyrannical family head. With her kindness and optimism, Tohru will touch their hearts one by one and seek to break the curse that has chained them for generations.",
+      bioAuteur: "Natsuki Takaya was born July 7, 1973. Fruits Basket is her major work, becoming a shojo classic with themes of healing and acceptance.",
+      avis: "A profound shojo about healing from trauma. Moving from start to finish.",
+      personnages: [
+        { nom: "Tohru Honda", description: "Pure-hearted orphan who helps the Soma family." },
+        { nom: "Kyo Soma", description: "Cursed cat, excluded from the zodiac, hot-tempered." },
+        { nom: "Yuki Soma", description: "The rat, school prince, struggling with his past." },
+        { nom: "Shigure Soma", description: "The dog, mischievous writer hosting Tohru." },
+        { nom: "Akito Soma", description: "Family head, at the heart of the curse." }
+      ]
+    },
+    // Fullmetal Alchemist (id: 23)
+    23: {
+      resume: "Brothers Edward and Alphonse Elric, child prodigies in alchemy, attempt the forbidden: human transmutation to resurrect their deceased mother. The failed attempt costs Edward his left leg and Alphonse his entire body. Edward sacrifices his right arm to bind his brother's soul to a suit of armor. Years later, Edward becomes the youngest State Alchemist at 12, nicknamed 'Fullmetal,' and searches with his brother for the Philosopher's Stone to restore their bodies. Their quest leads them to discover a military conspiracy and face artificial humans with philosopher stone cores: the Homunculi.",
+      bioAuteur: "Hiromu Arakawa was born May 8, 1973 on a dairy farm in Hokkaido. Her agricultural experience influences her works. Fullmetal Alchemist is her masterpiece, adapted several times into anime.",
+      avis: "A perfect manga. Flawless plot, memorable characters, a satisfying ending. The reference for fantasy shonen.",
+      personnages: [
+        { nom: "Edward Elric", description: "Fullmetal Alchemist, brilliant but hates being called short." },
+        { nom: "Alphonse Elric", description: "Soul bound to armor, gentle giant." },
+        { nom: "Roy Mustang", description: "Flame Alchemist, ambitious but righteous." },
+        { nom: "Winry Rockbell", description: "Automail mechanic, childhood friend of the Elrics." },
+        { nom: "King Bradley", description: "Fuhrer of Amestris, hides a dark secret." }
+      ]
+    },
+    // Gintama (id: 24)
+    24: {
+      resume: "The Edo era took an unexpected turn: aliens called Amanto invaded Japan, banning samurai from carrying swords. Gintoki Sakata, former hero of the war against the Amanto, is now a vagrant doing odd jobs through his Odd Jobs Gin agency. With Shinpachi, a glasses-wearing teenager serving as the voice of reason, and Kagura, an overpowered Yato alien obsessed with food, he accepts the most absurd missions: finding a beetle, fighting a wig cult, playing video games... But beneath the parodic comedy lies a painful past and serious stakes, when Gintoki's old companions reappear with very different intentions.",
+      bioAuteur: "Hideaki Sorachi was born May 25, 1979. His absurd humor and otaku culture parodies have made Gintama a unique cult manga.",
+      avis: "The best comedy manga. Capable of making you cry with laughter then with emotion in the same chapter.",
+      personnages: [
+        { nom: "Gintoki Sakata", description: "Sugar-addicted samurai, former war hero." },
+        { nom: "Shinpachi Shimura", description: "The group's tsukkomi, the most normal one." },
+        { nom: "Kagura", description: "Overpowered Yato, obsessed with food." },
+        { nom: "Kotaro Katsura", description: "Eccentric revolutionary, Gintoki's friend." },
+        { nom: "Shinsuke Takasugi", description: "Former comrade turned main antagonist." }
+      ]
+    },
+    // Grand Blue (id: 25)
+    25: {
+      resume: "Iori Kitahara moves in with his uncle in Izu for college, dreaming of an ideal student life by the sea. But his uncle runs a diving shop, Peek-a-Boo, which serves as the hangout for the university diving club. This club is populated by alcoholic party animals who spend more time drinking pure alcohol (which they call 'water') and getting naked than diving. Despite himself, Iori is dragged into their insane drinking parties, sabotaging all his attempts to lead a normal university life and seduce girls. With his otaku friend Kohei, he tries to survive between catastrophic parties, sea trips, and the contemptuous looks of his cousin Chisa, the only serious club member.",
+      bioAuteur: "Kenji Inoue is the writer, Kimitake Yoshioka the artist. Grand Blue became cult for its absurd humor and hilarious situations.",
+      avis: "The funniest comedy manga. Every chapter is hilarious, the facial expressions are legendary.",
+      personnages: [
+        { nom: "Iori Kitahara", description: "Student dreaming of a normal university life, wish not granted." },
+        { nom: "Kohei Imamura", description: "Otaku obsessed with 2D characters, Iori's friend." },
+        { nom: "Chisa Kotegawa", description: "Iori's cousin, diving enthusiast." },
+        { nom: "Nanaka Kotegawa", description: "Chisa's older sister, teasing beauty." },
+        { nom: "Azusa Hamaoka", description: "Seductive diving club senior." }
+      ]
+    },
+    // Haikyuu!! (id: 26)
+    26: {
+      resume: "Shoyo Hinata, short in stature but with exceptional jumping ability, falls in love with volleyball after seeing a player nicknamed 'the Little Giant' dominate despite his size. He forms an improvised team in middle school but gets crushed by 'King of the Court' Tobio Kageyama. At Karasuno High School, a former powerhouse now fallen, they end up on the same team. Their unlikely duo - Hinata's reflexes and Kageyama's precision - creates lightning-fast attacks. With teammates of varied personalities, they aim for the national tournament, facing formidable teams like Aoba Johsai, Shiratorizawa, and Nekoma. More than a sports manga, it's the story of players who refuse to give up and constantly push their limits.",
+      bioAuteur: "Haruichi Furudate was born March 7, 1983. A volleyball fan, he creates Haikyuu!! which becomes the most popular sports manga of its generation.",
+      avis: "The best modern sports manga. Every match is thrilling, every character memorable.",
+      personnages: [
+        { nom: "Shoyo Hinata", description: "Short spiker with extraordinary jumping ability." },
+        { nom: "Tobio Kageyama", description: "Genius setter with a difficult personality, Hinata's partner." },
+        { nom: "Kei Tsukishima", description: "Sarcastic and intelligent blocker." },
+        { nom: "Yu Nishinoya", description: "Energetic and spectacular libero." },
+        { nom: "Toru Oikawa", description: "Rival setter, Kageyama's greatest obstacle." }
+      ]
+    },
+    // Hunter x Hunter (id: 27)
+    27: {
+      resume: "Twelve-year-old Gon Freecss discovers that his father, whom he thought was dead, is actually a legendary Hunter - a member of society's elite licensed to go anywhere and do almost anything. Despite being raised by his aunt, Gon decides to follow in his father's footsteps and take the notoriously difficult Hunter Examination. Along the way, he befriends the revenge-driven Kurapika, the aspiring doctor Leorio, and the enigmatic ex-assassin Killua. Together, they discover that the exam is just the beginning of a world filled with incredible powers, dangerous criminals, and life-threatening adventures.",
+      bioAuteur: "Yoshihiro Togashi was born April 27, 1966. Creator of Yu Yu Hakusho and Hunter x Hunter, he is known for his narrative genius but also his long hiatuses due to health problems.",
+      avis: "A manga of rare intelligence. The Nen system is the best power system in manga. Too bad about the hiatuses.",
+      personnages: [
+        { nom: "Gon Freecss", description: "Young innocent but determined boy looking to find his father." },
+        { nom: "Killua Zoldyck", description: "Heir to an assassin family, Gon's best friend." },
+        { nom: "Kurapika", description: "Last survivor of the Kurta clan, seeking vengeance." },
+        { nom: "Leorio Paradinight", description: "Future doctor with a heart of gold beneath his gruff exterior." },
+        { nom: "Hisoka", description: "Psychopathic magician obsessed with powerful fighters." }
+      ]
+    },
+    // Jujutsu Kaisen (id: 28)
+    28: {
+      resume: "Yuji Itadori is an extraordinarily athletic high school student. When his occult club friends unseal a cursed object - a rotting finger - they attract Curses, supernatural monsters born from negative human emotions. To save them, Yuji swallows the finger and becomes the vessel of Ryomen Sukuna, the King of Curses. Sentenced to death by jujutsu society, he gets a reprieve: devour all of Sukuna's fingers before his execution. He joins Tokyo Jujutsu High with Megumi Fushiguro and Nobara Kugisaki, under the tutelage of the powerful Satoru Gojo, the blindfolded sorcerer.",
+      bioAuteur: "Gege Akutami was born February 26, 1992 in Iwate. After several one-shots, Jujutsu Kaisen began in 2018 and quickly became a phenomenon thanks to its charismatic characters and spectacular battles.",
+      avis: "A brutal modern shonen with a genius power system. Gojo is iconic. The manga ended in controversy but the ride was incredible.",
+      personnages: [
+        { nom: "Yuji Itadori", description: "Sukuna's vessel, with superhuman physical abilities." },
+        { nom: "Megumi Fushiguro", description: "Shadow technique user, summoning shikigami." },
+        { nom: "Nobara Kugisaki", description: "Fierce sorcerer from the countryside." },
+        { nom: "Satoru Gojo", description: "Most powerful sorcerer, master of Infinity." },
+        { nom: "Ryomen Sukuna", description: "King of Curses, resides in Yuji's body." }
+      ]
+    },
+    // Kaguya-sama (id: 29)
+    29: {
+      resume: "At Shuchiin Academy, an elite establishment, Miyuki Shirogane and Kaguya Shinomiya form an admired duo of student council president and vice-president. In reality, both are madly in love with each other. But their pride prevents them from confessing: for them, whoever confesses first 'loses' and ends up in a position of weakness. Every day becomes a psychological battlefield where they multiply stratagems to make the other crack. Their absurd wars are commented by a dramatic narrator, while Chika Fujiwara, chaotic secretary, and Yu Ishigami, depressed treasurer, get mixed up in their plans without understanding anything.",
+      bioAuteur: "Aka Akasaka was born January 29, 1986. Creator of Kaguya-sama and Oshi no Ko, his intelligent humor and complex characters have earned him worldwide success.",
+      avis: "The best rom-com manga. The mind games are hilarious and the romance evolution is perfect.",
+      personnages: [
+        { nom: "Kaguya Shinomiya", description: "Genius vice-president, heiress to an empire." },
+        { nom: "Miyuki Shirogane", description: "Council president, genius of hard work." },
+        { nom: "Chika Fujiwara", description: "Chaotic secretary, source of many gags." },
+        { nom: "Yu Ishigami", description: "Depressed treasurer with touching development." },
+        { nom: "Ai Hayasaka", description: "Kaguya's servant, her closest ally." }
+      ]
+    },
+    // Kaiju No. 8 (id: 30)
+    30: {
+      resume: "At 32, Kafka Hibino failed to join the Defense Forces that protect Japan from kaijus, giant monsters. He now works at a company cleaning kaiju corpses, watching fights from the sidelines. When a small parasite kaiju enters his body, Kafka transforms into a powerful humanoid monster, designated 'Kaiju No. 8' by the Defense Forces. Determined to finally realize his dream and join his childhood friend Mina Ashiro, now captain, he takes the entrance exam at 32 while hiding his nature. But the Defense Forces are hunting Kaiju No. 8, unaware he fights alongside them to protect humanity.",
+      bioAuteur: "Naoya Matsumoto was born June 5, 1990. Kaiju No. 8 went viral upon release, breaking sales records for a new manga.",
+      avis: "A refreshing shonen with an adult protagonist. The action is spectacular and the concept original.",
+      personnages: [
+        { nom: "Kafka Hibino", description: "Thirty-something who became Kaiju No. 8, unlikely hero." },
+        { nom: "Mina Ashiro", description: "Defense Forces captain, Kafka's childhood friend." },
+        { nom: "Reno Ichikawa", description: "Talented young recruit, Kafka's friend." },
+        { nom: "Kikoru Shinomiya", description: "Elite recruit, daughter of a commander." },
+        { nom: "Soshiro Hoshina", description: "Vice-captain, master of anti-kaiju swordsmanship." }
+      ]
+    },
+    // Kingdom (id: 31)
+    31: {
+      resume: "In 245 BC, China is divided into seven warring kingdoms in permanent conflict. Shin and Hyou are two orphan slaves dreaming of becoming the greatest generals in history. When Hyou is recruited to the palace and assassinated during a coup d'état, Shin meets Ei Sei, the young king of Qin who resembles his friend. This 13-year-old king has a crazy ambition: to unify all of China to end the wars. Shin joins his army and climbs the ranks, going from simple foot soldier to commander, participating in the bloodiest battles in history. Based on the real life of Li Xin and Qin Shi Huang, China's first emperor, Kingdom depicts a military epic of colossal scale.",
+      bioAuteur: "Yasuhisa Hara was born May 9, 1975. Kingdom is his masterwork, based on the true history of China's unification by Qin Shi Huang.",
+      avis: "The ultimate historical epic. The battles are grand and the story's ambition is unmatched.",
+      personnages: [
+        { nom: "Shin", description: "Slave who became general, his dream is to become Great General." },
+        { nom: "Ei Sei", description: "Young king of Qin, aiming to unify China." },
+        { nom: "Kyou Kai", description: "Assassin turned warrior, Shin's ally." },
+        { nom: "Wang Ben (Ouhon)", description: "Shin's aristocratic rival, son of Wang Jian." },
+        { nom: "Li Xin (Ri Shin)", description: "Another reading of Shin's name, historical general." }
+      ]
+    },
+    // Les Carnets de l'Apothicaire (id: 33)
+    33: {
+      resume: "Maomao, 17, is a young apothecary passionate about poisons and medicine, working in the pleasure quarter of the imperial capital. Kidnapped and sold to the palace as a servant, she intended to go unnoticed. But when she discovers that imperial heirs are dying from a mysterious 'curse' - actually lead poisoning from their makeup - she can't help but intervene. Spotted by Jinshi, the stunningly beautiful steward, she becomes official taster and investigator for harem mysteries. Between court intrigues, assassination attempts, and political conspiracies, Maomao uses her pharmacology knowledge to solve cases, while resisting Jinshi's advances.",
+      bioAuteur: "Natsu Hyuuga is a Japanese novelist from Fukuoka Prefecture. She started publishing The Apothecary Diaries in 2011 on Shosetsuka ni Naro. Very private, she never appears in public without disguise. Nekokurage's manga adaptation became a worldwide phenomenon.",
+      avis: "A captivating medical thriller in a magnificent historical setting. Maomao is a brilliant and atypical heroine. The mysteries are well-constructed.",
+      personnages: [
+        { nom: "Maomao", description: "Brilliant young apothecary, expert in poisons and medicine, pragmatic and curious." },
+        { nom: "Jinshi", description: "Exceptionally beautiful court steward, hides a secret about his origins." },
+        { nom: "Gyokuyou", description: "Benevolent high consort, Maomao's first mistress at the palace." },
+        { nom: "Gaoshun", description: "Faithful servant and Jinshi's bodyguard, calm and competent." },
+        { nom: "Ah-Duo", description: "Former high consort with tragic past, masculine appearance and strong." }
+      ]
+    },
+    // My Hero Academia (id: 37)
+    37: {
+      resume: "In a world where 80% of the population has superpowers called 'Quirks,' Izuku Midoriya is born without any. Despite this, he dreams of becoming a hero like his idol All Might, the Symbol of Peace. After a fateful encounter where Izuku shows his heroic spirit, All Might chooses him as his successor and passes on his Quirk: One For All. Izuku enrolls at U.A. High School, the most prestigious hero academy, where he befriends rivals like the explosive Katsuki Bakugo and faces villains threatening to destroy the hero society.",
+      bioAuteur: "Kohei Horikoshi was born November 20, 1986. A huge fan of American comics and Japanese heroes, he created My Hero Academia after Oumagadoki Zoo and Barrage. The manga became a worldwide success.",
+      avis: "Excellent modern shonen. The characters are endearing, the fights spectacular, even if the end is rushed.",
+      personnages: [
+        { nom: "Izuku Midoriya (Deku)", description: "Quirkless successor of One For All, analyzes everything." },
+        { nom: "Katsuki Bakugo", description: "Explosive prodigy, Deku's rival since childhood." },
+        { nom: "Ochaco Uraraka", description: "Gravity heroine, Deku's friend." },
+        { nom: "All Might", description: "Former Symbol of Peace, Deku's mentor." },
+        { nom: "Shoto Todoroki", description: "Son of Endeavor, master of ice and fire." }
+      ]
+    },
+    // Naruto (id: 39)
+    39: {
+      resume: "Twelve years before the story begins, the Nine-Tailed Fox attacked the Hidden Leaf Village. To save the village, the Fourth Hokage sacrificed his life by sealing the demon inside a newborn baby: Naruto Uzumaki. Orphaned and shunned by the villagers who see him as the monster itself, Naruto grows up dreaming of becoming Hokage to earn everyone's recognition. He joins Team 7 with the genius Sasuke Uchiha and Sakura Haruno under the guidance of Kakashi Hatake. Through training, friendships, and battles, Naruto will discover the truth about his origins and face enemies who threaten not just his village, but the entire ninja world.",
+      bioAuteur: "Masashi Kishimoto was born November 8, 1974 in Okayama. Inspired by Dragon Ball and Akira, he created Naruto after several failed projects. The manga ran for 15 years and became a worldwide phenomenon.",
+      avis: "A ninja epic that marked a generation. Despite a controversial ending, the journey remains memorable.",
+      personnages: [
+        { nom: "Naruto Uzumaki", description: "Jinchuriki of the Nine-Tails, dreaming of becoming Hokage." },
+        { nom: "Sasuke Uchiha", description: "Last of his clan, consumed by vengeance." },
+        { nom: "Sakura Haruno", description: "Medical ninja, student of Tsunade." },
+        { nom: "Kakashi Hatake", description: "Copy Ninja, mentor of Team 7." },
+        { nom: "Itachi Uchiha", description: "Mysterious criminal, Sasuke's brother." }
+      ]
+    },
+    // One Piece (id: 41)
+    41: {
+      resume: "Gold Roger, the King of Pirates, possessed everything - wealth, fame, and power - before being executed. His last words revealed the existence of One Piece, the greatest treasure in the world, hidden somewhere in the Grand Line. This sparked the Great Pirate Era. Twenty-two years later, Monkey D. Luffy, a young man with a straw hat who gained rubber powers from eating a Devil Fruit, sets sail from his small village to become the King of Pirates. Along the way, he gathers a crew of unique individuals: a swordsman, a navigator, a sniper, a cook, a doctor, an archaeologist, a shipwright, a musician, and a helmsman.",
+      bioAuteur: "Eiichiro Oda was born January 1, 1975 in Kumamoto. His childhood dream was to become a pirate. He started manga at 17 and created One Piece at 22, which became the best-selling manga of all time.",
+      avis: "The GOAT. Unmatched worldbuilding, unforgettable characters, and a plot that keeps surpassing itself. A life's work.",
+      personnages: [
+        { nom: "Monkey D. Luffy", description: "Captain of the Straw Hats, rubber man dreaming of becoming Pirate King." },
+        { nom: "Roronoa Zoro", description: "Swordsman with three swords, aiming to become the world's greatest." },
+        { nom: "Nami", description: "Navigator and thief, expert in meteorology." },
+        { nom: "Sanji", description: "Cook with devastating kicks, searching for the All Blue." },
+        { nom: "Nico Robin", description: "Archaeologist who can read Poneglyphs, seeking true history." }
+      ]
+    },
+    // One Punch Man (id: 42)
+    42: {
+      resume: "Saitama is an amateur hero who trained so intensely - 100 push-ups, 100 squats, 100 sit-ups, and 10 km running every day for 3 years - that he became bald and invincible. He can defeat any enemy with a single punch. Problem: this power has deprived him of all excitement. He's profoundly bored, desperately seeking an opponent on his level. Accompanied by Genos, a cyborg who proclaimed himself his disciple, Saitama joins the Hero Association where, despite his power, he remains underestimated in B-class because of his ordinary appearance. A brilliant parody of shonen codes where the hero is too strong for his own good.",
+      bioAuteur: "ONE is a webmanga artist who created One Punch Man in 2009. Yusuke Murata, talented artist (Eyeshield 21), redraws the magazine version with extraordinary detail.",
+      avis: "A brilliant shonen parody. The humor is perfect and Murata's drawings are incredible.",
+      personnages: [
+        { nom: "Saitama", description: "The most powerful hero, bald and jaded by his strength." },
+        { nom: "Genos", description: "Cyborg disciple of Saitama, seeking revenge." },
+        { nom: "Tatsumaki", description: "S-class heroine, the most powerful esper." },
+        { nom: "King", description: "Considered the strongest, he hides a secret." },
+        { nom: "Garou", description: "The hero hunter, major antagonist." }
+      ]
+    },
+    // Spy x Family (id: 55)
+    55: {
+      resume: "Twilight is Westalis's best spy, master of disguise. For his new mission Operation Strix, he must approach Donovan Desmond, a warmongering politician from the East, through his son's private school. In one week, Twilight must create a family: he adopts Anya, 6 years old, unaware she is telepathic, and marries Yor Briar, unaware she is a professional assassin. Anya, however, knows both her parents' secrets and finds the situation amusing. To stay together, each hides their identity. A family comedy where a fake family becomes real, despite the lies that founded it.",
+      bioAuteur: "Tatsuya Endo was born July 23, 1980. After several short series, he created Spy x Family which became a worldwide success thanks to its perfect blend of action and family comedy.",
+      avis: "Hilarious and touching. The family dynamic is perfect, Anya is the best character of her generation.",
+      personnages: [
+        { nom: "Loid Forger (Twilight)", description: "Westalis's best spy, devoted adoptive father." },
+        { nom: "Yor Forger (Thorn Princess)", description: "Deadly assassin, loving mother." },
+        { nom: "Anya Forger", description: "Telepathic child, the glue of the family." },
+        { nom: "Bond Forger", description: "Dog who can see the future." },
+        { nom: "Franky Franklin", description: "Loid's informant, unlucky in love." }
+      ]
+    },
+    // JoJo's Bizarre Adventure (id: 97)
+    97: {
+      resume: "A multi-generational saga following the Joestar lineage in their fight against evil. It all begins in 1880 when Jonathan Joestar faces Dio Brando, his adoptive brother who became a vampire through the Stone Mask. Through the decades, each part follows a new JoJo: Joseph in the 40s against the Pillar Men, Jotaro in the 80s with Stands (psychic powers), Josuke in Morioh, Giorno in the Italian mafia, Jolyne in prison, and beyond. Each part reinvents the genre with unique strategic battles and a flamboyant visual style.",
+      bioAuteur: "Hirohiko Araki was born June 7, 1960. JoJo's Bizarre Adventure has been his main work since 1987, recognized for its unique artistic style influenced by fashion and Western art.",
+      avis: "A cult work that reinvents itself with each part. The tactical battles and Araki's unique style are incomparable.",
+      personnages: [
+        { nom: "Jonathan Joestar", description: "First JoJo, heroic English gentleman." },
+        { nom: "Dio Brando", description: "Recurring antagonist, megalomaniac vampire." },
+        { nom: "Jotaro Kujo", description: "JoJo of Part 3, Stand Star Platinum." },
+        { nom: "Joseph Joestar", description: "JoJo of Part 2, cunning and unpredictable." },
+        { nom: "Giorno Giovanna", description: "JoJo of Part 5, Dio's son, dreams of becoming a Gang-Star." }
+      ]
+    },
+    // A Silent Voice (id: 98)
+    98: {
+      resume: "In elementary school, Shoya Ishida was the leader of a group that bullied Shoko Nishimiya, a deaf student. When Shoko changes schools, Shoya in turn becomes the scapegoat and spends his middle and high school years isolated, consumed by guilt. At 17, on the verge of suicide, he decides to first find Shoko to apologize. This meeting will change both their lives and help them confront their demons: guilt for Shoya, feeling like a burden for Shoko. A poignant manga about bullying, disability, redemption, and learning empathy.",
+      bioAuteur: "Yoshitoki Oima was born March 15, 1989. A Silent Voice is her first successful manga, adapted into an acclaimed animated film by Kyoto Animation.",
+      avis: "An emotional masterpiece about redemption and empathy. Deeply touching and necessary.",
+      personnages: [
+        { nom: "Shoya Ishida", description: "Former bully seeking redemption." },
+        { nom: "Shoko Nishimiya", description: "Deaf young woman, victim of bullying." },
+        { nom: "Yuzuru Nishimiya", description: "Shoko's protective little sister." },
+        { nom: "Tomohiro Nagatsuka", description: "Shoya's first friend in high school." },
+        { nom: "Naoka Ueno", description: "Former classmate, complex relationship with Shoko." }
+      ]
+    },
+    // The Promised Neverland (id: 56)
+    56: {
+      resume: "Grace Field House orphanage is a paradise: happy children raised with love by 'Mama' Isabella, waiting for adoption. Emma, Norman and Ray, the three eldest at 11, are the brightest. One night, Emma and Norman discover the horrible truth: children are raised as cattle for demons who devour them. 'Adoptions' are deliveries. With only 2 months before their own 'shipment,' Emma and Norman must orchestrate an escape of all children, facing Isabella who monitors their every move. A gripping thriller where intelligence is the only weapon.",
+      bioAuteur: "Kaiu Shirai is the mysterious writer of The Promised Neverland. Paired with artist Posuka Demizu, they create a gripping thriller that stands out from classic shonen.",
+      avis: "The first arc is a masterpiece of tension. An intelligent and emotional survival game.",
+      personnages: [
+        { nom: "Emma", description: "Optimistic and determined, she refuses to abandon anyone." },
+        { nom: "Norman", description: "Strategic genius, ready to do anything to protect his friends." },
+        { nom: "Ray", description: "Realistic and intelligent, he has known the truth for a long time." },
+        { nom: "Isabella", description: "The orphanage 'Mama,' complex antagonist." },
+        { nom: "Phil", description: "Young intelligent orphan, close to Emma." }
+      ]
+    },
+    // Tokyo Ghoul (id: 59)
+    59: {
+      resume: "Ken Kaneki is a shy literature student. His date with the beautiful Rize turns into a nightmare: she is a ghoul, a creature that feeds on human flesh. Left for dead, Kaneki survives thanks to a transplant of Rize's organs. He becomes a half-human half-ghoul hybrid, torn between two worlds that hate each other. Taken in by the ghouls of cafe Anteiku who try to coexist peacefully with humans, Kaneki discovers their hidden society. But the CCG (Counter-Ghoul Commission) hunts them relentlessly. Tortured by the ghoul Jason, Kaneki loses his sanity and embraces his ghoul nature. A descent into hell about identity.",
+      bioAuteur: "Sui Ishida was born December 28, 1986. An artist with a unique style, he created Tokyo Ghoul exploring dark themes like identity, torture and humanity. He is also a musician.",
+      avis: "A dark and poetic work. Kaneki's descent into hell is fascinating and heartbreaking.",
+      personnages: [
+        { nom: "Ken Kaneki", description: "Student turned one-eyed ghoul, his personality evolves dramatically." },
+        { nom: "Touka Kirishima", description: "Ghoul working at cafe Anteiku, she helps Kaneki." },
+        { nom: "Shuu Tsukiyama", description: "Gourmet ghoul obsessed with Kaneki." },
+        { nom: "Juuzou Suzuya", description: "CCG investigator with traumatic past." },
+        { nom: "Kishou Arima", description: "The CCG reaper, most powerful investigator." }
+      ]
+    },
+    // Tokyo Revengers (id: 60)
+    60: {
+      resume: "At 26, Takemichi Hanagaki is a loser: terrible job, shabby apartment, no future. When he learns his ex-girlfriend Hinata was killed by the Tokyo Manji Gang, he gets pushed onto train tracks. Instead of dying, he wakes up 12 years in the past, back in middle school. Discovering he can time travel through contact with Hinata's little brother, Takemichi decides to change the future by infiltrating Toman at its beginnings. But each change creates unforeseen consequences. To save Hinata, Takemichi must understand what corrupted Mikey, Toman's charismatic leader.",
+      bioAuteur: "Ken Wakui is a mangaka with a delinquent past. Former host in Shinjuku, he draws from his experiences for his works. Tokyo Revengers won the 2020 Kodansha Manga Award with over 80 million copies sold.",
+      avis: "A unique blend of delinquent gangs and time travel. The characters are endearing and the twists constant.",
+      personnages: [
+        { nom: "Takemichi Hanagaki", description: "Protagonist, travels through time to save his ex-girlfriend." },
+        { nom: "Manjiro 'Mikey' Sano", description: "Charismatic leader of Tokyo Manji Gang, fighting genius." },
+        { nom: "Ken 'Draken' Ryuguji", description: "Toman vice-captain, Mikey's best friend and protector." },
+        { nom: "Hinata Tachibana", description: "Takemichi's ex-girlfriend, reason for his time travel." },
+        { nom: "Naoto Tachibana", description: "Hinata's brother, detective, triggers the temporal power." }
+      ]
+    },
+    // Vagabond (id: 61)
+    61: {
+      resume: "A romanticized adaptation of the life of Miyamoto Musashi, Japan's greatest samurai. Shinmen Takezo is a violent and wild young man who, after the battle of Sekigahara, wanders as a killer thirsting for combat. Captured and transformed by the monk Takuan Soho, he is reborn under the name Miyamoto Musashi and begins his quest to become 'invincible under the sun.' His journey leads him to face Japan's greatest swordsmen, including Sasaki Kojiro, a deaf swordsman with instinctive talent. More than an action manga, Vagabond is a meditation on violence, art, and what it truly means to be strong. Takehiko Inoue's panels are considered among the most beautiful in manga.",
+      bioAuteur: "Takehiko Inoue was born January 12, 1967. Creator of Slam Dunk and Vagabond, he is considered one of the greatest manga artists. His panels are true works of art.",
+      avis: "The pinnacle of manga in terms of art. A meditation on life, death and the warrior's way.",
+      personnages: [
+        { nom: "Miyamoto Musashi", description: "Legendary samurai in pursuit of martial perfection." },
+        { nom: "Sasaki Kojiro", description: "Deaf rival of Musashi, sword genius." },
+        { nom: "Matahachi", description: "Musashi's childhood friend, he follows a different path." },
+        { nom: "Otsu", description: "Childhood friend in love with Musashi." },
+        { nom: "Takuan Soho", description: "Buddhist monk who guides Musashi." }
+      ]
+    },
+    // Vinland Saga (id: 62)
+    62: {
+      resume: "In the 11th century, Thorfinn is the son of Thors, the greatest Viking warrior turned pacifist. When Askeladd, a mercenary chief, assassinates Thors before his eyes, 6-year-old Thorfinn swears to kill him in honorable duel. For years, he serves as a mercenary in Askeladd's band, hoping to earn that duel. But Askeladd is more complex than he appears. When Danish politics cause his death, Thorfinn loses his reason to live. Sold as a slave, he meets Einar and rediscovers his father's teachings about true courage: to create rather than destroy. His new dream: to find Vinland, a legendary land without war.",
+      bioAuteur: "Makoto Yukimura was born May 8, 1976. Passionate about Viking history, he created Vinland Saga after Planetes. His work explores themes of violence, redemption and pacifism.",
+      avis: "An epic saga about redemption. Thorfinn's evolution is masterful. Probably the best historical manga.",
+      personnages: [
+        { nom: "Thorfinn", description: "From avenger to pacifist, his evolution is the heart of the manga." },
+        { nom: "Askeladd", description: "Complex mercenary chief, Thorfinn's father's assassin." },
+        { nom: "Canute", description: "Danish prince becoming king, impressive transformation." },
+        { nom: "Thorkell", description: "Giant warrior obsessed with combat." },
+        { nom: "Einar", description: "Former slave, Thorfinn's friend and companion." }
+      ]
+    },
+    // Slam Dunk (id: 52)
+    52: {
+      resume: "Hanamichi Sakuragi, a 1.89m tall redheaded delinquent, has been rejected 50 times by girls. When Haruko Akagi asks if he likes basketball, he lies to impress her and joins the Shohoku club. Problem: he's terrible and arrogant. Worse, Haruko is in love with Kaede Rukawa, a silent prodigy that Sakuragi immediately hates. But beneath his bravado, Sakuragi possesses raw athletic talent and iron determination. Guided by captain Akagi and coach Anzai, he progresses dramatically in just a few months. With Mitsui, a former MVP returned to basketball, and Miyagi, a quick point guard, Shohoku aims for the national championship. The manga that popularized basketball in Japan.",
+      bioAuteur: "Takehiko Inoue was born January 12, 1967. Slam Dunk revolutionized sports manga and popularized basketball in Japan. The manga has sold over 170 million copies.",
+      avis: "The best sports manga. Sakuragi's evolution is touching and the matches are thrilling.",
+      personnages: [
+        { nom: "Hanamichi Sakuragi", description: "Delinquent turned basketball player, athletic genius." },
+        { nom: "Kaede Rukawa", description: "Basketball prodigy, Sakuragi's silent rival." },
+        { nom: "Takenori Akagi", description: "Shohoku captain, team pillar." },
+        { nom: "Hisashi Mitsui", description: "Former MVP returned to basketball after a dark period." },
+        { nom: "Ryota Miyagi", description: "Quick point guard, Sakuragi's friend." }
+      ]
+    },
+    // Solo Leveling (id: 53)
+    53: {
+      resume: "In a world where portals to dungeons filled with monsters appeared 10 years ago, Hunters are humans awakened to magical powers. Sung Jinwoo is an E-rank Hunter, the weakest possible, nicknamed 'humanity's weakest weapon.' During a D-rank dungeon, a catastrophe decimates his group. Dying, Jinwoo receives a mysterious message: 'You have been chosen by the System.' He awakens with the unique ability to level up like in a video game, progressively becoming the most powerful Hunter. But the System hides secrets about the origin of portals and an imminent cosmic war.",
+      bioAuteur: "Chugong is a South Korean web novel author. He created Solo Leveling in 2016 on KakaoPage. DUBU (Jang Sung-rak), the talented artist, unfortunately passed away in 2022 at 37. The work became a worldwide phenomenon.",
+      avis: "The manhwa that conquered the world. Jinwoo's progression is addictive, the battles epic and DUBU's art exceptional.",
+      personnages: [
+        { nom: "Sung Jinwoo", description: "Protagonist, once the weakest hunter became the most powerful thanks to the System." },
+        { nom: "Cha Hae-In", description: "S-rank hunter, only woman of that rank in Korea, Jinwoo's romantic interest." },
+        { nom: "Go Gunhee", description: "Hunter Association president, Korea's oldest S-rank." },
+        { nom: "Yoo Jinho", description: "D-rank Hunter, Jinwoo's loyal friend and sworn brother." },
+        { nom: "Sung Il-Hwan", description: "Jinwoo's father, missing for 10 years, Korea's first S-rank." }
+      ]
+    },
+    // Sailor Moon (id: 50)
+    50: {
+      resume: "Usagi Tsukino, 14, is a crybaby and clumsy middle schooler who dreams of romance. Her life changes when she saves a cat named Luna who reveals her true identity: she is Sailor Moon, guardian of the Moon, reincarnation of the Lunar Kingdom princess. She must find the Moon Princess, the Silver Crystal, and her fellow Sailor Guardians to fight the Negaverse seeking to conquer Earth. Joined by Sailors Mercury, Mars, Jupiter and Venus, she faces increasingly powerful threats while living a complicated romance with the mysterious Tuxedo Mask. A foundational work of modern magical girl genre.",
+      bioAuteur: "Naoko Takeuchi was born March 15, 1967. Sailor Moon revolutionized the magical girl genre and inspired generations of creators worldwide.",
+      avis: "A timeless classic. Sailor Moon defined the modern magical girl and remains influential today.",
+      personnages: [
+        { nom: "Usagi Tsukino (Sailor Moon)", description: "Guardian of love and justice, often a crybaby." },
+        { nom: "Mamoru Chiba (Tuxedo Mask)", description: "Mysterious protector, Usagi's love." },
+        { nom: "Ami Mizuno (Sailor Mercury)", description: "Intellectual genius, guardian of water." },
+        { nom: "Rei Hino (Sailor Mars)", description: "Shinto priestess, guardian of fire." },
+        { nom: "Makoto Kino (Sailor Jupiter)", description: "Physically strongest, guardian of lightning." }
+      ]
+    },
+    // Sakamoto Days (id: 51)
+    51: {
+      resume: "Taro Sakamoto was the most feared hitman in the world, a legend in the criminal underworld. Then he fell in love, got married, had a daughter, and opened a neighborhood grocery store. Five years later, he's gained 30 kilos and lives peacefully. But when his former world catches up - contracts on his head, former colleagues, criminal organizations - Sakamoto proves he's lost none of his skills, neutralizing professional killers with everyday objects: toilet paper rolls, magazines, vegetables. With Shin, a telepath turned employee, and Lu, a reformed young Chinese assassin, he protects his family while refusing to kill.",
+      bioAuteur: "Yuto Suzuki is a new mangaka whose Sakamoto Days is his first series. His dynamic action style immediately won over readers.",
+      avis: "Pure action, fluid and creative. Sakamoto is a unique protagonist and the fights are spectacular.",
+      personnages: [
+        { nom: "Taro Sakamoto", description: "Legendary ex-hitman, now a portly grocer." },
+        { nom: "Shin Asakura", description: "Telepath, Sakamoto's employee." },
+        { nom: "Lu Shaotang", description: "Young Chinese fighter, ex-target turned ally." },
+        { nom: "Heisuke Mashimo", description: "Sakamoto's former colleague, loyal friend." },
+        { nom: "Rion Akao", description: "Sakamoto's daughter, adorable child." }
+      ]
+    },
+    // Nana (id: 38)
+    38: {
+      resume: "Two 20-year-old young women, both named Nana, meet on a train to Tokyo and end up as roommates. Nana Komatsu, nicknamed 'Hachi,' is a romantic and dependent girl who came to Tokyo to join her boyfriend. Nana Osaki is a determined punk-rocker, singer of the band Blast, who came to conquer the music scene. Their opposite personalities create an intense friendship. But love complicates everything: Hachi flutters between several men, while Nana reconnects with her ex Ren, now guitarist of the rival band Trapnest. Success, jealousy, unplanned pregnancies and addictions will put their friendship to the test.",
+      bioAuteur: "Ai Yazawa was born March 7, 1967. Nana is her major work, stopped in 2009 for health reasons. The manga remains an unmissable shojo classic.",
+      avis: "A mature drama about love, friendship and broken dreams. Tragic that the series is on hiatus.",
+      personnages: [
+        { nom: "Nana Osaki", description: "Punk rock singer with a strong character." },
+        { nom: "Nana 'Hachi' Komatsu", description: "Romantic and naive young woman." },
+        { nom: "Ren Honjo", description: "Trapnest guitarist, Nana O.'s former love." },
+        { nom: "Takumi Ichinose", description: "Trapnest leader, manipulative." },
+        { nom: "Nobu Terashima", description: "Blast guitarist, in love with Hachi." }
+      ]
+    },
+    // Neon Genesis Evangelion (id: 40)
+    40: {
+      resume: "In 2015, fifteen years after a cataclysm called Second Impact that killed half of humanity, creatures called Angels attack the fortress of Tokyo-3. The NERV organization, directed by Gendo Ikari, deploys Evangelions, giant robots that can only be piloted by certain teenagers. Shinji Ikari, 14, is summoned by his father whom he hasn't seen in years to pilot Eva-01. Introverted and traumatized by parental abandonment, Shinji fights despite himself alongside Rei Ayanami, a mysterious pilot linked to NERV, and Asuka Langley, a proud prodigy. Behind the battles hide biblical conspiracies and forbidden experiments.",
+      bioAuteur: "Yoshiyuki Sadamoto was born January 29, 1962. Character designer for Gainax, he adapted Evangelion into manga. The original work was created by Hideaki Anno.",
+      avis: "A brilliant deconstruction of the mecha genre. The psychological themes are treated with rare depth.",
+      personnages: [
+        { nom: "Shinji Ikari", description: "Eva-01 pilot, traumatized and introverted teenager." },
+        { nom: "Rei Ayanami", description: "Mysterious pilot of Eva-00, linked to secrets." },
+        { nom: "Asuka Langley", description: "Eva-02 pilot, proud and competitive." },
+        { nom: "Misato Katsuragi", description: "Shinji's guardian, operations commander." },
+        { nom: "Gendo Ikari", description: "Shinji's father, NERV director with obscure plans." }
+      ]
+    },
+    // Oshi no Ko (id: 43)
+    43: {
+      resume: "Dr. Goro is a rural obstetrician and absolute fan of the idol Ai Hoshino. When Ai, pregnant at 16, comes to give birth secretly in his hospital, Goro is murdered by a stalker. He wakes up reincarnated as Aquamarine, one of Ai's twins, with his sister Ruby (a former patient of Goro, also a fan of Ai). Aqua/Goro keeps his memories and plans to enjoy his new life with his idol. But Ai is murdered in turn when the twins are 4 years old. As a teenager, Aqua enters the entertainment industry to discover who orchestrated his mother's death, while Ruby wants to become an idol like her. Their quest reveals the dark sides of Japanese showbiz.",
+      bioAuteur: "Aka Akasaka (writer) and Mengo Yokoyari (artist) create Oshi no Ko, a sharp criticism of the entertainment industry with a captivating revenge plot.",
+      avis: "A fascinating dive into the entertainment industry. The mystery is captivating, the first chapter unforgettable.",
+      personnages: [
+        { nom: "Aqua Hoshino", description: "Reincarnation of Dr. Goro, he seeks his mother's killer." },
+        { nom: "Ruby Hoshino", description: "Aqua's twin sister, she wants to become an idol." },
+        { nom: "Ai Hoshino", description: "Legendary idol, mother of the twins, assassinated." },
+        { nom: "Kana Arima", description: "Former child actress, member of Ruby's group." },
+        { nom: "Akane Kurokawa", description: "Talented actress, close to Aqua." }
+      ]
+    },
+    // Parasyte (id: 45)
+    45: {
+      resume: "One night, extraterrestrial parasites invade Earth by entering human brains through ears or nose, taking total control of their hosts. Shinichi Izumi, a high schooler, is attacked in his sleep but the parasite, blocked by his headphones, settles in his right hand. Unable to merge with the brain, the parasite 'Migi' (right in Japanese) develops its own personality: logical, curious, devoid of emotions. This forced cohabitation forces them to cooperate to survive against other parasites who consider them a threat. Shinichi, increasingly dehumanized by this symbiosis, must face existential questions about what truly defines humanity.",
+      bioAuteur: "Hitoshi Iwaaki was born July 28, 1960. Parasyte is his major work, exploring human nature through the lens of science fiction horror.",
+      avis: "A fascinating exploration of what defines humanity. The body horror is memorable.",
+      personnages: [
+        { nom: "Shinichi Izumi", description: "High schooler who must cohabit with a parasite in his hand." },
+        { nom: "Migi", description: "Parasite lodged in Shinichi's hand, logical and curious." },
+        { nom: "Satomi Murano", description: "Shinichi's friend who notices his changes." },
+        { nom: "Reiko Tamura", description: "Intelligent parasite questioning parasites' existence." },
+        { nom: "Gotou", description: "Ultimate parasite composed of five parasites." }
+      ]
+    },
+    // Fire Force (id: 86)
+    86: {
+      resume: "In a futuristic Tokyo, the phenomenon of Spontaneous Human Combustion transforms ordinary people into Infernals, uncontrollable fire creatures. Special Fire Brigades fight these threats and free victims' souls. Shinra Kusakabe, nicknamed 'Devil's Footprints' for his ability to ignite his feet, joins the 8th Brigade. He seeks the truth about the fire that killed his mother and made his brother disappear 12 years ago. His investigations reveal a conspiracy involving the highest religious spheres and a cult seeking to trigger a second Great Cataclysm.",
+      bioAuteur: "Atsushi Ohkubo was born September 24, 1979. Creator of Soul Eater and Fire Force, he is known for his dynamic graphic style and original universes.",
+      avis: "Pure Ohkubo with fascinating worldbuilding. The action is explosive and the mystery gripping.",
+      personnages: [
+        { nom: "Shinra Kusakabe", description: "Protagonist with flaming feet, seeks his missing brother." },
+        { nom: "Arthur Boyle", description: "Self-proclaimed knight, wields a plasma sword." },
+        { nom: "Maki Oze", description: "Ex-military, controls flames with precision." },
+        { nom: "Akitaru Obi", description: "Captain of the 8th Brigade, only member without powers." },
+        { nom: "Tamaki Kotatsu", description: "Unlucky pyrokinetic with 'Lucky Lecher Lure'." }
+      ]
+    },
+    // Rurouni Kenshin (id: 87)
+    87: {
+      resume: "Japan, Meiji era (1878). Kenshin Himura, legendary former assassin known as Battosai, wanders the roads with a reverse-blade sword, symbol of his vow never to kill again. He meets Kaoru Kamiya, master of a struggling dojo, and decides to settle there. His bloody past constantly catches up to him: former enemies, rivals and victims emerge to challenge him. Kenshin must protect his new friends while resisting the temptation to become the assassin he was, even facing the worst criminals of the era.",
+      bioAuteur: "Nobuhiro Watsuki was born May 26, 1970. Rurouni Kenshin is his major work, mixing Japanese history and spectacular sword fights.",
+      avis: "A 90s classic. The sword fights are perfectly choreographed and Kenshin is an unforgettable hero.",
+      personnages: [
+        { nom: "Kenshin Himura", description: "Ex-assassin Battosai, wanderer with reverse-blade sword." },
+        { nom: "Kaoru Kamiya", description: "Master of Kamiya dojo, welcomes Kenshin." },
+        { nom: "Sanosuke Sagara", description: "Brawler with destructive fist, Kenshin's friend." },
+        { nom: "Yahiko Myojin", description: "Young dojo apprentice, determined to become strong." },
+        { nom: "Makoto Shishio", description: "Battosai's successor, burned alive and thirsting for revenge." }
+      ]
+    },
+    // Detective Conan (id: 71)
+    71: {
+      resume: "Shinichi Kudo, 17, is a genius high school detective whose fame rivals that of the police. One evening, he stumbles upon a criminal transaction by the Black Organization. Spotted, he is forced to swallow an experimental poison meant to kill him. But instead of dying, his body rejuvenates and he finds himself in the body of a 7-year-old child. Under the name Conan Edogawa, he lodges with his childhood friend Ran and her father Kogoro Mori, a mediocre detective. Conan secretly solves cases in place of Kogoro while searching for clues about the Organization to regain his body. The longest-running detective manga in history.",
+      bioAuteur: "Gosho Aoyama was born June 21, 1963. Detective Conan, started in 1994, is one of the longest and best-selling manga in the world with over 270 million copies.",
+      avis: "The king of detective manga. Each case is a brilliant puzzle and the main plot captivating in the long term.",
+      personnages: [
+        { nom: "Conan Edogawa / Shinichi Kudo", description: "High school detective trapped in a child's body." },
+        { nom: "Ran Mouri", description: "Shinichi's childhood friend, karate champion." },
+        { nom: "Kogoro Mouri", description: "Ran's father, mediocre detective manipulated by Conan." },
+        { nom: "Ai Haibara", description: "Ex-scientist from the Organization, also rejuvenated." },
+        { nom: "Gin", description: "Organization member, the one who poisoned Shinichi." }
+      ]
+    },
+    // Bakuman (id: 104)
+    104: {
+      resume: "Moritaka Mashiro, a talented artist, and Akito Takagi, a brilliant writer, decide to become professional mangaka. Their goal: create a manga popular enough to be adapted into anime. Mashiro has an additional motivation: he promised Miho Azuki, his childhood love who dreams of becoming a voice actress, that they would marry when their respective dreams come true. The manga follows their journey in the merciless manga industry, from one-shots to serializations, facing talented rivals and the demands of Weekly Shonen Jump.",
+      bioAuteur: "Tsugumi Ohba (writer) and Takeshi Obata (artist), the duo behind Death Note, offer a realistic look at the manga industry in Bakuman.",
+      avis: "A fascinating look at the manga industry. The rivalry with Niizuma is exciting and the romance touching.",
+      personnages: [
+        { nom: "Moritaka Mashiro", description: "Artist, nephew of a deceased mangaka." },
+        { nom: "Akito Takagi", description: "Genius writer, Mashiro's partner." },
+        { nom: "Miho Azuki", description: "Aspiring voice actress, Mashiro's fiancée." },
+        { nom: "Eiji Niizuma", description: "Eccentric genius, the duo's main rival." },
+        { nom: "Hattori", description: "Editor who guides Mashiro and Takagi." }
+      ]
+    },
+    // Magi (id: 91)
+    91: {
+      resume: "Aladdin is a mysterious young boy accompanied by a djinn named Ugo who lives in his flute. He meets Alibaba, a young man dreaming of conquering a dungeon to become rich. Together, they discover that dungeons are structures created by the Magi, supremely powerful magicians who choose kings. Aladdin is himself a Magi, and his destiny is linked to that of the entire world. Inspired by One Thousand and One Nights, the manga explores themes of war, slavery and free will through a world of magic and adventure.",
+      bioAuteur: "Shinobu Ohtaka was born June 8, 1983. Magi is her major work, praised for its rich worldbuilding and mature themes.",
+      avis: "An epic adventure inspired by Arabian tales. The worldbuilding is impressive and the themes surprisingly mature.",
+      personnages: [
+        { nom: "Aladdin", description: "Young Magi with a flute, seeking his place in the world." },
+        { nom: "Alibaba Saluja", description: "Fallen prince, dungeon conqueror." },
+        { nom: "Morgiana", description: "Ex-Fanalis slave, warrior with super-powerful legs." },
+        { nom: "Sinbad", description: "Legendary King of the Seven Seas, conqueror of 7 dungeons." },
+        { nom: "Judar", description: "Magi rival of Aladdin, serving the Kou empire." }
+      ]
+    },
+    // Hikaru no Go (id: 93)
+    93: {
+      resume: "Hikaru Shindo, 12, finds an old goban in his grandfather's attic. He accidentally awakens Sai, ghost of a Go genius from the Heian era who has haunted the board for a thousand years. Sai dreams only of reaching the 'divine move,' the perfect game. Initially just Sai's medium, Hikaru develops his own passion for Go and decides to become a professional player. His path crosses that of Akira Toya, prodigy son of a champion, who becomes his obsessive rival. A manga that relaunched interest in Go in Japan.",
+      bioAuteur: "Yumi Hotta (writer) and Takeshi Obata (artist, also known for Death Note). Hikaru no Go caused a Go boom among young Japanese.",
+      avis: "A passionate manga about Go even without knowing the game. The Hikaru-Sai relationship is touching and the rivalry with Akira intense.",
+      personnages: [
+        { nom: "Hikaru Shindo", description: "Middle schooler who became passionate about Go thanks to Sai." },
+        { nom: "Fujiwara no Sai", description: "Go genius ghost, Hikaru's mentor." },
+        { nom: "Akira Toya", description: "Go prodigy, rival obsessed with Hikaru." },
+        { nom: "Koyo Toya", description: "Akira's father, best player in Japan." },
+        { nom: "Yoshitaka Waya", description: "Hikaru's friend, friendly rival." }
+      ]
+    },
+    // Inuyasha (id: 100)
+    100: {
+      resume: "Kagome Higurashi, 15-year-old high schooler, falls into an ancient well and finds herself transported to Japan's Sengoku era, 500 years back. She frees Inuyasha, a half-demon half-human half-dog who was sealed to a tree for 50 years. The Shikon Jewel, an immensely powerful gem hidden in Kagome's body, shatters into fragments scattered across the country. Kagome and Inuyasha, initially rivals, must ally to recover the fragments before the evil Naraku. Joined by the monk Miroku, the demon slayer Sango and the young fox Shippo, they live an epic adventure mixing action and romance.",
+      bioAuteur: "Rumiko Takahashi was born October 10, 1957. A manga legend with Urusei Yatsura, Ranma ½ and Inuyasha, she excels in romantic comedies with fantastical elements.",
+      avis: "A Rumiko Takahashi classic. The adventure is epic, the romance slow but satisfying, and Inuyasha endearing despite himself.",
+      personnages: [
+        { nom: "Inuyasha", description: "Dog half-demon with difficult character, wields Tessaiga." },
+        { nom: "Kagome Higurashi", description: "Modern high schooler, reincarnation of priestess Kikyo." },
+        { nom: "Miroku", description: "Womanizing Buddhist monk, cursed by Naraku." },
+        { nom: "Sango", description: "Demon slayer, sole survivor of her village." },
+        { nom: "Naraku", description: "Evil half-demon, manipulative main antagonist." }
+      ]
+    },
+    // Erased (id: 101)
+    101: {
+      resume: "Satoru Fujinuma possesses an involuntary power called 'Revival': he is sent back a few minutes in the past just before a fatal accident occurs, giving him a chance to prevent it. When his mother is murdered, Satoru is sent back not a few minutes but 18 years, into his body as a 10-year-old child. He realizes the murder is linked to a series of child kidnappings from his elementary school in 1988. To save his mother, he must first save Kayo Hinazuki, his abused classmate who was the first victim. A gripping thriller about time and regrets.",
+      bioAuteur: "Kei Sanbe is a Japanese mangaka. Erased (Boku dake ga Inai Machi) is his best-known work, adapted into an acclaimed anime and live-action film.",
+      avis: "A captivating time thriller. The plot is perfectly constructed and emotion omnipresent. Controversial ending but excellent journey.",
+      personnages: [
+        { nom: "Satoru Fujinuma", description: "Failed mangaka with the Revival power." },
+        { nom: "Kayo Hinazuki", description: "Isolated and abused classmate." },
+        { nom: "Sachiko Fujinuma", description: "Satoru's mother, perceptive and loving." },
+        { nom: "Kenya Kobayashi", description: "Intelligent childhood friend, helps Satoru." },
+        { nom: "Gaku Yashiro", description: "Charismatic teacher of young Satoru." }
+      ]
+    },
+    // Food Wars (id: 94)
+    94: {
+      resume: "Soma Yukihira dreams of surpassing his father, chef of the family restaurant. When his father leaves to work abroad, he sends Soma to Totsuki, Japan's most elite culinary academy where only 10% of students graduate. Soma discovers Shokugeki there, culinary duels where students bet their future. With his creative and economical cooking style, he challenges the school's gastronomic elite. The dishes are so delicious they provoke 'foodgasms' in tasters. A manga that mixes intense competition and spicy humor.",
+      bioAuteur: "Yuto Tsukuda (writer) and Shun Saeki (artist) with collaboration from chef Yuki Morisaki for recipes. Food Wars popularized culinary manga.",
+      avis: "Epic and appetizing cooking battles. The ecchi humor may divide but the Shokugeki are addictive.",
+      personnages: [
+        { nom: "Soma Yukihira", description: "Creative chef from the family restaurant, provocative." },
+        { nom: "Erina Nakiri", description: "Totsuki heiress with the 'Divine Palate'." },
+        { nom: "Megumi Tadokoro", description: "Shy cook with comforting dishes." },
+        { nom: "Takumi Aldini", description: "Italian chef, declared rival of Soma." },
+        { nom: "Joichiro Yukihira", description: "Soma's father, legendary chef." }
+      ]
+    },
+    // Soul Eater (id: 95)
+    95: {
+      resume: "At Death City, Shibusen academy trains meister/weapon pairs to combat evil forces. Weapons are humans capable of transforming into combat instruments. Maka Albarn and her scythe Soul Eater aim to collect 99 demon souls and one witch soul to transform Soul into a Death Scythe, the personal weapon of the Death God. Alongside Black Star and his ninja weapon Tsubaki, and Death the Kid with his twin pistols, they face witches and threats against the madness threatening to consume the world.",
+      bioAuteur: "Atsushi Ohkubo was born September 24, 1979. Soul Eater is his first major success, recognized for its unique graphic style inspired by Tim Burton.",
+      avis: "An irresistible gothic-cool universe. Ohkubo's style is unique and the characters memorable.",
+      personnages: [
+        { nom: "Maka Albarn", description: "Studious meister, wields the scythe Soul." },
+        { nom: "Soul Eater Evans", description: "'Cool' scythe, Maka's partner." },
+        { nom: "Black Star", description: "Arrogant ninja aiming to surpass the gods." },
+        { nom: "Death the Kid", description: "Son of the Death God, obsessed with symmetry." },
+        { nom: "Medusa", description: "Snake witch, main antagonist." }
+      ]
+    },
+    // Blue Exorcist (id: 75)
+    75: {
+      resume: "Rin Okumura is a brawling teenager raised by Father Shiro Fujimoto in a monastery. The day demons attack him, he discovers the truth: he is the son of Satan, born of a human. His adoptive father dies protecting him from Satan who wants to reclaim his son. Rin inherits Satan's blue flames and decides to become an exorcist to avenge Shiro and defeat his biological father. He joins True Cross Academy with his twin brother Yukio, who is already an exorcist. Rin must hide his demonic nature while learning to control his powers and fight demons from Gehenna.",
+      bioAuteur: "Kazue Kato was born July 20, 1980. Blue Exorcist is her major work, serialized from 2009 to 2024. She mixes action, humor and family themes in a rich universe.",
+      avis: "A solid supernatural shonen with excellent worldbuilding. The relationship between Rin and Yukio is the emotional heart of the story.",
+      personnages: [
+        { nom: "Rin Okumura", description: "Satan's son with blue flames, aspires to become an exorcist." },
+        { nom: "Yukio Okumura", description: "Rin's twin brother, exorcist prodigy and teacher." },
+        { nom: "Shiemi Moriyama", description: "Rin's friend, medicinal plant specialist." },
+        { nom: "Ryuji Suguro", description: "Rin's rival, heir to a Buddhist temple." },
+        { nom: "Mephisto Pheles", description: "Academy director, demon with mysterious intentions." }
+      ]
+    },
+    // Black Butler (id: 76)
+    76: {
+      resume: "England, Victorian era. Ciel Phantomhive, 12, is the count of the Phantomhive house, watchdog of Queen Victoria tasked with solving the empire's dark affairs. After his parents' murder and his own torture, Ciel made a pact with a demon: in exchange for his soul, the demon Sebastian Michaelis serves him as a perfect butler and helps in his revenge. Sebastian is an impeccable servant: cooking, combat, investigation, nothing is impossible for him. Together, they solve criminal cases for the queen while tracking those who destroyed the Phantomhive family.",
+      bioAuteur: "Yana Toboso was born January 24, 1984. Black Butler is her main work, known for its Victorian gothic aesthetic and charismatic characters.",
+      avis: "An elegant gothic manga mixing mystery and action. The Ciel/Sebastian duo is iconic and the Victorian atmosphere perfectly rendered.",
+      personnages: [
+        { nom: "Ciel Phantomhive", description: "Young count, queen's watchdog, sold his soul." },
+        { nom: "Sebastian Michaelis", description: "Perfect demon butler, bound by contract to Ciel." },
+        { nom: "Baldroy", description: "Manor cook, former American soldier." },
+        { nom: "Finnian", description: "Gardener with superhuman strength." },
+        { nom: "Grell Sutcliff", description: "Eccentric Shinigami obsessed with Sebastian." }
+      ]
+    },
+    // My Dress-Up Darling (id: 77)
+    77: {
+      resume: "Wakana Gojo is a lonely high schooler passionate about making traditional hina dolls, a hobby he hides for fear of being mocked. One day, Marin Kitagawa, the most popular girl in his class, discovers his sewing talents. A fan of video games and anime, she dreams of cosplay but can't sew. She asks Wakana to create her costumes. Despite their opposite personalities, a bond forms between the discreet craftsman and the extroverted otaku. Through increasingly elaborate cosplays, their relationship evolves into something deeper.",
+      bioAuteur: "Shinichi Fukuda is a Japanese mangaka. My Dress-Up Darling is his best-known work, acclaimed for its positive portrayal of cosplay and endearing romance.",
+      avis: "A feel-good rom-com about passion and self-acceptance. Marin is a sunny character and the duo's dynamic is adorable.",
+      personnages: [
+        { nom: "Wakana Gojo", description: "High school hina doll craftsman, shy and talented." },
+        { nom: "Marin Kitagawa", description: "Popular gyaru and proud otaku, passionate about cosplay." },
+        { nom: "Sajuna Inui", description: "Famous cosplayer despite her small height." },
+        { nom: "Shinju Inui", description: "Sajuna's older sister, self-conscious about her height." },
+        { nom: "Akira Fukuda", description: "Wakana's grandfather, master doll craftsman." }
+      ]
+    },
+    // Moriarty the Patriot (id: 96)
+    96: {
+      resume: "England, late 19th century. William James Moriarty is an adopted orphan noble of the Moriarty family. Behind his appearance as a gentleman and mathematics professor hides the 'Lord of Crime,' a criminal genius who orchestrates perfect murders to eliminate corrupt aristocrats who oppress the people. With his brothers Albert and Louis, he leads a silent revolution against the British class system. His path eventually crosses that of Sherlock Holmes, and their intellectual confrontation becomes legendary. A brilliant reinterpretation of the Conan Doyle universe from the villain's perspective.",
+      bioAuteur: "Ryosuke Takeuchi (writer) and Hikaru Miyoshi (artist) reinvent the character of Moriarty as a charismatic antihero in this manga published in Jump SQ.",
+      avis: "A fascinating rereading of Sherlock Holmes from the villain's side. Moriarty is a captivating antihero and the plans are brilliant.",
+      personnages: [
+        { nom: "William James Moriarty", description: "Criminal genius, professor and revolutionary." },
+        { nom: "Albert James Moriarty", description: "Elder brother, influential noble and accomplice." },
+        { nom: "Louis James Moriarty", description: "Youngest brother, devoted to William." },
+        { nom: "Sherlock Holmes", description: "Consulting detective, William's intellectual rival." },
+        { nom: "John Watson", description: "Military doctor, Holmes's partner." }
+      ]
+    },
+    // Mashle (id: 74)
+    74: {
+      resume: "In a world where magic is everything, those who cannot use it are eliminated. Mash Burnedead is a young man born without magical powers, secretly raised by his adoptive father in the forest. To compensate for his lack of magic, he trained until developing superhuman physical strength. When his existence is discovered, the only way to survive is to become a Divine Visionary, the highest title at Easton magic academy. Mash therefore joins this prestigious school where he solves all magical problems... with his fists. A hilarious parody of Harry Potter where muscles replace the wand.",
+      bioAuteur: "Hajime Komoto is a Japanese mangaka. Mashle is his first major series, published in Weekly Shonen Jump from 2020 to 2023. His absurd humor and Harry Potter references won over readers.",
+      avis: "A hilarious action comedy. The concept is simple but perfectly executed. Mash is an irresistible protagonist.",
+      personnages: [
+        { nom: "Mash Burnedead", description: "Protagonist without magic but with superhuman strength, obsessed with cream puffs." },
+        { nom: "Finn Ames", description: "Mash's first friend at Easton, timid but loyal." },
+        { nom: "Lance Crown", description: "Talented mage who becomes Mash's friend after facing him." },
+        { nom: "Dot Barrett", description: "Explosive student, rival then ally of Mash." },
+        { nom: "Rayne Ames", description: "Finn's older brother, prefect and Divine Visionary." }
+      ]
+    },
+    // Ouran High School Host Club (id: 44)
+    44: {
+      resume: "Haruhi Fujioka, a girl from a modest background, enrolled at the prestigious Ouran High School through a scholarship. While looking for a quiet place to study, she enters music room #3 occupied by the Host Club, a group of handsome rich boys who entertain female students. By breaking an 8-million-yen vase, Haruhi must repay her debt by working as a host. Mistaken for a boy because of her androgynous appearance, she plays along and becomes popular for her refreshing sincerity. Between Tamaki the narcissistic prince, the twins Hikaru and Kaoru, and other eccentric members, Haruhi discovers that these rich boys hide their own flaws.",
+      bioAuteur: "Bisco Hatori was born September 18, 1975. Ouran is her major work, known for its humor and deconstruction of shojo clichés.",
+      avis: "A hilarious parody of genre clichés. The characters are all endearing and funny.",
+      personnages: [
+        { nom: "Haruhi Fujioka", description: "Pragmatic scholarship student, indifferent to gender." },
+        { nom: "Tamaki Suoh", description: "Club president, narcissistic prince with a big heart." },
+        { nom: "Kyoya Ootori", description: "Calculating vice-president, manages finances." },
+        { nom: "Hikaru and Kaoru Hitachiin", description: "Mischievous twins, inseparable." },
+        { nom: "Mitsukuni 'Honey' Haninozuka", description: "Adorable senior, martial arts expert." }
       ]
     }
   }

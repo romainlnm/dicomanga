@@ -24,6 +24,45 @@ function updateThemeIcon(theme) {
 // Initialiser le thème immédiatement
 initTheme();
 
+// ===== LANGUE =====
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function toggleLanguage() {
+  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  localStorage.setItem('lang', currentLang);
+  updateLangToggleUI();
+  updateBackButton();
+
+  // Réafficher le manga avec la nouvelle langue
+  const urlParams = new URLSearchParams(window.location.search);
+  const mangaId = urlParams.get('id');
+  if (mangaId) {
+    afficherDetailManga(parseInt(mangaId));
+  }
+
+  showToast(currentLang === 'fr' ? 'Français activé' : 'English enabled');
+}
+
+function updateLangToggleUI() {
+  const langIcon = document.getElementById('langIcon');
+  if (langIcon) {
+    langIcon.textContent = currentLang.toUpperCase();
+  }
+}
+
+function initLanguage() {
+  currentLang = localStorage.getItem('lang') || 'fr';
+  updateLangToggleUI();
+  updateBackButton();
+}
+
+function updateBackButton() {
+  const backBtn = document.querySelector('.back-btn');
+  if (backBtn) {
+    backBtn.textContent = currentLang === 'en' ? '← Back to library' : '← Retour à la bibliothèque';
+  }
+}
+
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', () => {
   // Rendre la page visible
@@ -31,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (main) {
     main.classList.add('loaded');
   }
+
+  initLanguage();
 
   const urlParams = new URLSearchParams(window.location.search);
   const mangaId = urlParams.get('id');
@@ -71,9 +112,9 @@ function afficherDetailManga(id) {
   if (!manga) {
     container.innerHTML = `
       <div class="no-results">
-        <h2>Manga non trouvé</h2>
-        <p>Ce manga n'existe pas dans notre base de données.</p>
-        <a href="index.html" class="back-btn">Retour à la bibliothèque</a>
+        <h2>${currentLang === 'en' ? 'Manga not found' : 'Manga non trouvé'}</h2>
+        <p>${currentLang === 'en' ? 'This manga does not exist in our database.' : 'Ce manga n\'existe pas dans notre base de données.'}</p>
+        <a href="index.html" class="back-btn">${currentLang === 'en' ? 'Back to library' : 'Retour à la bibliothèque'}</a>
       </div>
     `;
     return;
@@ -100,25 +141,25 @@ function afficherDetailManga(id) {
         <div class="manga-actions">
           <button class="favorite-btn ${estFavori(manga.id) ? 'active' : ''}" onclick="toggleFavoriBtn(${manga.id})">
             <span id="favIcon">${estFavori(manga.id) ? '★' : '☆'}</span>
-            <span id="favText">${estFavori(manga.id) ? 'Dans mes favoris' : 'Ajouter aux favoris'}</span>
+            <span id="favText">${estFavori(manga.id) ? (currentLang === 'en' ? 'In favorites' : 'Dans mes favoris') : (currentLang === 'en' ? 'Add to favorites' : 'Ajouter aux favoris')}</span>
           </button>
           <button class="alire-btn ${estALire(manga.id) ? 'active' : ''}" onclick="toggleALireBtn(${manga.id})">
             <span id="alireIcon">${estALire(manga.id) ? '📖' : '📚'}</span>
-            <span id="alireText">${estALire(manga.id) ? 'Dans ma liste' : 'À lire'}</span>
+            <span id="alireText">${estALire(manga.id) ? (currentLang === 'en' ? 'In my list' : 'Dans ma liste') : (currentLang === 'en' ? 'To read' : 'À lire')}</span>
           </button>
           <button class="download-btn ${isOfflineAvailable(manga.id) ? 'downloaded' : ''}" onclick="downloadForOffline(${manga.id})">
             <span id="downloadIcon">${isOfflineAvailable(manga.id) ? '✓' : '↓'}</span>
-            <span id="downloadText">${isOfflineAvailable(manga.id) ? 'Hors-ligne' : 'Télécharger'}</span>
+            <span id="downloadText">${isOfflineAvailable(manga.id) ? (currentLang === 'en' ? 'Offline' : 'Hors-ligne') : (currentLang === 'en' ? 'Download' : 'Télécharger')}</span>
           </button>
         </div>
 
         <div class="manga-meta">
           <div class="meta-item">
-            <span class="meta-label">Auteur</span>
+            <span class="meta-label">${currentLang === 'en' ? 'Author' : 'Auteur'}</span>
             <span class="meta-value">${manga.auteur}</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Année</span>
+            <span class="meta-label">${currentLang === 'en' ? 'Year' : 'Année'}</span>
             <span class="meta-value">${manga.annee}</span>
           </div>
           <div class="meta-item">
@@ -126,7 +167,7 @@ function afficherDetailManga(id) {
             <span class="meta-value">${manga.volumes}</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Statut</span>
+            <span class="meta-label">${currentLang === 'en' ? 'Status' : 'Statut'}</span>
             <span class="meta-value">${manga.statut}</span>
           </div>
           <div class="meta-item">
@@ -135,9 +176,9 @@ function afficherDetailManga(id) {
           </div>
           ${manga.anime ? `
           <div class="meta-item anime-link">
-            <span class="meta-label">Adaptation Anime</span>
+            <span class="meta-label">${currentLang === 'en' ? 'Anime Adaptation' : 'Adaptation Anime'}</span>
             <a href="${manga.anime}" target="_blank" class="anime-btn">
-              ▶ Voir l'anime
+              ▶ ${currentLang === 'en' ? 'Watch Anime' : 'Voir l\'anime'}
             </a>
           </div>
           ` : ''}
@@ -145,21 +186,21 @@ function afficherDetailManga(id) {
 
         <!-- Résumé -->
         <div class="manga-section">
-          <h2>Résumé</h2>
-          <p>${manga.resume}</p>
+          <h2>${currentLang === 'en' ? 'Summary' : 'Résumé'}</h2>
+          <p>${getMangaText(manga, 'resume')}</p>
         </div>
 
         <!-- Biographie de l'auteur -->
         <div class="manga-section">
-          <h2>À propos de l'auteur</h2>
-          <p>${manga.bioAuteur}</p>
+          <h2>${currentLang === 'en' ? 'About the Author' : 'À propos de l\'auteur'}</h2>
+          <p>${getMangaText(manga, 'bioAuteur')}</p>
         </div>
 
         <!-- Personnages -->
         <div class="manga-section">
-          <h2>Personnages principaux</h2>
+          <h2>${currentLang === 'en' ? 'Main Characters' : 'Personnages principaux'}</h2>
           <div class="characters-grid">
-            ${manga.personnages.map(perso => `
+            ${getMangaCharacters(manga).map(perso => `
               <div class="character-card">
                 ${perso.image
                   ? `<img src="${perso.image}" alt="${perso.nom}" class="character-img" onerror="this.style.display='none'">`
@@ -174,45 +215,45 @@ function afficherDetailManga(id) {
 
         <!-- Avis général -->
         <div class="manga-section review-section">
-          <h2>Notre avis</h2>
+          <h2>${currentLang === 'en' ? 'Our Review' : 'Notre avis'}</h2>
           <div class="rating-display">
             <span class="rating-number">${manga.note}</span>
             <span class="rating-stars">${'★'.repeat(manga.note)}${'☆'.repeat(10 - manga.note)}</span>
           </div>
-          <p>${manga.avis}</p>
+          <p>${getMangaText(manga, 'avis')}</p>
         </div>
 
         <!-- Ma note personnelle -->
         <div class="manga-section user-rating-section">
-          <h2>Ma note</h2>
+          <h2>${currentLang === 'en' ? 'My Rating' : 'Ma note'}</h2>
           <div class="user-rating-container">
             <div class="user-rating-stars" id="userRatingStars">
               ${[1,2,3,4,5,6,7,8,9,10].map(n => `
                 <span class="user-star ${getUserRating(manga.id) >= n ? 'active' : ''}" data-rating="${n}" onclick="setUserRating(${manga.id}, ${n})">★</span>
               `).join('')}
             </div>
-            <span class="user-rating-value" id="userRatingValue">${getUserRating(manga.id) ? getUserRating(manga.id) + '/10' : 'Non noté'}</span>
+            <span class="user-rating-value" id="userRatingValue">${getUserRating(manga.id) ? getUserRating(manga.id) + '/10' : (currentLang === 'en' ? 'Not rated' : 'Non noté')}</span>
           </div>
         </div>
 
         <!-- Notes personnelles -->
         <div class="manga-section notes-section">
-          <h2>Mes notes</h2>
+          <h2>${currentLang === 'en' ? 'My Notes' : 'Mes notes'}</h2>
           <textarea
             class="notes-textarea"
             id="notesTextarea"
-            placeholder="Écris tes notes sur ce manga..."
+            placeholder="${currentLang === 'en' ? 'Write your notes about this manga...' : 'Écris tes notes sur ce manga...'}"
             onchange="saveNote(${manga.id}, this.value)"
           >${getNote(manga.id)}</textarea>
           <div class="notes-footer">
-            <span class="notes-hint">Sauvegarde automatique</span>
+            <span class="notes-hint">${currentLang === 'en' ? 'Auto-saved' : 'Sauvegarde automatique'}</span>
           </div>
         </div>
 
         ${manga.connexions && manga.connexions.length > 0 ? `
         <!-- Connexions / Même univers -->
         <div class="manga-section connexions-section">
-          <h2>Même univers : ${manga.univers}</h2>
+          <h2>${currentLang === 'en' ? 'Same Universe' : 'Même univers'} : ${manga.univers}</h2>
           <div class="connexions-grid">
             ${manga.connexions.map(connexionId => {
               const connexionManga = getMangaById(connexionId);
@@ -233,7 +274,7 @@ function afficherDetailManga(id) {
 
         <!-- Recommandations -->
         <div class="manga-section">
-          <h2>Mangas similaires</h2>
+          <h2>${currentLang === 'en' ? 'Similar Manga' : 'Mangas similaires'}</h2>
           <div class="similar-grid">
             ${getRecommandations(manga).map(rec => `
               <div class="similar-card" onclick="window.location.href='manga.html?id=${rec.id}'">

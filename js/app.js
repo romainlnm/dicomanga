@@ -932,6 +932,7 @@ function initLanguage() {
   currentLang = localStorage.getItem('lang') || 'fr';
   applyTranslations();
   updateLangUI();
+  updateLangToggleUI();
 }
 
 function toggleLangPicker() {
@@ -961,6 +962,26 @@ function setLanguage(lang) {
   if (picker) picker.classList.remove('active');
 
   showToast(lang === 'fr' ? 'Langue changée' : lang === 'en' ? 'Language changed' : lang === 'es' ? 'Idioma cambiado' : '言語を変更しました');
+}
+
+function toggleLanguage() {
+  const newLang = currentLang === 'fr' ? 'en' : 'fr';
+  currentLang = newLang;
+  localStorage.setItem('lang', newLang);
+  applyTranslations();
+  updateLangToggleUI();
+
+  // Réafficher les mangas avec la nouvelle langue
+  afficherMangas(mangas);
+
+  showToast(newLang === 'fr' ? 'Français activé' : 'English enabled');
+}
+
+function updateLangToggleUI() {
+  const langIcon = document.getElementById('langIcon');
+  if (langIcon) {
+    langIcon.textContent = currentLang.toUpperCase();
+  }
 }
 
 function updateLangUI() {

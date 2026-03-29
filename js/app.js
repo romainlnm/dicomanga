@@ -76,7 +76,15 @@ const translations = {
     aboutAuthor: "À propos de l'auteur",
     sameUniverse: "Même univers",
     totalMangas: "mangas",
-    totalAuthors: "auteurs"
+    totalAuthors: "auteurs",
+    compareBtn: "Comparer",
+    findNextManga: "Découvre ton prochain manga",
+    topManga: "Top Mangas",
+    randomManga: "Manga aléatoire",
+    myStats: "Mes Stats",
+    chooseManga: "Choisir un manga...",
+    recommend: "Recommander",
+    recoSubtitle: "Sélectionne un manga que tu adores et laisse la magie opérer"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -115,7 +123,15 @@ const translations = {
     aboutAuthor: "About the author",
     sameUniverse: "Same universe",
     totalMangas: "manga",
-    totalAuthors: "authors"
+    totalAuthors: "authors",
+    compareBtn: "Compare",
+    findNextManga: "Find your next manga",
+    topManga: "Top Manga",
+    randomManga: "Random Manga",
+    myStats: "My Stats",
+    chooseManga: "Choose a manga...",
+    recommend: "Recommend",
+    recoSubtitle: "Select a manga you love and let the magic happen"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",

@@ -98,7 +98,7 @@
       </button>
       <button class="compare-toggle" onclick="toggleModeComparaison()">
         <span>⚖️</span>
-        <span id="compareText">Comparer</span>
+        <span id="compareText" data-i18n="compareBtn">Comparer</span>
       </button>
     </div>
   </header>
@@ -131,13 +131,13 @@
     <!-- Section Recommandations -->
     <section class="recommendations-hero" id="recommendationsSection">
       <span class="reco-icon">🔮</span>
-      <h2>Découvre ton prochain manga</h2>
-      <p>Sélectionne un manga que tu adores et laisse la magie opérer</p>
+      <h2 data-i18n="findNextManga">Découvre ton prochain manga</h2>
+      <p data-i18n="recoSubtitle">Sélectionne un manga que tu adores et laisse la magie opérer</p>
       <div class="reco-input-group">
         <select id="recoSelect">
-          <option value="">Choisir un manga...</option>
+          <option value="" data-i18n="chooseManga">Choisir un manga...</option>
         </select>
-        <button onclick="genererRecommandations()">✨ Recommander</button>
+        <button onclick="genererRecommandations()">✨ <span data-i18n="recommend">Recommander</span></button>
       </div>
       <div class="recommendations-result" id="recoResult" style="display: none;">
         <!-- Résultats générés par JS -->
@@ -146,7 +146,7 @@
 
     <!-- Section Classements -->
     <section class="classements" id="classementsSection">
-      <h2 class="section-title">Top Mangas</h2>
+      <h2 class="section-title" data-i18n="topManga">Top Mangas</h2>
       <div class="classements-tabs" id="classementsTabs">
         <button class="classement-tab active" data-category="all" onclick="afficherClassement('all')">Meilleurs notés</button>
         <button class="classement-tab" data-category="shonen" onclick="afficherClassement('shonen')">Shonen</button>
@@ -188,8 +188,8 @@
             <button class="size-btn" data-size="large" onclick="setCardSize('large')" title="Grand">L</button>
           </div>
         </div>
-        <a href="stats.html" class="nav-btn">📊 Mes Stats</a>
-                <button class="random-btn" onclick="mangaAleatoire()">🎲 Manga aléatoire</button>
+        <a href="stats.html" class="nav-btn">📊 <span data-i18n="myStats">Mes Stats</span></a>
+                <button class="random-btn" onclick="mangaAleatoire()">🎲 <span data-i18n="randomManga">Manga aléatoire</span></button>
       </div>
     </div>
 

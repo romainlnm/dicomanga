@@ -1522,7 +1522,7 @@ const mangas = [
   ],
   "avis": "Une lettre d'amour aux super-héros avec une touche japonaise unique. Les personnages sont tous mémorables.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/my-hero-academia-1629",
+  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322",
   "dernierTome": { "numero": 42, "date": "2024-08" }
 },
   {
@@ -2684,7 +2684,7 @@ const mangas = [
   ],
   "avis": "Un spin-off fun pour les fans de MHA. Les combinaisons de personnages sont créatives et le ton léger rafraîchissant.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/my-hero-academia-1629"
+  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322"
 },
   {
   "id": 68,

@@ -1092,8 +1092,9 @@ function toggleLanguage() {
   applyTranslations();
   updateLangToggleUI();
 
-  // Réafficher les mangas avec la nouvelle langue
+  // Réafficher les mangas et le manga du jour avec la nouvelle langue
   afficherMangas(mangas);
+  afficherMangaDuJour();
 
   showToast(newLang === 'fr' ? 'Français activé' : 'English enabled');
 }

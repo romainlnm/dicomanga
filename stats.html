@@ -19,7 +19,7 @@
       <div class="logo-group">
         <a href="index.html" class="logo">
           <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
-          <span>Un dictionnaire de mangas</span>
+          <span data-i18n="siteSubtitle">Un dictionnaire de mangas</span>
         </a>
         <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
           <span id="themeIcon">☀️</span>
@@ -29,11 +29,11 @@
   </header>
 
   <main>
-    <a href="index.html" class="back-btn">
+    <a href="index.html" class="back-btn" data-i18n="backToLibrary">
       ← Retour à la bibliothèque
     </a>
 
-    <h1 class="page-title">Mes Statistiques</h1>
+    <h1 class="page-title" data-i18n="myStatistics">Mes Statistiques</h1>
 
     <!-- Stats globales -->
     <div class="stats-dashboard">
@@ -41,39 +41,39 @@
         <div class="stat-card">
           <div class="stat-icon">★</div>
           <div class="stat-value" id="totalFavoris">0</div>
-          <div class="stat-label">Favoris</div>
+          <div class="stat-label" data-i18n="favorites">Favoris</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">📚</div>
           <div class="stat-value" id="totalALire">0</div>
-          <div class="stat-label">À lire</div>
+          <div class="stat-label" data-i18n="toRead">À lire</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">⭐</div>
           <div class="stat-value" id="mangasNotes">0</div>
-          <div class="stat-label">Mangas notés</div>
+          <div class="stat-label" data-i18n="ratedManga">Mangas notés</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">📊</div>
           <div class="stat-value" id="noteMoyenne">-</div>
-          <div class="stat-label">Note moyenne</div>
+          <div class="stat-label" data-i18n="averageRating">Note moyenne</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">📅</div>
           <div class="stat-value" id="mangasVus">0</div>
-          <div class="stat-label">Consultés</div>
+          <div class="stat-label" data-i18n="viewed">Consultés</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">🔥</div>
           <div class="stat-value" id="streakJours">0</div>
-          <div class="stat-label">Jours actif</div>
+          <div class="stat-label" data-i18n="activeDays">Jours actif</div>
         </div>
       </div>
     </div>
 
     <!-- Genres préférés -->
     <section class="stats-section">
-      <h2>Genres préférés</h2>
+      <h2 data-i18n="favoriteGenres">Genres préférés</h2>
       <div class="genres-chart" id="genresChart">
         <!-- Généré par JS -->
       </div>
@@ -81,7 +81,7 @@
 
     <!-- Top auteurs -->
     <section class="stats-section">
-      <h2>Top 3 Auteurs</h2>
+      <h2 data-i18n="topAuthors">Top 3 Auteurs</h2>
       <div class="auteurs-list" id="auteursList">
         <!-- Généré par JS -->
       </div>
@@ -89,7 +89,7 @@
 
     <!-- Notes données -->
     <section class="stats-section">
-      <h2>Mes notes personnelles</h2>
+      <h2 data-i18n="myPersonalRatings">Mes notes personnelles</h2>
       <div class="notes-grid" id="notesGrid">
         <!-- Généré par JS -->
       </div>

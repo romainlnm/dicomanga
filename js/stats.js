@@ -1,3 +1,102 @@
+// ===== TRADUCTIONS =====
+const translations = {
+  fr: {
+    siteSubtitle: "Un dictionnaire de mangas",
+    favorites: "Mes Favoris",
+    toRead: "Ma Liste À lire",
+    backToLibrary: "← Retour à la bibliothèque",
+    myStatistics: "Mes Statistiques",
+    ratedManga: "Mangas notés",
+    averageRating: "Note moyenne",
+    viewed: "Consultés",
+    activeDays: "Jours actif",
+    favoriteGenres: "Genres préférés",
+    topAuthors: "Top 3 Auteurs",
+    myPersonalRatings: "Mes notes personnelles",
+    noGenresYet: "Ajoutez des mangas à vos favoris pour voir vos genres préférés.",
+    noAuthorsYet: "Ajoutez des mangas à vos favoris pour voir vos auteurs préférés.",
+    noRatingsYet: "Notez vos mangas sur leurs pages pour les voir ici.",
+    myRating: "Ma note",
+    manga: "manga",
+    mangaPlural: "mangas"
+  },
+  en: {
+    siteSubtitle: "A manga dictionary",
+    favorites: "My Favorites",
+    toRead: "My Reading List",
+    backToLibrary: "← Back to library",
+    myStatistics: "My Statistics",
+    ratedManga: "Rated manga",
+    averageRating: "Average rating",
+    viewed: "Viewed",
+    activeDays: "Active days",
+    favoriteGenres: "Favorite genres",
+    topAuthors: "Top 3 Authors",
+    myPersonalRatings: "My personal ratings",
+    noGenresYet: "Add manga to your favorites to see your favorite genres.",
+    noAuthorsYet: "Add manga to your favorites to see your favorite authors.",
+    noRatingsYet: "Rate manga on their pages to see them here.",
+    myRating: "My rating",
+    manga: "manga",
+    mangaPlural: "manga"
+  },
+  es: {
+    siteSubtitle: "Un diccionario de manga",
+    favorites: "Mis Favoritos",
+    toRead: "Mi Lista de Lectura",
+    backToLibrary: "← Volver a la biblioteca",
+    myStatistics: "Mis Estadísticas",
+    ratedManga: "Manga valorados",
+    averageRating: "Nota media",
+    viewed: "Vistos",
+    activeDays: "Días activo",
+    favoriteGenres: "Géneros favoritos",
+    topAuthors: "Top 3 Autores",
+    myPersonalRatings: "Mis notas personales",
+    noGenresYet: "Añade manga a tus favoritos para ver tus géneros favoritos.",
+    noAuthorsYet: "Añade manga a tus favoritos para ver tus autores favoritos.",
+    noRatingsYet: "Valora manga en sus páginas para verlos aquí.",
+    myRating: "Mi nota",
+    manga: "manga",
+    mangaPlural: "manga"
+  },
+  ja: {
+    siteSubtitle: "漫画辞典",
+    favorites: "お気に入り",
+    toRead: "読みたいリスト",
+    backToLibrary: "← ライブラリに戻る",
+    myStatistics: "マイ統計",
+    ratedManga: "評価した漫画",
+    averageRating: "平均評価",
+    viewed: "閲覧済み",
+    activeDays: "アクティブ日数",
+    favoriteGenres: "好きなジャンル",
+    topAuthors: "トップ3作者",
+    myPersonalRatings: "マイ評価",
+    noGenresYet: "お気に入りに漫画を追加して、好きなジャンルを確認しましょう。",
+    noAuthorsYet: "お気に入りに漫画を追加して、好きな作者を確認しましょう。",
+    noRatingsYet: "漫画のページで評価すると、ここに表示されます。",
+    myRating: "マイ評価",
+    manga: "作品",
+    mangaPlural: "作品"
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function t(key) {
+  return translations[currentLang]?.[key] || translations['fr'][key] || key;
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[currentLang]?.[key]) {
+      el.textContent = translations[currentLang][key];
+    }
+  });
+}
+
 // ===== THEME =====
 function initTheme() {
   const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -152,7 +251,7 @@ function afficherGenresChart() {
   const genres = getGenresPreferes();
 
   if (genres.length === 0) {
-    container.innerHTML = '<p class="no-data">Ajoutez des mangas à vos favoris pour voir vos genres préférés.</p>';
+    container.innerHTML = `<p class="no-data">${t('noGenresYet')}</p>`;
     return;
   }
 
@@ -177,7 +276,7 @@ function afficherAuteurs() {
   const auteurs = getAuteursPreferes();
 
   if (auteurs.length === 0) {
-    container.innerHTML = '<p class="no-data">Ajoutez des mangas à vos favoris pour voir vos auteurs préférés.</p>';
+    container.innerHTML = `<p class="no-data">${t('noAuthorsYet')}</p>`;
     return;
   }
 
@@ -187,7 +286,7 @@ function afficherAuteurs() {
     <div class="auteur-item">
       <span class="auteur-rank">${medailles[index] || ''}</span>
       <span class="auteur-name">${auteur}</span>
-      <span class="auteur-count">${count} manga${count > 1 ? 's' : ''}</span>
+      <span class="auteur-count">${count} ${count > 1 ? t('mangaPlural') : t('manga')}</span>
     </div>
   `).join('');
 }
@@ -197,7 +296,7 @@ function afficherNotesPersonnelles() {
   const mangasNotes = getMangasNotes();
 
   if (mangasNotes.length === 0) {
-    container.innerHTML = '<p class="no-data">Notez vos mangas sur leurs pages pour les voir ici.</p>';
+    container.innerHTML = `<p class="no-data">${t('noRatingsYet')}</p>`;
     return;
   }
 
@@ -210,7 +309,7 @@ function afficherNotesPersonnelles() {
           <div class="encours-bar">
             <div class="encours-fill" style="width: ${manga.userNote * 10}%"></div>
           </div>
-          <span class="encours-text">Ma note: ${'★'.repeat(manga.userNote)}${'☆'.repeat(10 - manga.userNote)} ${manga.userNote}/10</span>
+          <span class="encours-text">${t('myRating')}: ${'★'.repeat(manga.userNote)}${'☆'.repeat(10 - manga.userNote)} ${manga.userNote}/10</span>
         </div>
       </div>
     </div>
@@ -224,6 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (main) {
     main.classList.add('loaded');
   }
+
+  // Appliquer les traductions
+  applyTranslations();
 
   calculerStats();
   afficherGenresChart();

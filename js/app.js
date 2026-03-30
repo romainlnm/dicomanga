@@ -84,7 +84,23 @@ const translations = {
     myStats: "Mes Stats",
     chooseManga: "Choisir un manga...",
     recommend: "Recommander",
-    recoSubtitle: "Sélectionne un manga que tu adores et laisse la magie opérer"
+    recoSubtitle: "Sélectionne un manga que tu adores et laisse la magie opérer",
+    by: "Par",
+    backToLibrary: "← Retour à la bibliothèque",
+    myStatistics: "Mes Statistiques",
+    ratedManga: "Mangas notés",
+    averageRating: "Note moyenne",
+    viewed: "Consultés",
+    activeDays: "Jours actif",
+    favoriteGenres: "Genres préférés",
+    topAuthors: "Top 3 Auteurs",
+    myPersonalRatings: "Mes notes personnelles",
+    noGenresYet: "Ajoutez des mangas à vos favoris pour voir vos genres préférés.",
+    noAuthorsYet: "Ajoutez des mangas à vos favoris pour voir vos auteurs préférés.",
+    noRatingsYet: "Notez vos mangas sur leurs pages pour les voir ici.",
+    myRating: "Ma note",
+    manga: "manga",
+    mangaPlural: "mangas"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -131,7 +147,23 @@ const translations = {
     myStats: "My Stats",
     chooseManga: "Choose a manga...",
     recommend: "Recommend",
-    recoSubtitle: "Select a manga you love and let the magic happen"
+    recoSubtitle: "Select a manga you love and let the magic happen",
+    by: "By",
+    backToLibrary: "← Back to library",
+    myStatistics: "My Statistics",
+    ratedManga: "Rated manga",
+    averageRating: "Average rating",
+    viewed: "Viewed",
+    activeDays: "Active days",
+    favoriteGenres: "Favorite genres",
+    topAuthors: "Top 3 Authors",
+    myPersonalRatings: "My personal ratings",
+    noGenresYet: "Add manga to your favorites to see your favorite genres.",
+    noAuthorsYet: "Add manga to your favorites to see your favorite authors.",
+    noRatingsYet: "Rate manga on their pages to see them here.",
+    myRating: "My rating",
+    manga: "manga",
+    mangaPlural: "manga"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -170,7 +202,23 @@ const translations = {
     aboutAuthor: "Sobre el autor",
     sameUniverse: "Mismo universo",
     totalMangas: "manga",
-    totalAuthors: "autores"
+    totalAuthors: "autores",
+    by: "Por",
+    backToLibrary: "← Volver a la biblioteca",
+    myStatistics: "Mis Estadísticas",
+    ratedManga: "Manga valorados",
+    averageRating: "Nota media",
+    viewed: "Vistos",
+    activeDays: "Días activo",
+    favoriteGenres: "Géneros favoritos",
+    topAuthors: "Top 3 Autores",
+    myPersonalRatings: "Mis notas personales",
+    noGenresYet: "Añade manga a tus favoritos para ver tus géneros favoritos.",
+    noAuthorsYet: "Añade manga a tus favoritos para ver tus autores favoritos.",
+    noRatingsYet: "Valora manga en sus páginas para verlos aquí.",
+    myRating: "Mi nota",
+    manga: "manga",
+    mangaPlural: "manga"
   },
   ja: {
     siteSubtitle: "漫画辞典",
@@ -209,7 +257,23 @@ const translations = {
     aboutAuthor: "作者について",
     sameUniverse: "同じ世界",
     totalMangas: "作品",
-    totalAuthors: "作者"
+    totalAuthors: "作者",
+    by: "作者：",
+    backToLibrary: "← ライブラリに戻る",
+    myStatistics: "マイ統計",
+    ratedManga: "評価した漫画",
+    averageRating: "平均評価",
+    viewed: "閲覧済み",
+    activeDays: "アクティブ日数",
+    favoriteGenres: "好きなジャンル",
+    topAuthors: "トップ3作者",
+    myPersonalRatings: "マイ評価",
+    noGenresYet: "お気に入りに漫画を追加して、好きなジャンルを確認しましょう。",
+    noAuthorsYet: "お気に入りに漫画を追加して、好きな作者を確認しましょう。",
+    noRatingsYet: "漫画のページで評価すると、ここに表示されます。",
+    myRating: "マイ評価",
+    manga: "作品",
+    mangaPlural: "作品"
   }
 };
 
@@ -219,6 +283,44 @@ const langFlags = {
   es: '🇪🇸',
   ja: '🇯🇵'
 };
+
+// Traduction des genres (clé = français, valeur = traductions)
+const genreTranslations = {
+  'Tous': { en: 'All', es: 'Todos', ja: 'すべて' },
+  'Shonen': { en: 'Shonen', es: 'Shonen', ja: '少年' },
+  'Seinen': { en: 'Seinen', es: 'Seinen', ja: '青年' },
+  'Shojo': { en: 'Shojo', es: 'Shojo', ja: '少女' },
+  'Action': { en: 'Action', es: 'Acción', ja: 'アクション' },
+  'Aventure': { en: 'Adventure', es: 'Aventura', ja: '冒険' },
+  'Comédie': { en: 'Comedy', es: 'Comedia', ja: 'コメディ' },
+  'Romance': { en: 'Romance', es: 'Romance', ja: 'ロマンス' },
+  'Fantasy': { en: 'Fantasy', es: 'Fantasía', ja: 'ファンタジー' },
+  'Thriller': { en: 'Thriller', es: 'Thriller', ja: 'スリラー' },
+  'Horreur': { en: 'Horror', es: 'Horror', ja: 'ホラー' },
+  'Sport': { en: 'Sports', es: 'Deportes', ja: 'スポーツ' },
+  'Science-fiction': { en: 'Sci-Fi', es: 'Ciencia ficción', ja: 'SF' },
+  'Cyberpunk': { en: 'Cyberpunk', es: 'Cyberpunk', ja: 'サイバーパンク' },
+  'Dark Fantasy': { en: 'Dark Fantasy', es: 'Dark Fantasy', ja: 'ダークファンタジー' },
+  'Surnaturel': { en: 'Supernatural', es: 'Sobrenatural', ja: '超自然' },
+  'Ninja': { en: 'Ninja', es: 'Ninja', ja: '忍者' },
+  'Magical Girl': { en: 'Magical Girl', es: 'Magical Girl', ja: '魔法少女' },
+  'Psychologique': { en: 'Psychological', es: 'Psicológico', ja: '心理' },
+  'Drame': { en: 'Drama', es: 'Drama', ja: 'ドラマ' },
+  'Tranche de vie': { en: 'Slice of Life', es: 'Recuentos de la vida', ja: '日常' },
+  'Mystère': { en: 'Mystery', es: 'Misterio', ja: 'ミステリー' },
+  'Historique': { en: 'Historical', es: 'Histórico', ja: '歴史' },
+  'Musique': { en: 'Music', es: 'Música', ja: '音楽' },
+  'Isekai': { en: 'Isekai', es: 'Isekai', ja: '異世界' },
+  'Mecha': { en: 'Mecha', es: 'Mecha', ja: 'メカ' },
+  'Arts martiaux': { en: 'Martial Arts', es: 'Artes marciales', ja: '格闘技' },
+  'Ecchi': { en: 'Ecchi', es: 'Ecchi', ja: 'エッチ' },
+  'Mature': { en: 'Mature', es: 'Maduro', ja: '成人向け' }
+};
+
+function translateGenre(genre) {
+  if (currentLang === 'fr') return genre;
+  return genreTranslations[genre]?.[currentLang] || genre;
+}
 
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -1193,18 +1295,21 @@ function afficherMangaDuJour() {
   const index = Math.floor(seededRandom(seed) * mangas.length);
   const manga = mangas[index];
 
+  // Utiliser le résumé traduit si disponible
+  const resume = (currentLang === 'en' && manga.resume_en) ? manga.resume_en : manga.resume;
+
   content.innerHTML = `
     <img src="${manga.couverture}" alt="${manga.titre}" class="mdj-cover"
          onerror="this.style.display='none'">
     <div class="mdj-info">
       <h2 class="mdj-title">${manga.titre}</h2>
-      <p class="mdj-author">Par ${manga.auteur}</p>
-      <p class="mdj-resume">${manga.resume}</p>
+      <p class="mdj-author">${t('by')} ${manga.auteur}</p>
+      <p class="mdj-resume">${resume}</p>
       <div class="mdj-meta">
         <span>${manga.annee}</span>
-        <span>${manga.volumes} volumes</span>
+        <span>${manga.volumes} ${t('volumes')}</span>
         <span>★ ${manga.note}/10</span>
-        <span>${manga.genre[0]}</span>
+        <span>${translateGenre(manga.genre[0])}</span>
       </div>
     </div>
   `;

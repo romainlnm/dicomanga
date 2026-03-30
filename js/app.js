@@ -1075,6 +1075,9 @@ function setLanguage(lang) {
   applyTranslations();
   updateLangUI();
 
+  // Mettre à jour le manga du jour avec la nouvelle langue
+  afficherMangaDuJour();
+
   // Fermer le picker
   const picker = document.getElementById('langPicker');
   if (picker) picker.classList.remove('active');

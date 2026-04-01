@@ -100,7 +100,12 @@ const translations = {
     noRatingsYet: "Notez vos mangas sur leurs pages pour les voir ici.",
     myRating: "Ma note",
     manga: "manga",
-    mangaPlural: "mangas"
+    mangaPlural: "mangas",
+    themeStudio: "Studio couleurs",
+    accentColor: "Couleur d'accent",
+    bgColor: "Couleur de fond",
+    apply: "Appliquer",
+    reset: "Réinitialiser"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -163,7 +168,12 @@ const translations = {
     noRatingsYet: "Rate manga on their pages to see them here.",
     myRating: "My rating",
     manga: "manga",
-    mangaPlural: "manga"
+    mangaPlural: "manga",
+    themeStudio: "Color studio",
+    accentColor: "Accent color",
+    bgColor: "Background color",
+    apply: "Apply",
+    reset: "Reset"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -218,7 +228,12 @@ const translations = {
     noRatingsYet: "Valora manga en sus páginas para verlos aquí.",
     myRating: "Mi nota",
     manga: "manga",
-    mangaPlural: "manga"
+    mangaPlural: "manga",
+    themeStudio: "Estudio de colores",
+    accentColor: "Color de acento",
+    bgColor: "Color de fondo",
+    apply: "Aplicar",
+    reset: "Restablecer"
   },
   ja: {
     siteSubtitle: "漫画辞典",
@@ -273,7 +288,12 @@ const translations = {
     noRatingsYet: "漫画のページで評価すると、ここに表示されます。",
     myRating: "マイ評価",
     manga: "作品",
-    mangaPlural: "作品"
+    mangaPlural: "作品",
+    themeStudio: "カラースタジオ",
+    accentColor: "アクセントカラー",
+    bgColor: "背景色",
+    apply: "適用",
+    reset: "リセット"
   }
 };
 
@@ -1183,19 +1203,19 @@ function initColorTheme() {
   setColorTheme(savedColor, false);
 }
 
-function toggleColorPicker() {
-  const picker = document.getElementById('colorPicker');
-  if (picker) {
-    picker.classList.toggle('active');
+function toggleThemeStudio() {
+  const panel = document.getElementById('themeStudioPanel');
+  if (panel) {
+    panel.classList.toggle('active');
   }
 }
 
-// Fermer le color picker en cliquant ailleurs
+// Fermer le theme studio en cliquant ailleurs
 document.addEventListener('click', (e) => {
-  const picker = document.getElementById('colorPicker');
-  const btn = document.getElementById('colorPickerBtn');
-  if (picker && btn && !picker.contains(e.target) && !btn.contains(e.target)) {
-    picker.classList.remove('active');
+  const panel = document.getElementById('themeStudioPanel');
+  const btn = document.getElementById('themeStudioBtn');
+  if (panel && btn && !panel.contains(e.target) && !btn.contains(e.target)) {
+    panel.classList.remove('active');
   }
 });
 
@@ -1206,12 +1226,6 @@ function setColorTheme(color, save = true) {
   document.querySelectorAll('.color-dot').forEach(dot => {
     dot.classList.toggle('active', dot.dataset.color === color);
   });
-
-  // Fermer le picker après sélection
-  const picker = document.getElementById('colorPicker');
-  if (picker) {
-    picker.classList.remove('active');
-  }
 
   if (save) {
     localStorage.setItem('colorTheme', color);
@@ -1648,25 +1662,6 @@ function setFont(font, save = true) {
 }
 
 // ===== THEME PERSONNALISE =====
-function toggleCustomTheme() {
-  const panel = document.getElementById('customThemePanel');
-  if (panel) {
-    panel.classList.toggle('active');
-    // Fermer les autres pickers
-    document.getElementById('colorPicker')?.classList.remove('active');
-    document.getElementById('langPicker')?.classList.remove('active');
-    document.getElementById('fontPicker')?.classList.remove('active');
-  }
-}
-
-// Fermer le custom theme en cliquant ailleurs
-document.addEventListener('click', (e) => {
-  const panel = document.getElementById('customThemePanel');
-  const btn = document.getElementById('customThemeBtn');
-  if (panel && btn && !panel.contains(e.target) && !btn.contains(e.target)) {
-    panel.classList.remove('active');
-  }
-});
 
 function syncColorInput(inputId) {
   const textInput = document.getElementById(inputId + 'Text');
@@ -1713,7 +1708,7 @@ function applyCustomTheme() {
   document.documentElement.setAttribute('data-color', 'custom');
 
   // Fermer le panel
-  document.getElementById('customThemePanel')?.classList.remove('active');
+  document.getElementById('themeStudioPanel')?.classList.remove('active');
 
   showToast('Thème personnalisé appliqué');
 }
@@ -1731,7 +1726,7 @@ function resetCustomTheme() {
   const savedColor = localStorage.getItem('colorTheme') || 'red';
   setColorTheme(savedColor);
 
-  document.getElementById('customThemePanel')?.classList.remove('active');
+  document.getElementById('themeStudioPanel')?.classList.remove('active');
   showToast('Thème réinitialisé');
 }
 

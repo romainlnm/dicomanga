@@ -28,46 +28,50 @@
           <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
             <span id="langIcon">FR</span>
           </button>
-          <div class="color-picker-wrapper">
-            <button class="color-picker-btn" id="colorPickerBtn" onclick="toggleColorPicker()">
-              <span class="color-picker-icon">🎨</span>
+          <div class="theme-studio-wrapper">
+            <button class="theme-studio-btn" id="themeStudioBtn" onclick="toggleThemeStudio()" title="Personnaliser les couleurs">
+              <svg class="theme-studio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a10 10 0 0 1 0 20" fill="var(--accent)"/>
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+              </svg>
             </button>
-            <div class="color-picker" id="colorPicker">
-              <button class="color-dot" data-color="red" style="--dot-color: #e63946" onclick="setColorTheme('red')"></button>
-              <button class="color-dot" data-color="pink" style="--dot-color: #e91e63" onclick="setColorTheme('pink')"></button>
-              <button class="color-dot" data-color="orange" style="--dot-color: #ff6b35" onclick="setColorTheme('orange')"></button>
-              <button class="color-dot" data-color="yellow" style="--dot-color: #ffc107" onclick="setColorTheme('yellow')"></button>
-              <button class="color-dot" data-color="green" style="--dot-color: #28a745" onclick="setColorTheme('green')"></button>
-              <button class="color-dot" data-color="teal" style="--dot-color: #20c997" onclick="setColorTheme('teal')"></button>
-              <button class="color-dot" data-color="cyan" style="--dot-color: #17a2b8" onclick="setColorTheme('cyan')"></button>
-              <button class="color-dot" data-color="blue" style="--dot-color: #4a90d9" onclick="setColorTheme('blue')"></button>
-              <button class="color-dot" data-color="purple" style="--dot-color: #9b5de5" onclick="setColorTheme('purple')"></button>
-              <button class="color-dot" data-color="violet" style="--dot-color: #7c3aed" onclick="setColorTheme('violet')"></button>
-            </div>
-          </div>
-          <div class="custom-theme-wrapper">
-            <button class="custom-theme-btn" id="customThemeBtn" onclick="toggleCustomTheme()" title="Thème personnalisé">
-              ⚙️
-            </button>
-            <div class="custom-theme-panel" id="customThemePanel">
-              <h3>Thème personnalisé</h3>
-              <div class="color-input-group">
-                <label>Couleur d'accent</label>
-                <div class="color-input-row">
-                  <input type="color" id="customAccent" value="#e63946" onchange="updateCustomTheme()">
-                  <input type="text" id="customAccentText" value="#e63946" oninput="syncColorInput('customAccent')">
+            <div class="theme-studio-panel" id="themeStudioPanel">
+              <div class="theme-studio-header">
+                <span class="theme-studio-title" data-i18n="themeStudio">Studio couleurs</span>
+              </div>
+              <div class="theme-studio-presets">
+                <button class="color-dot" data-color="red" style="--dot-color: #e63946" onclick="setColorTheme('red')"></button>
+                <button class="color-dot" data-color="pink" style="--dot-color: #e91e63" onclick="setColorTheme('pink')"></button>
+                <button class="color-dot" data-color="orange" style="--dot-color: #ff6b35" onclick="setColorTheme('orange')"></button>
+                <button class="color-dot" data-color="yellow" style="--dot-color: #ffc107" onclick="setColorTheme('yellow')"></button>
+                <button class="color-dot" data-color="green" style="--dot-color: #28a745" onclick="setColorTheme('green')"></button>
+                <button class="color-dot" data-color="teal" style="--dot-color: #20c997" onclick="setColorTheme('teal')"></button>
+                <button class="color-dot" data-color="cyan" style="--dot-color: #17a2b8" onclick="setColorTheme('cyan')"></button>
+                <button class="color-dot" data-color="blue" style="--dot-color: #4a90d9" onclick="setColorTheme('blue')"></button>
+                <button class="color-dot" data-color="purple" style="--dot-color: #9b5de5" onclick="setColorTheme('purple')"></button>
+                <button class="color-dot" data-color="violet" style="--dot-color: #7c3aed" onclick="setColorTheme('violet')"></button>
+              </div>
+              <div class="theme-studio-divider"></div>
+              <div class="theme-studio-custom">
+                <div class="color-input-group">
+                  <label data-i18n="accentColor">Couleur d'accent</label>
+                  <div class="color-input-row">
+                    <input type="color" id="customAccent" value="#e63946" onchange="updateCustomTheme()">
+                    <input type="text" id="customAccentText" value="#e63946" oninput="syncColorInput('customAccent')">
+                  </div>
+                </div>
+                <div class="color-input-group">
+                  <label data-i18n="bgColor">Couleur de fond</label>
+                  <div class="color-input-row">
+                    <input type="color" id="customBg" value="#121212" onchange="updateCustomTheme()">
+                    <input type="text" id="customBgText" value="#121212" oninput="syncColorInput('customBg')">
+                  </div>
                 </div>
               </div>
-              <div class="color-input-group">
-                <label>Couleur de fond</label>
-                <div class="color-input-row">
-                  <input type="color" id="customBg" value="#121212" onchange="updateCustomTheme()">
-                  <input type="text" id="customBgText" value="#121212" oninput="syncColorInput('customBg')">
-                </div>
-              </div>
-              <div class="custom-theme-actions">
-                <button class="theme-apply-btn" onclick="applyCustomTheme()">Appliquer</button>
-                <button class="theme-reset-btn" onclick="resetCustomTheme()">Réinitialiser</button>
+              <div class="theme-studio-actions">
+                <button class="theme-apply-btn" onclick="applyCustomTheme()" data-i18n="apply">Appliquer</button>
+                <button class="theme-reset-btn" onclick="resetCustomTheme()" data-i18n="reset">Réinitialiser</button>
               </div>
             </div>
           </div>

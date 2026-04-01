@@ -344,6 +344,12 @@ function translateGenre(genre) {
 
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', () => {
+  // Ne s'exécute que sur la page index (vérifie si la grille existe)
+  const mangaGrid = document.getElementById('mangaGrid');
+  if (!mangaGrid) {
+    return;
+  }
+
   // IMPORTANT: Rendre la page visible en premier
   initAnimations();
 

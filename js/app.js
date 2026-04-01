@@ -1967,3 +1967,348 @@ function isOfflineAvailable(mangaId) {
   return offlineMangas.includes(mangaId);
 }
 
+// ===== PAGE TRANSITIONS =====
+function initPageTransitions() {
+  // Ajouter l'animation d'entrée au chargement
+  const main = document.querySelector('main');
+  if (main) {
+    const direction = sessionStorage.getItem('pageDirection') || 'forward';
+    main.classList.add(direction === 'back' ? 'page-transition-in-reverse' : 'page-transition-in');
+    sessionStorage.removeItem('pageDirection');
+  }
+
+  // Intercepter les clics sur les liens internes
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
+
+    e.preventDefault();
+
+    const main = document.querySelector('main');
+    if (main) {
+      main.classList.remove('page-transition-in', 'page-transition-in-reverse');
+      main.classList.add('page-transition-out');
+
+      setTimeout(() => {
+        sessionStorage.setItem('pageDirection', 'forward');
+        window.location.href = href;
+      }, 250);
+    } else {
+      window.location.href = href;
+    }
+  });
+}
+
+function allerVersMangaAvecTransition(id, direction = 'forward') {
+  const main = document.querySelector('main');
+  if (main) {
+    main.classList.remove('page-transition-in', 'page-transition-in-reverse');
+    main.classList.add('page-transition-out');
+
+    setTimeout(() => {
+      sessionStorage.setItem('pageDirection', direction);
+      window.location.href = `manga.html?id=${id}`;
+    }, 250);
+  } else {
+    window.location.href = `manga.html?id=${id}`;
+  }
+}
+
+// ===== KEYBOARD SHORTCUTS =====
+const keyboardShortcuts = {
+  '/': { action: () => document.getElementById('searchInput')?.focus(), desc: 'Rechercher' },
+  'r': { action: () => mangaAleatoire(), desc: 'Aléatoire', pages: ['index'] },
+  'f': { action: () => toggleFavoriRaccourci(), desc: 'Favori', pages: ['manga'] },
+  'l': { action: () => toggleALireRaccourci(), desc: 'À lire', pages: ['manga'] },
+  'ArrowLeft': { action: () => naviguerManga('prev'), desc: '←', pages: ['manga'] },
+  'ArrowRight': { action: () => naviguerManga('next'), desc: '→', pages: ['manga'] },
+  '?': { action: () => toggleShortcutsHelp(), desc: 'Aide' },
+  'Escape': { action: () => fermerTout(), desc: 'Fermer' }
+};
+
+function initKeyboardShortcuts() {
+  document.addEventListener('keydown', (e) => {
+    // Ignorer si on tape dans un input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+      if (e.key === 'Escape') {
+        e.target.blur();
+      }
+      return;
+    }
+
+    const shortcut = keyboardShortcuts[e.key];
+    if (!shortcut) return;
+
+    // Vérifier si le raccourci est disponible sur cette page
+    const currentPage = window.location.pathname.includes('manga.html') ? 'manga' :
+                        window.location.pathname.includes('stats.html') ? 'stats' : 'index';
+
+    if (shortcut.pages && !shortcut.pages.includes(currentPage)) return;
+
+    e.preventDefault();
+    shortcut.action();
+  });
+}
+
+function toggleFavoriRaccourci() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const mangaId = parseInt(urlParams.get('id'));
+  if (mangaId && typeof toggleFavoriBtn === 'function') {
+    toggleFavoriBtn(mangaId);
+  }
+}
+
+function toggleALireRaccourci() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const mangaId = parseInt(urlParams.get('id'));
+  if (mangaId && typeof toggleALireBtn === 'function') {
+    toggleALireBtn(mangaId);
+  }
+}
+
+function naviguerManga(direction) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentId = parseInt(urlParams.get('id'));
+  if (!currentId) return;
+
+  const currentIndex = mangas.findIndex(m => m.id === currentId);
+  if (currentIndex === -1) return;
+
+  let newIndex;
+  if (direction === 'prev') {
+    newIndex = currentIndex > 0 ? currentIndex - 1 : mangas.length - 1;
+  } else {
+    newIndex = currentIndex < mangas.length - 1 ? currentIndex + 1 : 0;
+  }
+
+  allerVersMangaAvecTransition(mangas[newIndex].id, direction === 'prev' ? 'back' : 'forward');
+}
+
+let shortcutsHelpVisible = false;
+function toggleShortcutsHelp() {
+  let toast = document.querySelector('.shortcuts-toast');
+
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'shortcuts-toast';
+
+    const currentPage = window.location.pathname.includes('manga.html') ? 'manga' : 'index';
+    const shortcuts = [
+      { key: '/', desc: 'Rechercher' },
+      { key: '?', desc: 'Aide' },
+      { key: 'Esc', desc: 'Fermer' }
+    ];
+
+    if (currentPage === 'index') {
+      shortcuts.push({ key: 'R', desc: 'Aléatoire' });
+    } else if (currentPage === 'manga') {
+      shortcuts.push({ key: 'F', desc: 'Favori' });
+      shortcuts.push({ key: 'L', desc: 'À lire' });
+      shortcuts.push({ key: '←/→', desc: 'Naviguer' });
+    }
+
+    toast.innerHTML = shortcuts.map(s => `
+      <div class="shortcut-item">
+        <span class="shortcut-key">${s.key}</span>
+        <span>${s.desc}</span>
+      </div>
+    `).join('');
+
+    document.body.appendChild(toast);
+  }
+
+  shortcutsHelpVisible = !shortcutsHelpVisible;
+  toast.classList.toggle('show', shortcutsHelpVisible);
+
+  if (shortcutsHelpVisible) {
+    setTimeout(() => {
+      toast.classList.remove('show');
+      shortcutsHelpVisible = false;
+    }, 4000);
+  }
+}
+
+function fermerTout() {
+  // Fermer les modales
+  document.getElementById('favoritesModal')?.classList.remove('active');
+  document.getElementById('alireModal')?.classList.remove('active');
+  document.getElementById('comparaisonModal')?.classList.remove('active');
+  document.getElementById('themeStudioPanel')?.classList.remove('active');
+
+  // Fermer l'aide raccourcis
+  document.querySelector('.shortcuts-toast')?.classList.remove('show');
+  shortcutsHelpVisible = false;
+}
+
+// ===== BADGES SYSTEM =====
+const badgeDefinitions = [
+  { id: 'first_favorite', icon: '⭐', name: 'Premier coup de coeur', desc: 'Ajouter un premier favori', condition: () => getFavoris().length >= 1 },
+  { id: 'collector_10', icon: '📚', name: 'Collectionneur', desc: 'Avoir 10 favoris', condition: () => getFavoris().length >= 10 },
+  { id: 'collector_25', icon: '🏆', name: 'Grand collectionneur', desc: 'Avoir 25 favoris', condition: () => getFavoris().length >= 25 },
+  { id: 'first_rating', icon: '✍️', name: 'Critique débutant', desc: 'Noter un premier manga', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 1 },
+  { id: 'critic_10', icon: '🎯', name: 'Critique averti', desc: 'Noter 10 mangas', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 10 },
+  { id: 'critic_25', icon: '🎭', name: 'Critique expert', desc: 'Noter 25 mangas', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 25 },
+  { id: 'reader_list', icon: '📖', name: 'Liste de lecture', desc: 'Ajouter 5 mangas à lire', condition: () => getALire().length >= 5 },
+  { id: 'explorer_20', icon: '🔍', name: 'Explorateur', desc: 'Consulter 20 mangas', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 20 },
+  { id: 'explorer_50', icon: '🗺️', name: 'Grand explorateur', desc: 'Consulter 50 mangas', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 50 },
+  { id: 'streak_3', icon: '🔥', name: 'En forme', desc: '3 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 3 },
+  { id: 'streak_7', icon: '💪', name: 'Assidu', desc: '7 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 7 },
+  { id: 'streak_30', icon: '👑', name: 'Légendaire', desc: '30 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 30 },
+  { id: 'night_owl', icon: '🦉', name: 'Oiseau de nuit', desc: 'Visiter entre minuit et 5h', condition: () => { const h = new Date().getHours(); return h >= 0 && h < 5; } },
+  { id: 'perfectionist', icon: '💯', name: 'Perfectionniste', desc: 'Donner une note de 10/10', condition: () => Object.values(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).some(r => r === 10) },
+  { id: 'theme_changer', icon: '🎨', name: 'Styliste', desc: 'Changer la couleur du thème', condition: () => localStorage.getItem('badgeTrigger_theme') === 'true' }
+];
+
+const badgeTranslations = {
+  fr: {
+    badgesTitle: 'Mes Badges',
+    badgeUnlocked: 'Badge débloqué !',
+    unlockedOn: 'Débloqué le'
+  },
+  en: {
+    badgesTitle: 'My Badges',
+    badgeUnlocked: 'Badge unlocked!',
+    unlockedOn: 'Unlocked on'
+  },
+  es: {
+    badgesTitle: 'Mis Insignias',
+    badgeUnlocked: '¡Insignia desbloqueada!',
+    unlockedOn: 'Desbloqueado el'
+  },
+  ja: {
+    badgesTitle: 'マイバッジ',
+    badgeUnlocked: 'バッジ獲得！',
+    unlockedOn: '獲得日'
+  }
+};
+
+function getBadges() {
+  return JSON.parse(localStorage.getItem('unlockedBadges') || '{}');
+}
+
+function saveBadge(badgeId) {
+  const badges = getBadges();
+  if (!badges[badgeId]) {
+    badges[badgeId] = new Date().toISOString();
+    localStorage.setItem('unlockedBadges', JSON.stringify(badges));
+    return true;
+  }
+  return false;
+}
+
+function checkBadges() {
+  badgeDefinitions.forEach(badge => {
+    if (badge.condition()) {
+      const isNew = saveBadge(badge.id);
+      if (isNew) {
+        showBadgeNotification(badge);
+      }
+    }
+  });
+}
+
+function showBadgeNotification(badge) {
+  // Créer l'overlay
+  let overlay = document.querySelector('.badge-notification-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'badge-notification-overlay';
+    document.body.appendChild(overlay);
+  }
+
+  // Créer la notification
+  let notification = document.querySelector('.badge-notification');
+  if (!notification) {
+    notification = document.createElement('div');
+    notification.className = 'badge-notification';
+    document.body.appendChild(notification);
+  }
+
+  const lang = currentLang || 'fr';
+  const t = badgeTranslations[lang] || badgeTranslations.fr;
+
+  notification.innerHTML = `
+    <span class="badge-notification-icon">${badge.icon}</span>
+    <div class="badge-notification-title">${t.badgeUnlocked}</div>
+    <div class="badge-notification-name">${badge.name}</div>
+    <div class="badge-notification-desc">${badge.desc}</div>
+  `;
+
+  // Afficher
+  setTimeout(() => {
+    overlay.classList.add('show');
+    notification.classList.add('show');
+  }, 100);
+
+  // Masquer après 3 secondes
+  setTimeout(() => {
+    overlay.classList.remove('show');
+    notification.classList.remove('show');
+  }, 3500);
+
+  // Clic pour fermer
+  overlay.onclick = () => {
+    overlay.classList.remove('show');
+    notification.classList.remove('show');
+  };
+}
+
+function renderBadgesSection() {
+  const container = document.getElementById('badgesContainer');
+  if (!container) return;
+
+  const unlockedBadges = getBadges();
+  const lang = currentLang || 'fr';
+  const t = badgeTranslations[lang] || badgeTranslations.fr;
+
+  container.innerHTML = `
+    <h2 class="section-title">${t.badgesTitle}</h2>
+    <div class="badges-grid">
+      ${badgeDefinitions.map(badge => {
+        const isUnlocked = !!unlockedBadges[badge.id];
+        const unlockDate = isUnlocked ? new Date(unlockedBadges[badge.id]).toLocaleDateString(lang) : '';
+        return `
+          <div class="badge-card ${isUnlocked ? 'unlocked' : 'locked'}">
+            <span class="badge-icon">${badge.icon}</span>
+            <div class="badge-name">${badge.name}</div>
+            <div class="badge-desc">${badge.desc}</div>
+            ${isUnlocked ? `<div class="badge-date">${t.unlockedOn} ${unlockDate}</div>` : ''}
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+// Compteur de mangas vus (pour les badges)
+function incrementViewCount() {
+  const count = parseInt(localStorage.getItem('totalViewed') || '0');
+  localStorage.setItem('totalViewed', (count + 1).toString());
+}
+
+// Trigger badge thème
+const originalSetColorTheme = setColorTheme;
+setColorTheme = function(color, save = true) {
+  originalSetColorTheme(color, save);
+  if (save) {
+    localStorage.setItem('badgeTrigger_theme', 'true');
+    checkBadges();
+  }
+};
+
+// Vérifier les badges périodiquement
+function initBadges() {
+  checkBadges();
+  // Vérifier toutes les 30 secondes
+  setInterval(checkBadges, 30000);
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  initPageTransitions();
+  initKeyboardShortcuts();
+  initBadges();
+});

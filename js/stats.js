@@ -331,4 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
   afficherGenresChart();
   afficherAuteurs();
   afficherNotesPersonnelles();
+
+  // Afficher les badges (fonction définie dans app.js)
+  if (typeof renderBadgesSection === 'function') {
+    renderBadgesSection();
+  }
 });

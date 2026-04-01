@@ -80,16 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = parseInt(mangaId);
     afficherDetailManga(id);
     ajouterHistorique(id);
-
-    // Incrémenter le compteur de vues pour les badges
-    if (typeof incrementViewCount === 'function') {
-      incrementViewCount();
-    }
-
-    // Vérifier les badges
-    if (typeof checkBadges === 'function') {
-      checkBadges();
-    }
   } else {
     window.location.href = 'index.html';
   }

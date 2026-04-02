@@ -4959,3 +4959,353 @@ footer span {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 15px;
 }
+
+/* ===== FUZZY SEARCH HIGHLIGHTING ===== */
+.search-highlight {
+  background: rgba(230, 57, 70, 0.3);
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+[data-theme="light"] .search-highlight {
+  background: rgba(230, 57, 70, 0.2);
+}
+
+/* ===== STATS WIDGET (Homepage) ===== */
+.stats-widget {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+}
+
+.stats-widget-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.stats-widget-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 15px 10px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stats-widget-item.clickable {
+  cursor: pointer;
+}
+
+.stats-widget-item.clickable:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.stats-widget-icon {
+  font-size: 1.5rem;
+}
+
+.stats-widget-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stats-widget-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stats-widget-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.stats-widget-link:hover {
+  text-decoration: underline;
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .stats-widget-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .stats-widget-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .stats-widget-item {
+    padding: 10px 5px;
+  }
+
+  .stats-widget-value {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== KEYBOARD NAVIGATION ===== */
+.manga-card.keyboard-focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  transform: scale(1.02);
+  box-shadow: 0 0 30px var(--accent-glow), 0 10px 40px var(--shadow);
+  z-index: 10;
+}
+
+.keyboard-hint {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 20px 30px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 40px var(--accent-glow), 0 10px 30px var(--shadow);
+}
+
+.keyboard-hint.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.keyboard-hint-key {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: monospace;
+}
+
+/* ===== CUSTOM LISTS ===== */
+.lists-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.lists-toggle:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px var(--accent-glow);
+}
+
+.lists-count {
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.create-list-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.create-list-form input {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.create-list-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.create-list-form button {
+  padding: 12px 24px;
+  background: var(--accent);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.create-list-form button:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.custom-lists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.custom-list-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-list-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.custom-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.custom-list-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.custom-list-delete {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  padding: 4px;
+}
+
+.custom-list-delete:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.custom-list-preview {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  height: 60px;
+  align-items: center;
+}
+
+.custom-list-preview img {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.custom-list-more {
+  width: 40px;
+  height: 60px;
+  background: var(--bg-card);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.custom-list-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.back-to-lists {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.back-to-lists:hover {
+  transform: translateX(-5px);
+}
+
+.custom-list-mangas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.custom-list-mangas .manga-card {
+  position: relative;
+}
+
+.remove-from-list-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-list-mangas .manga-card:hover .remove-from-list-btn {
+  opacity: 1;
+}
+
+.remove-from-list-btn:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}

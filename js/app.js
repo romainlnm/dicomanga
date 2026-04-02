@@ -105,7 +105,23 @@ const translations = {
     accentColor: "Couleur d'accent",
     bgColor: "Couleur de fond",
     apply: "Appliquer",
-    reset: "Réinitialiser"
+    reset: "Réinitialiser",
+    lastViewed: "Dernier vu",
+    streak: "Streak",
+    viewAllStats: "Voir toutes mes stats →",
+    customLists: "Mes listes",
+    createList: "Créer une liste",
+    listName: "Nom de la liste",
+    addToList: "Ajouter à une liste",
+    removeFromList: "Retirer de la liste",
+    noLists: "Aucune liste créée",
+    deleteList: "Supprimer la liste",
+    created: "créée",
+    deleted: "supprimée",
+    addedTo: "ajouté à",
+    removedFrom: "retiré de",
+    emptyList: "Cette liste est vide",
+    listExists: "Cette liste existe déjà"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -173,7 +189,23 @@ const translations = {
     accentColor: "Accent color",
     bgColor: "Background color",
     apply: "Apply",
-    reset: "Reset"
+    reset: "Reset",
+    lastViewed: "Last viewed",
+    streak: "Streak",
+    viewAllStats: "View all my stats →",
+    customLists: "My lists",
+    createList: "Create a list",
+    listName: "List name",
+    addToList: "Add to a list",
+    removeFromList: "Remove from list",
+    noLists: "No lists created",
+    deleteList: "Delete list",
+    created: "created",
+    deleted: "deleted",
+    addedTo: "added to",
+    removedFrom: "removed from",
+    emptyList: "This list is empty",
+    listExists: "This list already exists"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -233,7 +265,23 @@ const translations = {
     accentColor: "Color de acento",
     bgColor: "Color de fondo",
     apply: "Aplicar",
-    reset: "Restablecer"
+    reset: "Restablecer",
+    lastViewed: "Último visto",
+    streak: "Racha",
+    viewAllStats: "Ver todas mis estadísticas →",
+    customLists: "Mis listas",
+    createList: "Crear una lista",
+    listName: "Nombre de la lista",
+    addToList: "Añadir a una lista",
+    removeFromList: "Quitar de la lista",
+    noLists: "No hay listas creadas",
+    deleteList: "Eliminar lista",
+    created: "creada",
+    deleted: "eliminada",
+    addedTo: "añadido a",
+    removedFrom: "eliminado de",
+    emptyList: "Esta lista está vacía",
+    listExists: "Esta lista ya existe"
   },
   ja: {
     siteSubtitle: "漫画辞典",
@@ -293,7 +341,23 @@ const translations = {
     accentColor: "アクセントカラー",
     bgColor: "背景色",
     apply: "適用",
-    reset: "リセット"
+    reset: "リセット",
+    lastViewed: "最後に見た",
+    streak: "連続日数",
+    viewAllStats: "すべての統計を見る →",
+    customLists: "マイリスト",
+    createList: "リストを作成",
+    listName: "リスト名",
+    addToList: "リストに追加",
+    removeFromList: "リストから削除",
+    noLists: "リストがありません",
+    deleteList: "リストを削除",
+    created: "作成されました",
+    deleted: "削除されました",
+    addedTo: "に追加",
+    removedFrom: "から削除",
+    emptyList: "このリストは空です",
+    listExists: "このリストは既に存在します"
   }
 };
 
@@ -366,6 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
   afficherActualites();
   afficherMangaDuJour();
   afficherHistorique();
+  initStatsWidget();
+  updateCustomListsCount();
   initColorTheme();
   initViewMode();
   initCardSize();
@@ -485,8 +551,13 @@ function afficherMangas(listMangas) {
 
   // Remplacer par les vraies cartes apres un court delai
   setTimeout(() => {
-    grid.innerHTML = listMangas.map((manga, index) => `
-      <div class="manga-card ${modeComparaison ? 'compare-mode' : ''}" data-genre="${manga.genre[0]}" data-index="${index}" onclick="${modeComparaison ? '' : 'allerVersManga(' + manga.id + ')'}">
+    grid.innerHTML = listMangas.map((manga, index) => {
+      // Appliquer le highlighting si recherche active
+      const displayTitle = currentSearchTerm ? highlightMatch(manga.titre, currentSearchTerm) : manga.titre;
+      const displayAuthor = currentSearchTerm ? highlightMatch(manga.auteur, currentSearchTerm) : manga.auteur;
+
+      return `
+      <div class="manga-card ${modeComparaison ? 'compare-mode' : ''}" data-genre="${manga.genre[0]}" data-index="${index}" data-id="${manga.id}" onclick="${modeComparaison ? '' : 'allerVersManga(' + manga.id + ')'}">
         ${modeComparaison ? `
           <div class="compare-checkbox ${mangasAComparer.includes(manga.id) ? 'checked' : ''}" data-id="${manga.id}" onclick="ajouterComparaison(${manga.id}, event)">
             <span>✓</span>
@@ -499,8 +570,8 @@ function afficherMangas(listMangas) {
           onerror="this.style.display='none'"
         >
         <div class="manga-info">
-          <h3 class="manga-title">${manga.titre}</h3>
-          <p class="manga-author">${manga.auteur}</p>
+          <h3 class="manga-title">${displayTitle}</h3>
+          <p class="manga-author">${displayAuthor}</p>
           <div class="manga-genres">
             ${manga.genre.slice(0, 2).map(g => `<span class="genre-tag" data-genre="${g}">${g}</span>`).join('')}
           </div>
@@ -510,7 +581,7 @@ function afficherMangas(listMangas) {
           </div>
         </div>
       </div>
-    `).join('');
+    `}).join('');
 
     // Animer les cartes en stagger
     animerCartesStagger();
@@ -662,6 +733,137 @@ function filtrerParLettre(lettre, btnElement) {
   appliquerFiltres(searchTerm);
 }
 
+// ===== RECHERCHE FLOUE (FUZZY SEARCH) =====
+// Variable pour stocker le terme de recherche actuel (pour le highlighting)
+let currentSearchTerm = '';
+
+// Calcule la distance de Levenshtein entre deux chaînes
+function levenshteinDistance(a, b) {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  const matrix = [];
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // substitution
+          matrix[i][j - 1] + 1,     // insertion
+          matrix[i - 1][j] + 1      // deletion
+        );
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+// Calcule un score de similarité entre 0 et 1
+function fuzzyScore(query, target) {
+  if (!query || !target) return 0;
+
+  const q = query.toLowerCase().trim();
+  const t = target.toLowerCase().trim();
+
+  // Match exact = score parfait
+  if (t === q) return 1;
+
+  // Contient la query exacte = très bon score
+  if (t.includes(q)) {
+    // Bonus si ça commence par la query
+    if (t.startsWith(q)) return 0.95;
+    return 0.85;
+  }
+
+  // Vérifier si un mot commence par la query
+  const words = t.split(/\s+/);
+  for (const word of words) {
+    if (word.startsWith(q)) return 0.75;
+  }
+
+  // Calcul basé sur Levenshtein pour les typos
+  const distance = levenshteinDistance(q, t);
+  const maxLen = Math.max(q.length, t.length);
+
+  // Score basé sur la distance relative
+  const similarity = 1 - (distance / maxLen);
+
+  // Seuil minimum de similarité
+  if (similarity < 0.3) return 0;
+
+  // Ajuster le score pour les recherches floues
+  return similarity * 0.6;
+}
+
+// Recherche floue dans une liste de mangas
+function fuzzySearchMangas(query, list, threshold = 0.3) {
+  if (!query || query.trim() === '') return list;
+
+  const q = query.toLowerCase().trim();
+
+  const results = list.map(manga => {
+    // Calculer les scores pour titre, auteur et genres
+    const titleScore = fuzzyScore(q, manga.titre);
+    const authorScore = fuzzyScore(q, manga.auteur) * 0.9; // Légèrement moins prioritaire
+    const genreScores = manga.genre.map(g => fuzzyScore(q, g) * 0.8);
+    const maxGenreScore = Math.max(...genreScores, 0);
+
+    // Prendre le meilleur score
+    const bestScore = Math.max(titleScore, authorScore, maxGenreScore);
+
+    return { manga, score: bestScore };
+  });
+
+  // Filtrer par seuil et trier par score décroissant
+  return results
+    .filter(r => r.score >= threshold)
+    .sort((a, b) => b.score - a.score)
+    .map(r => r.manga);
+}
+
+// Met en surbrillance les correspondances dans le texte
+function highlightMatch(text, query) {
+  if (!query || query.trim() === '') return text;
+
+  const q = query.toLowerCase().trim();
+  const t = text.toLowerCase();
+
+  // Recherche de la correspondance exacte d'abord
+  const index = t.indexOf(q);
+  if (index !== -1) {
+    const before = text.substring(0, index);
+    const match = text.substring(index, index + q.length);
+    const after = text.substring(index + q.length);
+    return `${before}<mark class="search-highlight">${match}</mark>${after}`;
+  }
+
+  // Recherche du début de mot correspondant
+  const words = text.split(/(\s+)/);
+  const highlighted = words.map(word => {
+    if (word.toLowerCase().startsWith(q)) {
+      const match = word.substring(0, q.length);
+      const rest = word.substring(q.length);
+      return `<mark class="search-highlight">${match}</mark>${rest}`;
+    }
+    return word;
+  }).join('');
+
+  if (highlighted !== text) return highlighted;
+
+  return text;
+}
+
 function appliquerFiltres(searchTerm = '') {
   // Commencer avec tous les mangas
   mangasFiltres = mangas;
@@ -678,14 +880,12 @@ function appliquerFiltres(searchTerm = '') {
     );
   }
 
-  // Filtrer par recherche
+  // Filtrer par recherche floue
   if (searchTerm) {
-    const terme = searchTerm.toLowerCase();
-    mangasFiltres = mangasFiltres.filter(manga =>
-      manga.titre.toLowerCase().includes(terme) ||
-      manga.auteur.toLowerCase().includes(terme) ||
-      manga.genre.some(g => g.toLowerCase().includes(terme))
-    );
+    currentSearchTerm = searchTerm;
+    mangasFiltres = fuzzySearchMangas(searchTerm, mangasFiltres);
+  } else {
+    currentSearchTerm = '';
   }
 
   afficherMangas(mangasFiltres);
@@ -869,6 +1069,206 @@ function fermerALire(event) {
 
 function fermerALireBtn() {
   fermerModalAvecAnimation('alireModal');
+}
+
+// ===== LISTES PERSONNALISÉES =====
+function getCustomLists() {
+  const lists = localStorage.getItem('mangaCustomLists');
+  return lists ? JSON.parse(lists) : {};
+}
+
+function saveCustomLists(lists) {
+  localStorage.setItem('mangaCustomLists', JSON.stringify(lists));
+}
+
+function createCustomList(name) {
+  if (!name || name.trim() === '') return false;
+
+  const lists = getCustomLists();
+  const trimmedName = name.trim();
+
+  if (lists[trimmedName]) {
+    showToast(t('listExists') || 'Cette liste existe déjà', 'error');
+    return false;
+  }
+
+  lists[trimmedName] = [];
+  saveCustomLists(lists);
+  showToast(`${t('customLists')}: "${trimmedName}" ${t('created') || 'créée'}`);
+  return true;
+}
+
+function deleteCustomList(name) {
+  const lists = getCustomLists();
+  if (lists[name]) {
+    delete lists[name];
+    saveCustomLists(lists);
+    showToast(`${t('customLists')}: "${name}" ${t('deleted') || 'supprimée'}`);
+    return true;
+  }
+  return false;
+}
+
+function addToCustomList(listName, mangaId) {
+  const lists = getCustomLists();
+  if (!lists[listName]) {
+    lists[listName] = [];
+  }
+
+  if (!lists[listName].includes(mangaId)) {
+    lists[listName].push(mangaId);
+    saveCustomLists(lists);
+    const manga = getMangaById(mangaId);
+    showToast(`${manga?.titre || 'Manga'} ${t('addedTo') || 'ajouté à'} "${listName}"`);
+    return true;
+  }
+  return false;
+}
+
+function removeFromCustomList(listName, mangaId) {
+  const lists = getCustomLists();
+  if (lists[listName]) {
+    const index = lists[listName].indexOf(mangaId);
+    if (index !== -1) {
+      lists[listName].splice(index, 1);
+      saveCustomLists(lists);
+      const manga = getMangaById(mangaId);
+      showToast(`${manga?.titre || 'Manga'} ${t('removedFrom') || 'retiré de'} "${listName}"`);
+      return true;
+    }
+  }
+  return false;
+}
+
+function getMangaCustomLists(mangaId) {
+  const lists = getCustomLists();
+  const result = [];
+  for (const [name, mangaIds] of Object.entries(lists)) {
+    if (mangaIds.includes(mangaId)) {
+      result.push(name);
+    }
+  }
+  return result;
+}
+
+function ouvrirCustomLists() {
+  afficherCustomLists();
+  const modal = document.getElementById('customListsModal');
+  if (modal) {
+    modal.classList.remove('closing');
+    modal.classList.add('open');
+  }
+}
+
+function fermerCustomLists(event) {
+  if (event.target === event.currentTarget) {
+    fermerModalAvecAnimation('customListsModal');
+  }
+}
+
+function fermerCustomListsBtn() {
+  fermerModalAvecAnimation('customListsModal');
+}
+
+function afficherCustomLists() {
+  const grid = document.getElementById('customListsGrid');
+  if (!grid) return;
+
+  const lists = getCustomLists();
+  const listNames = Object.keys(lists);
+
+  if (listNames.length === 0) {
+    grid.innerHTML = `<p class="no-favorites">${t('noLists')}</p>`;
+    return;
+  }
+
+  grid.innerHTML = listNames.map(name => {
+    const mangaIds = lists[name];
+    const previewMangas = mangaIds.slice(0, 3).map(id => getMangaById(id)).filter(m => m);
+
+    return `
+      <div class="custom-list-card" onclick="afficherListeDetail('${name}')">
+        <div class="custom-list-header">
+          <h3 class="custom-list-name">${name}</h3>
+          <button class="custom-list-delete" onclick="supprimerListe('${name}', event)" title="${t('deleteList')}">🗑️</button>
+        </div>
+        <div class="custom-list-preview">
+          ${previewMangas.map(m => `<img src="${m.couverture}" alt="${m.titre}" onerror="this.style.display='none'">`).join('')}
+          ${mangaIds.length > 3 ? `<span class="custom-list-more">+${mangaIds.length - 3}</span>` : ''}
+        </div>
+        <span class="custom-list-count">${mangaIds.length} manga${mangaIds.length > 1 ? 's' : ''}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function supprimerListe(name, event) {
+  event.stopPropagation();
+  if (confirm(`${t('deleteList')} "${name}" ?`)) {
+    deleteCustomList(name);
+    afficherCustomLists();
+    updateCustomListsCount();
+  }
+}
+
+function afficherListeDetail(name) {
+  const lists = getCustomLists();
+  const mangaIds = lists[name] || [];
+  const grid = document.getElementById('customListsGrid');
+
+  if (mangaIds.length === 0) {
+    grid.innerHTML = `
+      <button class="back-to-lists" onclick="afficherCustomLists()">← ${t('customLists')}</button>
+      <h3 style="margin: 20px 0;">${name}</h3>
+      <p class="no-favorites">${t('emptyList') || 'Cette liste est vide'}</p>
+    `;
+    return;
+  }
+
+  const mangasList = mangaIds.map(id => getMangaById(id)).filter(m => m);
+
+  grid.innerHTML = `
+    <button class="back-to-lists" onclick="afficherCustomLists()">← ${t('customLists')}</button>
+    <h3 style="margin: 20px 0;">${name} (${mangasList.length})</h3>
+    <div class="custom-list-mangas">
+      ${mangasList.map(manga => `
+        <div class="manga-card visible" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
+          <button class="remove-from-list-btn" onclick="retirerDeListe('${name}', ${manga.id}, event)" title="${t('removeFromList')}">✕</button>
+          <img src="${manga.couverture}" alt="${manga.titre}" class="manga-cover" onerror="this.style.display='none'">
+          <div class="manga-info">
+            <h3 class="manga-title">${manga.titre}</h3>
+            <p class="manga-author">${manga.auteur}</p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function retirerDeListe(listName, mangaId, event) {
+  event.stopPropagation();
+  removeFromCustomList(listName, mangaId);
+  afficherListeDetail(listName);
+  updateCustomListsCount();
+}
+
+function creerNouvelleListe() {
+  const input = document.getElementById('newListName');
+  if (input && input.value.trim()) {
+    if (createCustomList(input.value)) {
+      input.value = '';
+      afficherCustomLists();
+      updateCustomListsCount();
+    }
+  }
+}
+
+function updateCustomListsCount() {
+  const count = document.getElementById('customListsCount');
+  if (count) {
+    const lists = getCustomLists();
+    count.textContent = Object.keys(lists).length;
+  }
 }
 
 // ===== SYSTEME DE COMPARAISON =====
@@ -1069,6 +1469,109 @@ function afficherHistorique() {
       </div>
     </div>
   `).join('');
+}
+
+// ===== WIDGET STATS (ACCUEIL) =====
+function initStatsWidget() {
+  const section = document.getElementById('statsWidgetSection');
+  if (!section) return;
+
+  // Mettre à jour les compteurs
+  const favoris = getFavoris();
+  const aLire = getALire();
+  const historique = JSON.parse(localStorage.getItem('mangaHistorique') || '[]');
+
+  // Favoris count
+  const favCountEl = document.getElementById('widgetFavCount');
+  if (favCountEl) favCountEl.textContent = favoris.length;
+
+  // À lire count
+  const aLireCountEl = document.getElementById('widgetALireCount');
+  if (aLireCountEl) aLireCountEl.textContent = aLire.length;
+
+  // Dernier vu
+  const lastViewedEl = document.getElementById('widgetLastViewedTitle');
+  const lastViewedContainer = document.getElementById('widgetLastViewed');
+  if (lastViewedEl && historique.length > 0) {
+    const lastManga = getMangaById(historique[0]);
+    if (lastManga) {
+      // Tronquer le titre si trop long
+      const maxLen = 12;
+      const displayTitle = lastManga.titre.length > maxLen
+        ? lastManga.titre.substring(0, maxLen) + '...'
+        : lastManga.titre;
+      lastViewedEl.textContent = displayTitle;
+
+      // Rendre cliquable
+      if (lastViewedContainer) {
+        lastViewedContainer.onclick = () => allerVersManga(lastManga.id);
+      }
+    }
+  }
+
+  // Streak (jours consécutifs)
+  const streakEl = document.getElementById('widgetStreak');
+  if (streakEl) {
+    const streak = calculateStreak();
+    streakEl.textContent = streak;
+  }
+
+  // Enregistrer la visite d'aujourd'hui pour le streak
+  recordDailyVisit();
+}
+
+// Calcule le streak (jours consécutifs de visite)
+function calculateStreak() {
+  const visits = JSON.parse(localStorage.getItem('mangaVisitDays') || '[]');
+  if (visits.length === 0) return 0;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayStr = today.toISOString().split('T')[0];
+
+  // Vérifier si aujourd'hui est dans la liste
+  if (!visits.includes(todayStr)) {
+    // Vérifier si hier était le dernier jour
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+    if (!visits.includes(yesterdayStr)) {
+      return 0; // Streak cassé
+    }
+  }
+
+  // Compter les jours consécutifs
+  let streak = 0;
+  const sortedVisits = [...visits].sort().reverse();
+
+  let checkDate = new Date(today);
+  for (const visitStr of sortedVisits) {
+    const checkStr = checkDate.toISOString().split('T')[0];
+    if (visitStr === checkStr) {
+      streak++;
+      checkDate.setDate(checkDate.getDate() - 1);
+    } else if (visitStr < checkStr) {
+      break;
+    }
+  }
+
+  return streak;
+}
+
+// Enregistre une visite quotidienne
+function recordDailyVisit() {
+  const visits = JSON.parse(localStorage.getItem('mangaVisitDays') || '[]');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayStr = today.toISOString().split('T')[0];
+
+  if (!visits.includes(todayStr)) {
+    visits.push(todayStr);
+    // Garder seulement les 365 derniers jours
+    const recentVisits = visits.slice(-365);
+    localStorage.setItem('mangaVisitDays', JSON.stringify(recentVisits));
+  }
 }
 
 // ===== LANGUE =====
@@ -1366,7 +1869,14 @@ function showToast(message, type = 'success') {
 }
 
 // ===== RACCOURCIS CLAVIER =====
+let keyboardFocusIndex = -1;
+
 document.addEventListener('keydown', (e) => {
+  // Ignorer si on est dans un champ de saisie
+  const isInputFocused = document.activeElement.tagName === 'INPUT' ||
+                         document.activeElement.tagName === 'TEXTAREA' ||
+                         document.activeElement.tagName === 'SELECT';
+
   // "/" pour focus sur la recherche
   if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
     const searchInput = document.getElementById('searchInput');
@@ -1376,18 +1886,161 @@ document.addEventListener('keydown', (e) => {
     }
   }
 
-  // "Escape" pour fermer les modals
+  // "Escape" pour fermer les modals ou quitter le focus clavier
   if (e.key === 'Escape') {
-    const modals = ['favoritesModal', 'alireModal', 'comparaisonModal'];
+    // D'abord fermer les modals ouvertes
+    const modals = ['favoritesModal', 'alireModal', 'comparaisonModal', 'customListsModal', 'addToListModal'];
+    let modalClosed = false;
     modals.forEach(id => {
       const modal = document.getElementById(id);
-      if (modal && modal.classList.contains('active')) {
-        modal.classList.remove('active');
+      if (modal && (modal.classList.contains('active') || modal.classList.contains('open'))) {
+        modal.classList.remove('active', 'open');
         document.body.style.overflow = '';
+        modalClosed = true;
       }
     });
+
+    // Si aucune modal fermée, retirer le focus clavier
+    if (!modalClosed && keyboardFocusIndex >= 0) {
+      clearKeyboardFocus();
+    }
+
+    // Fermer le dropdown des genres
+    const dropdown = document.getElementById('genreDropdown');
+    if (dropdown) dropdown.classList.remove('open');
+  }
+
+  // Ne pas traiter les autres raccourcis si dans un champ de saisie
+  if (isInputFocused) return;
+
+  // "G" pour ouvrir/fermer le filtre genres
+  if (e.key === 'g' || e.key === 'G') {
+    const dropdown = document.getElementById('genreDropdown');
+    if (dropdown) {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+      showKeyboardHint('G');
+    }
+  }
+
+  // Flèches pour naviguer entre les cartes
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    const grid = document.getElementById('mangaGrid');
+    if (grid && grid.offsetParent !== null) {
+      e.preventDefault();
+      naviguerCartes(e.key);
+    }
+  }
+
+  // "Enter" pour ouvrir la carte sélectionnée
+  if (e.key === 'Enter' && keyboardFocusIndex >= 0) {
+    e.preventDefault();
+    ouvrirCarteFocus();
+  }
+
+  // "F" pour ajouter aux favoris la carte sélectionnée
+  if ((e.key === 'f' || e.key === 'F') && keyboardFocusIndex >= 0) {
+    e.preventDefault();
+    const cards = document.querySelectorAll('#mangaGrid .manga-card');
+    if (cards[keyboardFocusIndex]) {
+      const mangaId = parseInt(cards[keyboardFocusIndex].dataset.id);
+      if (mangaId) {
+        toggleFavori(mangaId);
+        showKeyboardHint('★');
+      }
+    }
   }
 });
+
+// Navigation entre les cartes avec les flèches
+function naviguerCartes(direction) {
+  const grid = document.getElementById('mangaGrid');
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.manga-card'));
+  if (cards.length === 0) return;
+
+  // Calculer le nombre de colonnes
+  const gridStyle = window.getComputedStyle(grid);
+  const gridColumns = gridStyle.gridTemplateColumns.split(' ').length;
+
+  // Retirer le focus actuel
+  cards.forEach(card => card.classList.remove('keyboard-focus'));
+
+  // Calculer le nouvel index
+  let newIndex = keyboardFocusIndex;
+
+  switch (direction) {
+    case 'ArrowRight':
+      newIndex = keyboardFocusIndex < 0 ? 0 : Math.min(keyboardFocusIndex + 1, cards.length - 1);
+      break;
+    case 'ArrowLeft':
+      newIndex = keyboardFocusIndex < 0 ? 0 : Math.max(keyboardFocusIndex - 1, 0);
+      break;
+    case 'ArrowDown':
+      if (keyboardFocusIndex < 0) {
+        newIndex = 0;
+      } else {
+        newIndex = Math.min(keyboardFocusIndex + gridColumns, cards.length - 1);
+      }
+      break;
+    case 'ArrowUp':
+      if (keyboardFocusIndex < 0) {
+        newIndex = 0;
+      } else {
+        newIndex = Math.max(keyboardFocusIndex - gridColumns, 0);
+      }
+      break;
+  }
+
+  keyboardFocusIndex = newIndex;
+
+  // Appliquer le nouveau focus
+  if (cards[keyboardFocusIndex]) {
+    cards[keyboardFocusIndex].classList.add('keyboard-focus');
+    cards[keyboardFocusIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// Ouvre la carte actuellement focus
+function ouvrirCarteFocus() {
+  const cards = document.querySelectorAll('#mangaGrid .manga-card');
+  if (cards[keyboardFocusIndex]) {
+    const mangaId = cards[keyboardFocusIndex].dataset.id;
+    if (mangaId) {
+      allerVersManga(mangaId);
+    }
+  }
+}
+
+// Retirer le focus clavier
+function clearKeyboardFocus() {
+  keyboardFocusIndex = -1;
+  document.querySelectorAll('.manga-card.keyboard-focus').forEach(card => {
+    card.classList.remove('keyboard-focus');
+  });
+}
+
+// Affiche un indicateur visuel du raccourci
+function showKeyboardHint(key) {
+  // Supprimer un hint existant
+  const existingHint = document.querySelector('.keyboard-hint');
+  if (existingHint) existingHint.remove();
+
+  const hint = document.createElement('div');
+  hint.className = 'keyboard-hint';
+  hint.innerHTML = `<span class="keyboard-hint-key">${key}</span>`;
+  document.body.appendChild(hint);
+
+  // Animation d'entrée
+  setTimeout(() => hint.classList.add('show'), 10);
+
+  // Disparition après 600ms
+  setTimeout(() => {
+    hint.classList.remove('show');
+    setTimeout(() => hint.remove(), 300);
+  }, 600);
+}
 
 // ===== LAZY LOADING DES IMAGES =====
 function initLazyLoading() {

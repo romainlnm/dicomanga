@@ -4654,6 +4654,29 @@ const mangas = [
   "avis": "Le père de tous les mangas de tournoi. L'humour absurde côtoie des combats épiques et émouvants. Un classique incontournable.",
   "note": 8,
   "anime": "https://aniwatchtv.to/ultimate-muscle-3969"
+},
+{
+  "id": 151,
+  "titre": "Kagurabachi",
+  "auteur": "Takeru Hokazono",
+  "genre": ["Shonen", "Action", "Fantasy"],
+  "annee": 2023,
+  "statut": "En cours",
+  "volumes": 7,
+  "couverture": "images/covers/151.webp",
+  "resume": "Chihiro Rokuhira est le fils d'un légendaire forgeron de sabres enchantés, Kunishige. Les lames créées par son père possèdent des pouvoirs surnaturels dévastateurs. Quand un groupe de sorciers maléfiques assassine Kunishige pour voler ses précieuses épées, Chihiro se retrouve seul avec Enten, la lame de feu que son père lui a confiée. Animé par une rage froide et une détermination implacable, il entreprend de traquer les meurtriers et de récupérer les sabres volés, quel qu'en soit le prix. Armé d'Enten qui lui permet de contrôler des flammes dévastatrices, Chihiro plonge dans le monde souterrain de la sorcellerie où les sabres enchantés se vendent à prix d'or aux enchères clandestines. Sur sa route, il croise des alliés improbables et des ennemis redoutables, chacun ayant ses propres raisons de convoiter ces armes légendaires. Kagurabachi est un shonen d'action pure au rythme effréné, porté par un protagoniste stoïque et charismatique et des combats spectaculaires.",
+  "resume_en": "Chihiro Rokuhira is the son of a legendary enchanted sword smith, Kunishige. The blades created by his father possess devastating supernatural powers. When a group of evil sorcerers assassinates Kunishige to steal his precious swords, Chihiro finds himself alone with Enten, the fire blade his father entrusted to him. Driven by cold rage and unwavering determination, he sets out to track down the murderers and recover the stolen swords, whatever the cost. Armed with Enten which allows him to control devastating flames, Chihiro dives into the underground world of sorcery where enchanted swords sell for gold at clandestine auctions. Along the way, he meets unlikely allies and formidable enemies, each with their own reasons for coveting these legendary weapons. Kagurabachi is a pure action shonen with a breakneck pace, carried by a stoic and charismatic protagonist and spectacular fights.",
+  "bioAuteur": "Takeru Hokazono est un mangaka japonais qui a fait ses débuts avec Kagurabachi en 2023 dans le Weekly Shonen Jump. Sa série a immédiatement captivé les lecteurs par son action dynamique et son protagoniste mémorable. Son style graphique énergique et ses combats fluides rappellent les meilleurs shonen d'action modernes.",
+  "personnages": [
+    {"nom": "Chihiro Rokuhira", "description": "Fils du forgeron légendaire, il manie Enten avec une maîtrise mortelle pour venger son père."},
+    {"nom": "Kunishige Rokuhira", "description": "Le père de Chihiro, forgeron de génie assassiné pour ses sabres enchantés."},
+    {"nom": "Shiba", "description": "Un mystérieux allié qui aide Chihiro dans sa quête de vengeance."},
+    {"nom": "Hakuri Sazanami", "description": "Jeune homme issu d'une famille de sorciers, il devient un allié de Chihiro."},
+    {"nom": "Char", "description": "Une jeune fille liée au monde souterrain qui croise la route de Chihiro."}
+  ],
+  "avis": "Un shonen d'action explosif qui ne perd pas de temps. Chihiro est un protagoniste rafraîchissant, froid mais attachant, et les combats sont superbement chorégraphiés.",
+  "note": 8,
+  "anime": "https://aniwatchtv.to/kagurabachi-19318"
 }
 ];
 

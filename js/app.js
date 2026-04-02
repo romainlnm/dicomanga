@@ -121,7 +121,8 @@ const translations = {
     addedTo: "ajouté à",
     removedFrom: "retiré de",
     emptyList: "Cette liste est vide",
-    listExists: "Cette liste existe déjà"
+    listExists: "Cette liste existe déjà",
+    enterListName: "Entre un nom de liste"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -205,7 +206,8 @@ const translations = {
     addedTo: "added to",
     removedFrom: "removed from",
     emptyList: "This list is empty",
-    listExists: "This list already exists"
+    listExists: "This list already exists",
+    enterListName: "Enter a list name"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -281,7 +283,8 @@ const translations = {
     addedTo: "añadido a",
     removedFrom: "eliminado de",
     emptyList: "Esta lista está vacía",
-    listExists: "Esta lista ya existe"
+    listExists: "Esta lista ya existe",
+    enterListName: "Introduce un nombre de lista"
   },
   ja: {
     siteSubtitle: "漫画辞典",
@@ -357,7 +360,8 @@ const translations = {
     addedTo: "に追加",
     removedFrom: "から削除",
     emptyList: "このリストは空です",
-    listExists: "このリストは既に存在します"
+    listExists: "このリストは既に存在します",
+    enterListName: "リスト名を入力してください"
   }
 };
 
@@ -1254,12 +1258,22 @@ function retirerDeListe(listName, mangaId, event) {
 
 function creerNouvelleListe() {
   const input = document.getElementById('newListName');
-  if (input && input.value.trim()) {
-    if (createCustomList(input.value)) {
-      input.value = '';
-      afficherCustomLists();
-      updateCustomListsCount();
-    }
+  if (!input) {
+    console.error('Input newListName not found');
+    return;
+  }
+
+  const listName = input.value.trim();
+  if (!listName) {
+    showToast(t('enterListName') || 'Entre un nom de liste', 'error');
+    input.focus();
+    return;
+  }
+
+  if (createCustomList(listName)) {
+    input.value = '';
+    afficherCustomLists();
+    updateCustomListsCount();
   }
 }
 

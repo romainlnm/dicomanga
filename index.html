@@ -347,7 +347,7 @@
       </div>
       <div class="modal-body">
         <div class="create-list-form">
-          <input type="text" id="newListName" placeholder="Nom de la nouvelle liste..." data-i18n-placeholder="listName">
+          <input type="text" id="newListName" placeholder="Nom de la nouvelle liste..." data-i18n-placeholder="listName" onkeypress="if(event.key==='Enter')creerNouvelleListe()">
           <button onclick="creerNouvelleListe()" data-i18n="createList">Créer</button>
         </div>
         <div id="customListsGrid" class="custom-lists-grid">

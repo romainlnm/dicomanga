@@ -151,6 +151,10 @@ function afficherDetailManga(id) {
             <span id="downloadIcon">${isOfflineAvailable(manga.id) ? '✓' : '↓'}</span>
             <span id="downloadText">${isOfflineAvailable(manga.id) ? (currentLang === 'en' ? 'Offline' : 'Hors-ligne') : (currentLang === 'en' ? 'Download' : 'Télécharger')}</span>
           </button>
+          <button class="list-btn" onclick="ouvrirAjouterAListe(${manga.id})">
+            <span>📋</span>
+            <span>${currentLang === 'en' ? 'Add to list' : 'Ajouter à une liste'}</span>
+          </button>
         </div>
 
         <div class="manga-meta">
@@ -481,4 +485,106 @@ function getRecommandations(mangaActuel) {
     .slice(0, 4);
 
   return recommandations;
+}
+
+// ===== LISTES PERSONNALISÉES =====
+function getCustomLists() {
+  const lists = localStorage.getItem('mangaCustomLists');
+  return lists ? JSON.parse(lists) : {};
+}
+
+function saveCustomLists(lists) {
+  localStorage.setItem('mangaCustomLists', JSON.stringify(lists));
+}
+
+function getMangaCustomLists(mangaId) {
+  const lists = getCustomLists();
+  const result = [];
+  for (const [name, mangaIds] of Object.entries(lists)) {
+    if (mangaIds.includes(mangaId)) {
+      result.push(name);
+    }
+  }
+  return result;
+}
+
+function ouvrirAjouterAListe(mangaId) {
+  // Créer la modal si elle n'existe pas
+  let modal = document.getElementById('addToListModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'addToListModal';
+    modal.className = 'modal-overlay';
+    modal.onclick = (e) => {
+      if (e.target === modal) fermerAjouterAListe();
+    };
+    document.body.appendChild(modal);
+  }
+
+  const lists = getCustomLists();
+  const listNames = Object.keys(lists);
+  const mangaLists = getMangaCustomLists(mangaId);
+  const manga = getMangaById(mangaId);
+
+  modal.innerHTML = `
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h2>${currentLang === 'en' ? 'Add to list' : 'Ajouter à une liste'}</h2>
+        <button class="modal-close" onclick="fermerAjouterAListe()">✕</button>
+      </div>
+      <div class="modal-body">
+        ${listNames.length === 0 ? `
+          <p class="no-lists-message">${currentLang === 'en' ? 'No lists created yet.' : 'Aucune liste créée.'}</p>
+          <p class="no-lists-hint">${currentLang === 'en' ? 'Create lists from the homepage (📋 button)' : 'Crée des listes depuis l\'accueil (bouton 📋)'}</p>
+        ` : `
+          <div class="lists-selection">
+            ${listNames.map(name => {
+              const isInList = mangaLists.includes(name);
+              return `
+                <div class="list-option ${isInList ? 'in-list' : ''}" onclick="toggleMangaInList('${name}', ${mangaId})">
+                  <span class="list-option-check">${isInList ? '✓' : ''}</span>
+                  <span class="list-option-name">${name}</span>
+                  <span class="list-option-count">${lists[name].length} manga${lists[name].length > 1 ? 's' : ''}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+
+  modal.classList.add('open');
+}
+
+function fermerAjouterAListe() {
+  const modal = document.getElementById('addToListModal');
+  if (modal) {
+    modal.classList.remove('open');
+  }
+}
+
+function toggleMangaInList(listName, mangaId) {
+  const lists = getCustomLists();
+  const manga = getMangaById(mangaId);
+
+  if (!lists[listName]) {
+    lists[listName] = [];
+  }
+
+  const index = lists[listName].indexOf(mangaId);
+  if (index === -1) {
+    // Ajouter à la liste
+    lists[listName].push(mangaId);
+    showToast(`${manga.titre} ${currentLang === 'en' ? 'added to' : 'ajouté à'} "${listName}"`);
+  } else {
+    // Retirer de la liste
+    lists[listName].splice(index, 1);
+    showToast(`${manga.titre} ${currentLang === 'en' ? 'removed from' : 'retiré de'} "${listName}"`);
+  }
+
+  saveCustomLists(lists);
+
+  // Rafraîchir la modal
+  ouvrirAjouterAListe(mangaId);
 }

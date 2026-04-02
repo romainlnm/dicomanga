@@ -5330,3 +5330,102 @@ footer span {
   background: var(--accent);
   transform: scale(1.1);
 }
+
+/* ===== ADD TO LIST BUTTON (manga page) ===== */
+.list-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== ADD TO LIST MODAL ===== */
+.modal-small {
+  max-width: 400px;
+}
+
+.no-lists-message {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.no-lists-hint {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.lists-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-option:hover {
+  border-color: var(--accent);
+  transform: translateX(5px);
+}
+
+.list-option.in-list {
+  border-color: var(--accent);
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.list-option-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
+.list-option.in-list .list-option-check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.list-option-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.list-option-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}

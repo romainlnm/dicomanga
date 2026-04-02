@@ -2151,45 +2151,123 @@ function fermerTout() {
 
 // ===== BADGES SYSTEM =====
 const badgeDefinitions = [
-  { id: 'first_favorite', icon: '⭐', name: 'Premier coup de coeur', desc: 'Ajouter un premier favori', condition: () => getFavoris().length >= 1 },
-  { id: 'collector_10', icon: '📚', name: 'Collectionneur', desc: 'Avoir 10 favoris', condition: () => getFavoris().length >= 10 },
-  { id: 'collector_25', icon: '🏆', name: 'Grand collectionneur', desc: 'Avoir 25 favoris', condition: () => getFavoris().length >= 25 },
-  { id: 'first_rating', icon: '✍️', name: 'Critique débutant', desc: 'Noter un premier manga', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 1 },
-  { id: 'critic_10', icon: '🎯', name: 'Critique averti', desc: 'Noter 10 mangas', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 10 },
-  { id: 'critic_25', icon: '🎭', name: 'Critique expert', desc: 'Noter 25 mangas', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 25 },
-  { id: 'reader_list', icon: '📖', name: 'Liste de lecture', desc: 'Ajouter 5 mangas à lire', condition: () => getALire().length >= 5 },
-  { id: 'explorer_20', icon: '🔍', name: 'Explorateur', desc: 'Consulter 20 mangas', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 20 },
-  { id: 'explorer_50', icon: '🗺️', name: 'Grand explorateur', desc: 'Consulter 50 mangas', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 50 },
-  { id: 'streak_3', icon: '🔥', name: 'En forme', desc: '3 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 3 },
-  { id: 'streak_7', icon: '💪', name: 'Assidu', desc: '7 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 7 },
-  { id: 'streak_30', icon: '👑', name: 'Légendaire', desc: '30 jours consécutifs', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 30 },
-  { id: 'night_owl', icon: '🦉', name: 'Oiseau de nuit', desc: 'Visiter entre minuit et 5h', condition: () => { const h = new Date().getHours(); return h >= 0 && h < 5; } },
-  { id: 'perfectionist', icon: '💯', name: 'Perfectionniste', desc: 'Donner une note de 10/10', condition: () => Object.values(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).some(r => r === 10) },
-  { id: 'theme_changer', icon: '🎨', name: 'Styliste', desc: 'Changer la couleur du thème', condition: () => localStorage.getItem('badgeTrigger_theme') === 'true' }
+  { id: 'first_favorite', icon: '⭐', condition: () => getFavoris().length >= 1 },
+  { id: 'collector_10', icon: '📚', condition: () => getFavoris().length >= 10 },
+  { id: 'collector_25', icon: '🏆', condition: () => getFavoris().length >= 25 },
+  { id: 'first_rating', icon: '✍️', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 1 },
+  { id: 'critic_10', icon: '🎯', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 10 },
+  { id: 'critic_25', icon: '🎭', condition: () => Object.keys(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).length >= 25 },
+  { id: 'reader_list', icon: '📖', condition: () => getALire().length >= 5 },
+  { id: 'explorer_20', icon: '🔍', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 20 },
+  { id: 'explorer_50', icon: '🗺️', condition: () => JSON.parse(localStorage.getItem('totalViewed') || '0') >= 50 },
+  { id: 'streak_3', icon: '🔥', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 3 },
+  { id: 'streak_7', icon: '💪', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 7 },
+  { id: 'streak_30', icon: '👑', condition: () => parseInt(localStorage.getItem('visitStreak') || '0') >= 30 },
+  { id: 'night_owl', icon: '🦉', condition: () => { const h = new Date().getHours(); return h >= 0 && h < 5; } },
+  { id: 'perfectionist', icon: '💯', condition: () => Object.values(JSON.parse(localStorage.getItem('mangaUserRatings') || '{}')).some(r => r === 10) },
+  { id: 'theme_changer', icon: '🎨', condition: () => localStorage.getItem('badgeTrigger_theme') === 'true' }
 ];
 
 const badgeTranslations = {
   fr: {
     badgesTitle: 'Mes Badges',
     badgeUnlocked: 'Badge débloqué !',
-    unlockedOn: 'Débloqué le'
+    unlockedOn: 'Débloqué le',
+    badges: {
+      first_favorite: { name: 'Premier coup de coeur', desc: 'Ajouter un premier favori' },
+      collector_10: { name: 'Collectionneur', desc: 'Avoir 10 favoris' },
+      collector_25: { name: 'Grand collectionneur', desc: 'Avoir 25 favoris' },
+      first_rating: { name: 'Critique débutant', desc: 'Noter un premier manga' },
+      critic_10: { name: 'Critique averti', desc: 'Noter 10 mangas' },
+      critic_25: { name: 'Critique expert', desc: 'Noter 25 mangas' },
+      reader_list: { name: 'Liste de lecture', desc: 'Ajouter 5 mangas à lire' },
+      explorer_20: { name: 'Explorateur', desc: 'Consulter 20 mangas' },
+      explorer_50: { name: 'Grand explorateur', desc: 'Consulter 50 mangas' },
+      streak_3: { name: 'En forme', desc: '3 jours consécutifs' },
+      streak_7: { name: 'Assidu', desc: '7 jours consécutifs' },
+      streak_30: { name: 'Légendaire', desc: '30 jours consécutifs' },
+      night_owl: { name: 'Oiseau de nuit', desc: 'Visiter entre minuit et 5h' },
+      perfectionist: { name: 'Perfectionniste', desc: 'Donner une note de 10/10' },
+      theme_changer: { name: 'Styliste', desc: 'Changer la couleur du thème' }
+    }
   },
   en: {
     badgesTitle: 'My Badges',
     badgeUnlocked: 'Badge unlocked!',
-    unlockedOn: 'Unlocked on'
+    unlockedOn: 'Unlocked on',
+    badges: {
+      first_favorite: { name: 'First Favorite', desc: 'Add your first favorite' },
+      collector_10: { name: 'Collector', desc: 'Have 10 favorites' },
+      collector_25: { name: 'Grand Collector', desc: 'Have 25 favorites' },
+      first_rating: { name: 'Beginner Critic', desc: 'Rate your first manga' },
+      critic_10: { name: 'Experienced Critic', desc: 'Rate 10 manga' },
+      critic_25: { name: 'Expert Critic', desc: 'Rate 25 manga' },
+      reader_list: { name: 'Reading List', desc: 'Add 5 manga to read' },
+      explorer_20: { name: 'Explorer', desc: 'View 20 manga' },
+      explorer_50: { name: 'Grand Explorer', desc: 'View 50 manga' },
+      streak_3: { name: 'On Fire', desc: '3 consecutive days' },
+      streak_7: { name: 'Dedicated', desc: '7 consecutive days' },
+      streak_30: { name: 'Legendary', desc: '30 consecutive days' },
+      night_owl: { name: 'Night Owl', desc: 'Visit between midnight and 5am' },
+      perfectionist: { name: 'Perfectionist', desc: 'Give a 10/10 rating' },
+      theme_changer: { name: 'Stylist', desc: 'Change the theme color' }
+    }
   },
   es: {
     badgesTitle: 'Mis Insignias',
     badgeUnlocked: '¡Insignia desbloqueada!',
-    unlockedOn: 'Desbloqueado el'
+    unlockedOn: 'Desbloqueado el',
+    badges: {
+      first_favorite: { name: 'Primer favorito', desc: 'Añadir un primer favorito' },
+      collector_10: { name: 'Coleccionista', desc: 'Tener 10 favoritos' },
+      collector_25: { name: 'Gran coleccionista', desc: 'Tener 25 favoritos' },
+      first_rating: { name: 'Crítico principiante', desc: 'Valorar un primer manga' },
+      critic_10: { name: 'Crítico experimentado', desc: 'Valorar 10 mangas' },
+      critic_25: { name: 'Crítico experto', desc: 'Valorar 25 mangas' },
+      reader_list: { name: 'Lista de lectura', desc: 'Añadir 5 mangas para leer' },
+      explorer_20: { name: 'Explorador', desc: 'Consultar 20 mangas' },
+      explorer_50: { name: 'Gran explorador', desc: 'Consultar 50 mangas' },
+      streak_3: { name: 'En racha', desc: '3 días consecutivos' },
+      streak_7: { name: 'Dedicado', desc: '7 días consecutivos' },
+      streak_30: { name: 'Legendario', desc: '30 días consecutivos' },
+      night_owl: { name: 'Ave nocturna', desc: 'Visitar entre medianoche y 5am' },
+      perfectionist: { name: 'Perfeccionista', desc: 'Dar una nota de 10/10' },
+      theme_changer: { name: 'Estilista', desc: 'Cambiar el color del tema' }
+    }
   },
   ja: {
     badgesTitle: 'マイバッジ',
     badgeUnlocked: 'バッジ獲得！',
-    unlockedOn: '獲得日'
+    unlockedOn: '獲得日',
+    badges: {
+      first_favorite: { name: '初めてのお気に入り', desc: '最初のお気に入りを追加' },
+      collector_10: { name: 'コレクター', desc: 'お気に入り10件' },
+      collector_25: { name: 'グランドコレクター', desc: 'お気に入り25件' },
+      first_rating: { name: '初心者批評家', desc: '最初の漫画を評価' },
+      critic_10: { name: '熟練批評家', desc: '10作品を評価' },
+      critic_25: { name: '専門批評家', desc: '25作品を評価' },
+      reader_list: { name: '読書リスト', desc: '読みたい漫画を5件追加' },
+      explorer_20: { name: '探検家', desc: '20作品を閲覧' },
+      explorer_50: { name: 'グランド探検家', desc: '50作品を閲覧' },
+      streak_3: { name: '好調', desc: '3日連続' },
+      streak_7: { name: '熱心', desc: '7日連続' },
+      streak_30: { name: '伝説的', desc: '30日連続' },
+      night_owl: { name: '夜更かし', desc: '深夜0時から5時の間に訪問' },
+      perfectionist: { name: '完璧主義者', desc: '10/10の評価を付ける' },
+      theme_changer: { name: 'スタイリスト', desc: 'テーマカラーを変更' }
+    }
   }
 };
+
+function getBadgeName(badgeId, lang) {
+  const t = badgeTranslations[lang] || badgeTranslations.fr;
+  return t.badges[badgeId]?.name || badgeId;
+}
+
+function getBadgeDesc(badgeId, lang) {
+  const t = badgeTranslations[lang] || badgeTranslations.fr;
+  return t.badges[badgeId]?.desc || '';
+}
 
 function getBadges() {
   return JSON.parse(localStorage.getItem('unlockedBadges') || '{}');
@@ -2239,8 +2317,8 @@ function showBadgeNotification(badge) {
   notification.innerHTML = `
     <span class="badge-notification-icon">${badge.icon}</span>
     <div class="badge-notification-title">${t.badgeUnlocked}</div>
-    <div class="badge-notification-name">${badge.name}</div>
-    <div class="badge-notification-desc">${badge.desc}</div>
+    <div class="badge-notification-name">${getBadgeName(badge.id, lang)}</div>
+    <div class="badge-notification-desc">${getBadgeDesc(badge.id, lang)}</div>
   `;
 
   // Afficher
@@ -2279,8 +2357,8 @@ function renderBadgesSection() {
         return `
           <div class="badge-card ${isUnlocked ? 'unlocked' : 'locked'}">
             <span class="badge-icon">${badge.icon}</span>
-            <div class="badge-name">${badge.name}</div>
-            <div class="badge-desc">${badge.desc}</div>
+            <div class="badge-name">${getBadgeName(badge.id, lang)}</div>
+            <div class="badge-desc">${getBadgeDesc(badge.id, lang)}</div>
             ${isUnlocked ? `<div class="badge-date">${t.unlockedOn} ${unlockDate}</div>` : ''}
           </div>
         `;

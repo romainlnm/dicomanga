@@ -333,7 +333,7 @@ const mangas = [
   "avis": "Une révolution du manga de sport. L'angle égoïste est rafraîchissant et les matchs sont intenses.",
   "note": 9,
   "anime": "https://aniwatchtv.to/blue-lock-17889",
-  "dernierTome": { "numero": 29, "date": "2024-11" }
+  "dernierTome": { "numero": 31, "date": "2025-05" }
 },
   {
   "titre": "Boruto",
@@ -376,7 +376,6 @@ const mangas = [
   "note": 7,
   "id": 9,
   "anime": "https://aniwatchtv.to/boruto-naruto-next-generations-8143",
-  "dernierTome": { "numero": 21, "date": "2024-12" },
   "univers": "Naruto",
   "connexions": [39]
 },
@@ -505,7 +504,7 @@ const mangas = [
   "avis": "Brutal, imprévisible, émotionnel. Fujimoto brise toutes les conventions du shonen avec génie.",
   "note": 9,
   "anime": "https://aniwatchtv.to/chainsaw-man-17406",
-  "dernierTome": { "numero": 18, "date": "2025-01" }
+  "dernierTome": { "numero": 21, "date": "2026-02" }
 },
   {
   "id": 13,
@@ -1180,7 +1179,7 @@ const mangas = [
   "avis": "Le nouveau roi du shonen. Action spectaculaire, humour bien dosé et un système de magie original.",
   "note": 9,
   "anime": "https://aniwatchtv.to/jujutsu-kaisen-tv-534",
-  "dernierTome": { "numero": 27, "date": "2024-10" }
+  "dernierTome": { "numero": 30, "date": "2026-07" }
 },
   {
   "id": 29,
@@ -1264,7 +1263,8 @@ const mangas = [
   ],
   "avis": "Un shonen rafraîchissant avec un protagoniste adulte. L'action est spectaculaire et le concept est original.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kaiju-no-8-19306"
+  "anime": "https://aniwatchtv.to/kaiju-no-8-19306",
+  "dernierTome": { "numero": 16, "date": "2026-03" }
 },
   {
   "id": 31,
@@ -1559,8 +1559,7 @@ const mangas = [
   ],
   "avis": "Une lettre d'amour aux super-héros avec une touche japonaise unique. Les personnages sont tous mémorables.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322",
-  "dernierTome": { "numero": 42, "date": "2024-08" }
+  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322"
 },
   {
   "id": 38,
@@ -1730,7 +1729,7 @@ const mangas = [
   "avis": "Un chef-d'œuvre absolu du manga shonen. Oda a créé un univers d'une richesse incroyable avec des personnages attachants et une intrigue qui ne cesse de surprendre.",
   "note": 10,
   "anime": "https://aniwatchtv.to/one-piece-100",
-  "dernierTome": { "numero": 110, "date": "2025-02" }
+  "dernierTome": { "numero": 112, "date": "2026-04" }
 },
   {
   "id": 42,
@@ -1772,7 +1771,8 @@ const mangas = [
   ],
   "avis": "Une parodie brillante des shonens. L'humour est parfait et les dessins de Murata sont incroyables.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/one-punch-man-63"
+  "anime": "https://aniwatchtv.to/one-punch-man-63",
+  "dernierTome": { "numero": 33, "date": "2026-02" }
 },
   {
   "id": 43,
@@ -2149,7 +2149,8 @@ const mangas = [
   ],
   "avis": "De l'action pure, fluide et créative. Sakamoto est un protagoniste unique et les combats sont spectaculaires.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/sakamoto-days-19431"
+  "anime": "https://aniwatchtv.to/sakamoto-days-19431",
+  "dernierTome": { "numero": 21, "date": "2026-04" }
 },
   {
   "id": 52,
@@ -2773,7 +2774,8 @@ const mangas = [
     {"nom": "Enjin", "description": "Leader charismatique d'un groupe de Cleaners dans le Pit."}
   ],
   "avis": "Un shonen d'action viscéral avec un univers original. Le concept du Pit et le style graphique marquent durablement. Très prometteur.",
-  "note": 8
+  "note": 8,
+  "dernierTome": { "numero": 15, "date": "2026-02" }
 },
   {
   "id": 69,

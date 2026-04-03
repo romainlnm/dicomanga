@@ -179,6 +179,124 @@
       </div>
     </section>
 
+    <!-- Section Quiz Découverte -->
+    <section class="discovery-quiz" id="discoverySection">
+      <span class="discovery-icon">🎯</span>
+      <h2 data-i18n="discoveryTitle">Trouve ton manga idéal</h2>
+      <p data-i18n="discoverySubtitle">Réponds à quelques questions et découvre le manga fait pour toi</p>
+
+      <div class="quiz-container" id="quizContainer">
+        <!-- Étape 1: Humeur -->
+        <div class="quiz-step active" data-step="1">
+          <h3 class="quiz-question" data-i18n="quizMood">Quelle est ton humeur aujourd'hui ?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="action" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">⚔️</span>
+              <span class="quiz-option-text" data-i18n="moodAction">Envie d'action</span>
+            </button>
+            <button class="quiz-option" data-value="emotion" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">💭</span>
+              <span class="quiz-option-text" data-i18n="moodEmotion">Envie d'émotions</span>
+            </button>
+            <button class="quiz-option" data-value="laugh" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">😂</span>
+              <span class="quiz-option-text" data-i18n="moodLaugh">Envie de rire</span>
+            </button>
+            <button class="quiz-option" data-value="think" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">🧠</span>
+              <span class="quiz-option-text" data-i18n="moodThink">Envie de réfléchir</span>
+            </button>
+            <button class="quiz-option" data-value="escape" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">🌟</span>
+              <span class="quiz-option-text" data-i18n="moodEscape">Envie d'évasion</span>
+            </button>
+            <button class="quiz-option" data-value="thrill" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">😱</span>
+              <span class="quiz-option-text" data-i18n="moodThrill">Envie de frissons</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Étape 2: Type de manga -->
+        <div class="quiz-step" data-step="2">
+          <h3 class="quiz-question" data-i18n="quizType">Quel type de manga préfères-tu ?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="shonen" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">💪</span>
+              <span class="quiz-option-text">Shonen</span>
+              <span class="quiz-option-desc" data-i18n="typeShonen">Action, amitié, dépassement</span>
+            </button>
+            <button class="quiz-option" data-value="seinen" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">🎭</span>
+              <span class="quiz-option-text">Seinen</span>
+              <span class="quiz-option-desc" data-i18n="typeSeinen">Mature, complexe, réaliste</span>
+            </button>
+            <button class="quiz-option" data-value="shojo" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">💕</span>
+              <span class="quiz-option-text">Shojo</span>
+              <span class="quiz-option-desc" data-i18n="typeShojo">Romance, émotions, relations</span>
+            </button>
+            <button class="quiz-option" data-value="any" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">🎲</span>
+              <span class="quiz-option-text" data-i18n="typeAny">Peu importe</span>
+              <span class="quiz-option-desc" data-i18n="typeAnyDesc">Surprends-moi !</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Étape 3: Durée -->
+        <div class="quiz-step" data-step="3">
+          <h3 class="quiz-question" data-i18n="quizLength">Quelle durée de lecture souhaites-tu ?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="short" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">📖</span>
+              <span class="quiz-option-text" data-i18n="lengthShort">Court</span>
+              <span class="quiz-option-desc" data-i18n="lengthShortDesc">Moins de 10 tomes</span>
+            </button>
+            <button class="quiz-option" data-value="medium" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">📚</span>
+              <span class="quiz-option-text" data-i18n="lengthMedium">Moyen</span>
+              <span class="quiz-option-desc" data-i18n="lengthMediumDesc">10 à 30 tomes</span>
+            </button>
+            <button class="quiz-option" data-value="long" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">📚📚</span>
+              <span class="quiz-option-text" data-i18n="lengthLong">Long</span>
+              <span class="quiz-option-desc" data-i18n="lengthLongDesc">Plus de 30 tomes</span>
+            </button>
+            <button class="quiz-option" data-value="any" onclick="selectQuizOption(this)">
+              <span class="quiz-option-icon">🎲</span>
+              <span class="quiz-option-text" data-i18n="lengthAny">Peu importe</span>
+              <span class="quiz-option-desc" data-i18n="lengthAnyDesc">La qualité avant tout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barre de progression -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+        <span class="quiz-progress-text" id="quizProgressText">1/3</span>
+      </div>
+
+      <!-- Boutons navigation -->
+      <div class="quiz-nav">
+        <button class="quiz-nav-btn quiz-prev" id="quizPrevBtn" onclick="prevQuizStep()" style="display: none;">
+          ← <span data-i18n="previous">Précédent</span>
+        </button>
+        <button class="quiz-nav-btn quiz-restart" id="quizRestartBtn" onclick="restartQuiz()" style="display: none;">
+          🔄 <span data-i18n="restart">Recommencer</span>
+        </button>
+      </div>
+
+      <!-- Résultat -->
+      <div class="quiz-result" id="quizResult" style="display: none;">
+        <h3 data-i18n="quizResultTitle">Ton manga idéal :</h3>
+        <div class="quiz-result-grid" id="quizResultGrid">
+          <!-- Résultats générés par JS -->
+        </div>
+      </div>
+    </section>
+
     <!-- Section Classements -->
     <section class="classements" id="classementsSection">
       <h2 class="section-title" data-i18n="topManga">Top Mangas</h2>

@@ -122,7 +122,34 @@ const translations = {
     removedFrom: "retiré de",
     emptyList: "Cette liste est vide",
     listExists: "Cette liste existe déjà",
-    enterListName: "Entre un nom de liste"
+    enterListName: "Entre un nom de liste",
+    discoveryTitle: "Trouve ton manga idéal",
+    discoverySubtitle: "Réponds à quelques questions et découvre le manga fait pour toi",
+    quizMood: "Quelle est ton humeur aujourd'hui ?",
+    moodAction: "Envie d'action",
+    moodEmotion: "Envie d'émotions",
+    moodLaugh: "Envie de rire",
+    moodThink: "Envie de réfléchir",
+    moodEscape: "Envie d'évasion",
+    moodThrill: "Envie de frissons",
+    quizType: "Quel type de manga préfères-tu ?",
+    typeShonen: "Action, amitié, dépassement",
+    typeSeinen: "Mature, complexe, réaliste",
+    typeShojo: "Romance, émotions, relations",
+    typeAny: "Peu importe",
+    typeAnyDesc: "Surprends-moi !",
+    quizLength: "Quelle durée de lecture souhaites-tu ?",
+    lengthShort: "Court",
+    lengthShortDesc: "Moins de 10 tomes",
+    lengthMedium: "Moyen",
+    lengthMediumDesc: "10 à 30 tomes",
+    lengthLong: "Long",
+    lengthLongDesc: "Plus de 30 tomes",
+    lengthAny: "Peu importe",
+    lengthAnyDesc: "La qualité avant tout",
+    previous: "Précédent",
+    restart: "Recommencer",
+    quizResultTitle: "Ton manga idéal :"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -207,7 +234,34 @@ const translations = {
     removedFrom: "removed from",
     emptyList: "This list is empty",
     listExists: "This list already exists",
-    enterListName: "Enter a list name"
+    enterListName: "Enter a list name",
+    discoveryTitle: "Find your perfect manga",
+    discoverySubtitle: "Answer a few questions and discover the manga made for you",
+    quizMood: "What's your mood today?",
+    moodAction: "Want action",
+    moodEmotion: "Want emotions",
+    moodLaugh: "Want to laugh",
+    moodThink: "Want to think",
+    moodEscape: "Want to escape",
+    moodThrill: "Want thrills",
+    quizType: "What type of manga do you prefer?",
+    typeShonen: "Action, friendship, growth",
+    typeSeinen: "Mature, complex, realistic",
+    typeShojo: "Romance, emotions, relationships",
+    typeAny: "Any",
+    typeAnyDesc: "Surprise me!",
+    quizLength: "How long do you want to read?",
+    lengthShort: "Short",
+    lengthShortDesc: "Less than 10 volumes",
+    lengthMedium: "Medium",
+    lengthMediumDesc: "10 to 30 volumes",
+    lengthLong: "Long",
+    lengthLongDesc: "More than 30 volumes",
+    lengthAny: "Any",
+    lengthAnyDesc: "Quality first",
+    previous: "Previous",
+    restart: "Restart",
+    quizResultTitle: "Your perfect manga:"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -284,7 +338,34 @@ const translations = {
     removedFrom: "eliminado de",
     emptyList: "Esta lista está vacía",
     listExists: "Esta lista ya existe",
-    enterListName: "Introduce un nombre de lista"
+    enterListName: "Introduce un nombre de lista",
+    discoveryTitle: "Encuentra tu manga ideal",
+    discoverySubtitle: "Responde algunas preguntas y descubre el manga hecho para ti",
+    quizMood: "¿Cuál es tu estado de ánimo hoy?",
+    moodAction: "Quiero acción",
+    moodEmotion: "Quiero emociones",
+    moodLaugh: "Quiero reír",
+    moodThink: "Quiero pensar",
+    moodEscape: "Quiero escapar",
+    moodThrill: "Quiero escalofríos",
+    quizType: "¿Qué tipo de manga prefieres?",
+    typeShonen: "Acción, amistad, superación",
+    typeSeinen: "Maduro, complejo, realista",
+    typeShojo: "Romance, emociones, relaciones",
+    typeAny: "Cualquiera",
+    typeAnyDesc: "¡Sorpréndeme!",
+    quizLength: "¿Cuánto quieres leer?",
+    lengthShort: "Corto",
+    lengthShortDesc: "Menos de 10 tomos",
+    lengthMedium: "Medio",
+    lengthMediumDesc: "10 a 30 tomos",
+    lengthLong: "Largo",
+    lengthLongDesc: "Más de 30 tomos",
+    lengthAny: "Cualquiera",
+    lengthAnyDesc: "La calidad primero",
+    previous: "Anterior",
+    restart: "Reiniciar",
+    quizResultTitle: "Tu manga ideal:"
   },
   ja: {
     siteSubtitle: "漫画辞典",
@@ -361,7 +442,34 @@ const translations = {
     removedFrom: "から削除",
     emptyList: "このリストは空です",
     listExists: "このリストは既に存在します",
-    enterListName: "リスト名を入力してください"
+    enterListName: "リスト名を入力してください",
+    discoveryTitle: "理想の漫画を見つけよう",
+    discoverySubtitle: "いくつかの質問に答えて、あなたにぴったりの漫画を発見しよう",
+    quizMood: "今日の気分は？",
+    moodAction: "アクションが見たい",
+    moodEmotion: "感動したい",
+    moodLaugh: "笑いたい",
+    moodThink: "考えたい",
+    moodEscape: "現実逃避したい",
+    moodThrill: "ゾクゾクしたい",
+    quizType: "どんなタイプの漫画が好き？",
+    typeShonen: "アクション、友情、成長",
+    typeSeinen: "大人向け、複雑、リアル",
+    typeShojo: "恋愛、感情、人間関係",
+    typeAny: "どれでも",
+    typeAnyDesc: "驚かせて！",
+    quizLength: "どのくらいの長さがいい？",
+    lengthShort: "短い",
+    lengthShortDesc: "10巻未満",
+    lengthMedium: "中くらい",
+    lengthMediumDesc: "10〜30巻",
+    lengthLong: "長い",
+    lengthLongDesc: "30巻以上",
+    lengthAny: "どれでも",
+    lengthAnyDesc: "質が一番",
+    previous: "前へ",
+    restart: "やり直す",
+    quizResultTitle: "あなたの理想の漫画："
   }
 };
 
@@ -614,6 +722,7 @@ function toggleSectionsOnSearch(searchTerm) {
     'actualitesSection',
     'historiqueSection',
     'recommendationsSection',
+    'discoverySection',
     'classementsSection'
   ];
 
@@ -2620,6 +2729,244 @@ function genererRecommandations() {
 
   // Scroll vers les résultats
   result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ===== QUIZ DÉCOUVERTE =====
+let quizAnswers = {
+  mood: null,
+  type: null,
+  length: null
+};
+let currentQuizStep = 1;
+const totalQuizSteps = 3;
+
+// Mapping des humeurs vers les genres
+const moodToGenres = {
+  action: ['Action', 'Aventure', 'Arts martiaux', 'Sport'],
+  emotion: ['Drame', 'Romance', 'Tranche de vie', 'Psychologique'],
+  laugh: ['Comédie', 'Parodie', 'Tranche de vie'],
+  think: ['Psychologique', 'Thriller', 'Mystère', 'Seinen', 'Philosophique'],
+  escape: ['Fantasy', 'Science-fiction', 'Aventure', 'Isekai', 'Surnaturel'],
+  thrill: ['Horreur', 'Thriller', 'Mystère', 'Dark Fantasy', 'Survival']
+};
+
+function selectQuizOption(button) {
+  const step = button.closest('.quiz-step');
+  const options = step.querySelectorAll('.quiz-option');
+
+  // Retirer la sélection précédente
+  options.forEach(opt => opt.classList.remove('selected'));
+
+  // Sélectionner cette option
+  button.classList.add('selected');
+
+  // Sauvegarder la réponse
+  const value = button.dataset.value;
+  if (currentQuizStep === 1) {
+    quizAnswers.mood = value;
+  } else if (currentQuizStep === 2) {
+    quizAnswers.type = value;
+  } else if (currentQuizStep === 3) {
+    quizAnswers.length = value;
+  }
+
+  // Passer à l'étape suivante après un court délai
+  setTimeout(() => {
+    if (currentQuizStep < totalQuizSteps) {
+      nextQuizStep();
+    } else {
+      showQuizResults();
+    }
+  }, 300);
+}
+
+function nextQuizStep() {
+  if (currentQuizStep >= totalQuizSteps) return;
+
+  const currentStep = document.querySelector(`.quiz-step[data-step="${currentQuizStep}"]`);
+  const nextStep = document.querySelector(`.quiz-step[data-step="${currentQuizStep + 1}"]`);
+
+  if (currentStep && nextStep) {
+    currentStep.classList.remove('active');
+    nextStep.classList.add('active');
+    currentQuizStep++;
+    updateQuizProgress();
+  }
+}
+
+function prevQuizStep() {
+  if (currentQuizStep <= 1) return;
+
+  const currentStep = document.querySelector(`.quiz-step[data-step="${currentQuizStep}"]`);
+  const prevStep = document.querySelector(`.quiz-step[data-step="${currentQuizStep - 1}"]`);
+
+  if (currentStep && prevStep) {
+    currentStep.classList.remove('active');
+    prevStep.classList.add('active');
+    currentQuizStep--;
+    updateQuizProgress();
+  }
+}
+
+function updateQuizProgress() {
+  const progressBar = document.getElementById('quizProgressBar');
+  const progressText = document.getElementById('quizProgressText');
+  const prevBtn = document.getElementById('quizPrevBtn');
+
+  const progress = (currentQuizStep / totalQuizSteps) * 100;
+
+  if (progressBar) {
+    progressBar.style.setProperty('--progress', `${progress}%`);
+  }
+  if (progressText) {
+    progressText.textContent = `${currentQuizStep}/${totalQuizSteps}`;
+  }
+  if (prevBtn) {
+    prevBtn.style.display = currentQuizStep > 1 ? 'block' : 'none';
+  }
+}
+
+function showQuizResults() {
+  const container = document.getElementById('quizContainer');
+  const result = document.getElementById('quizResult');
+  const resultGrid = document.getElementById('quizResultGrid');
+  const restartBtn = document.getElementById('quizRestartBtn');
+  const prevBtn = document.getElementById('quizPrevBtn');
+  const progressBar = document.querySelector('.quiz-progress');
+
+  // Cacher le quiz et afficher les résultats
+  if (container) container.style.display = 'none';
+  if (progressBar) progressBar.style.display = 'none';
+  if (prevBtn) prevBtn.style.display = 'none';
+  if (restartBtn) restartBtn.style.display = 'inline-flex';
+
+  // Trouver les mangas correspondants
+  const matches = findQuizMatches();
+
+  if (matches.length === 0) {
+    resultGrid.innerHTML = '<p class="no-data">Aucun manga ne correspond à tes critères. Essaie d\'autres réponses !</p>';
+  } else {
+    resultGrid.innerHTML = matches.slice(0, 3).map((match, index) => `
+      <div class="manga-card" onclick="allerVersManga(${match.manga.id})" style="position: relative;">
+        <span class="quiz-match-score">${match.score}% match</span>
+        <img src="${match.manga.couverture}" alt="${match.manga.titre}" class="manga-cover"
+             onerror="this.style.display='none'">
+        <div class="manga-info">
+          <h3 class="manga-title">${match.manga.titre}</h3>
+          <p class="manga-author">${match.manga.auteur}</p>
+          <div class="manga-genres">
+            ${match.manga.genre.slice(0, 2).map(g => `<span class="genre-tag">${g}</span>`).join('')}
+          </div>
+          <div class="manga-rating">
+            <span class="stars">${'★'.repeat(Math.round(match.manga.note/2))}${'☆'.repeat(5 - Math.round(match.manga.note/2))}</span>
+            <span>${match.manga.note}/10</span>
+          </div>
+          <p class="manga-volumes">${match.manga.volumes} tomes • ${match.manga.statut}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (result) {
+    result.style.display = 'block';
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function findQuizMatches() {
+  const results = mangas.map(manga => {
+    let score = 0;
+    let maxScore = 0;
+
+    // Score pour l'humeur (genres correspondants)
+    if (quizAnswers.mood && moodToGenres[quizAnswers.mood]) {
+      maxScore += 40;
+      const targetGenres = moodToGenres[quizAnswers.mood];
+      const matchingGenres = manga.genre.filter(g => targetGenres.includes(g));
+      score += matchingGenres.length * 15;
+      if (matchingGenres.length > 0) score += 10; // Bonus si au moins un match
+    }
+
+    // Score pour le type de manga
+    if (quizAnswers.type && quizAnswers.type !== 'any') {
+      maxScore += 30;
+      const typeMapping = {
+        shonen: 'Shonen',
+        seinen: 'Seinen',
+        shojo: 'Shojo'
+      };
+      if (manga.genre.includes(typeMapping[quizAnswers.type])) {
+        score += 30;
+      }
+    } else if (quizAnswers.type === 'any') {
+      maxScore += 30;
+      score += 15; // Score neutre
+    }
+
+    // Score pour la durée
+    if (quizAnswers.length && quizAnswers.length !== 'any') {
+      maxScore += 30;
+      const volumes = manga.volumes;
+      if (quizAnswers.length === 'short' && volumes < 10) {
+        score += 30;
+      } else if (quizAnswers.length === 'medium' && volumes >= 10 && volumes <= 30) {
+        score += 30;
+      } else if (quizAnswers.length === 'long' && volumes > 30) {
+        score += 30;
+      }
+    } else if (quizAnswers.length === 'any') {
+      maxScore += 30;
+      score += 15; // Score neutre
+    }
+
+    // Bonus pour les mangas bien notés
+    score += manga.note * 2;
+    maxScore += 20;
+
+    // Calculer le pourcentage
+    const percentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+
+    return {
+      manga,
+      score: Math.min(percentage, 100)
+    };
+  });
+
+  // Filtrer et trier
+  return results
+    .filter(r => r.score >= 40)
+    .sort((a, b) => b.score - a.score);
+}
+
+function restartQuiz() {
+  // Réinitialiser les réponses
+  quizAnswers = { mood: null, type: null, length: null };
+  currentQuizStep = 1;
+
+  // Réinitialiser l'affichage
+  const container = document.getElementById('quizContainer');
+  const result = document.getElementById('quizResult');
+  const restartBtn = document.getElementById('quizRestartBtn');
+  const prevBtn = document.getElementById('quizPrevBtn');
+  const progressBar = document.querySelector('.quiz-progress');
+  const steps = document.querySelectorAll('.quiz-step');
+  const options = document.querySelectorAll('.quiz-option');
+
+  if (container) container.style.display = 'block';
+  if (result) result.style.display = 'none';
+  if (restartBtn) restartBtn.style.display = 'none';
+  if (prevBtn) prevBtn.style.display = 'none';
+  if (progressBar) progressBar.style.display = 'flex';
+
+  // Réinitialiser les étapes
+  steps.forEach((step, index) => {
+    step.classList.toggle('active', index === 0);
+  });
+
+  // Réinitialiser les sélections
+  options.forEach(opt => opt.classList.remove('selected'));
+
+  updateQuizProgress();
 }
 
 // ===== MODE HORS-LIGNE AMELIORE =====

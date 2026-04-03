@@ -601,11 +601,6 @@ function setupRecherche() {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       const terme = e.target.value.toLowerCase();
-
-      // Gérer l'affichage des sections selon la recherche
-      toggleSectionsOnSearch(terme);
-
-      // Réinitialiser les filtres
       appliquerFiltres(terme);
     }, 300);
   });
@@ -903,6 +898,9 @@ function highlightMatch(text, query) {
 }
 
 function appliquerFiltres(searchTerm = '') {
+  // Gérer l'affichage des sections selon la recherche
+  toggleSectionsOnSearch(searchTerm);
+
   // Commencer avec tous les mangas
   mangasFiltres = mangas;
 

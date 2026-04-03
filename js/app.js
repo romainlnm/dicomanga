@@ -602,9 +602,43 @@ function setupRecherche() {
     timeout = setTimeout(() => {
       const terme = e.target.value.toLowerCase();
 
+      // Gérer l'affichage des sections selon la recherche
+      toggleSectionsOnSearch(terme);
+
       // Réinitialiser les filtres
       appliquerFiltres(terme);
     }, 300);
+  });
+}
+
+// Masquer/afficher les sections selon si une recherche est active
+function toggleSectionsOnSearch(searchTerm) {
+  const sectionsToHide = [
+    'mangaDuJourSection',
+    'statsWidgetSection',
+    'actualitesSection',
+    'historiqueSection',
+    'recommendationsSection',
+    'classementsSection'
+  ];
+
+  const isSearching = searchTerm && searchTerm.trim().length > 0;
+
+  sectionsToHide.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      if (isSearching) {
+        section.style.display = 'none';
+      } else {
+        // Restaurer l'affichage par défaut (sauf historique qui a sa propre logique)
+        if (sectionId === 'historiqueSection') {
+          // L'historique a sa propre logique d'affichage
+          afficherHistorique();
+        } else {
+          section.style.display = '';
+        }
+      }
+    }
   });
 }
 

@@ -80,6 +80,7 @@ const translations = {
     compareBtn: "Comparer",
     findNextManga: "Découvre ton prochain manga",
     topManga: "Top Mangas",
+    findManga: "Trouve ton manga",
     randomManga: "Manga aléatoire",
     myStats: "Mes Stats",
     chooseManga: "Choisir un manga...",
@@ -192,6 +193,7 @@ const translations = {
     compareBtn: "Compare",
     findNextManga: "Find your next manga",
     topManga: "Top Manga",
+    findManga: "Find your manga",
     randomManga: "Random Manga",
     myStats: "My Stats",
     chooseManga: "Choose a manga...",
@@ -722,7 +724,6 @@ function toggleSectionsOnSearch(searchTerm) {
     'actualitesSection',
     'historiqueSection',
     'recommendationsSection',
-    'discoverySection',
     'classementsSection'
   ];
 
@@ -1128,6 +1129,24 @@ function fermerFavoris(event) {
 
 function fermerFavorisBtn() {
   fermerModalAvecAnimation('favoritesModal');
+}
+
+// ===== MODAL QUIZ =====
+function ouvrirQuiz() {
+  restartQuiz();
+  const modal = document.getElementById('quizModal');
+  modal.classList.remove('closing');
+  modal.classList.add('open');
+}
+
+function fermerQuiz(event) {
+  if (event.target === event.currentTarget) {
+    fermerModalAvecAnimation('quizModal');
+  }
+}
+
+function fermerQuizBtn() {
+  fermerModalAvecAnimation('quizModal');
 }
 
 // ===== SYSTEME "À LIRE" =====

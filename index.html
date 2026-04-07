@@ -92,6 +92,10 @@
           <!-- Les filtres seront générés par JavaScript -->
         </div>
       </div>
+      <button class="filters-toggle" onclick="toggleAdvancedFilters()" title="Filtres avancés">
+        <span>🔍</span>
+        <span class="filters-label" data-i18n="advancedFilters">Filtres</span>
+      </button>
       <button class="alire-toggle" onclick="ouvrirALire()">
         <span>📚</span>
         <span class="alire-count" id="alireCount">0</span>
@@ -195,8 +199,58 @@
       </div>
     </section>
 
+    <!-- Panneau Filtres Avancés -->
+    <div class="advanced-filters-panel" id="advancedFiltersPanel" style="display: none;">
+      <div class="filters-header">
+        <h3 data-i18n="advancedFilters">Filtres avancés</h3>
+        <button class="filters-close" onclick="toggleAdvancedFilters()">✕</button>
+      </div>
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label data-i18n="filterStatus">Statut</label>
+          <select id="filterStatus" onchange="appliquerFiltres(document.getElementById('searchInput').value)">
+            <option value="all" data-i18n="all">Tous</option>
+            <option value="Terminé" data-i18n="completed">Terminé</option>
+            <option value="En cours" data-i18n="ongoing">En cours</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label data-i18n="filterYear">Année</label>
+          <div class="year-range">
+            <input type="number" id="filterYearMin" placeholder="Min" min="1950" max="2026" onchange="appliquerFiltres(document.getElementById('searchInput').value)">
+            <span>-</span>
+            <input type="number" id="filterYearMax" placeholder="Max" min="1950" max="2026" onchange="appliquerFiltres(document.getElementById('searchInput').value)">
+          </div>
+        </div>
+        <div class="filter-group">
+          <label data-i18n="filterRating">Note minimum</label>
+          <select id="filterRating" onchange="appliquerFiltres(document.getElementById('searchInput').value)">
+            <option value="0">Toutes</option>
+            <option value="6">6+ ★★★</option>
+            <option value="7">7+ ★★★½</option>
+            <option value="8">8+ ★★★★</option>
+            <option value="9">9+ ★★★★½</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label data-i18n="filterVolumes">Volumes</label>
+          <select id="filterVolumes" onchange="appliquerFiltres(document.getElementById('searchInput').value)">
+            <option value="all" data-i18n="all">Tous</option>
+            <option value="short" data-i18n="shortSeries">Court (&lt;10)</option>
+            <option value="medium" data-i18n="mediumSeries">Moyen (10-30)</option>
+            <option value="long" data-i18n="longSeries">Long (&gt;30)</option>
+          </select>
+        </div>
+      </div>
+      <div class="filters-actions">
+        <button class="filter-reset-btn" onclick="resetAdvancedFilters()" data-i18n="resetFilters">Réinitialiser</button>
+        <span class="active-filters-count" id="activeFiltersCount"></span>
+      </div>
+    </div>
+
     <div class="section-header">
       <h2 class="section-title" data-i18n="library">Bibliothèque</h2>
+      <span class="results-count" id="resultsCount"></span>
       <div class="header-actions">
         <!-- Contrôles de vue -->
         <div class="view-controls">
@@ -481,5 +535,9 @@
       </div>
     </div>
   </div>
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Retour en haut">
+    <span>↑</span>
+  </button>
 </body>
 </html>

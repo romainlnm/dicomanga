@@ -37,6 +37,15 @@ mangas.sort((a, b) => a.titre.localeCompare(b.titre, 'fr'));
 let mangasFiltres = mangas;
 let currentLang = localStorage.getItem('lang') || 'fr';
 
+// Filtres avancés
+let filtresAvances = {
+  status: 'all',
+  yearMin: null,
+  yearMax: null,
+  rating: 0,
+  volumes: 'all'
+};
+
 // ===== TRADUCTIONS =====
 const translations = {
   fr: {
@@ -1011,6 +1020,19 @@ function appliquerFiltres(searchTerm = '') {
   // Gérer l'affichage des sections selon la recherche
   toggleSectionsOnSearch(searchTerm);
 
+  // Récupérer les valeurs des filtres avancés
+  const filterStatus = document.getElementById('filterStatus');
+  const filterYearMin = document.getElementById('filterYearMin');
+  const filterYearMax = document.getElementById('filterYearMax');
+  const filterRating = document.getElementById('filterRating');
+  const filterVolumes = document.getElementById('filterVolumes');
+
+  if (filterStatus) filtresAvances.status = filterStatus.value;
+  if (filterYearMin) filtresAvances.yearMin = filterYearMin.value ? parseInt(filterYearMin.value) : null;
+  if (filterYearMax) filtresAvances.yearMax = filterYearMax.value ? parseInt(filterYearMax.value) : null;
+  if (filterRating) filtresAvances.rating = parseInt(filterRating.value) || 0;
+  if (filterVolumes) filtresAvances.volumes = filterVolumes.value;
+
   // Commencer avec tous les mangas
   mangasFiltres = mangas;
 
@@ -1026,6 +1048,35 @@ function appliquerFiltres(searchTerm = '') {
     );
   }
 
+  // Filtrer par statut
+  if (filtresAvances.status !== 'all') {
+    mangasFiltres = mangasFiltres.filter(m => m.statut === filtresAvances.status);
+  }
+
+  // Filtrer par année
+  if (filtresAvances.yearMin) {
+    mangasFiltres = mangasFiltres.filter(m => m.annee >= filtresAvances.yearMin);
+  }
+  if (filtresAvances.yearMax) {
+    mangasFiltres = mangasFiltres.filter(m => m.annee <= filtresAvances.yearMax);
+  }
+
+  // Filtrer par note minimum
+  if (filtresAvances.rating > 0) {
+    mangasFiltres = mangasFiltres.filter(m => m.note >= filtresAvances.rating);
+  }
+
+  // Filtrer par nombre de volumes
+  if (filtresAvances.volumes !== 'all') {
+    if (filtresAvances.volumes === 'short') {
+      mangasFiltres = mangasFiltres.filter(m => m.volumes < 10);
+    } else if (filtresAvances.volumes === 'medium') {
+      mangasFiltres = mangasFiltres.filter(m => m.volumes >= 10 && m.volumes <= 30);
+    } else if (filtresAvances.volumes === 'long') {
+      mangasFiltres = mangasFiltres.filter(m => m.volumes > 30);
+    }
+  }
+
   // Filtrer par recherche floue
   if (searchTerm) {
     currentSearchTerm = searchTerm;
@@ -1033,6 +1084,12 @@ function appliquerFiltres(searchTerm = '') {
   } else {
     currentSearchTerm = '';
   }
+
+  // Mettre à jour le compteur de résultats
+  updateResultsCount(mangasFiltres.length);
+
+  // Mettre à jour le compteur de filtres actifs
+  updateActiveFiltersCount();
 
   afficherMangas(mangasFiltres);
 }
@@ -3455,9 +3512,100 @@ function initBadges() {
   setInterval(checkBadges, 30000);
 }
 
+// ===== FILTRES AVANCÉS =====
+function toggleAdvancedFilters() {
+  const panel = document.getElementById('advancedFiltersPanel');
+  if (panel) {
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+function resetAdvancedFilters() {
+  // Réinitialiser les valeurs des filtres
+  const filterStatus = document.getElementById('filterStatus');
+  const filterYearMin = document.getElementById('filterYearMin');
+  const filterYearMax = document.getElementById('filterYearMax');
+  const filterRating = document.getElementById('filterRating');
+  const filterVolumes = document.getElementById('filterVolumes');
+
+  if (filterStatus) filterStatus.value = 'all';
+  if (filterYearMin) filterYearMin.value = '';
+  if (filterYearMax) filterYearMax.value = '';
+  if (filterRating) filterRating.value = '0';
+  if (filterVolumes) filterVolumes.value = 'all';
+
+  // Réinitialiser l'objet filtres
+  filtresAvances = {
+    status: 'all',
+    yearMin: null,
+    yearMax: null,
+    rating: 0,
+    volumes: 'all'
+  };
+
+  // Réappliquer les filtres
+  appliquerFiltres(document.getElementById('searchInput').value);
+  showToast('Filtres réinitialisés');
+}
+
+function updateActiveFiltersCount() {
+  const countEl = document.getElementById('activeFiltersCount');
+  if (!countEl) return;
+
+  let count = 0;
+  if (filtresAvances.status !== 'all') count++;
+  if (filtresAvances.yearMin) count++;
+  if (filtresAvances.yearMax) count++;
+  if (filtresAvances.rating > 0) count++;
+  if (filtresAvances.volumes !== 'all') count++;
+
+  if (count > 0) {
+    countEl.textContent = `${count} filtre${count > 1 ? 's' : ''} actif${count > 1 ? 's' : ''}`;
+    countEl.style.display = 'inline';
+  } else {
+    countEl.style.display = 'none';
+  }
+}
+
+// ===== COMPTEUR DE RÉSULTATS =====
+function updateResultsCount(count) {
+  const countEl = document.getElementById('resultsCount');
+  if (!countEl) return;
+
+  const total = mangas.length;
+  if (count === total) {
+    countEl.textContent = `${count} mangas`;
+  } else {
+    countEl.textContent = `${count} / ${total} mangas`;
+  }
+}
+
+// ===== BOUTON RETOUR EN HAUT =====
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initPageTransitions();
   initKeyboardShortcuts();
   initBadges();
+  initBackToTop();
+  updateResultsCount(mangas.length);
 });

@@ -4906,6 +4906,121 @@ const mangas = [
   "avis": "La meilleure parodie d'isekai. L'humour est constant et les personnages sont hilarants dans leur incompétence. Un must pour rire des clichés du genre.",
   "note": 8,
   "anime": "https://aniwatchtv.to/konosuba-gods-blessing-on-this-wonderful-world-1066"
+},
+{
+  "id": 162,
+  "titre": "Beastars",
+  "auteur": "Paru Itagaki",
+  "genre": ["Seinen", "Drame", "Psychologique", "Slice of Life"],
+  "annee": 2016,
+  "statut": "Terminé",
+  "volumes": 22,
+  "couverture": "images/covers/162.jpg",
+  "resume": "Dans un monde où carnivores et herbivores anthropomorphes coexistent, la société est régie par des lois strictes interdisant aux carnivores de manger de la viande. Au lycée Cherryton, le loup gris Legoshi est un élève timide et introverti qui travaille dans le club de théâtre. Quand Tem, un alpaga, est dévoré par un carnivore inconnu, la tension entre les espèces explose. Legoshi se retrouve tiraillé entre ses instincts prédateurs et son désir de vivre en paix avec les herbivores, particulièrement quand il développe des sentiments complexes pour Haru, une lapine naine au passé trouble. Parallèlement, Louis, un cerf rouge charismatique et star du club de théâtre, cache ses propres secrets et ambitions. Beastars explore les thèmes de l'identité, des préjugés, de la sexualité et de la nature profonde à travers cette métaphore animale saisissante.",
+  "resume_en": "In a world where anthropomorphic carnivores and herbivores coexist, society is governed by strict laws forbidding carnivores from eating meat. At Cherryton Academy, the gray wolf Legoshi is a shy, introverted student who works in the drama club. When Tem, an alpaca, is devoured by an unknown carnivore, tension between species explodes. Legoshi finds himself torn between his predatory instincts and his desire to live peacefully with herbivores, particularly when he develops complex feelings for Haru, a dwarf rabbit with a troubled past. Meanwhile, Louis, a charismatic red deer and drama club star, hides his own secrets and ambitions. Beastars explores themes of identity, prejudice, sexuality, and deep nature through this striking animal metaphor.",
+  "bioAuteur": "Paru Itagaki est une mangaka japonaise née en 1993. Fille du célèbre mangaka Keisuke Itagaki (Baki), elle a créé Beastars pendant ses études. Son style unique mêlant drame social et monde animalier lui a valu le prix Manga Taisho en 2018.",
+  "personnages": [
+    {"nom": "Legoshi", "description": "Un loup gris timide et sensible, tiraillé entre ses instincts de prédateur et sa gentillesse naturelle."},
+    {"nom": "Haru", "description": "Une lapine naine au caractère affirmé qui refuse d'être définie par sa petite taille ou les préjugés."},
+    {"nom": "Louis", "description": "Un cerf rouge ambitieux et charismatique, déterminé à prouver la valeur des herbivores."},
+    {"nom": "Jack", "description": "Un labrador retriever, meilleur ami de Legoshi et camarade de chambre optimiste."},
+    {"nom": "Juno", "description": "Une louve grise qui rejoint le club de théâtre et développe des sentiments pour Legoshi."}
+  ],
+  "avis": "Une œuvre mature et fascinante qui utilise son cadre animalier pour explorer des thèmes profonds. Le triangle Legoshi-Haru-Louis est captivant.",
+  "note": 9,
+  "anime": "https://aniwatchtv.to/beastars-69"
+},
+{
+  "id": 163,
+  "titre": "Golden Kamuy",
+  "auteur": "Satoru Noda",
+  "genre": ["Seinen", "Action", "Aventure", "Historique"],
+  "annee": 2014,
+  "statut": "Terminé",
+  "volumes": 31,
+  "couverture": "images/covers/163.jpg",
+  "resume": "Début du 20ème siècle, Hokkaido. Saichi Sugimoto, surnommé 'l'Immortel' pour sa survie miraculeuse durant la guerre russo-japonaise, cherche désespérément de l'or pour tenir une promesse faite à son camarade tombé au combat. Il apprend l'existence d'un trésor aïnou caché, dont la carte est tatouée sur la peau de 24 prisonniers évadés. Pour le trouver, il faut rassembler tous les tatouages - morts ou vifs. Sugimoto s'allie avec Asirpa, une jeune chasseuse aïnoue dont le père a été assassiné pour ce trésor. Ensemble, ils affrontent d'autres chasseurs de trésor : le 7ème Division de l'armée menée par le lieutenant Tsurumi, et un groupe de prisonniers dirigé par Hijikata Toshizo, survivant légendaire du Shinsengumi. Golden Kamuy mêle action intense, survie en milieu hostile, culture aïnoue authentique, et humour décalé autour de la cuisine de gibier.",
+  "resume_en": "Early 20th century, Hokkaido. Saichi Sugimoto, nicknamed 'The Immortal' for his miraculous survival during the Russo-Japanese War, desperately seeks gold to keep a promise made to his fallen comrade. He learns of a hidden Ainu treasure, whose map is tattooed on the skin of 24 escaped prisoners. To find it, all tattoos must be gathered - dead or alive. Sugimoto allies with Asirpa, a young Ainu huntress whose father was murdered for this treasure. Together, they face other treasure hunters: the 7th Division of the army led by Lieutenant Tsurumi, and a group of prisoners led by Hijikata Toshizo, legendary Shinsengumi survivor. Golden Kamuy blends intense action, wilderness survival, authentic Ainu culture, and offbeat humor around wild game cooking.",
+  "bioAuteur": "Satoru Noda est un mangaka japonais né en 1983 à Hokkaido. Ses recherches approfondies sur la culture aïnoue et l'histoire japonaise ont fait de Golden Kamuy une référence culturelle. La série a remporté le prix Manga Taisho et le prix Tezuka Osamu.",
+  "personnages": [
+    {"nom": "Saichi Sugimoto", "description": "Vétéran de guerre surnommé 'l'Immortel', déterminé et loyal malgré son apparence brutale."},
+    {"nom": "Asirpa", "description": "Jeune chasseuse aïnoue experte en survie, elle guide Sugimoto tout en cherchant la vérité sur son père."},
+    {"nom": "Yoshitake Shiraishi", "description": "Prisonnier tatoué surnommé 'le Roi de l'Évasion', allié opportuniste et souvent comique."},
+    {"nom": "Tokushirou Tsurumi", "description": "Lieutenant charismatique et manipulateur de la 7ème Division, avec une plaque métallique sur le crâne."},
+    {"nom": "Hijikata Toshizo", "description": "Légendaire vice-commandant du Shinsengumi, vieilli mais toujours redoutable."}
+  ],
+  "avis": "Un chef-d'œuvre d'aventure qui mélange action, humour, histoire et ethnographie. La culture aïnoue est présentée avec un respect remarquable.",
+  "note": 10,
+  "anime": "https://aniwatchtv.to/golden-kamuy-1066"
+},
+{
+  "id": 164,
+  "titre": "Blue Period",
+  "auteur": "Tsubasa Yamaguchi",
+  "genre": ["Seinen", "Drame", "Slice of Life", "Art"],
+  "annee": 2017,
+  "statut": "En cours",
+  "volumes": 16,
+  "couverture": "images/covers/164.jpg",
+  "resume": "Yatora Yaguchi est un lycéen populaire aux excellentes notes qui mène une double vie : élève modèle le jour, fêtard avec ses amis délinquants la nuit. Malgré ses succès apparents, il ressent un vide existentiel. Tout change quand il découvre un tableau dans le club d'art du lycée et ressent pour la première fois une émotion authentique. Fasciné, il décide de se consacrer à l'art et vise l'Université des Arts de Tokyo, l'école d'art la plus prestigieuse et sélective du Japon. Mais Yatora part de zéro dans un domaine où le talent inné semble primer. Il doit rattraper des années de pratique en quelques mois, tout en découvrant ce que signifie vraiment créer et s'exprimer à travers l'art. Blue Period est une exploration intense du processus créatif, de la passion, et du sacrifice nécessaire pour poursuivre ses rêves.",
+  "resume_en": "Yatora Yaguchi is a popular high schooler with excellent grades who leads a double life: model student by day, partying with his delinquent friends at night. Despite his apparent success, he feels an existential void. Everything changes when he discovers a painting in the school art club and feels a genuine emotion for the first time. Fascinated, he decides to dedicate himself to art and aims for Tokyo University of the Arts, Japan's most prestigious and selective art school. But Yatora starts from zero in a field where innate talent seems paramount. He must catch up on years of practice in a few months, while discovering what it truly means to create and express oneself through art. Blue Period is an intense exploration of the creative process, passion, and the sacrifice needed to pursue one's dreams.",
+  "bioAuteur": "Tsubasa Yamaguchi est une mangaka japonaise dont Blue Period est l'œuvre majeure. Sa représentation authentique du monde de l'art et du processus créatif a été saluée par la critique. La série a remporté le prix Manga Taisho en 2020.",
+  "personnages": [
+    {"nom": "Yatora Yaguchi", "description": "Lycéen studieux qui découvre sa passion pour l'art et sacrifie tout pour intégrer Geidai."},
+    {"nom": "Ryuji Ayukawa", "description": "Ami de Yatora, personne non-binaire talentueuse qui l'inspire à rejoindre le monde de l'art."},
+    {"nom": "Maki Kuwana", "description": "Présidente du club d'art, artiste passionnée dont le style influence Yatora."},
+    {"nom": "Yotasuke Takahashi", "description": "Génie artistique taciturne qui devient le rival et ami de Yatora."},
+    {"nom": "Masako Saeki", "description": "Professeure d'art qui guide Yatora avec des conseils parfois déroutants mais toujours pertinents."}
+  ],
+  "avis": "Une immersion fascinante dans le monde de l'art. La passion de Yatora est contagieuse et les réflexions sur la création sont profondes.",
+  "note": 9,
+  "anime": "https://aniwatchtv.to/blue-period-17526"
+},
+{
+  "id": 165,
+  "titre": "Land of the Lustrous",
+  "auteur": "Haruko Ichikawa",
+  "genre": ["Seinen", "Action", "Fantasy", "Science-fiction"],
+  "annee": 2012,
+  "statut": "Terminé",
+  "volumes": 12,
+  "couverture": "images/covers/165.jpg",
+  "resume": "Dans un futur lointain, l'humanité a disparu. Sur une île isolée vivent les Gemmes, des êtres immortels aux corps de pierres précieuses, dirigés par le moine Kongou-sensei. Elles combattent les Lunaires, des créatures venues de la Lune qui les capturent pour les transformer en ornements. Phosphophyllite, surnommée Phos, est la plus jeune et la plus fragile des Gemmes avec une dureté de seulement 3,5. Trop faible pour combattre, elle se voit confier la tâche de créer une encyclopédie. Sa quête de sens la mène à rencontrer Cinnabar, une Gemme toxique exilée, et à découvrir progressivement les secrets terrifiants de leur monde. Au fil des épreuves, Phos subit des transformations physiques et psychologiques radicales, perdant des parties d'elle-même et en gagnant d'autres, jusqu'à devenir méconnaissable.",
+  "resume_en": "In a distant future, humanity has vanished. On an isolated island live the Gems, immortal beings with precious stone bodies, led by the monk Kongou-sensei. They fight the Lunarians, creatures from the Moon who capture them to turn into ornaments. Phosphophyllite, nicknamed Phos, is the youngest and most fragile of the Gems with a hardness of only 3.5. Too weak to fight, she is tasked with creating an encyclopedia. Her search for meaning leads her to meet Cinnabar, a toxic exiled Gem, and to gradually discover the terrifying secrets of their world. Through ordeals, Phos undergoes radical physical and psychological transformations, losing parts of herself and gaining others, until becoming unrecognizable.",
+  "bioAuteur": "Haruko Ichikawa est une mangaka japonaise connue pour son style visuel unique et ses récits mélancoliques. Land of the Lustrous (Houseki no Kuni) est son œuvre majeure, saluée pour sa beauté visuelle et sa profondeur philosophique sur l'identité et l'immortalité.",
+  "personnages": [
+    {"nom": "Phosphophyllite (Phos)", "description": "La protagoniste, Gemme fragile qui subit des transformations radicales au fil de l'histoire."},
+    {"nom": "Cinnabar", "description": "Gemme toxique au mercure, isolée et dépressive, liée à Phos par une promesse."},
+    {"nom": "Kongou-sensei", "description": "Le moine mystérieux qui dirige les Gemmes et cache de lourds secrets."},
+    {"nom": "Diamond", "description": "Gemme la plus dure et brillante, douce et bienveillante envers Phos."},
+    {"nom": "Antarctique", "description": "Gemme hivernale qui devient mentor de Phos avant un destin tragique."}
+  ],
+  "avis": "Une œuvre d'une beauté mélancolique rare. La transformation de Phos est déchirante et les questions existentielles sont traitées avec subtilité.",
+  "note": 9,
+  "anime": "https://aniwatchtv.to/land-of-the-lustrous-1241"
+},
+{
+  "id": 166,
+  "titre": "Ajin",
+  "auteur": "Gamon Sakurai",
+  "genre": ["Seinen", "Action", "Horreur", "Thriller"],
+  "annee": 2012,
+  "statut": "Terminé",
+  "volumes": 17,
+  "couverture": "images/covers/166.png",
+  "resume": "Les Ajin sont des humains immortels : peu importe comment ils meurent, ils ressuscitent instantanément. Considérés comme des monstres, ils sont traqués par les gouvernements pour être soumis à des expériences cruelles. Kei Nagai, lycéen studieux, découvre qu'il est un Ajin quand il ressuscite après avoir été renversé par un camion. Désormais fugitif, il doit fuir les autorités tout en apprenant à maîtriser ses pouvoirs, notamment l'IBM (Invisible Black Matter), un fantôme de combat que certains Ajin peuvent invoquer. Sa route croise celle de Sato, un Ajin vétéran qui mène une guerre terroriste contre l'humanité. Kei refuse de rejoindre son camp mais ne peut pas non plus faire confiance aux humains qui le chassent. Pris entre deux feux, il doit forger son propre chemin dans un monde qui le considère comme un monstre.",
+  "resume_en": "Ajin are immortal humans: no matter how they die, they resurrect instantly. Considered monsters, they are hunted by governments for cruel experiments. Kei Nagai, a studious high schooler, discovers he is an Ajin when he resurrects after being hit by a truck. Now a fugitive, he must flee authorities while learning to master his powers, including IBM (Invisible Black Matter), a combat ghost some Ajin can summon. His path crosses with Sato, a veteran Ajin waging terrorist war against humanity. Kei refuses to join him but cannot trust the humans hunting him either. Caught between two fires, he must forge his own path in a world that sees him as a monster.",
+  "bioAuteur": "Gamon Sakurai est un mangaka japonais connu pour Ajin. Son style réaliste et ses scènes d'action tactiques ont fait d'Ajin un succès international. Il a initialement collaboré avec Tsuina Miura avant de reprendre seul la série.",
+  "personnages": [
+    {"nom": "Kei Nagai", "description": "Lycéen devenu Ajin, calculateur et pragmatique, il cherche à survivre sans perdre son humanité."},
+    {"nom": "Sato", "description": "Ajin vétéran et antagoniste principal, tacticien génial menant une guerre contre l'humanité."},
+    {"nom": "Kaito", "description": "Ami d'enfance de Kei qui l'aide malgré sa nature d'Ajin, représentant l'humanité bienveillante."},
+    {"nom": "Izumi Shimomura", "description": "Ajin travaillant pour le gouvernement, tiraillée entre ses ordres et sa conscience."},
+    {"nom": "Tosaki", "description": "Agent gouvernemental chargé de capturer les Ajin, moralement ambigu."}
+  ],
+  "avis": "Un thriller haletant avec un antagoniste mémorable. Les scènes de combat tactiques sont brillantes et les dilemmes moraux bien posés.",
+  "note": 8,
+  "anime": "https://aniwatchtv.to/ajin-demi-human-13"
 }
 ];
 

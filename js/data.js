@@ -5021,6 +5021,28 @@ const mangas = [
   "avis": "Un thriller haletant avec un antagoniste mémorable. Les scènes de combat tactiques sont brillantes et les dilemmes moraux bien posés.",
   "note": 8,
   "anime": "https://aniwatchtv.to/ajin-demi-human-13"
+},
+{
+  "id": 167,
+  "titre": "Love Bullet",
+  "auteur": "inee",
+  "genre": ["Shonen", "Action", "Romance", "Yuri"],
+  "annee": 2023,
+  "statut": "En cours",
+  "volumes": 2,
+  "couverture": "images/covers/167.jpg",
+  "resume": "Depuis l'aube de l'humanité, ceux qui meurent prématurément sans avoir connu l'amour deviennent des Cupidons. Ces êtres immortels ont pour mission de faire tomber les humains amoureux, mais les temps ont changé : fini l'arc et les flèches, place aux armes à feu modernes ! Koharu Sakurada était une lycéenne ordinaire jusqu'à ce qu'elle meure en sauvant sa meilleure amie d'un accident sur un chantier de construction. Cinq ans plus tard, la Déesse de l'Amour lui offre une seconde chance en la transformant en Cupidon. Désormais équipée d'un pistolet à balles d'amour, Koharu rejoint une équipe de Cupidons composée de Kanna, Chiyo et Ena. Ensemble, elles pratiquent le 'tactical matchmaking' - utilisant des tactiques militaires pour créer des couples. Entre missions d'infiltration romantiques et tirs de précision sentimentaux, Koharu découvre que jouer les entremetteuses armées est bien plus compliqué qu'il n'y paraît.",
+  "resume_en": "Since the dawn of humanity, those who die prematurely without having known love become Cupids. These immortal beings are tasked with making humans fall in love, but times have changed: goodbye bows and arrows, hello modern firearms! Koharu Sakurada was an ordinary high school girl until she died saving her best friend from a construction site accident. Five years later, the Goddess of Love offers her a second chance by transforming her into a Cupid. Now equipped with a love bullet gun, Koharu joins a team of Cupids consisting of Kanna, Chiyo, and Ena. Together, they practice 'tactical matchmaking' - using military tactics to create couples. Between romantic infiltration missions and sentimental precision shots, Koharu discovers that playing armed matchmaker is far more complicated than it seems.",
+  "bioAuteur": "inee est un mangaka japonais dont Love Bullet est l'œuvre principale. La série a débuté en octobre 2023 dans le magazine Monthly Comic Flapper de Kadokawa. Son concept original mêlant romance et action tactique a rapidement attiré l'attention des lecteurs.",
+  "personnages": [
+    {"nom": "Koharu Sakurada", "description": "Ancienne lycéenne devenue Cupidon après sa mort héroïque, protagoniste enthousiaste mais maladroite."},
+    {"nom": "Kanna", "description": "Cupidon expérimentée membre de l'équipe de Koharu, elle sert souvent de mentor."},
+    {"nom": "Chiyo", "description": "Cupidon membre de l'équipe, apporte son expertise tactique aux missions."},
+    {"nom": "Ena", "description": "Cupidon membre de l'équipe, complète le quatuor avec ses compétences uniques."},
+    {"nom": "La Déesse de l'Amour", "description": "Divinité qui recrute les âmes pour devenir des Cupidons et supervise leurs missions."}
+  ],
+  "avis": "Un concept rafraîchissant qui mélange romance et action de manière originale. Les Cupidons armés sont une idée géniale et l'humour fonctionne bien.",
+  "note": 7
 }
 ];
 

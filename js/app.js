@@ -46,6 +46,26 @@ let filtresAvances = {
   volumes: 'all'
 };
 
+// ===== COVER SLIDER =====
+function switchCover(mangaId, position, event) {
+  event.stopPropagation();
+  const slider = document.getElementById(`slider-${mangaId}`);
+  const label = document.getElementById(`slider-label-${mangaId}`);
+  const buttons = event.target.closest('.cover-slider-nav').querySelectorAll('.cover-slider-btn');
+
+  if (position === 'last') {
+    slider.classList.add('show-last');
+    if (label) label.textContent = currentLang === 'en' ? 'Last volume' : 'Dernier tome';
+    buttons[0].classList.remove('active');
+    buttons[1].classList.add('active');
+  } else {
+    slider.classList.remove('show-last');
+    if (label) label.textContent = currentLang === 'en' ? 'Volume 1' : 'Tome 1';
+    buttons[0].classList.add('active');
+    buttons[1].classList.remove('active');
+  }
+}
+
 // ===== TRADUCTIONS =====
 const translations = {
   fr: {
@@ -679,6 +699,8 @@ function afficherMangas(listMangas) {
       const displayTitle = currentSearchTerm ? highlightMatch(manga.titre, currentSearchTerm) : manga.titre;
       const displayAuthor = currentSearchTerm ? highlightMatch(manga.auteur, currentSearchTerm) : manga.auteur;
 
+      const hasTwoCovers = manga.statut === 'Terminé' && manga.couvertureLast;
+
       return `
       <div class="manga-card ${modeComparaison ? 'compare-mode' : ''}" data-genre="${manga.genre[0]}" data-index="${index}" data-id="${manga.id}" onclick="${modeComparaison ? '' : 'allerVersManga(' + manga.id + ')'}">
         ${modeComparaison ? `
@@ -686,12 +708,26 @@ function afficherMangas(listMangas) {
             <span>✓</span>
           </div>
         ` : ''}
-        <img
-          src="${manga.couverture}"
-          alt="${manga.titre}"
-          class="manga-cover"
-          onerror="this.style.display='none'"
-        >
+        ${hasTwoCovers ? `
+          <div class="cover-slider">
+            <div class="cover-slider-inner" id="slider-${manga.id}">
+              <img src="${manga.couverture}" alt="${manga.titre} - Tome 1" class="manga-cover" onerror="this.style.display='none'">
+              <img src="${manga.couvertureLast}" alt="${manga.titre} - Dernier tome" class="manga-cover" onerror="this.style.display='none'">
+            </div>
+            <span class="cover-slider-label" id="slider-label-${manga.id}">Tome 1</span>
+            <div class="cover-slider-nav">
+              <button class="cover-slider-btn active" onclick="switchCover(${manga.id}, 'first', event)" title="Premier tome">◀</button>
+              <button class="cover-slider-btn" onclick="switchCover(${manga.id}, 'last', event)" title="Dernier tome">▶</button>
+            </div>
+          </div>
+        ` : `
+          <img
+            src="${manga.couverture}"
+            alt="${manga.titre}"
+            class="manga-cover"
+            onerror="this.style.display='none'"
+          >
+        `}
         <div class="manga-info">
           <h3 class="manga-title">${displayTitle}</h3>
           <p class="manga-author">${displayAuthor}</p>

@@ -63,6 +63,25 @@ function updateBackButton() {
   }
 }
 
+// ===== COVER SLIDER =====
+function switchDetailCover(position) {
+  const slider = document.getElementById('detail-slider');
+  const label = document.getElementById('detail-slider-label');
+  const buttons = document.querySelectorAll('.manga-detail-left .cover-slider-btn');
+
+  if (position === 'last') {
+    slider.classList.add('show-last');
+    if (label) label.textContent = currentLang === 'en' ? 'Last volume' : 'Dernier tome';
+    buttons[0].classList.remove('active');
+    buttons[1].classList.add('active');
+  } else {
+    slider.classList.remove('show-last');
+    if (label) label.textContent = currentLang === 'en' ? 'Volume 1' : 'Tome 1';
+    buttons[0].classList.add('active');
+    buttons[1].classList.remove('active');
+  }
+}
+
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', () => {
   // Rendre la page visible
@@ -123,16 +142,33 @@ function afficherDetailManga(id) {
   // Mettre à jour le titre de la page
   document.title = `${manga.titre} - Dico.Manga`;
 
+  // Vérifier si le manga a deux couvertures
+  const hasTwoCovers = manga.statut === 'Terminé' && manga.couvertureLast;
+
   // Générer le HTML
   container.innerHTML = `
     <div class="manga-detail">
       <div class="manga-detail-left">
-        <img
-          src="${manga.couverture}"
-          alt="${manga.titre}"
-          class="manga-detail-cover"
-          onerror="this.style.display='none'"
-        >
+        ${hasTwoCovers ? `
+          <div class="cover-slider">
+            <div class="cover-slider-inner" id="detail-slider">
+              <img src="${manga.couverture}" alt="${manga.titre} - Tome 1" class="manga-detail-cover" onerror="this.style.display='none'">
+              <img src="${manga.couvertureLast}" alt="${manga.titre} - Dernier tome" class="manga-detail-cover" onerror="this.style.display='none'">
+            </div>
+            <span class="cover-slider-label" id="detail-slider-label">${currentLang === 'en' ? 'Volume 1' : 'Tome 1'}</span>
+            <div class="cover-slider-nav">
+              <button class="cover-slider-btn active" onclick="switchDetailCover('first')" title="${currentLang === 'en' ? 'First volume' : 'Premier tome'}">◀</button>
+              <button class="cover-slider-btn" onclick="switchDetailCover('last')" title="${currentLang === 'en' ? 'Last volume' : 'Dernier tome'}">▶</button>
+            </div>
+          </div>
+        ` : `
+          <img
+            src="${manga.couverture}"
+            alt="${manga.titre}"
+            class="manga-detail-cover"
+            onerror="this.style.display='none'"
+          >
+        `}
       </div>
 
       <div class="manga-detail-info">

@@ -215,6 +215,10 @@
       applyPrivacyLang(next);
     }
     applyPrivacyLang(localStorage.getItem('lang') || 'fr');
+
+    // Le main a opacity:0 par défaut (animation d'entrée) — l'activer.
+    const mainEl = document.querySelector('main');
+    if (mainEl) mainEl.classList.add('loaded');
   </script>
 </body>
 </html>

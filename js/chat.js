@@ -17,7 +17,11 @@ function getChatText(key) {
       selectConversation: 'Sélectionne une conversation', typeMessage: 'Écris un message...',
       send: 'Envoyer', noResults: 'Aucun utilisateur trouvé',
       messageEmpty: 'Le message est vide', messageTooLong: 'Message trop long (max 2000)',
-      yesterday: 'hier', now: 'maintenant'
+      yesterday: 'hier', now: 'maintenant',
+      report: 'Signaler', reportTitle: 'Signaler ce message',
+      reportPrompt: 'Pourquoi signales-tu ce message ? (optionnel)',
+      reportSent: 'Message signalé, merci', reportAlready: 'Déjà signalé',
+      reportError: 'Erreur lors du signalement'
     },
     en: {
       messages: 'Messages', newConversation: 'New conversation',
@@ -25,7 +29,11 @@ function getChatText(key) {
       selectConversation: 'Select a conversation', typeMessage: 'Type a message...',
       send: 'Send', noResults: 'No user found',
       messageEmpty: 'Message is empty', messageTooLong: 'Message too long (max 2000)',
-      yesterday: 'yesterday', now: 'now'
+      yesterday: 'yesterday', now: 'now',
+      report: 'Report', reportTitle: 'Report this message',
+      reportPrompt: 'Why are you reporting this message? (optional)',
+      reportSent: 'Message reported, thank you', reportAlready: 'Already reported',
+      reportError: 'Report failed'
     }
   };
   return dict[lang]?.[key] || dict.fr[key] || key;
@@ -294,12 +302,40 @@ function renderChatView() {
 
 function renderMessageBubble(m) {
   const mine = m.sender_id === currentUser.id;
+  const reportBtn = !mine
+    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>`
+    : '';
   return `
     <div class="chat-bubble ${mine ? 'mine' : 'theirs'}">
       <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
-      <div class="chat-bubble-time">${formatTime(m.created_at)}</div>
+      <div class="chat-bubble-footer">
+        <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
+        ${reportBtn}
+      </div>
     </div>
   `;
+}
+
+async function signalerMessage(messageId, senderId) {
+  if (!currentUser) return;
+  const reason = window.prompt(getChatText('reportTitle') + '\n\n' + getChatText('reportPrompt'));
+  if (reason === null) return; // annulé
+  const trimmed = (reason || '').trim().slice(0, 500);
+  const { error } = await supabaseClient
+    .from('message_reports')
+    .insert({
+      message_id: messageId,
+      reporter_id: currentUser.id,
+      reported_user_id: senderId,
+      reason: trimmed || null
+    });
+  if (error) {
+    if (error.code === '23505') { showToast(getChatText('reportAlready')); return; }
+    console.error('Report message:', error);
+    showToast(getChatText('reportError'));
+    return;
+  }
+  showToast(getChatText('reportSent'));
 }
 
 // ----- Envoyer un message -----

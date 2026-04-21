@@ -113,6 +113,12 @@
         <span class="lists-count" id="customListsCount">0</span>
       </button>
 
+      <!-- Chat Button (visible si connecté) -->
+      <button class="chat-toggle" id="chatBtn" onclick="ouvrirChatModal()" title="Messages" style="display: none;">
+        <span>💬</span>
+        <span class="chat-unread-badge" id="chatUnreadBadge" style="display: none;">0</span>
+      </button>
+
       <!-- Auth Button -->
       <div class="auth-container">
         <button class="auth-btn" id="authBtn" onclick="ouvrirAuthModal()">
@@ -440,6 +446,7 @@
   <script src="js/supabase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/sync.js"></script>
+  <script src="js/chat.js"></script>
   <script src="js/app.js"></script>
   <div class="offline-indicator" id="offlineIndicator">
     Mode hors-ligne
@@ -540,6 +547,28 @@
         <div id="customListsGrid" class="custom-lists-grid">
           <!-- Listes générées par JS -->
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Chat -->
+  <div class="modal-overlay" id="chatModal" onclick="fermerChatModal(event)">
+    <div class="modal-content modal-chat">
+      <div class="modal-header">
+        <h2>💬 Messages</h2>
+        <button class="modal-close" onclick="fermerChatModalBtn()">✕</button>
+      </div>
+      <div class="chat-layout">
+        <aside class="chat-sidebar">
+          <div class="chat-search-wrap">
+            <input type="text" id="chatSearchInput" class="chat-search-input" placeholder="Chercher un pseudo..." oninput="onChatSearchInput(event)">
+            <div class="chat-search-results" id="chatSearchResults" style="display:none;"></div>
+          </div>
+          <div class="chat-conversations" id="chatConversationsList"></div>
+        </aside>
+        <section class="chat-main" id="chatView">
+          <div class="chat-empty chat-view-empty">Sélectionne une conversation</div>
+        </section>
       </div>
     </div>
   </div>

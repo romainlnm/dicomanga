@@ -194,7 +194,10 @@ const translations = {
     guestInfo: "Sans compte, vos données restent sur cet appareil uniquement.",
     synced: "Synchronisé",
     syncNow: "Synchroniser",
-    privacyPolicy: "Politique de confidentialité"
+    privacyPolicy: "Politique de confidentialité",
+    chatMessages: "Messages",
+    chatSearchUser: "Chercher un pseudo...",
+    chatSelectConversation: "Sélectionne une conversation"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -322,7 +325,10 @@ const translations = {
     guestInfo: "Without an account, your data stays on this device only.",
     synced: "Synced",
     syncNow: "Sync now",
-    privacyPolicy: "Privacy Policy"
+    privacyPolicy: "Privacy Policy",
+    chatMessages: "Messages",
+    chatSearchUser: "Search a username...",
+    chatSelectConversation: "Select a conversation"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",
@@ -1965,6 +1971,14 @@ function applyTranslations() {
     const key = el.dataset.i18nPlaceholder;
     if (translations[currentLang]?.[key]) {
       el.placeholder = translations[currentLang][key];
+    }
+  });
+
+  // Éléments avec data-i18n-title (tooltips)
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.dataset.i18nTitle;
+    if (translations[currentLang]?.[key]) {
+      el.title = translations[currentLang][key];
     }
   });
 

@@ -114,7 +114,7 @@
       </button>
 
       <!-- Chat Button (visible si connecté) -->
-      <button class="chat-toggle" id="chatBtn" onclick="ouvrirChatModal()" title="Messages" style="display: none;">
+      <button class="chat-toggle" id="chatBtn" onclick="ouvrirChatModal()" title="Messages" data-i18n-title="chatMessages" style="display: none;">
         <span>💬</span>
         <span class="chat-unread-badge" id="chatUnreadBadge" style="display: none;">0</span>
       </button>
@@ -555,19 +555,19 @@
   <div class="modal-overlay" id="chatModal" onclick="fermerChatModal(event)">
     <div class="modal-content modal-chat">
       <div class="modal-header">
-        <h2>💬 Messages</h2>
+        <h2><span>💬</span> <span data-i18n="chatMessages">Messages</span></h2>
         <button class="modal-close" onclick="fermerChatModalBtn()">✕</button>
       </div>
       <div class="chat-layout">
         <aside class="chat-sidebar">
           <div class="chat-search-wrap">
-            <input type="text" id="chatSearchInput" class="chat-search-input" placeholder="Chercher un pseudo..." oninput="onChatSearchInput(event)">
+            <input type="text" id="chatSearchInput" class="chat-search-input" placeholder="Chercher un pseudo..." data-i18n-placeholder="chatSearchUser" oninput="onChatSearchInput(event)">
             <div class="chat-search-results" id="chatSearchResults" style="display:none;"></div>
           </div>
           <div class="chat-conversations" id="chatConversationsList"></div>
         </aside>
         <section class="chat-main" id="chatView">
-          <div class="chat-empty chat-view-empty">Sélectionne une conversation</div>
+          <div class="chat-empty chat-view-empty" data-i18n="chatSelectConversation">Sélectionne une conversation</div>
         </section>
       </div>
     </div>

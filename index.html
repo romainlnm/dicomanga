@@ -96,22 +96,35 @@
         <span>🔍</span>
         <span class="filters-label" data-i18n="advancedFilters">Filtres</span>
       </button>
-      <button class="alire-toggle" onclick="ouvrirALire()">
-        <span>📚</span>
-        <span class="alire-count" id="alireCount">0</span>
-      </button>
-      <button class="favorites-toggle" onclick="ouvrirFavoris()">
-        <span>★</span>
-        <span class="fav-count" id="favCount">0</span>
-      </button>
-      <button class="compare-toggle" onclick="toggleModeComparaison()">
-        <span>⚖️</span>
-        <span id="compareText" data-i18n="compareBtn">Comparer</span>
-      </button>
-      <button class="lists-toggle" onclick="ouvrirCustomLists()">
-        <span>📋</span>
-        <span class="lists-count" id="customListsCount">0</span>
-      </button>
+      <div class="collection-group" id="collectionGroup">
+        <button class="collection-toggle" onclick="toggleCollectionMenu(event)" data-i18n-title="collection" title="Ma collection">
+          <span>📂</span>
+          <span class="collection-label" data-i18n="collection">Collection</span>
+          <span class="collection-total" id="collectionTotal">0</span>
+          <span class="collection-arrow">▼</span>
+        </button>
+        <div class="collection-menu" id="collectionMenu">
+          <button class="alire-toggle" onclick="ouvrirALire()">
+            <span>📚</span>
+            <span class="collection-item-label" data-i18n="toRead">Ma Liste À lire</span>
+            <span class="alire-count" id="alireCount">0</span>
+          </button>
+          <button class="favorites-toggle" onclick="ouvrirFavoris()">
+            <span>★</span>
+            <span class="collection-item-label" data-i18n="favorites">Favoris</span>
+            <span class="fav-count" id="favCount">0</span>
+          </button>
+          <button class="compare-toggle" onclick="toggleModeComparaison()">
+            <span>⚖️</span>
+            <span id="compareText" data-i18n="compareBtn">Comparer</span>
+          </button>
+          <button class="lists-toggle" onclick="ouvrirCustomLists()">
+            <span>📋</span>
+            <span class="collection-item-label" data-i18n="customLists">Mes listes</span>
+            <span class="lists-count" id="customListsCount">0</span>
+          </button>
+        </div>
+      </div>
 
       <!-- Chat Button (visible si connecté) -->
       <button class="chat-toggle" id="chatBtn" onclick="ouvrirChatModal()" title="Messages" data-i18n-title="chatMessages" style="display: none;">

@@ -139,6 +139,7 @@ const translations = {
     lastViewed: "Dernier vu",
     streak: "Streak",
     viewAllStats: "Voir toutes mes stats →",
+    collection: "Ma collection",
     customLists: "Mes listes",
     createList: "Créer une liste",
     listName: "Nom de la liste",
@@ -273,6 +274,7 @@ const translations = {
     lastViewed: "Last viewed",
     streak: "Streak",
     viewAllStats: "View all my stats →",
+    collection: "My collection",
     customLists: "My lists",
     createList: "Create a list",
     listName: "List name",
@@ -398,6 +400,7 @@ const translations = {
     lastViewed: "Último visto",
     streak: "Racha",
     viewAllStats: "Ver todas mis estadísticas →",
+    collection: "Mi colección",
     customLists: "Mis listas",
     createList: "Crear una lista",
     listName: "Nombre de la lista",
@@ -502,6 +505,7 @@ const translations = {
     lastViewed: "最後に見た",
     streak: "連続日数",
     viewAllStats: "すべての統計を見る →",
+    collection: "マイコレクション",
     customLists: "マイリスト",
     createList: "リストを作成",
     listName: "リスト名",
@@ -1216,6 +1220,7 @@ function afficherFavoris() {
   if (count) {
     count.textContent = favorisIds.length;
   }
+  updateCollectionTotal();
 
   if (!grid) return;
 
@@ -1320,6 +1325,7 @@ function afficherALire() {
   if (count) {
     count.textContent = aLireIds.length;
   }
+  updateCollectionTotal();
 
   if (!grid) return;
 
@@ -1578,7 +1584,36 @@ function updateCustomListsCount() {
     const lists = getCustomLists();
     count.textContent = Object.keys(lists).length;
   }
+  updateCollectionTotal();
 }
+
+// ===== BOUTON COLLECTION (regroupe À lire / Favoris / Comparer / Listes) =====
+function updateCollectionTotal() {
+  const el = document.getElementById('collectionTotal');
+  if (!el) return;
+  const favs = (typeof getFavoris === 'function') ? getFavoris().length : 0;
+  const alire = (typeof getALire === 'function') ? getALire().length : 0;
+  const lists = (typeof getCustomLists === 'function') ? Object.keys(getCustomLists()).length : 0;
+  el.textContent = favs + alire + lists;
+}
+
+function toggleCollectionMenu(event) {
+  if (event) event.stopPropagation();
+  const group = document.getElementById('collectionGroup');
+  if (group) group.classList.toggle('open');
+}
+
+document.addEventListener('click', (e) => {
+  const group = document.getElementById('collectionGroup');
+  if (!group || !group.classList.contains('open')) return;
+  if (!group.contains(e.target)) group.classList.remove('open');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const group = document.getElementById('collectionGroup');
+  if (group) group.classList.remove('open');
+});
 
 // ===== SYSTEME DE COMPARAISON =====
 let modeComparaison = false;

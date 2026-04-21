@@ -7110,3 +7110,110 @@ footer span {
   .chat-layout.show-chat .chat-sidebar { display: none; }
   .chat-layout.show-chat .chat-main { display: flex; }
 }
+
+/* ===== BOUTON COLLECTION (regroupement À lire / Favoris / Comparer / Listes) ===== */
+.collection-group {
+  position: relative;
+}
+
+.collection-toggle {
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--accent);
+  border-radius: 25px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--accent);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.collection-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.collection-total {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.collection-toggle:hover .collection-total {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.collection-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.collection-group.open .collection-arrow {
+  transform: rotate(180deg);
+}
+
+.collection-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 220px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: collection-menu-in 0.2s ease-out;
+}
+
+.collection-group.open .collection-menu {
+  display: flex;
+}
+
+@keyframes collection-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.collection-menu .alire-toggle,
+.collection-menu .favorites-toggle,
+.collection-menu .compare-toggle,
+.collection-menu .lists-toggle {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+.collection-menu .alire-toggle:hover,
+.collection-menu .favorites-toggle:hover,
+.collection-menu .compare-toggle:hover,
+.collection-menu .lists-toggle:hover {
+  transform: none;
+}
+
+.collection-item-label {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .collection-toggle .collection-label { display: none; }
+  .collection-menu { right: auto; left: 0; min-width: 200px; }
+}

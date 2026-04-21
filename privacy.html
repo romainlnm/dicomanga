@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité - Dico.Manga</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63946">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal-page { max-width: 780px; margin: 0 auto; padding: 20px; }
+    .legal-page h1 { margin: 20px 0 10px; }
+    .legal-page h2 { margin: 32px 0 10px; font-size: 1.25rem; }
+    .legal-page p, .legal-page li { line-height: 1.6; color: var(--text-secondary); }
+    .legal-page ul { padding-left: 20px; margin: 8px 0; }
+    .legal-page a { color: var(--accent); }
+    .legal-updated { font-size: 0.85rem; opacity: 0.7; margin-bottom: 24px; }
+    [data-lang-block] { display: none; }
+    [data-lang-block].active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-group">
+        <a href="index.html" class="logo">
+          <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
+          <span data-i18n="siteSubtitle">Un dictionnaire de mangas</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+          <span id="themeIcon">☀️</span>
+        </button>
+        <button class="lang-toggle" id="langToggle" onclick="togglePrivacyLang()" title="Change language">
+          <span id="langIcon">FR</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-btn" data-i18n="backToLibrary">← Retour à la bibliothèque</a>
+
+    <div class="legal-page">
+      <!-- FR -->
+      <div data-lang-block="fr" class="active">
+        <h1>Politique de confidentialité</h1>
+        <p class="legal-updated">Dernière mise à jour : 21 avril 2026</p>
+
+        <p>Dico.Manga est un dictionnaire de mangas édité par <strong>Nora.R</strong>. Cette politique explique quelles données sont collectées, pourquoi, et comment tu peux exercer tes droits.</p>
+
+        <h2>1. Données collectées</h2>
+        <p><strong>Sans compte (mode invité)</strong> — aucune donnée n'est envoyée à un serveur. Tes favoris, listes, notes, préférences et historique sont stockés uniquement dans ton navigateur (localStorage) et ne quittent pas ton appareil.</p>
+        <p><strong>Avec un compte</strong> — nous collectons :</p>
+        <ul>
+          <li>Ton adresse email (authentification)</li>
+          <li>Ton pseudo (facultatif)</li>
+          <li>Ton avatar (prédéfini ou photo importée)</li>
+          <li>Tes données utilisateur : favoris, liste à lire, listes personnalisées, notes personnelles, historique de consultation, préférences d'affichage (thème, langue, taille, mode d'affichage)</li>
+          <li>Si tu utilises « Continuer avec Google » : ton email et les informations de profil Google strictement nécessaires à l'authentification</li>
+        </ul>
+        <p>Aucun outil d'analyse (Google Analytics, Plausible, etc.) n'est utilisé. Aucun tracking publicitaire.</p>
+
+        <h2>2. Finalités du traitement</h2>
+        <ul>
+          <li>Te permettre de créer et d'utiliser un compte</li>
+          <li>Synchroniser tes données entre tes appareils</li>
+          <li>Te fournir des fonctionnalités personnalisées (recommandations, stats, streak)</li>
+          <li>Assurer la sécurité du service</li>
+        </ul>
+
+        <h2>3. Sous-traitants</h2>
+        <ul>
+          <li><strong>Supabase</strong> (hébergement EU) : authentification, base de données, stockage des avatars personnalisés. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Politique Supabase</a></li>
+          <li><strong>Google</strong> (si tu utilises la connexion Google) : fournisseur d'identité OAuth. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique Google</a></li>
+        </ul>
+        <p>Les données sont hébergées dans l'Union européenne.</p>
+
+        <h2>4. Durée de conservation</h2>
+        <p>Tes données sont conservées tant que ton compte existe. Tu peux demander leur suppression à tout moment (voir section 6). Les données du mode invité restent sur ton appareil jusqu'à ce que tu vides le cache de ton navigateur.</p>
+
+        <h2>5. Cookies et stockage local</h2>
+        <p>Dico.Manga n'utilise pas de cookies publicitaires. Nous utilisons :</p>
+        <ul>
+          <li><strong>localStorage</strong> : préférences et, en mode invité, tes listes et favoris</li>
+          <li><strong>Cookies techniques Supabase</strong> : session d'authentification (uniquement si tu te connectes)</li>
+          <li><strong>Service Worker</strong> : fonctionnement hors-ligne (cache de pages)</li>
+        </ul>
+
+        <h2>6. Tes droits (RGPD)</h2>
+        <p>Conformément au Règlement général sur la protection des données, tu disposes des droits suivants :</p>
+        <ul>
+          <li>Droit d'accès à tes données</li>
+          <li>Droit de rectification</li>
+          <li>Droit à l'effacement (« droit à l'oubli »)</li>
+          <li>Droit à la portabilité</li>
+          <li>Droit d'opposition et de limitation du traitement</li>
+        </ul>
+        <p>Pour exercer ces droits, écris à <a href="mailto:rouphaelnora2@gmail.com">rouphaelnora2@gmail.com</a>. Une réponse te sera apportée dans un délai d'un mois.</p>
+
+        <h2>7. Sécurité</h2>
+        <p>Les mots de passe sont hachés par Supabase (jamais stockés en clair). Les communications avec le serveur sont chiffrées (HTTPS). L'accès à tes données est protégé par les règles de sécurité Supabase (Row Level Security).</p>
+
+        <h2>8. Modifications</h2>
+        <p>Cette politique peut être modifiée. La date de dernière mise à jour est indiquée en haut de cette page.</p>
+
+        <h2>9. Contact</h2>
+        <p>Pour toute question : <a href="mailto:rouphaelnora2@gmail.com">rouphaelnora2@gmail.com</a></p>
+      </div>
+
+      <!-- EN -->
+      <div data-lang-block="en">
+        <h1>Privacy Policy</h1>
+        <p class="legal-updated">Last updated: April 21, 2026</p>
+
+        <p>Dico.Manga is a manga dictionary published by <strong>Nora.R</strong>. This policy explains what data is collected, why, and how you can exercise your rights.</p>
+
+        <h2>1. Data we collect</h2>
+        <p><strong>Without an account (guest mode)</strong> — no data is sent to any server. Your favorites, lists, notes, preferences and history are stored only in your browser (localStorage) and never leave your device.</p>
+        <p><strong>With an account</strong> — we collect:</p>
+        <ul>
+          <li>Your email address (authentication)</li>
+          <li>Your username (optional)</li>
+          <li>Your avatar (preset or uploaded photo)</li>
+          <li>Your user data: favorites, reading list, custom lists, personal notes, viewing history, display preferences (theme, language, size, view mode)</li>
+          <li>If you use "Continue with Google": your email and Google profile information strictly required for authentication</li>
+        </ul>
+        <p>No analytics tool (Google Analytics, Plausible, etc.) is used. No advertising tracking.</p>
+
+        <h2>2. Purposes of processing</h2>
+        <ul>
+          <li>Allow you to create and use an account</li>
+          <li>Sync your data across your devices</li>
+          <li>Provide personalized features (recommendations, stats, streak)</li>
+          <li>Ensure the security of the service</li>
+        </ul>
+
+        <h2>3. Processors</h2>
+        <ul>
+          <li><strong>Supabase</strong> (EU hosting): authentication, database, custom avatar storage. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase policy</a></li>
+          <li><strong>Google</strong> (if you use Google sign-in): OAuth identity provider. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google policy</a></li>
+        </ul>
+        <p>Data is hosted in the European Union.</p>
+
+        <h2>4. Retention</h2>
+        <p>Your data is kept as long as your account exists. You can request deletion at any time (see section 6). Guest-mode data stays on your device until you clear your browser cache.</p>
+
+        <h2>5. Cookies and local storage</h2>
+        <p>Dico.Manga does not use advertising cookies. We use:</p>
+        <ul>
+          <li><strong>localStorage</strong>: preferences and, in guest mode, your lists and favorites</li>
+          <li><strong>Supabase technical cookies</strong>: authentication session (only if you sign in)</li>
+          <li><strong>Service Worker</strong>: offline functionality (page caching)</li>
+        </ul>
+
+        <h2>6. Your rights (GDPR)</h2>
+        <p>Under the General Data Protection Regulation, you have the following rights:</p>
+        <ul>
+          <li>Right of access to your data</li>
+          <li>Right of rectification</li>
+          <li>Right to erasure ("right to be forgotten")</li>
+          <li>Right to data portability</li>
+          <li>Right to object and restrict processing</li>
+        </ul>
+        <p>To exercise these rights, email <a href="mailto:rouphaelnora2@gmail.com">rouphaelnora2@gmail.com</a>. You will receive a response within one month.</p>
+
+        <h2>7. Security</h2>
+        <p>Passwords are hashed by Supabase (never stored in plain text). Communications with the server are encrypted (HTTPS). Access to your data is protected by Supabase security rules (Row Level Security).</p>
+
+        <h2>8. Changes</h2>
+        <p>This policy may be updated. The last-updated date is shown at the top of this page.</p>
+
+        <h2>9. Contact</h2>
+        <p>For any question: <a href="mailto:rouphaelnora2@gmail.com">rouphaelnora2@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-credit">Créé avec <span class="heart">♥</span> par Nora.R</p>
+    <p class="footer-credit"><a href="privacy.html" data-i18n="privacyPolicy">Politique de confidentialité</a></p>
+  </footer>
+
+  <script>
+    // Theme toggle (light/dark) — réplique minimale de app.js
+    (function() {
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.body.classList.toggle('light-mode', saved === 'light');
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.textContent = saved === 'light' ? '🌙' : '☀️';
+    })();
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.textContent = isLight ? '🌙' : '☀️';
+    }
+
+    // Language toggle : switch entre les blocs FR/EN
+    function applyPrivacyLang(lang) {
+      document.querySelectorAll('[data-lang-block]').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-lang-block') === lang);
+      });
+      document.documentElement.lang = lang;
+      const langIcon = document.getElementById('langIcon');
+      if (langIcon) langIcon.textContent = lang.toUpperCase();
+      const backBtn = document.querySelector('.back-btn');
+      if (backBtn) backBtn.textContent = lang === 'en' ? '← Back to library' : '← Retour à la bibliothèque';
+      document.title = lang === 'en' ? 'Privacy Policy - Dico.Manga' : 'Politique de confidentialité - Dico.Manga';
+    }
+    function togglePrivacyLang() {
+      const current = localStorage.getItem('lang') || 'fr';
+      const next = current === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('lang', next);
+      applyPrivacyLang(next);
+    }
+    applyPrivacyLang(localStorage.getItem('lang') || 'fr');
+  </script>
+</body>
+</html>

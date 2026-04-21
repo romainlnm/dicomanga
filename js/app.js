@@ -193,7 +193,8 @@ const translations = {
     or: "ou",
     guestInfo: "Sans compte, vos données restent sur cet appareil uniquement.",
     synced: "Synchronisé",
-    syncNow: "Synchroniser"
+    syncNow: "Synchroniser",
+    privacyPolicy: "Politique de confidentialité"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -320,7 +321,8 @@ const translations = {
     or: "or",
     guestInfo: "Without an account, your data stays on this device only.",
     synced: "Synced",
-    syncNow: "Sync now"
+    syncNow: "Sync now",
+    privacyPolicy: "Privacy Policy"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",

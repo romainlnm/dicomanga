@@ -6864,6 +6864,69 @@ footer span {
   font-weight: 600;
   color: var(--accent);
 }
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chat-header-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+}
+.chat-header-btn:hover { background: var(--bg-primary); color: var(--text-primary); }
+.chat-blocked-toggle {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--border);
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: left;
+  flex-shrink: 0;
+}
+.chat-blocked-toggle:hover { background: var(--bg-primary); color: var(--text-primary); }
+.chat-blocked-panel {
+  display: none;
+  max-height: 50%;
+  overflow-y: auto;
+  border-top: 1px solid var(--border);
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}
+.chat-blocked-panel.open { display: block; }
+.chat-blocked-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.chat-blocked-row:last-child { border-bottom: none; }
+.chat-blocked-row span { flex: 1; font-size: 0.9rem; }
+.chat-unblock-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.chat-unblock-btn:hover { opacity: 0.9; }
+.chat-typing {
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  flex-shrink: 0;
+  min-height: 22px;
+}
 .chat-search-wrap {
   position: relative;
   padding: 12px;
@@ -7002,11 +7065,11 @@ footer span {
   line-height: 1;
   color: inherit;
 }
-.chat-bubble.theirs:hover .chat-report-btn,
-.chat-bubble.theirs:focus-within .chat-report-btn { opacity: 0.6; }
+.chat-bubble:hover .chat-report-btn,
+.chat-bubble:focus-within .chat-report-btn { opacity: 0.6; }
 .chat-report-btn:hover { opacity: 1 !important; }
 @media (hover: none) {
-  .chat-bubble.theirs .chat-report-btn { opacity: 0.5; }
+  .chat-bubble .chat-report-btn { opacity: 0.5; }
 }
 .chat-input-form {
   display: flex;

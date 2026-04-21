@@ -11,6 +11,11 @@ let chatMode = 'private';          // 'private' | 'public'
 let chatPublicMessages = [];       // liste des messages publics (ordre chrono)
 let chatPublicProfiles = {};       // { user_id: profile } — cache pour le salon public
 let chatPublicRealtime = null;
+let chatBlockedIds = new Set();    // utilisateurs que j'ai bloqués
+let chatTypingChannel = null;      // presence channel pour la conv active
+let chatTypingTimer = null;        // debounce côté émetteur
+let chatPeerTyping = false;        // l'autre personne est en train d'écrire
+let chatNotifPref = localStorage.getItem('chatNotif') || 'ask'; // 'on' | 'off' | 'ask'
 
 function getChatText(key) {
   const lang = localStorage.getItem('lang') || 'fr';
@@ -27,7 +32,15 @@ function getChatText(key) {
       reportSent: 'Message signalé, merci', reportAlready: 'Déjà signalé',
       reportError: 'Erreur lors du signalement',
       publicWelcome: 'Salon public', publicEmpty: 'Aucun message. Soyez le premier à écrire !',
-      publicIntro: 'Salon ouvert à tous les membres connectés. Reste respectueux.'
+      publicIntro: 'Salon ouvert à tous les membres connectés. Reste respectueux.',
+      block: 'Bloquer', blockConfirm: 'Bloquer cet utilisateur ? Tu ne verras plus ses messages.',
+      blocked: 'Utilisateur bloqué', unblock: 'Débloquer',
+      blockedUsers: 'Utilisateurs bloqués', noBlocked: 'Aucun utilisateur bloqué',
+      deleteMsg: 'Supprimer', deleteConfirm: 'Supprimer ce message ?',
+      notifEnable: 'Activer les notifications', notifDenied: 'Notifications refusées',
+      notifOn: 'Notifications activées', notifOff: 'Notifications désactivées',
+      typing: 'est en train d\'écrire…',
+      newMessageFrom: 'Nouveau message de'
     },
     en: {
       messages: 'Messages', newConversation: 'New conversation',
@@ -41,7 +54,15 @@ function getChatText(key) {
       reportSent: 'Message reported, thank you', reportAlready: 'Already reported',
       reportError: 'Report failed',
       publicWelcome: 'Public room', publicEmpty: 'No messages yet. Be the first to write!',
-      publicIntro: 'Open to all signed-in members. Please stay respectful.'
+      publicIntro: 'Open to all signed-in members. Please stay respectful.',
+      block: 'Block', blockConfirm: 'Block this user? You will no longer see their messages.',
+      blocked: 'User blocked', unblock: 'Unblock',
+      blockedUsers: 'Blocked users', noBlocked: 'No blocked users',
+      deleteMsg: 'Delete', deleteConfirm: 'Delete this message?',
+      notifEnable: 'Enable notifications', notifDenied: 'Notifications denied',
+      notifOn: 'Notifications enabled', notifOff: 'Notifications disabled',
+      typing: 'is typing…',
+      newMessageFrom: 'New message from'
     }
   };
   return dict[lang]?.[key] || dict.fr[key] || key;
@@ -82,6 +103,8 @@ async function ouvrirChatModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   await chargerProfilMoi();
+  await chargerBloques();
+  renderBlockedCount();
   if (chatMode === 'private') {
     await chargerConversations();
     subscribeToMessages();
@@ -103,6 +126,7 @@ function fermerChatModalBtn() {
   document.body.style.overflow = '';
   unsubscribeFromMessages();
   unsubscribeFromPublic();
+  unsubscribeTyping();
 }
 
 async function switchChatMode(mode) {
@@ -131,6 +155,7 @@ async function switchChatMode(mode) {
     privView.style.display = 'none';
     pubView.style.display = '';
     unsubscribeFromMessages();
+    unsubscribeTyping();
     await chargerPublicMessages();
     subscribeToPublicMessages();
   }
@@ -204,6 +229,7 @@ async function chargerConversations() {
   }
 
   chatConversations = [...convMap.values()]
+    .filter(c => !chatBlockedIds.has(c.otherId))
     .map(c => ({ ...c, profile: profilesById[c.otherId] || { user_id: c.otherId, username: '?' } }))
     .sort((a, b) => new Date(b.lastMessage.created_at) - new Date(a.lastMessage.created_at));
 
@@ -305,6 +331,7 @@ async function ouvrirConversation(otherUserId, username) {
   await chargerMessages(otherUserId);
   renderChatView();
   await markConversationAsRead(otherUserId);
+  subscribeTyping(otherUserId);
 }
 
 async function chargerMessages(otherUserId) {
@@ -335,8 +362,10 @@ function renderChatView() {
     <div class="chat-messages" id="chatMessages">
       ${msgs.map(renderMessageBubble).join('')}
     </div>
+    <div class="chat-typing" id="chatTypingIndicator" style="display:none;"></div>
     <form class="chat-input-form" onsubmit="envoyerMessage(event)">
       <textarea id="chatInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
+        oninput="onChatInputType()"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatSendBtn').click(); }"></textarea>
       <button type="submit" id="chatSendBtn" class="chat-send-btn">${escapeHtml(getChatText('send'))}</button>
     </form>
@@ -347,15 +376,16 @@ function renderChatView() {
 
 function renderMessageBubble(m) {
   const mine = m.sender_id === currentUser.id;
-  const reportBtn = !mine
-    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>`
+  const actions = !mine
+    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
+       <button class="chat-report-btn" title="${escapeHtml(getChatText('block'))}" onclick="bloquerUtilisateur('${m.sender_id}')" aria-label="${escapeHtml(getChatText('block'))}">🚫</button>`
     : '';
   return `
     <div class="chat-bubble ${mine ? 'mine' : 'theirs'}">
       <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
-        ${reportBtn}
+        ${actions}
       </div>
     </div>
   `;
@@ -469,6 +499,7 @@ function unsubscribeFromMessages() {
 
 async function handleIncomingMessage(msg) {
   const otherId = msg.sender_id;
+  if (chatBlockedIds.has(otherId)) return; // Ignore blocked
   // Update cache
   if (chatMessagesCache[otherId]) {
     chatMessagesCache[otherId].push(msg);
@@ -490,6 +521,7 @@ async function handleIncomingMessage(msg) {
       unread: 1,
       profile: prof || { user_id: otherId, username: '?' }
     });
+    convo = chatConversations[chatConversations.length - 1];
   }
   chatConversations.sort((a, b) => new Date(b.lastMessage.created_at) - new Date(a.lastMessage.created_at));
   renderConversations();
@@ -498,7 +530,30 @@ async function handleIncomingMessage(msg) {
     await markConversationAsRead(otherId);
   } else {
     updateChatBadge();
+    maybeNotify(convo.profile, msg.content);
   }
+}
+
+function maybeNotify(profile, content) {
+  if (chatNotifPref !== 'on') return;
+  if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+  // Pas de notif si l'onglet est focus ET le chat ouvert sur cette conv
+  if (!document.hidden) {
+    const modalOpen = document.getElementById('chatModal')?.classList.contains('open');
+    if (modalOpen && chatActiveConversation?.userId === profile?.user_id) return;
+  }
+  try {
+    const n = new Notification(
+      `${getChatText('newMessageFrom')} ${profile?.username || '?'}`,
+      { body: (content || '').slice(0, 140), icon: 'images/logo.svg', tag: 'chat-' + (profile?.user_id || '') }
+    );
+    n.onclick = () => {
+      window.focus();
+      ouvrirChatModal();
+      if (profile?.user_id) ouvrirConversation(profile.user_id, profile.username);
+      n.close();
+    };
+  } catch (e) { /* ignore */ }
 }
 
 // ----- Badge notifications non lues -----
@@ -551,6 +606,8 @@ function chatOnAuth(isAuth) {
     chatMyProfile = null;
     chatPublicMessages = [];
     chatPublicProfiles = {};
+    chatBlockedIds = new Set();
+    unsubscribeTyping();
   }
 }
 
@@ -564,6 +621,7 @@ if (typeof supabaseClient !== 'undefined') {
 // Au chargement, si déjà connecté (session restaurée), bascule aussi
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => { if (currentUser) chatOnAuth(true); }, 100);
+  renderNotifBtn();
 });
 
 // ============================================================================
@@ -583,7 +641,7 @@ async function chargerPublicMessages() {
 
   if (error) { console.error('Load public messages:', error); if (view) view.innerHTML = ''; return; }
 
-  chatPublicMessages = (data || []).reverse();
+  chatPublicMessages = (data || []).filter(m => !chatBlockedIds.has(m.sender_id)).reverse();
   await hydratePublicProfiles(chatPublicMessages.map(m => m.sender_id));
   renderPublicView();
 }
@@ -626,9 +684,10 @@ function renderPublicBubble(m) {
   const profile = chatPublicProfiles[m.sender_id];
   const username = profile?.username || '?';
   const avatar = avatarSrc(profile);
-  const reportBtn = !mine
-    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerPublicMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>`
-    : '';
+  const actions = mine
+    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('deleteMsg'))}" onclick="supprimerPublicMessage('${m.id}')" aria-label="${escapeHtml(getChatText('deleteMsg'))}">🗑️</button>`
+    : `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerPublicMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
+       <button class="chat-report-btn" title="${escapeHtml(getChatText('block'))}" onclick="bloquerUtilisateur('${m.sender_id}')" aria-label="${escapeHtml(getChatText('block'))}">🚫</button>`;
   const header = !mine
     ? `<div class="chat-public-author">
          <img src="${avatar}" alt="" class="chat-avatar chat-avatar-sm">
@@ -641,7 +700,7 @@ function renderPublicBubble(m) {
       <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
-        ${reportBtn}
+        ${actions}
       </div>
     </div>
   `;
@@ -708,6 +767,16 @@ function subscribeToPublicMessages() {
     }, (payload) => {
       handleIncomingPublicMessage(payload.new);
     })
+    .on('postgres_changes', {
+      event: 'DELETE',
+      schema: 'public',
+      table: 'public_messages'
+    }, (payload) => {
+      const id = payload.old?.id;
+      if (!id) return;
+      chatPublicMessages = chatPublicMessages.filter(m => m.id !== id);
+      if (chatMode === 'public') renderPublicView();
+    })
     .subscribe();
 }
 
@@ -719,9 +788,197 @@ function unsubscribeFromPublic() {
 }
 
 async function handleIncomingPublicMessage(msg) {
+  if (chatBlockedIds.has(msg.sender_id)) return;
   if (chatPublicMessages.some(m => m.id === msg.id)) return;
   chatPublicMessages.push(msg);
   if (chatPublicMessages.length > 200) chatPublicMessages = chatPublicMessages.slice(-150);
   await hydratePublicProfiles([msg.sender_id]);
   if (chatMode === 'public') renderPublicView();
+}
+
+// ============================================================================
+// ===== BLOCAGE D'UTILISATEURS ===============================================
+// ============================================================================
+
+async function chargerBloques() {
+  if (!currentUser) { chatBlockedIds = new Set(); return; }
+  const { data, error } = await supabaseClient
+    .from('blocked_users')
+    .select('blocked_id')
+    .eq('blocker_id', currentUser.id);
+  if (error) { console.error('Load blocked:', error); return; }
+  chatBlockedIds = new Set((data || []).map(r => r.blocked_id));
+}
+
+async function bloquerUtilisateur(userId) {
+  if (!currentUser || userId === currentUser.id) return;
+  if (!window.confirm(getChatText('blockConfirm'))) return;
+  const { error } = await supabaseClient
+    .from('blocked_users')
+    .insert({ blocker_id: currentUser.id, blocked_id: userId });
+  if (error && error.code !== '23505') { console.error('Block:', error); showToast(getChatText('reportError')); return; }
+  chatBlockedIds.add(userId);
+  showToast(getChatText('blocked'));
+  // Retire des listes locales
+  chatConversations = chatConversations.filter(c => c.otherId !== userId);
+  chatPublicMessages = chatPublicMessages.filter(m => m.sender_id !== userId);
+  if (chatActiveConversation?.userId === userId) chatActiveConversation = null;
+  renderConversations();
+  renderChatView();
+  if (chatMode === 'public') renderPublicView();
+  renderBlockedCount();
+}
+
+async function debloquerUtilisateur(userId) {
+  if (!currentUser) return;
+  const { error } = await supabaseClient
+    .from('blocked_users')
+    .delete()
+    .eq('blocker_id', currentUser.id)
+    .eq('blocked_id', userId);
+  if (error) { console.error('Unblock:', error); return; }
+  chatBlockedIds.delete(userId);
+  afficherBloques();
+  renderBlockedCount();
+}
+
+function renderBlockedCount() {
+  const el = document.getElementById('chatBlockedCount');
+  if (!el) return;
+  const n = chatBlockedIds.size;
+  el.textContent = n > 0 ? `${getChatText('blockedUsers')} (${n})` : getChatText('blockedUsers');
+  el.style.display = '';
+}
+
+async function afficherBloques() {
+  const panel = document.getElementById('chatBlockedPanel');
+  if (!panel) return;
+  if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
+  panel.classList.add('open');
+  if (chatBlockedIds.size === 0) {
+    panel.innerHTML = `<div class="chat-empty">${escapeHtml(getChatText('noBlocked'))}</div>`;
+    return;
+  }
+  const ids = [...chatBlockedIds];
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('user_id, username, avatar, avatar_url')
+    .in('user_id', ids);
+  const profs = data || [];
+  panel.innerHTML = profs.map(p => `
+    <div class="chat-blocked-row">
+      <img src="${avatarSrc(p)}" alt="" class="chat-avatar chat-avatar-sm">
+      <span>${escapeHtml(p.username)}</span>
+      <button class="chat-unblock-btn" onclick="debloquerUtilisateur('${p.user_id}')">${escapeHtml(getChatText('unblock'))}</button>
+    </div>
+  `).join('');
+}
+
+// ============================================================================
+// ===== SUPPRESSION MESSAGE PUBLIC ===========================================
+// ============================================================================
+
+async function supprimerPublicMessage(messageId) {
+  if (!currentUser) return;
+  if (!window.confirm(getChatText('deleteConfirm'))) return;
+  const { error } = await supabaseClient
+    .from('public_messages')
+    .delete()
+    .eq('id', messageId)
+    .eq('sender_id', currentUser.id);
+  if (error) { console.error('Delete public:', error); showToast(getChatText('reportError')); return; }
+  chatPublicMessages = chatPublicMessages.filter(m => m.id !== messageId);
+  renderPublicView();
+}
+
+// ============================================================================
+// ===== NOTIFICATIONS NAVIGATEUR =============================================
+// ============================================================================
+
+async function toggleChatNotif() {
+  if (typeof Notification === 'undefined') return;
+  if (chatNotifPref === 'on') {
+    chatNotifPref = 'off';
+    localStorage.setItem('chatNotif', 'off');
+    showToast(getChatText('notifOff'));
+  } else {
+    if (Notification.permission === 'denied') { showToast(getChatText('notifDenied')); return; }
+    if (Notification.permission !== 'granted') {
+      const res = await Notification.requestPermission();
+      if (res !== 'granted') { showToast(getChatText('notifDenied')); return; }
+    }
+    chatNotifPref = 'on';
+    localStorage.setItem('chatNotif', 'on');
+    showToast(getChatText('notifOn'));
+  }
+  renderNotifBtn();
+}
+
+function renderNotifBtn() {
+  const btn = document.getElementById('chatNotifBtn');
+  if (!btn) return;
+  const on = chatNotifPref === 'on' && (typeof Notification !== 'undefined') && Notification.permission === 'granted';
+  btn.textContent = on ? '🔔' : '🔕';
+  btn.title = on ? getChatText('notifOn') : getChatText('notifEnable');
+}
+
+// ============================================================================
+// ===== INDICATEUR DE FRAPPE (Supabase Presence) =============================
+// ============================================================================
+
+function typingChannelName(userA, userB) {
+  return 'typing:' + [userA, userB].sort().join(':');
+}
+
+function subscribeTyping(otherUserId) {
+  unsubscribeTyping();
+  if (!currentUser || !supabaseClient) return;
+  const name = typingChannelName(currentUser.id, otherUserId);
+  chatTypingChannel = supabaseClient.channel(name, {
+    config: { presence: { key: currentUser.id } }
+  });
+  chatTypingChannel.on('presence', { event: 'sync' }, () => {
+    const state = chatTypingChannel.presenceState();
+    const peer = state[otherUserId];
+    const typing = !!(peer && peer.some(p => p.typing));
+    if (typing !== chatPeerTyping) {
+      chatPeerTyping = typing;
+      renderTypingIndicator();
+    }
+  });
+  chatTypingChannel.subscribe(async (status) => {
+    if (status === 'SUBSCRIBED') {
+      await chatTypingChannel.track({ typing: false });
+    }
+  });
+}
+
+function unsubscribeTyping() {
+  if (chatTypingChannel) {
+    supabaseClient.removeChannel(chatTypingChannel);
+    chatTypingChannel = null;
+  }
+  chatPeerTyping = false;
+  clearTimeout(chatTypingTimer);
+  chatTypingTimer = null;
+}
+
+function onChatInputType() {
+  if (!chatTypingChannel) return;
+  chatTypingChannel.track({ typing: true });
+  clearTimeout(chatTypingTimer);
+  chatTypingTimer = setTimeout(() => {
+    if (chatTypingChannel) chatTypingChannel.track({ typing: false });
+  }, 2500);
+}
+
+function renderTypingIndicator() {
+  const el = document.getElementById('chatTypingIndicator');
+  if (!el) return;
+  if (chatPeerTyping && chatActiveConversation) {
+    el.textContent = `${chatActiveConversation.username} ${getChatText('typing')}`;
+    el.style.display = '';
+  } else {
+    el.style.display = 'none';
+  }
 }

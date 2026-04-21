@@ -556,7 +556,10 @@
     <div class="modal-content modal-chat">
       <div class="modal-header">
         <h2><span>💬</span> <span data-i18n="chatMessages">Messages</span></h2>
-        <button class="modal-close" onclick="fermerChatModalBtn()">✕</button>
+        <div class="chat-header-actions">
+          <button class="chat-header-btn" id="chatNotifBtn" onclick="toggleChatNotif()" title="Notifications">🔕</button>
+          <button class="modal-close" onclick="fermerChatModalBtn()">✕</button>
+        </div>
       </div>
       <div class="chat-layout">
         <aside class="chat-sidebar">
@@ -570,6 +573,8 @@
               <div class="chat-search-results" id="chatSearchResults" style="display:none;"></div>
             </div>
             <div class="chat-conversations" id="chatConversationsList"></div>
+            <button class="chat-blocked-toggle" id="chatBlockedCount" onclick="afficherBloques()" style="display:none;"></button>
+            <div class="chat-blocked-panel" id="chatBlockedPanel"></div>
           </div>
           <div class="chat-sidebar-public" style="display:none;">
             <div class="chat-public-intro" data-i18n="chatPublicIntro">Salon ouvert à tous les membres connectés. Reste respectueux.</div>

@@ -5160,6 +5160,117 @@ const mangas = [
   ],
   "avis": "Un concept rafraîchissant qui mélange romance et action de manière originale. Les Cupidons armés sont une idée géniale et l'humour fonctionne bien.",
   "note": 7
+},
+{
+  "id": 168,
+  "titre": "Ton visage au clair de lune",
+  "auteur": "Mika Yamamori",
+  "genre": ["Shojo", "Romance", "Tranche de vie"],
+  "annee": 2021,
+  "statut": "En cours",
+  "volumes": 10,
+  "couverture": "images/covers/168.png",
+  "resume": "Yoi Takiguchi n'a rien d'une demoiselle : grande, cheveux noirs courts, regard perçant, elle est si froide et élégante qu'on la surnomme 'le prince' du lycée. Habituée à être idolâtrée de loin par les autres filles, elle vit dans une solitude distinguée jusqu'au jour où elle croise Ichimura, un camarade de classe discret et solaire dont le sourire l'attire inexplicablement. Contrairement aux autres, Ichimura ne la traite pas comme un prince : il la voit telle qu'elle est, une fille ordinaire aux sentiments fragiles. Leur amitié naissante bouleverse les codes établis dans la classe, d'autant plus qu'Ichimura a son propre secret et semble fuir quelque chose. Entre rumeurs de lycée, regards échangés au clair de lune et premiers émois, Yoi découvre que tomber amoureuse implique de renoncer à la carapace qu'elle s'est forgée pour se protéger.",
+  "resume_en": "Yoi Takiguchi is anything but ladylike: tall, with short black hair and piercing eyes, she is so cold and elegant that she is nicknamed 'the prince' of her high school. Used to being worshipped from afar by other girls, she lives in distinguished solitude until the day she crosses paths with Ichimura, a quiet and sunny classmate whose smile inexplicably draws her in. Unlike the others, Ichimura doesn't treat her like a prince: he sees her as she is, an ordinary girl with fragile feelings. Their budding friendship upends the class dynamics, especially since Ichimura has his own secret and seems to be running from something. Between high school rumors, glances exchanged under the moonlight and first heartbeats, Yoi discovers that falling in love means letting go of the armor she forged to protect herself.",
+  "bioAuteur": "Mika Yamamori est une mangaka japonaise née le 23 mars à Mie. Elle débute sa carrière en 2006 avec Sugars puis se fait connaître avec Tsubaki-chou Lonely Planet et Daytime Shooting Star. Son trait élégant et ses romances lycéennes en font l'une des figures majeures du shojo contemporain. Ton visage au clair de lune (Tsukiiro Reflection) est sérialisée dans le magazine Margaret depuis 2021.",
+  "personnages": [
+    {"nom": "Yoi Takiguchi", "description": "Lycéenne au physique androgyne surnommée 'le prince', froide en apparence mais secrètement sensible."},
+    {"nom": "Ichimura", "description": "Camarade de classe solaire et discret qui voit Yoi telle qu'elle est réellement."},
+    {"nom": "Kohaku", "description": "Amie proche de Yoi, l'une des rares à connaître sa véritable personnalité."},
+    {"nom": "Ogasawara", "description": "Élève populaire qui porte un intérêt particulier à Yoi, bousculant les équilibres."},
+    {"nom": "Shingo", "description": "Ami d'Ichimura, témoin privilégié de ses tourments intérieurs."}
+  ],
+  "avis": "Un shojo tout en nuances avec une héroïne rafraîchissante qui sort des stéréotypes. Le trait de Yamamori est d'une délicatesse magnifique et les émotions sonnent juste.",
+  "note": 8
+},
+{
+  "id": 169,
+  "titre": "Kaoru Hana wa Rin to Saku",
+  "auteur": "Saka Mikami",
+  "genre": ["Shonen", "Romance", "Tranche de vie"],
+  "annee": 2021,
+  "statut": "En cours",
+  "volumes": 15,
+  "couverture": "images/covers/169.jpg",
+  "resume": "Le lycée Chidori pour garçons et le lycée Kikyo pour filles se font face de part et d'autre d'une rue, mais tout les sépare : Kikyo est une école d'élite prestigieuse, Chidori une école réputée pour ses cancres. Une rivalité tenace oppose les deux établissements et leurs élèves ne se mélangent jamais. Rintarou Tsumugi, grand gaillard à l'allure intimidante mais au cœur tendre, est élève à Chidori. Un jour, par hasard, il fait la rencontre de Kaoruko Waguri dans la pâtisserie où elle travaille le weekend. Douce, rieuse et totalement imprévue, Kaoruko illumine son quotidien. Quand ils découvrent qu'ils étudient dans les deux lycées rivaux, leur amitié naissante se transforme en un secret qu'ils doivent protéger. Entre malentendus, préjugés et premiers sentiments sincères, Rintarou et Kaoruko apprennent à s'aimer malgré les murs que la société dresse entre eux.",
+  "resume_en": "Chidori High School for boys and Kikyo High School for girls stand across a street from each other, but everything separates them: Kikyo is a prestigious elite school, Chidori one known for its underachievers. A stubborn rivalry pits the two schools against each other and students never mingle. Rintarou Tsumugi, a tall and intimidating but tender-hearted boy, attends Chidori. One day, by chance, he meets Kaoruko Waguri in the pastry shop where she works on weekends. Gentle, bubbly and completely unexpected, Kaoruko lights up his daily life. When they discover they attend the two rival schools, their budding friendship turns into a secret they must protect. Between misunderstandings, prejudices and first sincere feelings, Rintarou and Kaoruko learn to love each other despite the walls society builds between them.",
+  "bioAuteur": "Saka Mikami est une mangaka japonaise dont Kaoru Hana wa Rin to Saku (The Fragrant Flower Blooms with Dignity) est l'œuvre majeure. Prépubliée dans le Weekly Shonen Magazine de Kodansha depuis 2021, la série est rapidement devenue un phénomène auprès du public shonen et a remporté le Prix du Meilleur Shonen au Kodansha Manga Award en 2024. Son style délicat et sa capacité à dessiner des émotions subtiles font de Mikami une voix montante du manga romantique.",
+  "personnages": [
+    {"nom": "Rintarou Tsumugi", "description": "Lycéen de Chidori au physique imposant mais timide et doux, il tombe sous le charme de Kaoruko."},
+    {"nom": "Kaoruko Waguri", "description": "Lycéenne de l'élite Kikyo, pétillante et sans préjugés, travaillant dans la pâtisserie familiale."},
+    {"nom": "Subaru Usami", "description": "Meilleur ami de Rintarou, turbulent mais loyal, souvent témoin de ses maladresses amoureuses."},
+    {"nom": "Hajime Shishio", "description": "Camarade de Rintarou, dont l'apparence intimidante cache une personnalité attentionnée."},
+    {"nom": "Ayato Yanagi", "description": "Camarade d'enfance de Kaoruko étudiant à Chidori, élément de tension dans sa relation avec Rintarou."}
+  ],
+  "avis": "Une romance lycéenne d'une douceur rare qui joue magnifiquement avec les codes du Roméo et Juliette moderne. Les héros sont attachants et le dessin respire la tendresse.",
+  "note": 9
+},
+{
+  "id": 170,
+  "titre": "Doraemon",
+  "auteur": "Fujiko F. Fujio",
+  "genre": ["Shonen", "Comédie", "Science-fiction", "Tranche de vie"],
+  "annee": 1969,
+  "statut": "Terminé",
+  "volumes": 45,
+  "couverture": "images/covers/170.jpg",
+  "resume": "Nobita Nobi est un élève de primaire maladroit, paresseux et peu doué pour à peu près tout : il échoue à ses examens, se fait malmener par la petite brute Gian, et n'ose pas déclarer sa flamme à son amie Shizuka. Son futur est si catastrophique que son arrière-arrière-petit-fils Sewashi décide d'intervenir en envoyant depuis le XXIIe siècle un chat-robot bleu défectueux nommé Doraemon pour lui venir en aide. Doraemon, avec sa fameuse poche à 4 dimensions, possède d'innombrables gadgets futuristes capables de résoudre n'importe quel problème : la Porte Partout, l'Hélicoptère de tête, la Machine à Remonter le Temps, les Bonbons Traducteurs... Mais Nobita utilise souvent ces inventions à mauvais escient, provoquant des catastrophes que Doraemon doit réparer. Entre leçons de vie, aventures fantastiques et humour tendre, Doraemon est devenu l'icône absolue du manga pour enfants au Japon.",
+  "resume_en": "Nobita Nobi is a clumsy, lazy elementary school student who is bad at almost everything: he fails his exams, is bullied by the local tough Gian, and dares not confess his feelings to his friend Shizuka. His future is so catastrophic that his great-great-grandson Sewashi intervenes by sending a defective blue robot cat named Doraemon from the 22nd century to help him. Doraemon, with his famous 4-dimensional pocket, possesses countless futuristic gadgets capable of solving any problem: the Anywhere Door, the Take-copter, the Time Machine, Translation Gummies... But Nobita often misuses these inventions, causing disasters that Doraemon must fix. Between life lessons, fantastical adventures and tender humor, Doraemon has become the absolute icon of children's manga in Japan.",
+  "bioAuteur": "Hiroshi Fujimoto (1933-1996), connu sous le pseudonyme Fujiko F. Fujio, est l'un des mangakas les plus influents de l'histoire. Avec son collaborateur de longue date Motoo Abiko, il a créé de nombreuses œuvres sous le nom commun Fujiko Fujio avant leur séparation en 1987. Doraemon, lancé en 1969, est devenu un monument culturel au Japon et dans toute l'Asie, vendant plus de 250 millions d'exemplaires. Nommé ambassadeur officiel de l'animation japonaise par le gouvernement, Doraemon incarne l'âme du manga pour enfants.",
+  "personnages": [
+    {"nom": "Doraemon", "description": "Chat-robot bleu du XXIIe siècle à la poche magique, peur panique des souris, gourmand de dorayakis."},
+    {"nom": "Nobita Nobi", "description": "Écolier paresseux et maladroit au grand cœur, héros malgré lui des aventures du duo."},
+    {"nom": "Shizuka Minamoto", "description": "Amie de Nobita, élève douée et gentille dont il est amoureux."},
+    {"nom": "Takeshi 'Gian' Goda", "description": "Brute locale au physique imposant, passionné de chant (malheureusement horrible)."},
+    {"nom": "Suneo Honekawa", "description": "Garçon riche et vantard, fidèle acolyte de Gian dans ses brimades."}
+  ],
+  "avis": "Une œuvre patrimoniale incontournable. Derrière l'humour enfantin se cachent de véritables leçons sur l'amitié, le courage et la persévérance. Intemporel.",
+  "note": 9
+},
+{
+  "id": 171,
+  "titre": "Sunny",
+  "auteur": "Taiyō Matsumoto",
+  "genre": ["Seinen", "Drame", "Tranche de vie"],
+  "annee": 2011,
+  "statut": "Terminé",
+  "volumes": 6,
+  "couverture": "images/covers/171.jpg",
+  "resume": "Dans une petite institution pour enfants du Japon des années 1970, le foyer Star Kids accueille des gamins que la vie a déposés là : parents absents, décédés, incapables de s'occuper d'eux. Dans la cour rouille une vieille Nissan Sunny jaune, carcasse immobile qui sert de refuge imaginaire aux pensionnaires. À son volant, chacun s'évade : Haruo, garçon rebelle aux cheveux décolorés, fuit la réalité en inventant des voyages au bout du monde ; Sei, nouvel arrivant timide, apprend lentement à trouver sa place ; Junsuke rêve de devenir boxeur ; Megumu garde l'espoir du retour de sa mère. Adultes dépassés, éducatrices bienveillantes, rencontres éphémères : l'auteur tisse une mosaïque de moments suspendus entre tendresse et mélancolie. Inspirée de la propre enfance de Matsumoto, Sunny est une œuvre autobiographique bouleversante sur l'enfance brisée et la puissance de l'imaginaire.",
+  "resume_en": "In a small children's home in 1970s Japan, the Star Kids facility takes in children whom life has deposited there: absent, deceased or incapable parents. In the courtyard rusts an old yellow Nissan Sunny, a motionless shell that serves as an imaginary refuge for the residents. At its wheel, each child escapes: Haruo, a rebellious boy with bleached hair, flees reality by inventing journeys to the ends of the earth; Sei, a shy newcomer, slowly learns to find his place; Junsuke dreams of becoming a boxer; Megumu keeps hoping for his mother's return. Overwhelmed adults, caring educators, fleeting encounters: the author weaves a mosaic of suspended moments between tenderness and melancholy. Inspired by Matsumoto's own childhood, Sunny is a deeply moving autobiographical work about broken childhood and the power of imagination.",
+  "bioAuteur": "Taiyō Matsumoto, né en 1967 à Tokyo, est l'un des mangakas alternatifs les plus reconnus internationalement. Son style singulier, influencé par la bande dessinée française (Moebius, Bilal), le distingue radicalement du manga mainstream. Auteur de Ping Pong, Amer Béton (Tekkonkinkreet) et Number 5, il a reçu le Prix culturel Osamu Tezuka. Sunny, publié de 2011 à 2015 dans le magazine IKKI de Shogakukan, s'inspire directement de son enfance dans un foyer pour enfants.",
+  "personnages": [
+    {"nom": "Haruo", "description": "Garçon rebelle aux cheveux décolorés, meneur de bande qui s'évade dans l'imaginaire au volant de la Sunny."},
+    {"nom": "Sei", "description": "Nouvel arrivant timide et introverti, alter ego de l'auteur, observateur discret du foyer."},
+    {"nom": "Junsuke", "description": "Adolescent du foyer qui rêve de devenir boxeur professionnel."},
+    {"nom": "Megumu", "description": "Petit garçon attachant qui attend désespérément le retour de sa mère."},
+    {"nom": "Kenji", "description": "Éducateur dévoué du foyer, figure d'adulte bienveillant malgré les difficultés du quotidien."}
+  ],
+  "avis": "Un chef-d'œuvre intime et poignant. Matsumoto transforme l'enfance brisée en poésie graphique bouleversante. À lire absolument.",
+  "note": 9
+},
+{
+  "id": 172,
+  "titre": "Moi, quand je me réincarne en Slime",
+  "auteur": "Taiki Kawakami",
+  "genre": ["Shonen", "Isekai", "Fantasy", "Aventure"],
+  "annee": 2015,
+  "statut": "En cours",
+  "volumes": 26,
+  "couverture": "images/covers/172.jpg",
+  "resume": "Satoru Mikami, salaryman japonais de 37 ans célibataire et sans histoire, meurt poignardé en sauvant un collègue lors d'une agression en pleine rue. Il se réveille dans un monde de fantasy... sous la forme d'un slime, la créature la plus faible imaginable. Mais grâce à ses dernières pensées avant la mort, il développe une compétence unique, le 'Prédateur', qui lui permet d'absorber les capacités des monstres qu'il dévore. Renommé Rimuru Tempest, il rencontre dans une grotte le Dragon de la Tempête Veldora, scellé là depuis 300 ans, avec qui il se lie d'amitié. Rapidement, Rimuru se retrouve à la tête d'un village de gobelins qu'il fédère avec des loups géants, puis étend son influence sur d'autres races monstrueuses. Son objectif : bâtir un royaume multiracial où humains et monstres peuvent coexister en paix. Mais le chemin est semé d'embûches, entre Seigneurs-Démons, conspirations humaines et guerres territoriales.",
+  "resume_en": "Satoru Mikami, a 37-year-old Japanese salaryman, single and unremarkable, dies stabbed while saving a colleague from a street attack. He wakes up in a fantasy world... as a slime, the weakest creature imaginable. But thanks to his final thoughts before death, he develops a unique skill, 'Predator,' which allows him to absorb the abilities of monsters he devours. Renamed Rimuru Tempest, he meets the Storm Dragon Veldora in a cave, sealed there for 300 years, with whom he befriends. Rimuru quickly finds himself leading a goblin village which he federates with giant wolves, then extends his influence over other monster races. His goal: build a multiracial kingdom where humans and monsters can coexist peacefully. But the path is strewn with pitfalls, between Demon Lords, human conspiracies and territorial wars.",
+  "bioAuteur": "Taiki Kawakami est le dessinateur de l'adaptation en manga de Moi, quand je me réincarne en Slime, série tirée du light novel écrit par Fuse et illustré par Mitz Vah. La version manga, prépubliée dans le magazine Monthly Shonen Sirius de Kodansha depuis 2015, a contribué à l'explosion de popularité du titre à l'international. La franchise, avec son anime multi-saisons et ses nombreux spin-offs, est devenue un pilier du genre isekai moderne.",
+  "personnages": [
+    {"nom": "Rimuru Tempest", "description": "Ancien salaryman réincarné en slime surpuissant, fondateur et leader du royaume de Tempest."},
+    {"nom": "Veldora Tempest", "description": "Dragon de la Tempête millénaire, premier ami de Rimuru, scellé pendant 300 ans avant sa libération."},
+    {"nom": "Benimaru", "description": "Ogre devenu kijin, général en chef des armées de Tempest, guerrier d'élite loyal à Rimuru."},
+    {"nom": "Shion", "description": "Ogresse kijin devenue secrétaire de Rimuru, force brute au service de son maître (et cuisinière redoutable)."},
+    {"nom": "Milim Nava", "description": "Seigneur-Démon millénaire à l'apparence de fillette, ravagée de pouvoir, amie capricieuse de Rimuru."}
+  ],
+  "avis": "L'un des isekai les plus réussis du genre. Le world-building est impressionnant et le cast de personnages attachants. Un vrai plaisir à lire malgré quelques longueurs.",
+  "note": 8,
+  "anime": "https://aniwatchtv.to/that-time-i-got-reincarnated-as-a-slime-782"
 }
 ];
 

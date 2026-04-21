@@ -560,15 +560,25 @@
       </div>
       <div class="chat-layout">
         <aside class="chat-sidebar">
-          <div class="chat-search-wrap">
-            <input type="text" id="chatSearchInput" class="chat-search-input" placeholder="Chercher un pseudo..." data-i18n-placeholder="chatSearchUser" oninput="onChatSearchInput(event)">
-            <div class="chat-search-results" id="chatSearchResults" style="display:none;"></div>
+          <div class="chat-tabs">
+            <button class="chat-tab active" data-chat-mode="private" onclick="switchChatMode('private')" data-i18n="chatTabPrivate">Privé</button>
+            <button class="chat-tab" data-chat-mode="public" onclick="switchChatMode('public')" data-i18n="chatTabPublic">Public</button>
           </div>
-          <div class="chat-conversations" id="chatConversationsList"></div>
+          <div class="chat-sidebar-private">
+            <div class="chat-search-wrap">
+              <input type="text" id="chatSearchInput" class="chat-search-input" placeholder="Chercher un pseudo..." data-i18n-placeholder="chatSearchUser" oninput="onChatSearchInput(event)">
+              <div class="chat-search-results" id="chatSearchResults" style="display:none;"></div>
+            </div>
+            <div class="chat-conversations" id="chatConversationsList"></div>
+          </div>
+          <div class="chat-sidebar-public" style="display:none;">
+            <div class="chat-public-intro" data-i18n="chatPublicIntro">Salon ouvert à tous les membres connectés. Reste respectueux.</div>
+          </div>
         </aside>
         <section class="chat-main" id="chatView">
           <div class="chat-empty chat-view-empty" data-i18n="chatSelectConversation">Sélectionne une conversation</div>
         </section>
+        <section class="chat-main" id="chatPublicView" style="display:none;"></section>
       </div>
     </div>
   </div>

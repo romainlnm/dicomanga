@@ -6815,6 +6815,55 @@ footer span {
   flex-direction: column;
   overflow: hidden;
 }
+.chat-sidebar-private, .chat-sidebar-public {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+.chat-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.chat-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.chat-tab:hover { color: var(--text-primary); }
+.chat-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.chat-public-intro {
+  padding: 16px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.chat-public-icon { font-size: 1.2rem; }
+.chat-avatar-sm { width: 24px; height: 24px; }
+.chat-bubble-public.theirs { max-width: 80%; }
+.chat-public-author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.chat-public-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
 .chat-search-wrap {
   position: relative;
   padding: 12px;

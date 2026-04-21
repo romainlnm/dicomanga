@@ -7,6 +7,10 @@ let chatConversations = [];        // liste triée par dernier message
 let chatRealtimeChannel = null;
 let chatMyProfile = null;
 let chatSearchTimer = null;
+let chatMode = 'private';          // 'private' | 'public'
+let chatPublicMessages = [];       // liste des messages publics (ordre chrono)
+let chatPublicProfiles = {};       // { user_id: profile } — cache pour le salon public
+let chatPublicRealtime = null;
 
 function getChatText(key) {
   const lang = localStorage.getItem('lang') || 'fr';
@@ -21,7 +25,9 @@ function getChatText(key) {
       report: 'Signaler', reportTitle: 'Signaler ce message',
       reportPrompt: 'Pourquoi signales-tu ce message ? (optionnel)',
       reportSent: 'Message signalé, merci', reportAlready: 'Déjà signalé',
-      reportError: 'Erreur lors du signalement'
+      reportError: 'Erreur lors du signalement',
+      publicWelcome: 'Salon public', publicEmpty: 'Aucun message. Soyez le premier à écrire !',
+      publicIntro: 'Salon ouvert à tous les membres connectés. Reste respectueux.'
     },
     en: {
       messages: 'Messages', newConversation: 'New conversation',
@@ -33,7 +39,9 @@ function getChatText(key) {
       report: 'Report', reportTitle: 'Report this message',
       reportPrompt: 'Why are you reporting this message? (optional)',
       reportSent: 'Message reported, thank you', reportAlready: 'Already reported',
-      reportError: 'Report failed'
+      reportError: 'Report failed',
+      publicWelcome: 'Public room', publicEmpty: 'No messages yet. Be the first to write!',
+      publicIntro: 'Open to all signed-in members. Please stay respectful.'
     }
   };
   return dict[lang]?.[key] || dict.fr[key] || key;
@@ -74,8 +82,13 @@ async function ouvrirChatModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   await chargerProfilMoi();
-  await chargerConversations();
-  subscribeToMessages();
+  if (chatMode === 'private') {
+    await chargerConversations();
+    subscribeToMessages();
+  } else {
+    await chargerPublicMessages();
+    subscribeToPublicMessages();
+  }
 }
 
 function fermerChatModal(event) {
@@ -89,6 +102,38 @@ function fermerChatModalBtn() {
   modal.classList.remove('open');
   document.body.style.overflow = '';
   unsubscribeFromMessages();
+  unsubscribeFromPublic();
+}
+
+async function switchChatMode(mode) {
+  if (mode === chatMode) return;
+  chatMode = mode;
+  // Tabs UI
+  document.querySelectorAll('.chat-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.chatMode === mode);
+  });
+  const privSidebar = document.querySelector('.chat-sidebar-private');
+  const pubSidebar = document.querySelector('.chat-sidebar-public');
+  const privView = document.getElementById('chatView');
+  const pubView = document.getElementById('chatPublicView');
+  if (!privSidebar || !pubSidebar || !privView || !pubView) return;
+  if (mode === 'private') {
+    privSidebar.style.display = '';
+    pubSidebar.style.display = 'none';
+    privView.style.display = '';
+    pubView.style.display = 'none';
+    unsubscribeFromPublic();
+    await chargerConversations();
+    subscribeToMessages();
+  } else {
+    privSidebar.style.display = 'none';
+    pubSidebar.style.display = '';
+    privView.style.display = 'none';
+    pubView.style.display = '';
+    unsubscribeFromMessages();
+    await chargerPublicMessages();
+    subscribeToPublicMessages();
+  }
 }
 
 // ----- Profil courant (assure qu'on a un profil existant) -----
@@ -499,10 +544,13 @@ function chatOnAuth(isAuth) {
     const badge = document.getElementById('chatUnreadBadge');
     if (badge) badge.style.display = 'none';
     unsubscribeFromMessages();
+    unsubscribeFromPublic();
     chatConversations = [];
     chatMessagesCache = {};
     chatActiveConversation = null;
     chatMyProfile = null;
+    chatPublicMessages = [];
+    chatPublicProfiles = {};
   }
 }
 
@@ -517,3 +565,163 @@ if (typeof supabaseClient !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => { if (currentUser) chatOnAuth(true); }, 100);
 });
+
+// ============================================================================
+// ===== CHAT PUBLIC (salon unique) ===========================================
+// ============================================================================
+
+async function chargerPublicMessages() {
+  if (!currentUser) return;
+  const view = document.getElementById('chatPublicView');
+  if (view) view.innerHTML = `<div class="chat-loading">...</div>`;
+
+  const { data, error } = await supabaseClient
+    .from('public_messages')
+    .select('id, sender_id, content, created_at')
+    .order('created_at', { ascending: false })
+    .limit(100);
+
+  if (error) { console.error('Load public messages:', error); if (view) view.innerHTML = ''; return; }
+
+  chatPublicMessages = (data || []).reverse();
+  await hydratePublicProfiles(chatPublicMessages.map(m => m.sender_id));
+  renderPublicView();
+}
+
+async function hydratePublicProfiles(userIds) {
+  const missing = [...new Set(userIds)].filter(id => !chatPublicProfiles[id]);
+  if (!missing.length) return;
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('user_id, username, avatar, avatar_url')
+    .in('user_id', missing);
+  (data || []).forEach(p => { chatPublicProfiles[p.user_id] = p; });
+}
+
+function renderPublicView() {
+  const view = document.getElementById('chatPublicView');
+  if (!view) return;
+  view.innerHTML = `
+    <div class="chat-view-header">
+      <span class="chat-public-icon">🌐</span>
+      <span class="chat-view-name">${escapeHtml(getChatText('publicWelcome'))}</span>
+    </div>
+    <div class="chat-messages" id="chatPublicMessagesList">
+      ${chatPublicMessages.length
+        ? chatPublicMessages.map(renderPublicBubble).join('')
+        : `<div class="chat-empty">${escapeHtml(getChatText('publicEmpty'))}</div>`}
+    </div>
+    <form class="chat-input-form" onsubmit="envoyerPublicMessage(event)">
+      <textarea id="chatPublicInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
+        onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatPublicSendBtn').click(); }"></textarea>
+      <button type="submit" id="chatPublicSendBtn" class="chat-send-btn">${escapeHtml(getChatText('send'))}</button>
+    </form>
+  `;
+  const list = document.getElementById('chatPublicMessagesList');
+  if (list) list.scrollTop = list.scrollHeight;
+}
+
+function renderPublicBubble(m) {
+  const mine = m.sender_id === currentUser.id;
+  const profile = chatPublicProfiles[m.sender_id];
+  const username = profile?.username || '?';
+  const avatar = avatarSrc(profile);
+  const reportBtn = !mine
+    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerPublicMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>`
+    : '';
+  const header = !mine
+    ? `<div class="chat-public-author">
+         <img src="${avatar}" alt="" class="chat-avatar chat-avatar-sm">
+         <span class="chat-public-name">${escapeHtml(username)}</span>
+       </div>`
+    : '';
+  return `
+    <div class="chat-bubble chat-bubble-public ${mine ? 'mine' : 'theirs'}">
+      ${header}
+      <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
+      <div class="chat-bubble-footer">
+        <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
+        ${reportBtn}
+      </div>
+    </div>
+  `;
+}
+
+async function envoyerPublicMessage(event) {
+  if (event) event.preventDefault();
+  if (!currentUser) return;
+  const input = document.getElementById('chatPublicInput');
+  if (!input) return;
+  const content = input.value.trim();
+  if (!content) { showToast(getChatText('messageEmpty')); return; }
+  if (content.length > 2000) { showToast(getChatText('messageTooLong')); return; }
+
+  const { data, error } = await supabaseClient
+    .from('public_messages')
+    .insert({ sender_id: currentUser.id, content })
+    .select()
+    .single();
+
+  if (error) { console.error('Send public:', error); showToast('Erreur envoi'); return; }
+
+  input.value = '';
+  // On laisse le realtime gérer l'affichage, mais on l'ajoute quand même en cas de latence
+  if (!chatPublicMessages.some(m => m.id === data.id)) {
+    chatPublicMessages.push(data);
+    if (!chatPublicProfiles[currentUser.id] && chatMyProfile) {
+      chatPublicProfiles[currentUser.id] = chatMyProfile;
+    }
+    renderPublicView();
+  }
+}
+
+async function signalerPublicMessage(messageId, senderId) {
+  if (!currentUser) return;
+  const reason = window.prompt(getChatText('reportTitle') + '\n\n' + getChatText('reportPrompt'));
+  if (reason === null) return;
+  const trimmed = (reason || '').trim().slice(0, 500);
+  const { error } = await supabaseClient
+    .from('public_message_reports')
+    .insert({
+      message_id: messageId,
+      reporter_id: currentUser.id,
+      reported_user_id: senderId,
+      reason: trimmed || null
+    });
+  if (error) {
+    if (error.code === '23505') { showToast(getChatText('reportAlready')); return; }
+    console.error('Report public:', error);
+    showToast(getChatText('reportError'));
+    return;
+  }
+  showToast(getChatText('reportSent'));
+}
+
+function subscribeToPublicMessages() {
+  if (!currentUser || !supabaseClient || chatPublicRealtime) return;
+  chatPublicRealtime = supabaseClient
+    .channel('public_messages')
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'public_messages'
+    }, (payload) => {
+      handleIncomingPublicMessage(payload.new);
+    })
+    .subscribe();
+}
+
+function unsubscribeFromPublic() {
+  if (chatPublicRealtime) {
+    supabaseClient.removeChannel(chatPublicRealtime);
+    chatPublicRealtime = null;
+  }
+}
+
+async function handleIncomingPublicMessage(msg) {
+  if (chatPublicMessages.some(m => m.id === msg.id)) return;
+  chatPublicMessages.push(msg);
+  if (chatPublicMessages.length > 200) chatPublicMessages = chatPublicMessages.slice(-150);
+  await hydratePublicProfiles([msg.sender_id]);
+  if (chatMode === 'public') renderPublicView();
+}

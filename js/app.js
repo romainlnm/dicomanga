@@ -197,7 +197,10 @@ const translations = {
     privacyPolicy: "Politique de confidentialité",
     chatMessages: "Messages",
     chatSearchUser: "Chercher un pseudo...",
-    chatSelectConversation: "Sélectionne une conversation"
+    chatSelectConversation: "Sélectionne une conversation",
+    chatTabPrivate: "Privé",
+    chatTabPublic: "Public",
+    chatPublicIntro: "Salon ouvert à tous les membres connectés. Reste respectueux."
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -328,7 +331,10 @@ const translations = {
     privacyPolicy: "Privacy Policy",
     chatMessages: "Messages",
     chatSearchUser: "Search a username...",
-    chatSelectConversation: "Select a conversation"
+    chatSelectConversation: "Select a conversation",
+    chatTabPrivate: "Private",
+    chatTabPublic: "Public",
+    chatPublicIntro: "Open to all signed-in members. Please stay respectful."
   },
   es: {
     siteSubtitle: "Un diccionario de manga",

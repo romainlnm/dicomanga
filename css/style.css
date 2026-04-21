@@ -7,6 +7,7 @@
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --accent: #e63946;
+  --accent-rgb: 230, 57, 70;
   --accent-hover: #ff4d5a;
   --accent-glow: rgba(230, 57, 70, 0.4);
   --border: #2a2a2a;
@@ -565,7 +566,7 @@ main.animate-in {
 
 /* ===== HEADER ===== */
 header {
-  background: linear-gradient(180deg, rgba(230, 57, 70, 0.9) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.9) 0%, var(--bg-primary) 100%);
   padding: 20px 0;
   position: sticky;
   top: 0;
@@ -3451,6 +3452,7 @@ footer span {
 /* Bleu */
 [data-color="blue"] {
   --accent: #4a90d9;
+  --accent-rgb: 74, 144, 217;
   --accent-hover: #5da3ec;
   --accent-glow: rgba(74, 144, 217, 0.4);
   --gradient-accent: linear-gradient(135deg, #4a90d9 0%, #6bb3f0 50%, #0077cc 100%);
@@ -3465,6 +3467,7 @@ footer span {
 /* Vert */
 [data-color="green"] {
   --accent: #28a745;
+  --accent-rgb: 40, 167, 69;
   --accent-hover: #34ce57;
   --accent-glow: rgba(40, 167, 69, 0.4);
   --gradient-accent: linear-gradient(135deg, #28a745 0%, #52d66b 50%, #1e7e34 100%);
@@ -3479,6 +3482,7 @@ footer span {
 /* Violet */
 [data-color="purple"] {
   --accent: #9b5de5;
+  --accent-rgb: 155, 93, 229;
   --accent-hover: #b07ff0;
   --accent-glow: rgba(155, 93, 229, 0.4);
   --gradient-accent: linear-gradient(135deg, #9b5de5 0%, #c77dff 50%, #7b2cbf 100%);
@@ -3493,6 +3497,7 @@ footer span {
 /* Orange */
 [data-color="orange"] {
   --accent: #ff6b35;
+  --accent-rgb: 255, 107, 53;
   --accent-hover: #ff8559;
   --accent-glow: rgba(255, 107, 53, 0.4);
   --gradient-accent: linear-gradient(135deg, #ff6b35 0%, #ff9966 50%, #e55100 100%);
@@ -3507,6 +3512,7 @@ footer span {
 /* Rouge (défaut) */
 [data-color="red"] {
   --accent: #e63946;
+  --accent-rgb: 230, 57, 70;
   --accent-hover: #ff4d5a;
   --accent-glow: rgba(230, 57, 70, 0.4);
   --gradient-accent: linear-gradient(135deg, #e63946 0%, #ff6b6b 50%, #f72585 100%);
@@ -3515,6 +3521,7 @@ footer span {
 /* Rose */
 [data-color="pink"] {
   --accent: #e91e63;
+  --accent-rgb: 233, 30, 99;
   --accent-hover: #f06292;
   --accent-glow: rgba(233, 30, 99, 0.4);
   --gradient-accent: linear-gradient(135deg, #e91e63 0%, #f48fb1 50%, #c2185b 100%);
@@ -3529,6 +3536,7 @@ footer span {
 /* Jaune */
 [data-color="yellow"] {
   --accent: #ffc107;
+  --accent-rgb: 255, 193, 7;
   --accent-hover: #ffca28;
   --accent-glow: rgba(255, 193, 7, 0.4);
   --gradient-accent: linear-gradient(135deg, #ffc107 0%, #ffeb3b 50%, #ff9800 100%);
@@ -3543,6 +3551,7 @@ footer span {
 /* Teal */
 [data-color="teal"] {
   --accent: #20c997;
+  --accent-rgb: 32, 201, 151;
   --accent-hover: #3dd9a8;
   --accent-glow: rgba(32, 201, 151, 0.4);
   --gradient-accent: linear-gradient(135deg, #20c997 0%, #63e6be 50%, #12b886 100%);
@@ -3557,6 +3566,7 @@ footer span {
 /* Cyan */
 [data-color="cyan"] {
   --accent: #17a2b8;
+  --accent-rgb: 23, 162, 184;
   --accent-hover: #20c9e0;
   --accent-glow: rgba(23, 162, 184, 0.4);
   --gradient-accent: linear-gradient(135deg, #17a2b8 0%, #4dd0e1 50%, #0097a7 100%);
@@ -3571,6 +3581,7 @@ footer span {
 /* Violet foncé */
 [data-color="violet"] {
   --accent: #7c3aed;
+  --accent-rgb: 124, 58, 237;
   --accent-hover: #8b5cf6;
   --accent-glow: rgba(124, 58, 237, 0.4);
   --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #6d28d9 100%);

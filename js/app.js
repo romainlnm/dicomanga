@@ -2699,12 +2699,22 @@ function updateCustomTheme() {
   }
 }
 
+function hexToRgbTriplet(hex) {
+  const clean = hex.replace('#', '');
+  const full = clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean;
+  const r = parseInt(full.substring(0, 2), 16);
+  const g = parseInt(full.substring(2, 4), 16);
+  const b = parseInt(full.substring(4, 6), 16);
+  return `${r}, ${g}, ${b}`;
+}
+
 function applyCustomTheme() {
   const accentColor = document.getElementById('customAccent')?.value || '#e63946';
   const bgColor = document.getElementById('customBg')?.value || '#121212';
 
   // Appliquer les couleurs personnalisées
   document.documentElement.style.setProperty('--accent', accentColor);
+  document.documentElement.style.setProperty('--accent-rgb', hexToRgbTriplet(accentColor));
   document.documentElement.style.setProperty('--accent-light', accentColor + '20');
   document.documentElement.style.setProperty('--accent-glow', accentColor + '40');
   document.documentElement.style.setProperty('--bg-primary', bgColor);
@@ -2727,6 +2737,7 @@ function applyCustomTheme() {
 function resetCustomTheme() {
   localStorage.removeItem('customTheme');
   document.documentElement.style.removeProperty('--accent');
+  document.documentElement.style.removeProperty('--accent-rgb');
   document.documentElement.style.removeProperty('--accent-light');
   document.documentElement.style.removeProperty('--accent-glow');
   document.documentElement.style.removeProperty('--bg-primary');

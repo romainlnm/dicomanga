@@ -1,5 +1,5 @@
 // Service Worker pour Dico.Manga - Mode hors-ligne
-const CACHE_NAME = 'dico-manga-v27';
+const CACHE_NAME = 'dico-manga-v28';
 
 // Fichiers à mettre en cache
 const ASSETS_TO_CACHE = [

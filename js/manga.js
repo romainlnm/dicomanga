@@ -328,9 +328,15 @@ function afficherDetailManga(id) {
             `).join('')}
           </div>
         </div>
+
+        ${typeof buildCommentsSection === 'function' ? buildCommentsSection(manga.id) : ''}
       </div>
     </div>
   `;
+
+  if (typeof loadComments === 'function') {
+    loadComments(manga.id);
+  }
 }
 
 // ===== FAVORIS =====

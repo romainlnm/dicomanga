@@ -1948,6 +1948,24 @@ function initLanguage() {
   updateLangToggleUI();
 }
 
+// Brève fondue lors d'un changement de langue : on masque <main> le temps
+// d'appliquer les traductions, puis on le révèle. Respecte prefers-reduced-motion.
+function fadeLanguage(work) {
+  const root = document.querySelector('main');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!root || reduce) { work(); return; }
+  root.style.transition = 'opacity 180ms ease';
+  root.style.opacity = '0';
+  setTimeout(() => {
+    work();
+    root.style.opacity = '1';
+    setTimeout(() => {
+      root.style.transition = '';
+      root.style.opacity = '';
+    }, 220);
+  }, 180);
+}
+
 function toggleLangPicker() {
   const picker = document.getElementById('langPicker');
   if (picker) {
@@ -1967,15 +1985,16 @@ document.addEventListener('click', (e) => {
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
-  applyTranslations();
-  updateLangUI();
 
-  // Mettre à jour le manga du jour avec la nouvelle langue
-  afficherMangaDuJour();
-
-  // Fermer le picker
+  // Fermer le picker immédiatement (le bouton se referme sans attendre la fondue)
   const picker = document.getElementById('langPicker');
   if (picker) picker.classList.remove('active');
+
+  fadeLanguage(() => {
+    applyTranslations();
+    updateLangUI();
+    afficherMangaDuJour();
+  });
 
   showToast(lang === 'fr' ? 'Langue changée' : lang === 'en' ? 'Language changed' : lang === 'es' ? 'Idioma cambiado' : '言語を変更しました');
 }
@@ -1984,12 +2003,13 @@ function toggleLanguage() {
   const newLang = currentLang === 'fr' ? 'en' : 'fr';
   currentLang = newLang;
   localStorage.setItem('lang', newLang);
-  applyTranslations();
-  updateLangToggleUI();
 
-  // Réafficher les mangas et le manga du jour avec la nouvelle langue
-  afficherMangas(mangas);
-  afficherMangaDuJour();
+  fadeLanguage(() => {
+    applyTranslations();
+    updateLangToggleUI();
+    afficherMangas(mangas);
+    afficherMangaDuJour();
+  });
 
   showToast(newLang === 'fr' ? 'Français activé' : 'English enabled');
 }

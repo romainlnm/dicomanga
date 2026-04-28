@@ -576,19 +576,20 @@ function ouvrirAvatarModal() {
   const input = document.getElementById('avatarModalUpload');
   if (input) input.value = '';
 
-  modal.classList.add('show');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
   fermerUserDropdown();
 }
 
 function fermerAvatarModal(event) {
-  if (event && event.target !== event.currentTarget) return;
-  const modal = document.getElementById('avatarModal');
-  if (modal) modal.classList.remove('show');
+  if (event && event.target.id !== 'avatarModal') return;
+  fermerAvatarModalBtn();
 }
 
 function fermerAvatarModalBtn() {
   const modal = document.getElementById('avatarModal');
-  if (modal) modal.classList.remove('show');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function selectAvatarModal(element) {

@@ -131,23 +131,66 @@ function extractVolumeNum(volumeInfo) {
 // Cache the search result per manga so we hit the API once instead of N times.
 const searchCache = new Map();
 
+async function fetchAllResults(manga) {
+  const all = [];
+  // 1) Strict: intitle + inauthor
+  try {
+    const r = await fetchJson(buildSearchUrl(manga));
+    if (r.items) all.push(...r.items);
+  } catch (e) { /* ignore */ }
+  await sleep(150);
+  // 2) Loose: title only (catches entries with weird author fields)
+  try {
+    const title = (flags.titleOverride || manga.titre || '').trim();
+    if (title) {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(`intitle:${JSON.stringify(title)}`)}&maxResults=40&printType=books`;
+      const r = await fetchJson(url);
+      if (r.items) all.push(...r.items);
+    }
+  } catch (e) { /* ignore */ }
+  await sleep(150);
+  // 3) Plain text search (sometimes returns more for less mainstream titles)
+  try {
+    const title = (flags.titleOverride || manga.titre || '').trim();
+    const author = (flags.authorOverride || manga.auteur || '').trim();
+    const q = encodeURIComponent(`${title} ${author} manga`);
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=40&printType=books`;
+    const r = await fetchJson(url);
+    if (r.items) all.push(...r.items);
+  } catch (e) { /* ignore */ }
+  // Dedupe by Google Books id
+  const seen = new Set();
+  return all.filter(it => {
+    if (!it.id || seen.has(it.id)) return false;
+    seen.add(it.id);
+    return true;
+  });
+}
+
 async function loadSearchResults(manga) {
   if (searchCache.has(manga.id)) return searchCache.get(manga.id);
-  const url = buildSearchUrl(manga);
-  const data = await fetchJson(url);
-  const items = data.items || [];
-  // Pre-filter: title must roughly contain the manga title token, OR author matches
+  const items = await fetchAllResults(manga);
+  // Pre-filter: title must roughly contain the manga title's first word.
+  // Author match is preferred but not required (some Google entries miss it).
   const titleNorm = normalize(flags.titleOverride || manga.titre);
   const authorNorm = normalize(flags.authorOverride || manga.auteur);
+  const firstTitleWord = titleNorm.split(' ')[0];
   const filtered = items.filter(it => {
     const itemTitle = normalize(it.volumeInfo?.title);
     const itemSub = normalize(it.volumeInfo?.subtitle);
     const allTitle = `${itemTitle} ${itemSub}`;
+    return firstTitleWord && allTitle.includes(firstTitleWord);
+  }).map(it => {
+    // Score : higher when title has more matching words AND author matches
+    const itemTitle = normalize(it.volumeInfo?.title);
+    const itemSub = normalize(it.volumeInfo?.subtitle);
+    const allTitle = `${itemTitle} ${itemSub}`;
     const itemAuthors = normalize((it.volumeInfo?.authors || []).join(' '));
-    const titleMatch = titleNorm && allTitle.includes(titleNorm.split(' ')[0]); // first significant word
+    const titleWords = titleNorm.split(' ').filter(w => w.length > 2);
+    const titleScore = titleWords.filter(w => allTitle.includes(w)).length;
     const authorMatch = authorNorm && authorNorm.split(' ').some(w => w.length > 3 && itemAuthors.includes(w));
-    return titleMatch && authorMatch;
-  });
+    return { item: it, score: titleScore * 10 + (authorMatch ? 5 : 0) };
+  }).sort((a, b) => b.score - a.score).map(x => x.item);
   searchCache.set(manga.id, filtered);
   return filtered;
 }

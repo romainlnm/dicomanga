@@ -201,7 +201,18 @@ const translations = {
     chatSelectConversation: "Sélectionne une conversation",
     chatTabPrivate: "Privé",
     chatTabPublic: "Public",
-    chatPublicIntro: "Salon ouvert à tous les membres connectés. Reste respectueux."
+    chatPublicIntro: "Salon ouvert à tous les membres connectés. Reste respectueux.",
+    advancedFilters: "Filtres avancés",
+    filterStatus: "Statut",
+    filterYear: "Année",
+    filterRating: "Note minimum",
+    filterVolumes: "Volumes",
+    completed: "Terminé",
+    ongoing: "En cours",
+    shortSeries: "Court (<10)",
+    mediumSeries: "Moyen (10-30)",
+    longSeries: "Long (>30)",
+    resetFilters: "Réinitialiser"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -336,7 +347,18 @@ const translations = {
     chatSelectConversation: "Select a conversation",
     chatTabPrivate: "Private",
     chatTabPublic: "Public",
-    chatPublicIntro: "Open to all signed-in members. Please stay respectful."
+    chatPublicIntro: "Open to all signed-in members. Please stay respectful.",
+    advancedFilters: "Advanced filters",
+    filterStatus: "Status",
+    filterYear: "Year",
+    filterRating: "Minimum rating",
+    filterVolumes: "Volumes",
+    completed: "Completed",
+    ongoing: "Ongoing",
+    shortSeries: "Short (<10)",
+    mediumSeries: "Medium (10-30)",
+    longSeries: "Long (>30)",
+    resetFilters: "Reset"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",

@@ -1250,6 +1250,13 @@ main.loaded {
   gap: 40px;
 }
 
+/* Force la colonne droite à respecter sa largeur 1fr même si un enfant
+ * (ex: carrousel de tomes) a un contenu très large. Sans ça, min-width
+ * vaut auto et la colonne grandit pour absorber le contenu. */
+.manga-detail > * {
+  min-width: 0;
+}
+
 @media (max-width: 768px) {
   .manga-detail {
     grid-template-columns: 1fr;
@@ -7467,8 +7474,19 @@ footer span {
   font-weight: 700;
 }
 
+/* Empêche la section de grandir pour contenir les 22 tomes : on force
+ * la mise sous contrainte de largeur, sinon overflow-x: auto ne déclenche
+ * pas de scroll et le carrousel n'a aucune raison d'apparaître. */
+.tomes-section {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .tomes-carousel {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .tomes-scroll {
@@ -7480,6 +7498,9 @@ footer span {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scroll-behavior: smooth;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .tomes-scroll::-webkit-scrollbar {

@@ -7467,6 +7467,10 @@ footer span {
   font-weight: 700;
 }
 
+.tomes-carousel {
+  position: relative;
+}
+
 .tomes-scroll {
   display: flex;
   gap: 14px;
@@ -7475,6 +7479,7 @@ footer span {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  scroll-behavior: smooth;
 }
 
 .tomes-scroll::-webkit-scrollbar {
@@ -7486,6 +7491,56 @@ footer span {
 .tomes-scroll::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 4px;
+}
+
+.tomes-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.tomes-arrow:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.tomes-arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.8);
+}
+
+.tomes-prev { left: -8px; }
+.tomes-next { right: -8px; }
+
+@media (max-width: 600px) {
+  .tomes-prev { left: -4px; }
+  .tomes-next { right: -4px; }
+  .tomes-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
+}
+
+/* Sur mobile tactile, on cache les flèches : le swipe natif est plus naturel */
+@media (hover: none) and (pointer: coarse) {
+  .tomes-arrow { display: none; }
 }
 
 .tome-card {

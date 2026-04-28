@@ -339,6 +339,9 @@ function afficherDetailManga(id) {
   if (typeof loadComments === 'function') {
     loadComments(manga.id);
   }
+
+  // Initialiser l'état des flèches du carrousel de tomes
+  initTomesArrows();
 }
 
 // ===== FAVORIS =====
@@ -663,6 +666,8 @@ function renderTomesSection(manga) {
   if (!tomes.length) return '';
   const lang = currentLang || 'fr';
   const fallbackCover = manga.couverture || '';
+  const prevLabel = lang === 'en' ? 'Previous volumes' : 'Tomes précédents';
+  const nextLabel = lang === 'en' ? 'Next volumes' : 'Tomes suivants';
 
   return `
     <div class="manga-section tomes-section">
@@ -670,24 +675,58 @@ function renderTomesSection(manga) {
         ${lang === 'en' ? 'Volumes' : 'Tomes'}
         <span class="tomes-count">${tomes.length}</span>
       </h2>
-      <div class="tomes-scroll">
-        ${tomes.map(t => {
-          const cover = t.cover || fallbackCover;
-          const dateLabel = t.date ? formatTomeDate(t.date, lang) : '';
-          return `
-            <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}">
-              <div class="tome-cover-wrap">
-                <img src="${cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="this.onerror=null;this.src='${fallbackCover}';this.classList.add('tome-cover-fallback');">
-                <span class="tome-num-badge">${t.num}</span>
+      <div class="tomes-carousel">
+        <button type="button" class="tomes-arrow tomes-prev" aria-label="${prevLabel}" onclick="scrollTomes(this, -1)">‹</button>
+        <div class="tomes-scroll" onscroll="updateTomesArrows(this)">
+          ${tomes.map(t => {
+            const cover = t.cover || fallbackCover;
+            const dateLabel = t.date ? formatTomeDate(t.date, lang) : '';
+            return `
+              <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}">
+                <div class="tome-cover-wrap">
+                  <img src="${cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="this.onerror=null;this.src='${fallbackCover}';this.classList.add('tome-cover-fallback');">
+                  <span class="tome-num-badge">${t.num}</span>
+                </div>
+                <div class="tome-info">
+                  <span class="tome-num">${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}</span>
+                  ${dateLabel ? `<span class="tome-date">${dateLabel}</span>` : ''}
+                </div>
               </div>
-              <div class="tome-info">
-                <span class="tome-num">${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}</span>
-                ${dateLabel ? `<span class="tome-date">${dateLabel}</span>` : ''}
-              </div>
-            </div>
-          `;
-        }).join('')}
+            `;
+          }).join('')}
+        </div>
+        <button type="button" class="tomes-arrow tomes-next" aria-label="${nextLabel}" onclick="scrollTomes(this, 1)">›</button>
       </div>
     </div>
   `;
 }
+
+// Met à jour la visibilité des flèches selon la position du scroll
+function updateTomesArrows(scrollEl) {
+  const carousel = scrollEl.closest('.tomes-carousel');
+  if (!carousel) return;
+  const prev = carousel.querySelector('.tomes-prev');
+  const next = carousel.querySelector('.tomes-next');
+  const max = scrollEl.scrollWidth - scrollEl.clientWidth;
+  const atStart = scrollEl.scrollLeft <= 4;
+  const atEnd = scrollEl.scrollLeft >= max - 4;
+  const fits = max <= 4; // tout tient dans la vue, pas besoin de flèches
+  if (prev) prev.classList.toggle('hidden', atStart || fits);
+  if (next) next.classList.toggle('hidden', atEnd || fits);
+}
+
+function scrollTomes(button, direction) {
+  const carousel = button.closest('.tomes-carousel');
+  if (!carousel) return;
+  const scrollEl = carousel.querySelector('.tomes-scroll');
+  if (!scrollEl) return;
+  // Avance d'environ 80% de la largeur visible (laisse un demi-tome de chevauchement)
+  const step = Math.max(200, Math.floor(scrollEl.clientWidth * 0.8));
+  scrollEl.scrollBy({ left: direction * step, behavior: 'smooth' });
+}
+
+// Au chargement de la page, calculer l'état initial des flèches après render
+function initTomesArrows() {
+  document.querySelectorAll('.tomes-scroll').forEach(updateTomesArrows);
+}
+window.addEventListener('resize', initTomesArrows);

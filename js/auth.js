@@ -542,6 +542,180 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ===== MODIFICATION DE LA PHOTO DE PROFIL =====
+let avatarModalSelected = '1';
+let avatarModalCustomFile = null;
+
+function ouvrirAvatarModal() {
+  if (!currentUser) return;
+  const modal = document.getElementById('avatarModal');
+  if (!modal) return;
+
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+  const currentAvatar = currentUser.user_metadata?.avatar || '1';
+  const currentUrl = currentUser.user_metadata?.avatar_url || null;
+
+  avatarModalSelected = currentAvatar;
+  avatarModalCustomFile = null;
+
+  // Marquer la sélection actuelle
+  document.querySelectorAll('#avatarModal .avatar-option').forEach(opt => {
+    opt.classList.toggle('selected', opt.dataset.avatar === currentAvatar);
+  });
+
+  // Si custom, montrer la preview de l'avatar actuel
+  const preview = document.getElementById('avatarModalPreview');
+  const previewImg = document.getElementById('avatarModalPreviewImg');
+  if (currentAvatar === 'custom' && currentUrl && preview && previewImg) {
+    previewImg.src = currentUrl;
+    preview.style.display = 'flex';
+  } else if (preview) {
+    preview.style.display = 'none';
+  }
+
+  const input = document.getElementById('avatarModalUpload');
+  if (input) input.value = '';
+
+  modal.classList.add('show');
+  fermerUserDropdown();
+}
+
+function fermerAvatarModal(event) {
+  if (event && event.target !== event.currentTarget) return;
+  const modal = document.getElementById('avatarModal');
+  if (modal) modal.classList.remove('show');
+}
+
+function fermerAvatarModalBtn() {
+  const modal = document.getElementById('avatarModal');
+  if (modal) modal.classList.remove('show');
+}
+
+function selectAvatarModal(element) {
+  document.querySelectorAll('#avatarModal .avatar-option').forEach(opt => opt.classList.remove('selected'));
+  element.classList.add('selected');
+  avatarModalSelected = element.dataset.avatar;
+  if (avatarModalSelected !== 'custom') {
+    avatarModalCustomFile = null;
+    const preview = document.getElementById('avatarModalPreview');
+    if (preview) preview.style.display = 'none';
+  }
+}
+
+async function handleAvatarModalUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+
+  if (file.size > 2 * 1024 * 1024) {
+    if (typeof showToast === 'function') {
+      showToast(lang === 'en' ? 'Image too large (max 2MB)' : 'Image trop grande (max 2MB)');
+    }
+    input.value = '';
+    return;
+  }
+  if (!file.type.startsWith('image/')) {
+    if (typeof showToast === 'function') {
+      showToast(lang === 'en' ? 'Invalid file' : 'Fichier non valide');
+    }
+    input.value = '';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const preview = document.getElementById('avatarModalPreview');
+    const previewImg = document.getElementById('avatarModalPreviewImg');
+    if (preview && previewImg) {
+      previewImg.src = e.target.result;
+      preview.style.display = 'flex';
+    }
+  };
+  reader.readAsDataURL(file);
+
+  document.querySelectorAll('#avatarModal .avatar-option').forEach(opt => opt.classList.remove('selected'));
+  document.querySelector('#avatarModal .avatar-upload')?.classList.add('selected');
+  avatarModalSelected = 'custom';
+  avatarModalCustomFile = file;
+}
+
+function removeAvatarModalCustom() {
+  avatarModalCustomFile = null;
+  const preview = document.getElementById('avatarModalPreview');
+  if (preview) preview.style.display = 'none';
+  const input = document.getElementById('avatarModalUpload');
+  if (input) input.value = '';
+  document.querySelectorAll('#avatarModal .avatar-option').forEach(opt => opt.classList.remove('selected'));
+  document.querySelector('#avatarModal .avatar-option[data-avatar="1"]')?.classList.add('selected');
+  avatarModalSelected = '1';
+}
+
+async function saveAvatarChange() {
+  if (!currentUser) return;
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+  const saveBtn = document.getElementById('avatarSaveBtn');
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = lang === 'en' ? 'Saving…' : 'Enregistrement…';
+  }
+
+  try {
+    let avatarValue = avatarModalSelected;
+    let avatarUrl = null;
+
+    if (avatarValue === 'custom') {
+      if (avatarModalCustomFile) {
+        avatarUrl = await uploadAvatarToStorage(avatarModalCustomFile, currentUser.id);
+      } else {
+        // L'utilisateur a gardé l'avatar custom existant : on le réutilise
+        avatarUrl = currentUser.user_metadata?.avatar_url || null;
+        if (!avatarUrl) {
+          if (typeof showToast === 'function') {
+            showToast(lang === 'en' ? 'Please choose an image' : 'Choisis une image');
+          }
+          return;
+        }
+      }
+    }
+
+    const metaUpdate = avatarValue === 'custom'
+      ? { avatar: 'custom', avatar_url: avatarUrl }
+      : { avatar: avatarValue, avatar_url: null };
+
+    const { data: updated, error: authError } = await supabaseClient.auth.updateUser({ data: metaUpdate });
+    if (authError) throw authError;
+    if (updated?.user) currentUser = updated.user;
+
+    // Synchroniser la table profiles (utilisée par chat + commentaires)
+    const profileUpdate = avatarValue === 'custom'
+      ? { avatar: 'custom', avatar_url: avatarUrl }
+      : { avatar: avatarValue, avatar_url: null };
+
+    const { error: profileError } = await supabaseClient
+      .from('profiles')
+      .update(profileUpdate)
+      .eq('user_id', currentUser.id);
+
+    if (profileError) console.warn('Profile update failed (non-critical):', profileError);
+
+    updateAuthUI(true);
+    fermerAvatarModalBtn();
+    if (typeof showToast === 'function') {
+      showToast(lang === 'en' ? 'Profile picture updated' : 'Photo de profil modifiée');
+    }
+  } catch (e) {
+    console.error('saveAvatarChange error:', e);
+    if (typeof showToast === 'function') {
+      showToast(lang === 'en' ? 'Update failed' : 'Erreur lors de la mise à jour');
+    }
+  } finally {
+    if (saveBtn) {
+      saveBtn.disabled = false;
+      saveBtn.textContent = lang === 'en' ? 'Save' : 'Enregistrer';
+    }
+  }
+}
+
 // ===== SYNC STATUS =====
 
 function updateSyncStatus(status) {

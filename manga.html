@@ -49,6 +49,7 @@
               <span class="sync-text" data-i18n="synced">Synchronisé</span>
             </div>
             <button class="sync-btn" onclick="forcerSync()" data-i18n="syncNow">Synchroniser</button>
+            <button class="sync-btn" onclick="ouvrirAvatarModal()" data-i18n="changeAvatar">Modifier la photo</button>
             <button class="logout-btn" onclick="deconnexion()" data-i18n="signOut">Déconnexion</button>
           </div>
         </div>
@@ -167,6 +168,41 @@
         <p class="guest-info" data-i18n="guestInfo">
           Sans compte, vos données restent sur cet appareil uniquement.
         </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Avatar Modal -->
+  <div class="modal-overlay" id="avatarModal" onclick="fermerAvatarModal(event)">
+    <div class="modal-content modal-auth">
+      <div class="modal-header">
+        <h2 data-i18n="changeAvatar">Modifier la photo</h2>
+        <button class="modal-close" onclick="fermerAvatarModalBtn()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label data-i18n="chooseAvatar">Choisir un avatar</label>
+          <div class="avatar-picker">
+            <div class="avatar-option" data-avatar="1" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar1.svg" alt="Avatar 1"></div>
+            <div class="avatar-option" data-avatar="2" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar2.svg" alt="Avatar 2"></div>
+            <div class="avatar-option" data-avatar="3" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar3.svg" alt="Avatar 3"></div>
+            <div class="avatar-option" data-avatar="4" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar4.svg" alt="Avatar 4"></div>
+            <div class="avatar-option" data-avatar="5" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar5.svg" alt="Avatar 5"></div>
+            <div class="avatar-option" data-avatar="6" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar6.svg" alt="Avatar 6"></div>
+            <div class="avatar-option" data-avatar="7" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar7.svg" alt="Avatar 7"></div>
+            <div class="avatar-option" data-avatar="8" onclick="selectAvatarModal(this)"><img src="images/avatars/avatar8.svg" alt="Avatar 8"></div>
+            <label class="avatar-option avatar-upload" data-avatar="custom">
+              <input type="file" id="avatarModalUpload" accept="image/*" onchange="handleAvatarModalUpload(this)" hidden>
+              <span class="upload-icon">+</span>
+              <span class="upload-text">Photo</span>
+            </label>
+          </div>
+          <div class="avatar-preview" id="avatarModalPreview" style="display: none;">
+            <img id="avatarModalPreviewImg" src="" alt="Preview">
+            <button type="button" class="avatar-remove" onclick="removeAvatarModalCustom()">✕</button>
+          </div>
+        </div>
+        <button class="auth-submit-btn" id="avatarSaveBtn" onclick="saveAvatarChange()" data-i18n="save">Enregistrer</button>
       </div>
     </div>
   </div>

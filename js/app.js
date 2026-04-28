@@ -212,7 +212,9 @@ const translations = {
     shortSeries: "Court (<10)",
     mediumSeries: "Moyen (10-30)",
     longSeries: "Long (>30)",
-    resetFilters: "Réinitialiser"
+    resetFilters: "Réinitialiser",
+    changeAvatar: "Modifier la photo",
+    save: "Enregistrer"
   },
   en: {
     siteSubtitle: "A manga dictionary",
@@ -358,7 +360,9 @@ const translations = {
     shortSeries: "Short (<10)",
     mediumSeries: "Medium (10-30)",
     longSeries: "Long (>30)",
-    resetFilters: "Reset"
+    resetFilters: "Reset",
+    changeAvatar: "Change photo",
+    save: "Save"
   },
   es: {
     siteSubtitle: "Un diccionario de manga",

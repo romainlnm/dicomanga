@@ -1954,7 +1954,7 @@ function fadeLanguage(work) {
   const root = document.querySelector('main');
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!root || reduce) { work(); return; }
-  root.style.transition = 'opacity 180ms ease';
+  root.style.transition = 'opacity 380ms ease';
   root.style.opacity = '0';
   setTimeout(() => {
     work();
@@ -1962,8 +1962,8 @@ function fadeLanguage(work) {
     setTimeout(() => {
       root.style.transition = '';
       root.style.opacity = '';
-    }, 220);
-  }, 180);
+    }, 420);
+  }, 380);
 }
 
 function toggleLangPicker() {

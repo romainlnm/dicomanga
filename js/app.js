@@ -1954,16 +1954,14 @@ function fadeLanguage(work) {
   const root = document.querySelector('main');
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!root || reduce) { work(); return; }
-  root.style.transition = 'opacity 380ms ease';
-  root.style.opacity = '0';
+  root.classList.remove('lang-fade-out');
+  // Force reflow so re-adding the class re-triggers the transition.
+  void root.offsetWidth;
+  root.classList.add('lang-fade-out');
   setTimeout(() => {
     work();
-    root.style.opacity = '1';
-    setTimeout(() => {
-      root.style.transition = '';
-      root.style.opacity = '';
-    }, 420);
-  }, 380);
+    root.classList.remove('lang-fade-out');
+  }, 500);
 }
 
 function toggleLangPicker() {

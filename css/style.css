@@ -564,6 +564,21 @@ main.animate-in {
   background-size: 200% 100%;
 }
 
+/* Fondue rapide lors du changement de langue (sur <main>) */
+main {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+main.lang-fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+}
+@media (prefers-reduced-motion: reduce) {
+  main, main.lang-fade-out {
+    transition: none;
+    transform: none;
+  }
+}
+
 /* ===== HEADER ===== */
 header {
   background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.9) 0%, var(--bg-primary) 100%);

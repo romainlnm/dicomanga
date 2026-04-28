@@ -197,7 +197,6 @@ async function loadSearchResults(manga) {
 
 async function findCoverUrl(manga, num) {
   const items = await loadSearchResults(manga);
-  if (!items.length) return null;
   // Look for the item whose detected volume number equals num
   for (const item of items) {
     const detected = extractVolumeNum(item.volumeInfo);
@@ -205,6 +204,42 @@ async function findCoverUrl(manga, num) {
       const thumb = pickThumb(item.volumeInfo);
       if (thumb) return thumb;
     }
+  }
+  // Fallback: ciblage individuel sur ce tome (utile quand la recherche
+  // globale n'inclut pas les volumes les plus récents).
+  return await findCoverUrlForVolume(manga, num);
+}
+
+async function findCoverUrlForVolume(manga, num) {
+  const title = (flags.titleOverride || manga.titre || '').trim();
+  if (!title) return null;
+  const titleNorm = normalize(title);
+  const firstWord = titleNorm.split(' ')[0];
+  // Plusieurs tentatives de query pour ce tome précis
+  const queries = [
+    `intitle:${JSON.stringify(title)}+intitle:${JSON.stringify('vol ' + num)}`,
+    `intitle:${JSON.stringify(title)}+intitle:${JSON.stringify(String(num))}`,
+    `${title} vol ${num}`,
+    `${title} ${num}`
+  ];
+  for (const q of queries) {
+    try {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20&printType=books`;
+      const data = await fetchJson(url);
+      const items = data.items || [];
+      for (const it of items) {
+        const itemTitle = normalize(it.volumeInfo?.title);
+        const itemSub = normalize(it.volumeInfo?.subtitle);
+        const allTitle = `${itemTitle} ${itemSub}`;
+        if (!allTitle.includes(firstWord)) continue;
+        const detected = extractVolumeNum(it.volumeInfo);
+        if (detected === num) {
+          const thumb = pickThumb(it.volumeInfo);
+          if (thumb) return thumb;
+        }
+      }
+    } catch (e) { /* ignore */ }
+    await sleep(150);
   }
   return null;
 }

@@ -191,14 +191,17 @@ async function handleAvatarUpload(input) {
 let customAvatarFile = null;
 
 async function uploadAvatarToStorage(file, userId) {
-  const fileExt = file.name.split('.').pop();
-  const fileName = `${userId}.${fileExt}`;
+  const fileExt = (file.name.split('.').pop() || 'png').toLowerCase();
+  // Nom unique à chaque upload : la policy INSERT du bucket suffit, pas
+  // besoin d'UPDATE pour écraser. Bonus : les anciens caches CDN sont
+  // contournés automatiquement par le nouveau chemin.
+  const fileName = `${userId}-${Date.now()}.${fileExt}`;
 
   const { data, error } = await supabaseClient.storage
     .from('avatars')
     .upload(fileName, file, {
       cacheControl: '3600',
-      upsert: true
+      upsert: false
     });
 
   if (error) throw error;

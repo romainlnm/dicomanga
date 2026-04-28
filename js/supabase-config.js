@@ -14,15 +14,15 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
 
   if (session?.user) {
     currentUser = session.user;
-    updateAuthUI(true);
+    if (typeof updateAuthUI === 'function') updateAuthUI(true);
 
     // Sync au login
-    if (event === 'SIGNED_IN') {
+    if (event === 'SIGNED_IN' && typeof syncUserData === 'function') {
       syncUserData();
     }
   } else {
     currentUser = null;
-    updateAuthUI(false);
+    if (typeof updateAuthUI === 'function') updateAuthUI(false);
   }
 });
 
@@ -31,7 +31,7 @@ async function checkAuth() {
   const { data: { session } } = await supabaseClient.auth.getSession();
   if (session?.user) {
     currentUser = session.user;
-    updateAuthUI(true);
+    if (typeof updateAuthUI === 'function') updateAuthUI(true);
   }
 }
 

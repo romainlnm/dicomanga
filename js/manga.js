@@ -236,6 +236,8 @@ function afficherDetailManga(id) {
           <p>${getMangaText(manga, 'bioAuteur')}</p>
         </div>
 
+        ${renderTomesSection(manga)}
+
         <!-- Personnages -->
         <div class="manga-section">
           <h2>${currentLang === 'en' ? 'Main Characters' : 'Personnages principaux'}</h2>
@@ -629,4 +631,63 @@ function toggleMangaInList(listName, mangaId) {
 
   // Rafraîchir la modal
   ouvrirAjouterAListe(mangaId);
+}
+
+// ===== TOMES (volumes individuels) =====
+function formatTomeDate(iso, lang) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', {
+    year: 'numeric', month: 'short'
+  });
+}
+
+function buildTomesArray(manga) {
+  // Si l'auteur a fourni des tomes détaillés, on les utilise
+  if (Array.isArray(manga.tomes) && manga.tomes.length) {
+    return manga.tomes.slice().sort((a, b) => (a.num || 0) - (b.num || 0));
+  }
+  // Sinon, on génère N placeholders à partir du nombre de volumes connus
+  const count = parseInt(manga.volumes, 10);
+  if (!count || count <= 0) return [];
+  const out = [];
+  for (let i = 1; i <= count; i++) {
+    out.push({ num: i, cover: null, date: null, placeholder: true });
+  }
+  return out;
+}
+
+function renderTomesSection(manga) {
+  const tomes = buildTomesArray(manga);
+  if (!tomes.length) return '';
+  const lang = currentLang || 'fr';
+  const fallbackCover = manga.couverture || '';
+
+  return `
+    <div class="manga-section tomes-section">
+      <h2>
+        ${lang === 'en' ? 'Volumes' : 'Tomes'}
+        <span class="tomes-count">${tomes.length}</span>
+      </h2>
+      <div class="tomes-scroll">
+        ${tomes.map(t => {
+          const cover = t.cover || fallbackCover;
+          const dateLabel = t.date ? formatTomeDate(t.date, lang) : '';
+          return `
+            <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}">
+              <div class="tome-cover-wrap">
+                <img src="${cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="this.onerror=null;this.src='${fallbackCover}';this.classList.add('tome-cover-fallback');">
+                <span class="tome-num-badge">${t.num}</span>
+              </div>
+              <div class="tome-info">
+                <span class="tome-num">${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}</span>
+                ${dateLabel ? `<span class="tome-date">${dateLabel}</span>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
 }

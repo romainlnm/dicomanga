@@ -676,11 +676,18 @@ function toggleTomeRead(mangaId, num) {
 }
 
 function updateTomesProgress(mangaId) {
-  const total = parseInt(document.querySelector('.tomes-section')?.dataset.total || '0', 10);
-  if (!total) return;
+  const section = document.querySelector('.tomes-section');
+  if (!section) return;
+  const total = section.querySelectorAll('.tome-card').length;
   const set = getReadTomes(mangaId);
+  // Ne compte que les tomes vraiment présents (couverture chargée)
+  const visibleNums = new Set(
+    Array.from(section.querySelectorAll('.tome-card'))
+      .map(c => parseInt(c.dataset.tome, 10))
+  );
+  const readVisible = [...set].filter(n => visibleNums.has(n));
   const el = document.getElementById('tomesProgress');
-  if (el) el.textContent = `${set.size} / ${total}`;
+  if (el) el.textContent = `${readVisible.length} / ${total}`;
 }
 
 // ===== TOMES (volumes individuels) =====
@@ -719,32 +726,33 @@ function renderTomesSection(manga) {
   const tomes = buildTomesArray(manga);
   if (!tomes.length) return '';
   const lang = currentLang || 'fr';
-  const fallbackCover = manga.couverture || '';
   const prevLabel = lang === 'en' ? 'Previous volumes' : 'Tomes précédents';
   const nextLabel = lang === 'en' ? 'Next volumes' : 'Tomes suivants';
   const readSet = getReadTomes(manga.id);
   const readLabel = lang === 'en' ? 'Mark as read' : 'Marquer comme lu';
   const unreadLabel = lang === 'en' ? 'Mark as unread' : 'Marquer comme non lu';
 
+  // On rend tous les tomes ; ceux dont la couverture ne charge pas
+  // seront retirés du DOM via l'onerror (voir handleTomeImageError).
   return `
-    <div class="manga-section tomes-section" data-total="${tomes.length}">
+    <div class="manga-section tomes-section" data-manga-id="${manga.id}">
       <h2>
         ${lang === 'en' ? 'Volumes' : 'Tomes'}
-        <span class="tomes-count">${tomes.length}</span>
+        <span class="tomes-count" id="tomesCount">${tomes.length}</span>
         <span class="tomes-progress" id="tomesProgress">${readSet.size} / ${tomes.length}</span>
       </h2>
       <div class="tomes-carousel">
         <button type="button" class="tomes-arrow tomes-prev" aria-label="${prevLabel}" onclick="scrollTomes(this, -1)">‹</button>
         <div class="tomes-scroll" onscroll="updateTomesArrows(this)">
           ${tomes.map(t => {
-            const cover = t.cover || fallbackCover;
+            if (!t.cover) return '';
             const dateLabel = t.date ? formatTomeDate(t.date, lang) : '';
             const isRead = readSet.has(t.num);
             const ariaLabel = isRead ? unreadLabel : readLabel;
             return `
-              <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}${isRead ? ' tome-read' : ''}" data-tome="${t.num}">
+              <div class="tome-card${isRead ? ' tome-read' : ''}" data-tome="${t.num}">
                 <div class="tome-cover-wrap">
-                  <img src="${cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="this.onerror=null;this.src='${fallbackCover}';this.classList.add('tome-cover-fallback');">
+                  <img src="${t.cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="handleTomeImageError(this)">
                   <span class="tome-num-badge">${t.num}</span>
                   <button type="button" class="tome-read-toggle" aria-pressed="${isRead}" aria-label="${ariaLabel}" title="${ariaLabel}" onclick="event.stopPropagation();toggleTomeRead(${manga.id}, ${t.num})">${isRead ? '✓' : '○'}</button>
                 </div>
@@ -760,6 +768,42 @@ function renderTomesSection(manga) {
       </div>
     </div>
   `;
+}
+
+// Quand l'image d'un tome ne charge pas, on retire la carte du DOM
+// et on met à jour le compteur + la progression.
+function handleTomeImageError(img) {
+  const card = img.closest('.tome-card');
+  const section = img.closest('.tomes-section');
+  if (!card || !section) return;
+  const mangaId = parseInt(section.dataset.mangaId, 10);
+  const tomeNum = parseInt(card.dataset.tome, 10);
+  card.remove();
+
+  // MAJ compteur (= nombre de cartes restantes dans la section)
+  const remaining = section.querySelectorAll('.tome-card').length;
+  const countEl = section.querySelector('#tomesCount');
+  if (countEl) countEl.textContent = remaining;
+
+  // MAJ progression : on ne compte plus ce tome dans le total
+  const readSet = getReadTomes(mangaId);
+  // On retire ce tome du set si jamais il y était (le tome n'existe pas vraiment)
+  if (readSet.has(tomeNum)) {
+    readSet.delete(tomeNum);
+    setReadTomes(mangaId, readSet);
+  }
+  const progressEl = section.querySelector('#tomesProgress');
+  if (progressEl) progressEl.textContent = `${readSet.size} / ${remaining}`;
+
+  // Si plus aucun tome → on cache la section entière
+  if (remaining === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  // MAJ flèches du carrousel
+  const scroll = section.querySelector('.tomes-scroll');
+  if (scroll) updateTomesArrows(scroll);
 }
 
 // Met à jour la visibilité des flèches selon la position du scroll

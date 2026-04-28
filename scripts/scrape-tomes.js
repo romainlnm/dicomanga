@@ -166,13 +166,23 @@ async function findCoverUrl(manga, num) {
   return null;
 }
 
+function getTomesList(manga) {
+  if (Array.isArray(manga.tomes) && manga.tomes.length) return manga.tomes;
+  const count = parseInt(manga.volumes, 10);
+  if (!count || count <= 0) return [];
+  const out = [];
+  for (let i = 1; i <= count; i++) out.push({ num: i });
+  return out;
+}
+
 async function processManga(manga) {
-  if (!Array.isArray(manga.tomes) || !manga.tomes.length) return;
+  const tomes = getTomesList(manga);
+  if (!tomes.length) return;
   if (flags.ids && !flags.ids.includes(manga.id)) return;
 
-  console.log(`\n=== [${manga.id}] ${manga.titre} (${manga.tomes.length} tomes) ===`);
+  console.log(`\n=== [${manga.id}] ${manga.titre} (${tomes.length} tomes) ===`);
 
-  for (const t of manga.tomes) {
+  for (const t of tomes) {
     const fileName = `${manga.id}-${pad2(t.num)}.jpg`;
     const dest = path.join(OUT_DIR, fileName);
     if (!flags.force && fs.existsSync(dest)) {
@@ -204,8 +214,8 @@ async function main() {
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
   const mangas = loadMangas();
-  const todo = mangas.filter(m => Array.isArray(m.tomes) && m.tomes.length);
-  console.log(`Found ${mangas.length} mangas, ${todo.length} with tomes[] populated.`);
+  const todo = mangas.filter(m => getTomesList(m).length > 0);
+  console.log(`Found ${mangas.length} mangas, ${todo.length} have at least one tome.`);
   if (flags.ids) console.log(`Filtering to ids: ${flags.ids.join(', ')}`);
   if (flags.dry) console.log('DRY RUN — no files will be written.');
 

@@ -636,6 +636,53 @@ function toggleMangaInList(listName, mangaId) {
   ouvrirAjouterAListe(mangaId);
 }
 
+// ===== TOMES LUS =====
+function getReadTomes(mangaId) {
+  const all = JSON.parse(localStorage.getItem('mangaReadTomes') || '{}');
+  return new Set((all[mangaId] || []).map(n => parseInt(n, 10)));
+}
+
+function setReadTomes(mangaId, set) {
+  const all = JSON.parse(localStorage.getItem('mangaReadTomes') || '{}');
+  const arr = [...set].sort((a, b) => a - b);
+  if (arr.length === 0) {
+    delete all[mangaId];
+  } else {
+    all[mangaId] = arr;
+  }
+  if (typeof saveReadTomesWithSync === 'function') {
+    saveReadTomesWithSync(all);
+  } else {
+    localStorage.setItem('mangaReadTomes', JSON.stringify(all));
+  }
+}
+
+function toggleTomeRead(mangaId, num) {
+  const set = getReadTomes(mangaId);
+  if (set.has(num)) set.delete(num); else set.add(num);
+  setReadTomes(mangaId, set);
+
+  // MAJ visuelle locale sans tout re-render
+  const card = document.querySelector(`.tome-card[data-tome="${num}"]`);
+  if (card) {
+    card.classList.toggle('tome-read', set.has(num));
+    const btn = card.querySelector('.tome-read-toggle');
+    if (btn) {
+      btn.setAttribute('aria-pressed', set.has(num) ? 'true' : 'false');
+      btn.textContent = set.has(num) ? '✓' : '○';
+    }
+  }
+  updateTomesProgress(mangaId);
+}
+
+function updateTomesProgress(mangaId) {
+  const total = parseInt(document.querySelector('.tomes-section')?.dataset.total || '0', 10);
+  if (!total) return;
+  const set = getReadTomes(mangaId);
+  const el = document.getElementById('tomesProgress');
+  if (el) el.textContent = `${set.size} / ${total}`;
+}
+
 // ===== TOMES (volumes individuels) =====
 function formatTomeDate(iso, lang) {
   if (!iso) return '';
@@ -651,12 +698,19 @@ function buildTomesArray(manga) {
   if (Array.isArray(manga.tomes) && manga.tomes.length) {
     return manga.tomes.slice().sort((a, b) => (a.num || 0) - (b.num || 0));
   }
-  // Sinon, on génère N placeholders à partir du nombre de volumes connus
+  // Sinon on génère N entrées en pointant vers le chemin conventionnel
+  // images/tomes/{id}-NN.jpg ; si l'image est absente, le onerror du <img>
+  // fait retomber sur la couverture principale.
   const count = parseInt(manga.volumes, 10);
   if (!count || count <= 0) return [];
   const out = [];
   for (let i = 1; i <= count; i++) {
-    out.push({ num: i, cover: null, date: null, placeholder: true });
+    const num = String(i).padStart(2, '0');
+    out.push({
+      num: i,
+      cover: `images/tomes/${manga.id}-${num}.jpg`,
+      date: null
+    });
   }
   return out;
 }
@@ -668,12 +722,16 @@ function renderTomesSection(manga) {
   const fallbackCover = manga.couverture || '';
   const prevLabel = lang === 'en' ? 'Previous volumes' : 'Tomes précédents';
   const nextLabel = lang === 'en' ? 'Next volumes' : 'Tomes suivants';
+  const readSet = getReadTomes(manga.id);
+  const readLabel = lang === 'en' ? 'Mark as read' : 'Marquer comme lu';
+  const unreadLabel = lang === 'en' ? 'Mark as unread' : 'Marquer comme non lu';
 
   return `
-    <div class="manga-section tomes-section">
+    <div class="manga-section tomes-section" data-total="${tomes.length}">
       <h2>
         ${lang === 'en' ? 'Volumes' : 'Tomes'}
         <span class="tomes-count">${tomes.length}</span>
+        <span class="tomes-progress" id="tomesProgress">${readSet.size} / ${tomes.length}</span>
       </h2>
       <div class="tomes-carousel">
         <button type="button" class="tomes-arrow tomes-prev" aria-label="${prevLabel}" onclick="scrollTomes(this, -1)">‹</button>
@@ -681,11 +739,14 @@ function renderTomesSection(manga) {
           ${tomes.map(t => {
             const cover = t.cover || fallbackCover;
             const dateLabel = t.date ? formatTomeDate(t.date, lang) : '';
+            const isRead = readSet.has(t.num);
+            const ariaLabel = isRead ? unreadLabel : readLabel;
             return `
-              <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}">
+              <div class="tome-card${t.placeholder ? ' tome-placeholder' : ''}${isRead ? ' tome-read' : ''}" data-tome="${t.num}">
                 <div class="tome-cover-wrap">
                   <img src="${cover}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="this.onerror=null;this.src='${fallbackCover}';this.classList.add('tome-cover-fallback');">
                   <span class="tome-num-badge">${t.num}</span>
+                  <button type="button" class="tome-read-toggle" aria-pressed="${isRead}" aria-label="${ariaLabel}" title="${ariaLabel}" onclick="event.stopPropagation();toggleTomeRead(${manga.id}, ${t.num})">${isRead ? '✓' : '○'}</button>
                 </div>
                 <div class="tome-info">
                   <span class="tome-num">${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}</span>

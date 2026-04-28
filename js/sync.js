@@ -16,6 +16,7 @@ function getLocalUserData() {
     notes: JSON.parse(localStorage.getItem('mangaNotes') || '{}'),
     historique: JSON.parse(localStorage.getItem('mangaHistorique') || '[]'),
     visitDays: JSON.parse(localStorage.getItem('mangaVisitDays') || '[]'),
+    readTomes: JSON.parse(localStorage.getItem('mangaReadTomes') || '{}'),
     preferences: {
       theme: localStorage.getItem('theme') || 'dark',
       colorTheme: localStorage.getItem('colorTheme') || 'red',
@@ -34,6 +35,7 @@ function saveLocalUserData(data) {
   if (data.notes) localStorage.setItem('mangaNotes', JSON.stringify(data.notes));
   if (data.historique) localStorage.setItem('mangaHistorique', JSON.stringify(data.historique));
   if (data.visitDays) localStorage.setItem('mangaVisitDays', JSON.stringify(data.visitDays));
+  if (data.readTomes) localStorage.setItem('mangaReadTomes', JSON.stringify(data.readTomes));
 }
 
 // ===== SYNCHRONISATION CLOUD =====
@@ -87,6 +89,15 @@ function mergeObjects(local, cloud) {
   return { ...(cloud || {}), ...(local || {}) };
 }
 
+// Pour readTomes : { mangaId: [num1, num2,...] } → union par manga
+function mergeReadTomes(local, cloud) {
+  const out = { ...(cloud || {}) };
+  for (const [k, arr] of Object.entries(local || {})) {
+    out[k] = [...new Set([...(out[k] || []), ...(arr || [])])].sort((a, b) => a - b);
+  }
+  return out;
+}
+
 function mergeUserData(localData, cloudData) {
   if (!cloudData) return localData;
   if (!localData) return cloudData;
@@ -102,6 +113,7 @@ function mergeUserData(localData, cloudData) {
     customLists: mergeObjects(localData.customLists, cloudData.customLists),
     userRatings: mergeObjects(localData.userRatings, cloudData.userRatings),
     notes: mergeObjects(localData.notes, cloudData.notes),
+    readTomes: mergeReadTomes(localData.readTomes, cloudData.readTomes),
 
     // Préférences : local prioritaire
     preferences: localData.preferences || cloudData.preferences
@@ -243,6 +255,12 @@ function saveNotesWithSync(notes) {
 function saveHistoriqueWithSync(historique) {
   localStorage.setItem('mangaHistorique', JSON.stringify(historique));
   queueSync('historique', historique);
+}
+
+// Wrapper pour sauvegarder les tomes lus avec sync
+function saveReadTomesWithSync(readTomes) {
+  localStorage.setItem('mangaReadTomes', JSON.stringify(readTomes));
+  queueSync('readTomes', readTomes);
 }
 
 // Forcer la synchronisation manuelle

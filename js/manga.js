@@ -172,7 +172,7 @@ function afficherDetailManga(id) {
       </div>
 
       <div class="manga-detail-info">
-        <h1>${manga.titre}</h1>
+        <h1 class="title-neon" onclick="cycleTitleStyle(this)" title="Click to try another style">${manga.titre}</h1>
 
         <div class="manga-actions">
           <button class="favorite-btn ${estFavori(manga.id) ? 'active' : ''}" onclick="toggleFavoriBtn(${manga.id})">
@@ -835,3 +835,12 @@ function initTomesArrows() {
   document.querySelectorAll('.tomes-scroll').forEach(updateTomesArrows);
 }
 window.addEventListener('resize', initTomesArrows);
+
+// Cycle through title styles on click (preview helper)
+const TITLE_STYLES = ['title-neon', 'title-marker', 'title-badge', 'title-glitch'];
+function cycleTitleStyle(el) {
+  const current = TITLE_STYLES.find(c => el.classList.contains(c)) || TITLE_STYLES[0];
+  const next = TITLE_STYLES[(TITLE_STYLES.indexOf(current) + 1) % TITLE_STYLES.length];
+  el.classList.remove(...TITLE_STYLES);
+  el.classList.add(next);
+}

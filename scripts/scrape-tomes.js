@@ -167,6 +167,78 @@ async function fetchAllResults(manga) {
   });
 }
 
+// Known-junk publishers and title fragments that Google Books returns for
+// generic-sounding manga titles like "Kingdom" or "Reborn".
+const PUBLISHER_BLACKLIST = [
+  'forgotten books',
+  'classic reprint',
+  'fb&c',
+  'sagwan press',
+  'palala press',
+  'theclassics.us',
+  'wentworth press',
+  'andesite press',
+  'armory',
+  'scholastic',
+  'geronimo stilton'
+];
+const TITLE_BLACKLIST = [
+  'statutes of',
+  'transactions of',
+  'royal society',
+  'ophthalmological',
+  'parliament',
+  'accounts and papers',
+  'armory life',
+  'bloodshot',
+  'after-school kindness',
+  'kindness crew',
+  'scorpio reborn',
+  'kingdom of god',
+  'sunrise in the sunrise kingdom',
+  'human geography',
+  'eccentric doctor',
+  'panorama of the kingdom',
+  'how to rebuild',
+  'rebuilt the kingdom',
+  'statistical abstract',
+  'laws of the kingdom',
+  'kingdom of fantasy',
+  'inventing patirus',
+  'gonhara kingdom',
+  'encyclopedia of library',
+  'dragon ball z',
+  'dragon ball super',
+  'dragonball z',
+  'dragonball super',
+  'dragon ball culture',
+  'into the fire',
+  'saga of goku',
+  'overlord',
+  'register of educational',
+  'heaven s glory',
+  'kingdom glory',
+  'dream kingdom',
+  'kingdom of man',
+  'kingdom of kaos',
+  'kingdom of mists',
+  'kingdom of bones',
+  'kingdom of liars',
+  'kingdom of wrenly',
+  'kingdom hearts',
+  'berserk of gluttony',
+  'deluxe edition',
+  'maximum berserk'
+];
+
+function isJunk(volumeInfo) {
+  const pub = normalize(volumeInfo?.publisher);
+  if (PUBLISHER_BLACKLIST.some(p => pub.includes(p))) return true;
+  const t = `${normalize(volumeInfo?.title)} ${normalize(volumeInfo?.subtitle)}`;
+  if (TITLE_BLACKLIST.some(p => t.includes(p))) return true;
+  return false;
+}
+
 async function loadSearchResults(manga) {
   if (searchCache.has(manga.id)) return searchCache.get(manga.id);
   const items = await fetchAllResults(manga);
@@ -176,6 +248,7 @@ async function loadSearchResults(manga) {
   const authorNorm = normalize(flags.authorOverride || manga.auteur);
   const firstTitleWord = titleNorm.split(' ')[0];
   const filtered = items.filter(it => {
+    if (isJunk(it.volumeInfo)) return false;
     const itemTitle = normalize(it.volumeInfo?.title);
     const itemSub = normalize(it.volumeInfo?.subtitle);
     const allTitle = `${itemTitle} ${itemSub}`;
@@ -228,6 +301,7 @@ async function findCoverUrlForVolume(manga, num) {
       const data = await fetchJson(url);
       const items = data.items || [];
       for (const it of items) {
+        if (isJunk(it.volumeInfo)) continue;
         const itemTitle = normalize(it.volumeInfo?.title);
         const itemSub = normalize(it.volumeInfo?.subtitle);
         const allTitle = `${itemTitle} ${itemSub}`;

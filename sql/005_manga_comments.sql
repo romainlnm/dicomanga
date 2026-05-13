@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS public.manga_comments (
   user_id    UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   content    TEXT NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  CONSTRAINT manga_comment_length CHECK (char_length(content) BETWEEN 1 AND 1000)
+  CONSTRAINT manga_comment_length CHECK (char_length(content) BETWEEN 1 AND 10000)
 );
 
 CREATE INDEX IF NOT EXISTS manga_comments_manga_created_idx

@@ -96,12 +96,23 @@ function avatarSrc(profile) {
 
 // ----- Modal open/close -----
 
+function showChatMain() {
+  const layout = document.querySelector('.chat-layout');
+  if (layout) layout.classList.add('show-chat');
+}
+
+function hideChatMain() {
+  const layout = document.querySelector('.chat-layout');
+  if (layout) layout.classList.remove('show-chat');
+}
+
 async function ouvrirChatModal() {
   if (!currentUser) { ouvrirAuthModal(); return; }
   const modal = document.getElementById('chatModal');
   if (!modal) return;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  hideChatMain();
   await chargerProfilMoi();
   await chargerBloques();
   renderBlockedCount();
@@ -124,6 +135,7 @@ function fermerChatModalBtn() {
   if (!modal) return;
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  hideChatMain();
   unsubscribeFromMessages();
   unsubscribeFromPublic();
   unsubscribeTyping();
@@ -158,6 +170,7 @@ async function switchChatMode(mode) {
     unsubscribeTyping();
     await chargerPublicMessages();
     subscribeToPublicMessages();
+    showChatMain();
   }
 }
 
@@ -330,6 +343,7 @@ async function ouvrirConversation(otherUserId, username) {
   renderConversations();
   await chargerMessages(otherUserId);
   renderChatView();
+  showChatMain();
   await markConversationAsRead(otherUserId);
   subscribeTyping(otherUserId);
 }
@@ -356,6 +370,7 @@ function renderChatView() {
   const avatar = avatarSrc(chatActiveConversation);
   view.innerHTML = `
     <div class="chat-view-header">
+      <button class="chat-back-btn" onclick="hideChatMain()" aria-label="Retour">←</button>
       <img src="${avatar}" alt="" class="chat-avatar">
       <span class="chat-view-name">${escapeHtml(chatActiveConversation.username)}</span>
     </div>
@@ -661,6 +676,7 @@ function renderPublicView() {
   if (!view) return;
   view.innerHTML = `
     <div class="chat-view-header">
+      <button class="chat-back-btn" onclick="hideChatMain()" aria-label="Retour">←</button>
       <span class="chat-public-icon">🌐</span>
       <span class="chat-view-name">${escapeHtml(getChatText('publicWelcome'))}</span>
     </div>

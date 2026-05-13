@@ -1,7 +1,13 @@
 // Commentaires sur les pages manga
 // Dépend de : supabase-config.js (supabaseClient, currentUser), manga.js (currentLang)
 
-const COMMENTS_MAX_LENGTH = 1000;
+const COMMENTS_MAX_WORDS = 1000;
+
+function countWords(s) {
+  const trimmed = String(s).trim();
+  if (!trimmed) return 0;
+  return trimmed.split(/\s+/).length;
+}
 
 function commentsT(key) {
   const en = currentLang === 'en';
@@ -16,7 +22,7 @@ function commentsT(key) {
     posted: en ? 'Comment posted' : 'Commentaire publié',
     deleted: en ? 'Comment deleted' : 'Commentaire supprimé',
     error: en ? 'Something went wrong' : 'Une erreur est survenue',
-    tooLong: en ? `Max ${COMMENTS_MAX_LENGTH} characters` : `Max ${COMMENTS_MAX_LENGTH} caractères`,
+    tooLong: en ? `Max ${COMMENTS_MAX_WORDS} words` : `Max ${COMMENTS_MAX_WORDS} mots`,
     justNow: en ? 'just now' : 'à l\'instant',
     minutesAgo: (n) => en ? `${n} min ago` : `il y a ${n} min`,
     hoursAgo: (n) => en ? `${n}h ago` : `il y a ${n}h`,
@@ -121,7 +127,7 @@ async function postComment(mangaId) {
   if (!textarea) return;
   const content = textarea.value.trim();
   if (!content) return;
-  if (content.length > COMMENTS_MAX_LENGTH) {
+  if (countWords(content) > COMMENTS_MAX_WORDS) {
     if (typeof showToast === 'function') showToast(commentsT('tooLong'));
     return;
   }
@@ -172,9 +178,9 @@ function updateCommentCounter() {
   const textarea = document.getElementById('commentInput');
   const counter = document.getElementById('commentCounter');
   if (!textarea || !counter) return;
-  const len = textarea.value.length;
-  counter.textContent = `${len} / ${COMMENTS_MAX_LENGTH}`;
-  counter.classList.toggle('over-limit', len > COMMENTS_MAX_LENGTH);
+  const words = countWords(textarea.value);
+  counter.textContent = `${words} / ${COMMENTS_MAX_WORDS}`;
+  counter.classList.toggle('over-limit', words > COMMENTS_MAX_WORDS);
 }
 
 function buildCommentsSection(mangaId) {
@@ -185,12 +191,11 @@ function buildCommentsSection(mangaId) {
         <textarea
           id="commentInput"
           class="comment-textarea"
-          maxlength="${COMMENTS_MAX_LENGTH}"
           placeholder="${commentsT('placeholder')}"
           oninput="updateCommentCounter()"
         ></textarea>
         <div class="comment-composer-footer">
-          <span class="comment-counter" id="commentCounter">0 / ${COMMENTS_MAX_LENGTH}</span>
+          <span class="comment-counter" id="commentCounter">0 / ${COMMENTS_MAX_WORDS}</span>
           <button id="commentSubmit" class="comment-submit-btn" onclick="postComment(${mangaId})">
             ${commentsT('submit')}
           </button>

@@ -17,6 +17,26 @@ let chatTypingTimer = null;        // debounce côté émetteur
 let chatPeerTyping = false;        // l'autre personne est en train d'écrire
 let chatNotifPref = localStorage.getItem('chatNotif') || 'ask'; // 'on' | 'off' | 'ask'
 
+// Réactions : { messageId: { emoji: Set<userId> } } — privé et public séparés
+let chatReactions = {};
+let chatPublicReactions = {};
+let chatReactionsRealtime = null;
+let chatPublicReactionsRealtime = null;
+
+// Emojis pour le picker (input) — sélection curated
+const EMOJI_PICKER_LIST = [
+  '😀','😁','😂','🤣','😊','😍','😘','😎','🤔','😅','😢','😭','😡','🥺','😴','🤯',
+  '👍','👎','👏','🙏','🙌','💪','👌','✌️','🤝','🫶','💯','🔥',
+  '❤️','🧡','💛','💚','💙','💜','🤍','🖤','💔','💖','💕','✨',
+  '🎉','🎂','🎁','🌸','🌟','⭐','☀️','🌈','⚡','🍕','🍔','🍣','🍩','🍫','☕','🍻',
+  '⚽','🎮','🎵','🎬','📚','📖','🖼️','✏️','💡','💻','📱','⏰','🚀','✈️',
+  '🐶','🐱','🐼','🦊','🐸','🐵','🦁','🐯','🐨','🐰','🐢','🐙','🦄','🐉','🦋',
+  '😺','💀','👻','👽','🤖','🎃','💩','🤡','🥷','🧙','🧛','🧟'
+];
+
+// Emojis pour réactions rapides (limité)
+const QUICK_REACTIONS = ['👍','❤️','😂','😮','😢','🔥'];
+
 function getChatText(key) {
   const lang = localStorage.getItem('lang') || 'fr';
   const dict = {
@@ -94,6 +114,145 @@ function avatarSrc(profile) {
   return `images/avatars/avatar${profile.avatar || 1}.svg`;
 }
 
+// ----- Réactions : helpers -----
+
+function reactionsStore(scope) {
+  return scope === 'public' ? chatPublicReactions : chatReactions;
+}
+
+function reactionsTable(scope) {
+  return scope === 'public' ? 'public_message_reactions' : 'message_reactions';
+}
+
+async function loadReactionsForMessages(messageIds, scope) {
+  if (!messageIds || !messageIds.length) return;
+  const { data, error } = await supabaseClient
+    .from(reactionsTable(scope))
+    .select('message_id, user_id, emoji')
+    .in('message_id', messageIds);
+  if (error) { console.error('Load reactions:', error); return; }
+  const store = reactionsStore(scope);
+  for (const id of messageIds) {
+    if (!store[id]) store[id] = {};
+  }
+  for (const r of data || []) {
+    if (!store[r.message_id]) store[r.message_id] = {};
+    if (!store[r.message_id][r.emoji]) store[r.message_id][r.emoji] = new Set();
+    store[r.message_id][r.emoji].add(r.user_id);
+  }
+}
+
+function applyReactionDelta(scope, messageId, emoji, userId, isAdd) {
+  const store = reactionsStore(scope);
+  if (!store[messageId]) store[messageId] = {};
+  if (!store[messageId][emoji]) store[messageId][emoji] = new Set();
+  if (isAdd) store[messageId][emoji].add(userId);
+  else {
+    store[messageId][emoji].delete(userId);
+    if (store[messageId][emoji].size === 0) delete store[messageId][emoji];
+  }
+}
+
+function renderReactions(messageId, scope) {
+  const store = reactionsStore(scope);
+  const byEmoji = store[messageId];
+  if (!byEmoji) return '';
+  const me = currentUser?.id;
+  const entries = Object.entries(byEmoji).filter(([, set]) => set.size > 0);
+  if (!entries.length) return '';
+  return `<div class="reaction-row">${entries.map(([emoji, set]) => {
+    const mine = me && set.has(me);
+    return `<button class="reaction-chip${mine ? ' mine' : ''}" onclick="toggleReaction('${messageId}','${emoji}','${scope}')">${emoji} <span>${set.size}</span></button>`;
+  }).join('')}<button class="reaction-add-btn" onclick="event.stopPropagation(); showReactionPicker('${messageId}','${scope}',this)" aria-label="Réagir">+</button></div>`;
+}
+
+function showReactionPicker(messageId, scope, btn) {
+  document.querySelectorAll('.reaction-quick-bar').forEach(b => b.remove());
+  const bubble = btn.closest('.chat-bubble');
+  if (!bubble) return;
+  const items = QUICK_REACTIONS.map(e =>
+    `<button type="button" class="reaction-quick" onclick="toggleReaction('${messageId}','${e}','${scope}'); this.parentElement.remove();">${e}</button>`
+  ).join('');
+  bubble.insertAdjacentHTML('beforeend', `<div class="reaction-quick-bar">${items}</div>`);
+}
+
+async function toggleReaction(messageId, emoji, scope) {
+  if (!currentUser) { ouvrirAuthModal && ouvrirAuthModal(); return; }
+  const store = reactionsStore(scope);
+  const has = store[messageId]?.[emoji]?.has(currentUser.id);
+  if (has) {
+    applyReactionDelta(scope, messageId, emoji, currentUser.id, false);
+    rerenderBubble(messageId, scope);
+    const { error } = await supabaseClient
+      .from(reactionsTable(scope))
+      .delete()
+      .eq('message_id', messageId)
+      .eq('user_id', currentUser.id)
+      .eq('emoji', emoji);
+    if (error) {
+      console.error('Remove reaction:', error);
+      applyReactionDelta(scope, messageId, emoji, currentUser.id, true); // rollback
+      rerenderBubble(messageId, scope);
+    }
+  } else {
+    applyReactionDelta(scope, messageId, emoji, currentUser.id, true);
+    rerenderBubble(messageId, scope);
+    const { error } = await supabaseClient
+      .from(reactionsTable(scope))
+      .insert({ message_id: messageId, user_id: currentUser.id, emoji });
+    if (error && error.code !== '23505') {
+      console.error('Add reaction:', error);
+      applyReactionDelta(scope, messageId, emoji, currentUser.id, false); // rollback
+      rerenderBubble(messageId, scope);
+    }
+  }
+}
+
+function rerenderBubble(messageId, scope) {
+  const container = scope === 'public'
+    ? document.getElementById('chatPublicMessagesList')
+    : document.getElementById('chatMessages');
+  if (!container) return;
+  const bubble = container.querySelector(`[data-msg-id="${messageId}"]`);
+  if (!bubble) return;
+  const oldRow = bubble.querySelector('.reaction-row');
+  if (oldRow) oldRow.remove();
+  bubble.insertAdjacentHTML('beforeend', renderReactions(messageId, scope));
+}
+
+function subscribeReactions(scope) {
+  if (!currentUser || !supabaseClient) return;
+  const isPublic = scope === 'public';
+  const existing = isPublic ? chatPublicReactionsRealtime : chatReactionsRealtime;
+  if (existing) return;
+  const channel = supabaseClient
+    .channel((isPublic ? 'public_reactions:' : 'reactions:') + currentUser.id)
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: reactionsTable(scope) }, (payload) => {
+      const r = payload.new;
+      if (!r) return;
+      applyReactionDelta(scope, r.message_id, r.emoji, r.user_id, true);
+      rerenderBubble(r.message_id, scope);
+    })
+    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: reactionsTable(scope) }, (payload) => {
+      const r = payload.old;
+      if (!r) return;
+      applyReactionDelta(scope, r.message_id, r.emoji, r.user_id, false);
+      rerenderBubble(r.message_id, scope);
+    })
+    .subscribe();
+  if (isPublic) chatPublicReactionsRealtime = channel;
+  else chatReactionsRealtime = channel;
+}
+
+function unsubscribeReactions(scope) {
+  const isPublic = scope === 'public';
+  const channel = isPublic ? chatPublicReactionsRealtime : chatReactionsRealtime;
+  if (!channel) return;
+  supabaseClient.removeChannel(channel);
+  if (isPublic) chatPublicReactionsRealtime = null;
+  else chatReactionsRealtime = null;
+}
+
 // ----- Modal open/close -----
 
 function showChatMain() {
@@ -105,6 +264,46 @@ function hideChatMain() {
   const layout = document.querySelector('.chat-layout');
   if (layout) layout.classList.remove('show-chat');
 }
+
+// ----- Emoji picker (input) -----
+
+function buildEmojiPickerHtml(targetInputId) {
+  const items = EMOJI_PICKER_LIST.map(e =>
+    `<button type="button" class="emoji-pick" onclick="insertEmoji('${targetInputId}','${e}')">${e}</button>`
+  ).join('');
+  return `<div class="emoji-picker" data-target="${targetInputId}">${items}</div>`;
+}
+
+function toggleEmojiPicker(targetInputId, btn) {
+  const existing = document.querySelector(`.emoji-picker[data-target="${targetInputId}"]`);
+  if (existing) { existing.remove(); return; }
+  // Ferme les autres pickers
+  document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
+  const wrap = btn.closest('.chat-input-form');
+  if (!wrap) return;
+  wrap.insertAdjacentHTML('beforeend', buildEmojiPickerHtml(targetInputId));
+}
+
+function insertEmoji(targetInputId, emoji) {
+  const input = document.getElementById(targetInputId);
+  if (!input) return;
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? input.value.length;
+  const before = input.value.slice(0, start);
+  const after = input.value.slice(end);
+  input.value = before + emoji + after;
+  const caret = start + emoji.length;
+  input.focus();
+  try { input.setSelectionRange(caret, caret); } catch (_) {}
+}
+
+// Ferme les pickers ouverts si on clique en dehors
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.emoji-picker')) return;
+  if (e.target.closest('.emoji-toggle-btn')) return;
+  document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
+  document.querySelectorAll('.reaction-quick-bar').forEach(b => b.remove());
+});
 
 async function ouvrirChatModal() {
   if (!currentUser) { ouvrirAuthModal(); return; }
@@ -139,6 +338,8 @@ function fermerChatModalBtn() {
   unsubscribeFromMessages();
   unsubscribeFromPublic();
   unsubscribeTyping();
+  unsubscribeReactions('private');
+  unsubscribeReactions('public');
 }
 
 async function switchChatMode(mode) {
@@ -357,6 +558,8 @@ async function chargerMessages(otherUserId) {
     .limit(200);
   if (error) { console.error('Load messages:', error); return; }
   chatMessagesCache[otherUserId] = data || [];
+  await loadReactionsForMessages((data || []).map(m => m.id), 'private');
+  subscribeReactions('private');
 }
 
 function renderChatView() {
@@ -379,6 +582,7 @@ function renderChatView() {
     </div>
     <div class="chat-typing" id="chatTypingIndicator" style="display:none;"></div>
     <form class="chat-input-form" onsubmit="envoyerMessage(event)">
+      <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatInput', this)" aria-label="Emojis">😊</button>
       <textarea id="chatInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         oninput="onChatInputType()"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatSendBtn').click(); }"></textarea>
@@ -391,17 +595,20 @@ function renderChatView() {
 
 function renderMessageBubble(m) {
   const mine = m.sender_id === currentUser.id;
+  const reactBtn = `<button class="chat-react-btn" title="Réagir" onclick="event.stopPropagation(); showReactionPicker('${m.id}','private',this)" aria-label="React">😊</button>`;
   const actions = !mine
-    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
+    ? `${reactBtn}
+       <button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
        <button class="chat-report-btn" title="${escapeHtml(getChatText('block'))}" onclick="bloquerUtilisateur('${m.sender_id}')" aria-label="${escapeHtml(getChatText('block'))}">🚫</button>`
-    : '';
+    : reactBtn;
   return `
-    <div class="chat-bubble ${mine ? 'mine' : 'theirs'}">
+    <div class="chat-bubble ${mine ? 'mine' : 'theirs'}" data-msg-id="${m.id}">
       <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
         ${actions}
       </div>
+      ${renderReactions(m.id, 'private')}
     </div>
   `;
 }
@@ -615,12 +822,16 @@ function chatOnAuth(isAuth) {
     if (badge) badge.style.display = 'none';
     unsubscribeFromMessages();
     unsubscribeFromPublic();
+    unsubscribeReactions('private');
+    unsubscribeReactions('public');
     chatConversations = [];
     chatMessagesCache = {};
     chatActiveConversation = null;
     chatMyProfile = null;
     chatPublicMessages = [];
     chatPublicProfiles = {};
+    chatReactions = {};
+    chatPublicReactions = {};
     chatBlockedIds = new Set();
     unsubscribeTyping();
   }
@@ -658,6 +869,8 @@ async function chargerPublicMessages() {
 
   chatPublicMessages = (data || []).filter(m => !chatBlockedIds.has(m.sender_id)).reverse();
   await hydratePublicProfiles(chatPublicMessages.map(m => m.sender_id));
+  await loadReactionsForMessages(chatPublicMessages.map(m => m.id), 'public');
+  subscribeReactions('public');
   renderPublicView();
 }
 
@@ -686,6 +899,7 @@ function renderPublicView() {
         : `<div class="chat-empty">${escapeHtml(getChatText('publicEmpty'))}</div>`}
     </div>
     <form class="chat-input-form" onsubmit="envoyerPublicMessage(event)">
+      <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatPublicInput', this)" aria-label="Emojis">😊</button>
       <textarea id="chatPublicInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatPublicSendBtn').click(); }"></textarea>
       <button type="submit" id="chatPublicSendBtn" class="chat-send-btn">${escapeHtml(getChatText('send'))}</button>
@@ -700,9 +914,12 @@ function renderPublicBubble(m) {
   const profile = chatPublicProfiles[m.sender_id];
   const username = profile?.username || '?';
   const avatar = avatarSrc(profile);
+  const reactBtn = `<button class="chat-react-btn" title="Réagir" onclick="event.stopPropagation(); showReactionPicker('${m.id}','public',this)" aria-label="React">😊</button>`;
   const actions = mine
-    ? `<button class="chat-report-btn" title="${escapeHtml(getChatText('deleteMsg'))}" onclick="supprimerPublicMessage('${m.id}')" aria-label="${escapeHtml(getChatText('deleteMsg'))}">🗑️</button>`
-    : `<button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerPublicMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
+    ? `${reactBtn}
+       <button class="chat-report-btn" title="${escapeHtml(getChatText('deleteMsg'))}" onclick="supprimerPublicMessage('${m.id}')" aria-label="${escapeHtml(getChatText('deleteMsg'))}">🗑️</button>`
+    : `${reactBtn}
+       <button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerPublicMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
        <button class="chat-report-btn" title="${escapeHtml(getChatText('block'))}" onclick="bloquerUtilisateur('${m.sender_id}')" aria-label="${escapeHtml(getChatText('block'))}">🚫</button>`;
   const header = !mine
     ? `<div class="chat-public-author">
@@ -711,13 +928,14 @@ function renderPublicBubble(m) {
        </div>`
     : '';
   return `
-    <div class="chat-bubble chat-bubble-public ${mine ? 'mine' : 'theirs'}">
+    <div class="chat-bubble chat-bubble-public ${mine ? 'mine' : 'theirs'}" data-msg-id="${m.id}">
       ${header}
       <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
         ${actions}
       </div>
+      ${renderReactions(m.id, 'public')}
     </div>
   `;
 }

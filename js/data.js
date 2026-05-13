@@ -90,7 +90,6 @@ const mangas = [
   ],
   "avis": "Une œuvre fondatrice du cyberpunk. La vision de Neo-Tokyo et le dessin sont révolutionnaires.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/akira-shin-anime-15637"
 },
   {
   "id": 3,
@@ -133,7 +132,6 @@ const mangas = [
   ],
   "avis": "Un concept génial exécuté à la perfection. Drôle, émouvant, avec une fin mémorable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/assassination-classroom-372"
 },
   {
   "id": 4,
@@ -176,7 +174,6 @@ const mangas = [
   ],
   "avis": "Un thriller haletant avec des retournements de situation constants. L'histoire questionne la nature humaine et la guerre de façon brillante.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/attack-on-titan-112"
 },
   {
   "id": 5,
@@ -218,7 +215,6 @@ const mangas = [
   ],
   "avis": "Le sommet du dark fantasy. Graphismes époustouflants, histoire profonde, violence sans compromis. Un monument.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/berserk-1997-103"
 },
   {
   "id": 6,
@@ -260,7 +256,6 @@ const mangas = [
   ],
   "avis": "Un shonen classique mais efficace. L'évolution des personnages et les combats sont excellents.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/black-clover-2404"
 },
   {
   "id": 7,
@@ -303,7 +298,6 @@ const mangas = [
   ],
   "avis": "Un design exceptionnel et des combats épiques. L'arc Soul Society est légendaire, même si la fin est précipitée.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/bleach-806"
 },
   {
   "id": 8,
@@ -345,7 +339,6 @@ const mangas = [
   ],
   "avis": "Une révolution du manga de sport. L'angle égoïste est rafraîchissant et les matchs sont intenses.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/blue-lock-17889",
   "dernierTome": { "numero": 31, "date": "2025-05" }
 },
   {
@@ -388,7 +381,6 @@ const mangas = [
   "avis": "Une suite directe de Naruto qui peine parfois à sortir de l ombre de son prédécesseur, mais qui offre des moments forts et une nouvelle génération attachante.",
   "note": 7,
   "id": 9,
-  "anime": "https://aniwatchtv.to/boruto-naruto-next-generations-8143",
   "univers": "Naruto",
   "connexions": [39]
 },
@@ -433,7 +425,6 @@ const mangas = [
   "avis": "Une romance vampire rafraîchissante avec une atmosphère nocturne envoûtante. L'exploration de l'amour et de la solitude est touchante et originale.",
   "note": 8,
   "id": 10,
-  "anime": "https://aniwatchtv.to/call-of-the-night-18041"
 },
   {
   "id": 11,
@@ -476,7 +467,6 @@ const mangas = [
   ],
   "avis": "Un magical girl doux et charmant. Les designs des cartes et costumes sont magnifiques.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/cardcaptor-sakura-340"
 },
   {
   "id": 12,
@@ -519,7 +509,6 @@ const mangas = [
   ],
   "avis": "Brutal, imprévisible, émotionnel. Fujimoto brise toutes les conventions du shonen avec génie.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/chainsaw-man-17406",
   "dernierTome": { "numero": 21, "date": "2026-02" }
 },
   {
@@ -563,7 +552,6 @@ const mangas = [
   ],
   "avis": "Un dark fantasy avec des héroïnes fortes. L'univers est fascinant et les combats spectaculaires.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/claymore-844"
 },
   {
   "id": 14,
@@ -605,7 +593,6 @@ const mangas = [
   ],
   "avis": "Un mélange explosif d'action, d'humour et de romance. Le rythme est effréné et le style visuel est incroyable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/dandadan-19319"
 },
   {
   "id": 15,
@@ -662,7 +649,6 @@ const mangas = [
   ],
   "avis": "Un duel intellectuel passionnant entre deux génies. Le manga pose des questions profondes sur la justice et la morale.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/death-note-60"
 },
   {
   "id": 16,
@@ -705,7 +691,6 @@ const mangas = [
   ],
   "avis": "Un shonen classique mais exécuté à la perfection. Les combats sont magnifiques et l'émotion est au rendez-vous.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/demon-slayer-kimetsu-no-yaiba-47"
 },
   {
   "id": 17,
@@ -748,7 +733,6 @@ const mangas = [
   ],
   "avis": "Unique en son genre. L'univers crasseux et l'humour noir créent une atmosphère incomparable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/dorohedoro-1551"
 },
   {
   "id": 18,
@@ -791,7 +775,6 @@ const mangas = [
   ],
   "avis": "Un manga unique célébrant la science et l'ingéniosité humaine. Éducatif et passionnant.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/dr-stone-175"
 },
   {
   "id": 19,
@@ -834,7 +817,6 @@ const mangas = [
   ],
   "avis": "Le père de tous les shonens modernes. Dragon Ball a défini les codes du genre et reste une œuvre intemporelle.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/dragon-ball-509",
   "univers": "Dragon Ball",
   "connexions": []
 },
@@ -879,7 +861,6 @@ const mangas = [
   ],
   "avis": "Un shonen fun et divertissant avec une ambiance de camaraderie chaleureuse. Idéal pour se détendre.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/fairy-tail-930"
 },
   {
   "id": 21,
@@ -921,7 +902,6 @@ const mangas = [
   ],
   "avis": "Une méditation poétique sur le temps et la mortalité. Calme, profond, magnifiquement écrit.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/frieren-beyond-journeys-end-18542"
 },
   {
   "id": 22,
@@ -964,7 +944,6 @@ const mangas = [
   ],
   "avis": "Un shojo profond sur la guérison des traumatismes. Émouvant du début à la fin.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/fruits-basket-1st-season-1564"
 },
   {
   "id": 23,
@@ -1007,7 +986,6 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre absolu. Histoire parfaitement construite, personnages profonds, thèmes matures. Aucun défaut.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/fullmetal-alchemist-brotherhood-1"
 },
   {
   "id": 24,
@@ -1050,7 +1028,6 @@ const mangas = [
   ],
   "avis": "La meilleure comédie manga. Capable de vous faire pleurer de rire puis d'émotion dans le même chapitre.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/gintama-13"
 },
   {
   "id": 25,
@@ -1092,7 +1069,6 @@ const mangas = [
   ],
   "avis": "La comédie la plus drôle du manga. Chaque chapitre est hilarant, les expressions faciales sont légendaires.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/grand-blue-dreaming-67"
 },
   {
   "id": 26,
@@ -1135,7 +1111,6 @@ const mangas = [
   ],
   "avis": "Le meilleur manga de sport moderne. Chaque match est haletant, chaque personnage est mémorable.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/haikyu-76"
 },
   {
   "id": 27,
@@ -1177,7 +1152,6 @@ const mangas = [
   ],
   "avis": "Un manga d'une intelligence rare. Le système de Nen est le meilleur système de pouvoir du manga. Dommage pour les pauses.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/hunter-x-hunter-2"
 },
   {
   "id": 28,
@@ -1220,7 +1194,6 @@ const mangas = [
   ],
   "avis": "Le nouveau roi du shonen. Action spectaculaire, humour bien dosé et un système de magie original.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/jujutsu-kaisen-tv-534",
   "dernierTome": { "numero": 30, "date": "2026-07" }
 },
   {
@@ -1264,7 +1237,6 @@ const mangas = [
   ],
   "avis": "La meilleure rom-com manga. Les mind games sont hilarants et l'évolution de la romance est parfaite.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/kaguya-sama-love-is-war-123"
 },
   {
   "id": 30,
@@ -1307,7 +1279,6 @@ const mangas = [
   ],
   "avis": "Un shonen rafraîchissant avec un protagoniste adulte. L'action est spectaculaire et le concept est original.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kaiju-no-8-19306",
   "dernierTome": { "numero": 16, "date": "2026-03" }
 },
   {
@@ -1350,7 +1321,6 @@ const mangas = [
   ],
   "avis": "L'épopée historique ultime. Les batailles sont grandioses et l'ambition de l'histoire est sans égale.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/kingdom-448"
 },
   {
   "id": 32,
@@ -1393,7 +1363,6 @@ const mangas = [
   ],
   "avis": "Un manga de sport spectaculaire avec des pouvoirs quasi-surnaturels. Très divertissant.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kurokos-basketball-312"
 },
   {
   "id": 33,
@@ -1436,7 +1405,6 @@ const mangas = [
   ],
   "avis": "Un thriller médical captivant dans un cadre historique magnifique. Maomao est une héroïne brillante et atypique. Les mystères sont bien construits.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/the-apothecary-diaries-18578"
 },
   {
   "id": 34,
@@ -1478,7 +1446,6 @@ const mangas = [
   ],
   "avis": "Ne vous fiez pas au style mignon. Made in Abyss est une aventure sombre, émouvante et impitoyable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/made-in-abyss-32"
 },
   {
   "id": 35,
@@ -1521,7 +1488,6 @@ const mangas = [
   ],
   "avis": "Une réflexion touchante sur la croissance personnelle. Les explosions de Mob à 100% sont légendaires.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/mob-psycho-100-101"
 },
   {
   "id": 36,
@@ -1564,7 +1530,6 @@ const mangas = [
   ],
   "avis": "Un thriller parfait. L'atmosphère oppressante et les personnages complexes créent un chef-d'œuvre absolu.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/monster-37"
 },
   {
   "id": 37,
@@ -1607,7 +1572,6 @@ const mangas = [
   ],
   "avis": "Une lettre d'amour aux super-héros avec une touche japonaise unique. Les personnages sont tous mémorables.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322"
 },
   {
   "id": 38,
@@ -1691,7 +1655,6 @@ const mangas = [
   ],
   "avis": "Un manga emblématique qui a marqué toute une génération. Les thèmes de persévérance et d'amitié sont traités avec brio.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/naruto-677",
   "univers": "Naruto",
   "connexions": [9]
 },
@@ -1736,7 +1699,6 @@ const mangas = [
   ],
   "avis": "Une déconstruction brillante du genre mecha. Les thèmes psychologiques sont traités avec une profondeur rare.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/neon-genesis-evangelion-209"
 },
   {
   "id": 41,
@@ -1778,7 +1740,6 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre absolu du manga shonen. Oda a créé un univers d'une richesse incroyable avec des personnages attachants et une intrigue qui ne cesse de surprendre.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/one-piece-100",
   "dernierTome": { "numero": 112, "date": "2026-04" }
 },
   {
@@ -1821,7 +1782,6 @@ const mangas = [
   ],
   "avis": "Une parodie brillante des shonens. L'humour est parfait et les dessins de Murata sont incroyables.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/one-punch-man-63",
   "dernierTome": { "numero": 33, "date": "2026-02" }
 },
   {
@@ -1865,7 +1825,6 @@ const mangas = [
   ],
   "avis": "Une plongée fascinante dans l'industrie du divertissement. Le mystère est captivant, le premier chapitre est inoubliable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/my-star-18330"
 },
   {
   "id": 44,
@@ -1908,7 +1867,6 @@ const mangas = [
   ],
   "avis": "Une parodie hilarante des clichés du genre. Les personnages sont tous attachants et drôles.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/ouran-high-school-host-club-2"
 },
   {
   "id": 45,
@@ -1951,7 +1909,6 @@ const mangas = [
   ],
   "avis": "Une exploration fascinante de ce qui définit l'humanité. L'horreur corporelle est mémorable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/parasyte-the-maxim-136"
 },
   {
   "id": 46,
@@ -2035,7 +1992,6 @@ const mangas = [
   "avis": "Un shonen qui commence comme une comédie absurde avant de devenir un manga d action épique. Les arcs des Varia et du Futur sont excellents.",
   "note": 8,
   "id": 47,
-  "anime": "https://aniwatchtv.to/reborn-311"
 },
   {
   "titre": "Roll Over and Die",
@@ -2161,7 +2117,6 @@ const mangas = [
   ],
   "avis": "Un classique intemporel. Sailor Moon a défini le magical girl moderne et reste influent aujourd'hui.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/sailor-moon-crystal-season-i-ii-3635"
 },
   {
   "id": 51,
@@ -2203,7 +2158,6 @@ const mangas = [
   ],
   "avis": "De l'action pure, fluide et créative. Sakamoto est un protagoniste unique et les combats sont spectaculaires.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/sakamoto-days-19431",
   "dernierTome": { "numero": 21, "date": "2026-04" }
 },
   {
@@ -2247,7 +2201,6 @@ const mangas = [
   ],
   "avis": "Le meilleur manga de sport. L'évolution de Sakuragi est touchante et les matchs sont haletants.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/slam-dunk-86"
 },
   {
   "id": 53,
@@ -2291,7 +2244,6 @@ const mangas = [
   ],
   "avis": "Le manhwa qui a conquis le monde. La progression de Jinwoo est addictive, les combats sont épiques et l'art de DUBU est exceptionnel.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/solo-leveling-18718"
 },
   {
   "titre": "Sorcière d'un autre monde",
@@ -2334,7 +2286,6 @@ const mangas = [
   "avis": "Un isekai feel-good et relaxant. Parfait pour ceux qui cherchent une histoire légère sans stress, avec des personnages attachants et de l'humour.",
   "note": 7,
   "id": 54,
-  "anime": "https://aniwatchtv.to/ive-been-killing-slimes-for-300-years-and-maxed-out-my-level-15557"
 },
   {
   "id": 55,
@@ -2376,7 +2327,6 @@ const mangas = [
   ],
   "avis": "Hilarant et touchant. La dynamique familiale est parfaite, Anya est le meilleur personnage de sa génération.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/spy-x-family-17977"
 },
   {
   "id": 56,
@@ -2419,7 +2369,6 @@ const mangas = [
   ],
   "avis": "Le premier arc est un chef-d'œuvre de tension. Un survival game intelligent et émotionnel.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/the-promised-neverland-55"
 },
   {
   "id": 57,
@@ -2467,7 +2416,6 @@ const mangas = [
   ],
   "avis": "La meilleure rom-com harem. Le mystère de la mariée tient en haleine jusqu'au bout. Chaque quintuplée est attachante.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/the-quintessential-quintuplets-18425"
 },
   {
   "id": 58,
@@ -2510,7 +2458,6 @@ const mangas = [
   ],
   "avis": "Un manga surnaturel unique avec un style visuel magnifique. L'humour et le mystère se mélangent parfaitement. Personnages attachants.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/toilet-bound-hanako-kun-899"
 },
   {
   "id": 59,
@@ -2553,7 +2500,6 @@ const mangas = [
   ],
   "avis": "Une œuvre sombre et poétique. La descente aux enfers de Kaneki est fascinante et déchirante.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/tokyo-ghoul-790"
 },
   {
   "id": 60,
@@ -2597,7 +2543,6 @@ const mangas = [
   ],
   "avis": "Un mélange unique de gangs de délinquants et de voyage temporel. Les personnages sont attachants et les retournements constants.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/tokyo-revengers-15585"
 },
   {
   "id": 61,
@@ -2680,7 +2625,6 @@ const mangas = [
   ],
   "avis": "Une saga épique sur la rédemption. L'évolution de Thorfinn est magistrale. Probablement le meilleur manga historique.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/vinland-saga-40"
 },
   {
   "titre": "Wistoria: Wand and Sword",
@@ -2722,7 +2666,6 @@ const mangas = [
   "avis": "Un shonen classique mais efficace sur le thème de l'outsider. Les combats sont dynamiques et Will est un protagoniste attachant par sa détermination.",
   "note": 8,
   "id": 63,
-  "anime": "https://aniwatchtv.to/wistoria-wand-and-sword-19239"
 },
   {
   "id": 64,
@@ -2769,7 +2712,6 @@ const mangas = [
   ],
   "avis": "Une comédie romantique délicieuse sur des adultes otakus. Les personnages sont attachants et les situations très drôles pour qui connaît la culture geek.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/wotakoi-love-is-hard-for-otaku-556"
 },
   {
   "id": 66,
@@ -2814,7 +2756,6 @@ const mangas = [
   ],
   "avis": "Un spin-off fun pour les fans de MHA. Les combinaisons de personnages sont créatives et le ton léger rafraîchissant.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/watch/my-hero-academia-322"
 },
   {
   "id": 68,
@@ -2861,7 +2802,6 @@ const mangas = [
   ],
   "avis": "Un shonen fun mêlant action, comédie et romance. La dynamique familiale est excellente et les missions variées.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/mission-yozakura-family-19133"
 },
   {
   "id": 70,
@@ -2885,7 +2825,6 @@ const mangas = [
   ],
   "avis": "Du football spectaculaire avec des techniques surpuissantes. Fun et épique, parfait pour les fans du jeu vidéo.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/inazuma-eleven-1338"
 },
   {
   "id": 71,
@@ -2908,7 +2847,6 @@ const mangas = [
   ],
   "avis": "Le roi du manga policier. Chaque affaire est un puzzle brillant et l'intrigue principale captivante sur le long terme.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/case-closed-323"
 },
   {
   "id": 72,
@@ -2976,7 +2914,6 @@ const mangas = [
   ],
   "avis": "Une comédie d'action hilarante. Le concept est simple mais parfaitement exécuté. Mash est un protagoniste irrésistible.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/mashle-magic-and-muscles-18339"
 },
   {
   "id": 75,
@@ -3000,7 +2937,6 @@ const mangas = [
   ],
   "avis": "Un shonen surnaturel solide avec un excellent worldbuilding. La relation entre Rin et Yukio est le cœur émotionnel de l'histoire.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/blue-exorcist-1198"
 },
   {
   "id": 76,
@@ -3023,7 +2959,6 @@ const mangas = [
   ],
   "avis": "Un manga gothique élégant mêlant mystère et action. Le duo Ciel/Sebastian est iconique et l'ambiance victorienne parfaitement rendue.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/black-butler-854"
 },
   {
   "id": 77,
@@ -3047,7 +2982,6 @@ const mangas = [
   ],
   "avis": "Une rom-com feel-good sur la passion et l'acceptation de soi. Marin est un personnage solaire et la dynamique du duo est adorable.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/my-dress-up-darling-17930"
 },
   {
   "id": 78,
@@ -3070,7 +3004,6 @@ const mangas = [
   ],
   "avis": "Un dark fantasy shonen unique au style gothique magnifique. L'histoire est complexe et les personnages profonds, malgré les hiatus.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/dgray-man-441"
 },
   {
   "id": 79,
@@ -3094,7 +3027,6 @@ const mangas = [
   ],
   "avis": "Du Mashima pur jus dans l'espace. L'aventure est fun, les personnages attachants et l'univers SF bien construit.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/edens-zero-15695"
 },
   {
   "id": 80,
@@ -3185,7 +3117,6 @@ const mangas = [
   ],
   "avis": "Un excellent mélange de mystère et de surnaturel. Le concept de la détective-tête est original et les enquêtes intelligentes.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/undead-murder-farce-18474"
 },
   {
   "id": 84,
@@ -3208,7 +3139,6 @@ const mangas = [
   ],
   "avis": "Une œuvre sombre et magnifique de CLAMP. Le drame est intense, les dessins sublimes. Dommage qu'elle reste inachevée.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/x-1787"
 },
   {
   "id": 85,
@@ -3232,7 +3162,6 @@ const mangas = [
   ],
   "avis": "Un classique qui a marqué une génération. Les duels sont épiques et la mythologie égyptienne fascinante.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/yu-gi-oh-1657"
 },
   {
   "id": 86,
@@ -3256,7 +3185,6 @@ const mangas = [
   ],
   "avis": "Du pur Ohkubo avec un worldbuilding fascinant. L'action est explosive et le mystère prenant.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/fire-force-979"
 },
   {
   "id": 87,
@@ -3280,7 +3208,6 @@ const mangas = [
   ],
   "avis": "Un classique des années 90. Les combats au sabre sont chorégraphiés à la perfection et Kenshin est un héros inoubliable.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/rurouni-kenshin-meiji-kenkaku-romantan-2023-18487"
 },
   {
   "id": 88,
@@ -3304,7 +3231,6 @@ const mangas = [
   ],
   "avis": "Le pilier du genre 'armures et cosmos'. Des combats épiques et une mythologie riche qui a influencé des générations.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/saint-seiya-knights-of-the-zodiac-834"
 },
   {
   "id": 89,
@@ -3328,7 +3254,6 @@ const mangas = [
   ],
   "avis": "Un shonen spirituel et philosophique. La fin originale tronquée a été complétée des années plus tard pour le bonheur des fans.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/shaman-king-2021-15541"
 },
   {
   "id": 90,
@@ -3351,7 +3276,6 @@ const mangas = [
   ],
   "avis": "Un shonen tactique brillant où l'intelligence bat la force. Les combats d'équipe sont parmi les meilleurs du genre.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/world-trigger-1356"
 },
   {
   "id": 91,
@@ -3375,7 +3299,6 @@ const mangas = [
   ],
   "avis": "Une aventure épique inspirée des contes arabes. Le worldbuilding est impressionnant et les thèmes étonnamment matures.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/magi-the-labyrinth-of-magic-425"
 },
   {
   "id": 92,
@@ -3399,7 +3322,6 @@ const mangas = [
   ],
   "avis": "Le meilleur manga de football américain. Les dessins de Murata sont extraordinaires et chaque match est haletant.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/eyeshield-21-563"
 },
   {
   "id": 93,
@@ -3423,7 +3345,6 @@ const mangas = [
   ],
   "avis": "Un manga sur le Go passionnant même sans connaître le jeu. La relation Hikaru-Sai est touchante et la rivalité avec Akira intense.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/hikaru-no-go-392"
 },
   {
   "id": 94,
@@ -3447,7 +3368,6 @@ const mangas = [
   ],
   "avis": "Des batailles de cuisine épiques et appétissantes. L'humour ecchi peut diviser mais les Shokugeki sont addictifs.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/food-wars-shokugeki-no-soma-185"
 },
   {
   "id": 95,
@@ -3471,7 +3391,6 @@ const mangas = [
   ],
   "avis": "Un univers gothique-cool irrésistible. Le style d'Ohkubo est unique et les personnages mémorables.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/soul-eater-655"
 },
   {
   "id": 96,
@@ -3495,7 +3414,6 @@ const mangas = [
   ],
   "avis": "Une relecture fascinante de Sherlock Holmes côté vilain. Moriarty est un antihéros captivant et les plans sont brillants.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/moriarty-the-patriot-1801"
 },
   {
   "id": 97,
@@ -3518,7 +3436,6 @@ const mangas = [
   ],
   "avis": "Une œuvre culte qui se réinvente à chaque partie. Les combats tactiques et le style unique d'Araki sont incomparables.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/jojos-bizarre-adventure-17864"
 },
   {
   "id": 98,
@@ -3542,7 +3459,6 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre émotionnel sur la rédemption et l'empathie. Profondément touchant et nécessaire.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/a-silent-voice-11"
 },
   {
   "id": 99,
@@ -3565,7 +3481,6 @@ const mangas = [
   ],
   "avis": "Le pionnier du genre isekai gaming. Les premiers arcs sont captivants, avec une romance touchante au cœur de l'action.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/sword-art-online-2274"
 },
   {
   "id": 100,
@@ -3589,7 +3504,6 @@ const mangas = [
   ],
   "avis": "Un classique de Rumiko Takahashi. L'aventure est épique, la romance lente mais satisfaisante, et Inuyasha attachant malgré lui.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/inuyasha-739"
 },
   {
   "id": 101,
@@ -3613,7 +3527,6 @@ const mangas = [
   ],
   "avis": "Un thriller temporel captivant. L'intrigue est parfaitement construite et l'émotion omniprésente. Final controversé mais parcours excellent.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/erased-151"
 },
   {
   "id": 102,
@@ -3637,7 +3550,6 @@ const mangas = [
   ],
   "avis": "Un shonen délirant mêlant combat et gastronomie. L'imagination de l'auteur est sans limites.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/toriko-1300"
 },
   {
   "id": 103,
@@ -3661,7 +3573,6 @@ const mangas = [
   ],
   "avis": "Une comédie d'action hilarante. Le concept du délinquant papa-poule est excellent et l'humour omniprésent.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/beelzebub-624"
 },
   {
   "id": 104,
@@ -3685,7 +3596,6 @@ const mangas = [
   ],
   "avis": "Un regard fascinant sur l'industrie du manga. La rivalité avec Niizuma est passionnante et la romance touchante.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/bakuman-66"
 },
   {
   "id": 105,
@@ -3709,7 +3619,6 @@ const mangas = [
   ],
   "avis": "Un shonen fantasy épique avec des personnages charismatiques. Escanor est légendaire. La fin divise mais le voyage vaut le coup.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/the-seven-deadly-sins-561"
 },
   {
   "id": 106,
@@ -3732,7 +3641,6 @@ const mangas = [
   ],
   "avis": "Le manga de football par excellence. Des techniques irréalistes mais iconiques. A inspiré des générations de footballeurs.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/captain-tsubasa-2018-1738"
 },
   {
   "id": 107,
@@ -3756,7 +3664,6 @@ const mangas = [
   ],
   "avis": "Un dark shonen brutal et magnifique. L'île est fascinante et le duo Gabimaru-Sagiri excellent.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/hells-paradise-18332"
 },
   {
   "id": 108,
@@ -3780,7 +3687,6 @@ const mangas = [
   ],
   "avis": "Un shonen original et fou. Le système de pouvoirs est génial et l'histoire imprévisible.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/undead-unluck-18579"
 },
   {
   "id": 109,
@@ -3804,7 +3710,6 @@ const mangas = [
   ],
   "avis": "Un shonen émouvant et drôle. Les adieux des Mamodos sont dévastateurs. Un classique sous-estimé.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/zatch-bell-1400"
 },
   {
   "id": 110,
@@ -3828,7 +3733,6 @@ const mangas = [
   ],
   "avis": "Un shonen yokai cool et stylé. La transformation de Rikuo est classe et le folklore japonais bien exploité.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/nura-rise-of-the-yokai-clan-1100"
 },
   {
   "id": 111,
@@ -3852,7 +3756,6 @@ const mangas = [
   ],
   "avis": "Le meilleur manga d'arts martiaux. L'entraînement de Kenichi est épique et les combats techniques et variés.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kenichi-the-mightiest-disciple-379"
 },
   {
   "id": 112,
@@ -3876,7 +3779,6 @@ const mangas = [
   ],
   "avis": "Le manga de tennis par excellence. Les techniques sont folles mais les matchs passionnants.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/the-prince-of-tennis-640"
 },
   {
   "id": 113,
@@ -3900,7 +3802,6 @@ const mangas = [
   ],
   "avis": "Un shonen d'action cool avec un trio attachant. L'histoire de rédemption de Train est bien menée.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/black-cat-1962"
 },
   {
   "id": 114,
@@ -3924,7 +3825,6 @@ const mangas = [
   ],
   "avis": "La première œuvre de Mashima, déjà pleine de son charme. Fairy Tail en est le successeur spirituel.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/rave-master-2387"
 },
   {
   "id": 115,
@@ -3948,7 +3848,6 @@ const mangas = [
   ],
   "avis": "Des dessins à couper le souffle et une ambiance unique. Complexe vers la fin mais visuellement impressionnant.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/air-gear-1449"
 },
   {
   "id": 116,
@@ -3972,7 +3871,6 @@ const mangas = [
   ],
   "avis": "Un shonen surnaturel sous-estimé. Le système de barrières est original et les personnages attachants.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kekkaishi-1176"
 },
   {
   "id": 117,
@@ -4019,7 +3917,6 @@ const mangas = [
   ],
   "avis": "Un shonen méta et intelligent de Nisio Isin. Kumagawa est un antagoniste légendaire.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/medaka-box-3249"
 },
   {
   "id": 119,
@@ -4043,7 +3940,6 @@ const mangas = [
   ],
   "avis": "Un shonen fun et rythmé du créateur de Kenshin. Court mais efficace, avec des combats dynamiques.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/buso-renkin-1962"
 },
   {
   "id": 120,
@@ -4067,7 +3963,6 @@ const mangas = [
   ],
   "avis": "Une relecture brillante de la mythologie chinoise. Taikoubou est un héros atypique et l'histoire épique.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/soul-hunter-3019"
 },
   {
   "id": 121,
@@ -4091,7 +3986,6 @@ const mangas = [
   ],
   "avis": "Un shonen créatif avec des pouvoirs originaux. Le message sur la justice et l'écologie est positif.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/the-law-of-ueki-884"
 },
   {
   "id": 122,
@@ -4125,7 +4019,6 @@ const mangas = [
   "volumes": 19,
   "couverture": "images/covers/123.jpg",
   "couvertureLast": "images/covers/123_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/GY5VWQ95Y/yu-yu-hakusho",
   "resume": "Yusuke Urameshi, un délinquant de 14 ans, meurt en sauvant un enfant d'un accident de voiture. Son acte héroïque surprend même le monde des esprits, qui lui offre une chance de revenir à la vie. Après sa résurrection, il devient détective du monde des esprits sous la direction de Koenma, le fils du roi Enma. Accompagné de ses rivaux devenus alliés - Kuwabara, Kurama et Hiei - Yusuke affronte des démons et participe au Tournoi des Arts Martiaux des Ténèbres, révélant progressivement ses origines mystérieuses.",
   "resume_en": "Yusuke Urameshi, a 14-year-old delinquent, dies saving a child from a car accident. His heroic act surprises even the spirit world, which offers him a chance to return to life. After his resurrection, he becomes a spirit detective under the direction of Koenma, the son of King Enma. Accompanied by his rivals turned allies - Kuwabara, Kurama, and Hiei - Yusuke faces demons and participates in the Dark Tournament, progressively revealing his mysterious origins.",
   "bioAuteur": "Yoshihiro Togashi est né le 27 avril 1966. Créateur de YuYu Hakusho et Hunter x Hunter, il est reconnu pour ses histoires complexes et ses systèmes de combat innovants, malgré des problèmes de santé récurrents qui affectent sa production.",
@@ -4149,7 +4042,6 @@ const mangas = [
   "volumes": 38,
   "couverture": "images/covers/124.jpg",
   "couvertureLast": "images/covers/124_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/G6W4QKX0R/ranma-12",
   "resume": "Ranma Saotome et son père Genma reviennent de Chine après être tombés dans des sources maudites de Jusenkyo. Désormais, quand Ranma est aspergé d'eau froide, il se transforme en fille ; son père devient un panda. Fiancé de force à Akane Tendo, une fille aussi têtue que lui, Ranma doit jongler entre sa malédiction, les arts martiaux, et une horde de prétendants et rivaux tous plus excentriques les uns que les autres. Une comédie martiale déjantée où chaque personnage a sa propre malédiction ou obsession.",
   "resume_en": "Ranma Saotome and his father Genma return from China after falling into the cursed springs of Jusenkyo. Now, when Ranma is splashed with cold water, he transforms into a girl; his father becomes a panda. Forcibly engaged to Akane Tendo, a girl as stubborn as him, Ranma must juggle his curse, martial arts, and a horde of suitors and rivals each more eccentric than the last. A wild martial arts comedy where every character has their own curse or obsession.",
   "bioAuteur": "Rumiko Takahashi est née le 10 octobre 1957. Surnommée la 'Princesse du manga', elle est l'une des mangakas les plus riches au monde grâce à Urusei Yatsura, Ranma ½, Inuyasha et Maison Ikkoku.",
@@ -4173,7 +4065,6 @@ const mangas = [
   "volumes": 18,
   "couverture": "images/covers/125.jpg",
   "couvertureLast": "images/covers/125_last.jpg",
-  "anime": "https://myanimelist.net/anime/628/Dr_Slump",
   "resume": "Dans le village de Penguin, l'inventeur maladroit Senbei Norimaki crée Arale, une petite androïde surpuissante mais naïve. Malgré ses lunettes épaisses (car Senbei a oublié de bien calibrer ses yeux), Arale possède une force incroyable et une innocence désarmante. Elle se lie d'amitié avec les habitants excentriques du village : la famille Tsun, Suppaman le faux héros, et même des cacas qui parlent. Une comédie absurde et parodique qui a lancé la carrière de Toriyama avant Dragon Ball.",
   "resume_en": "In Penguin Village, the clumsy inventor Senbei Norimaki creates Arale, an overpowered but naive little android. Despite her thick glasses (because Senbei forgot to properly calibrate her eyes), Arale possesses incredible strength and disarming innocence. She befriends the village's eccentric inhabitants: the Tsun family, Suppaman the fake hero, and even talking poop. An absurd and parodic comedy that launched Toriyama's career before Dragon Ball.",
   "bioAuteur": "Akira Toriyama (1955-2024) était un mangaka légendaire. Dr. Slump lui a valu le prix Shogakukan et a préparé le terrain pour Dragon Ball. Il a aussi conçu les personnages de Dragon Quest et Chrono Trigger.",
@@ -4197,7 +4088,6 @@ const mangas = [
   "volumes": 27,
   "couverture": "images/covers/126.jpg",
   "couvertureLast": "images/covers/126_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/GR9PG5NVR/noragami",
   "resume": "Yato est un dieu mineur sans temple, qui accepte n'importe quel travail pour 5 yens dans l'espoir de devenir célèbre. Quand Hiyori Iki, une lycéenne, se fait renverser en le sauvant, son âme se détache facilement de son corps. Pour la guérir, elle suit Yato dans ses missions contre les Ayakashi (esprits maléfiques). Mais le passé sombre de Yato en tant que dieu de la calamité le rattrape, révélant des secrets sur sa vraie nature et ses anciens Shinki (armes spirituelles).",
   "resume_en": "Yato is a minor god without a shrine who accepts any job for 5 yen hoping to become famous. When Hiyori Iki, a high school girl, gets hit by a car while saving him, her soul easily detaches from her body. To cure her, she follows Yato on his missions against Ayakashi (evil spirits). But Yato's dark past as a god of calamity catches up with him, revealing secrets about his true nature and his former Shinki (spiritual weapons).",
   "bioAuteur": "Adachitoka est un duo de mangakas composé d'Adachi (histoire) et Tokashiki (dessin). Noragami est leur œuvre principale, connue pour son mélange unique d'action, d'humour et de mythologie shintoïste.",
@@ -4220,7 +4110,6 @@ const mangas = [
   "statut": "En cours",
   "volumes": 34,
   "couverture": "images/covers/127.jpg",
-  "anime": "https://www.netflix.com/title/81228573",
   "resume": "Shoko Komi est considérée comme la fille parfaite de son lycée : belle, élégante, mystérieuse. En réalité, elle souffre d'un trouble de la communication si sévère qu'elle ne peut pas parler aux autres. Hitohito Tadano, un garçon ordinaire qui veut passer inaperçu, découvre son secret et décide de l'aider à réaliser son rêve : se faire 100 amis. Ensemble, ils rencontrent une galerie de personnages tous plus excentriques les uns que les autres.",
   "resume_en": "Shoko Komi is considered the perfect girl at her high school: beautiful, elegant, mysterious. In reality, she suffers from a communication disorder so severe that she cannot talk to others. Hitohito Tadano, an ordinary boy who wants to stay unnoticed, discovers her secret and decides to help her achieve her dream: making 100 friends. Together, they meet a gallery of characters each more eccentric than the last.",
   "bioAuteur": "Tomohito Oda est un mangaka japonais. Komi Can't Communicate est son œuvre principale, publiée dans le Weekly Shonen Sunday. Le manga a été adapté en anime par OLM en 2021.",
@@ -4244,7 +4133,6 @@ const mangas = [
   "volumes": 25,
   "couverture": "images/covers/128.jpg",
   "couvertureLast": "images/covers/128_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/GR2PQQV7R/nisekoi",
   "resume": "Raku Ichijo, fils d'un chef yakuza, et Chitoge Kirisaki, fille d'un boss de gang rival, sont forcés de jouer les amoureux pour maintenir la paix entre leurs familles. Problème : ils se détestent. De plus, Raku cherche la fille avec qui il a échangé une promesse d'enfance, symbolisée par un pendentif dont elle possède la clé. Mais plusieurs filles prétendent être cette fille promise, chacune avec une clé différente. Qui est la vraie ?",
   "resume_en": "Raku Ichijo, son of a yakuza boss, and Chitoge Kirisaki, daughter of a rival gang boss, are forced to pretend to be lovers to maintain peace between their families. Problem: they hate each other. Moreover, Raku is searching for the girl with whom he exchanged a childhood promise, symbolized by a pendant for which she holds the key. But several girls claim to be this promised girl, each with a different key. Who is the real one?",
   "bioAuteur": "Naoshi Komi est né le 28 juin 1986. Après Double Arts (annulé), il a connu le succès avec Nisekoi. Il travaille actuellement sur Tokidoki.",
@@ -4268,7 +4156,6 @@ const mangas = [
   "volumes": 26,
   "couverture": "images/covers/129.jpg",
   "couvertureLast": "images/covers/129_last.jpg",
-  "anime": "https://www.netflix.com/title/80177780",
   "resume": "Kusuo Saiki est né avec tous les pouvoirs psychiques imaginables : télépathie, télékinésie, téléportation, clairvoyance, et bien d'autres. Son seul souhait ? Vivre une vie ordinaire et tranquille. Malheureusement, il est constamment entouré d'idiots qui perturbent sa paix : Nendo le crétin, Kaido le chuunibyou, Hairo l'hyperactif, et bien d'autres camarades de classe tous plus bizarres les uns que les autres. Une comédie où le protagoniste surpuissant ne veut qu'une chose : qu'on le laisse tranquille.",
   "resume_en": "Kusuo Saiki was born with every psychic power imaginable: telepathy, telekinesis, teleportation, clairvoyance, and many more. His only wish? To live an ordinary, peaceful life. Unfortunately, he is constantly surrounded by idiots who disturb his peace: Nendo the moron, Kaido the chuunibyou, Hairo the hyperactive, and many other classmates each weirder than the last. A comedy where the overpowered protagonist wants only one thing: to be left alone.",
   "bioAuteur": "Shuichi Aso est un mangaka japonais. Saiki K. est son œuvre majeure, publiée dans le Weekly Shonen Jump de 2012 à 2018. Son humour rapide et ses parodies sont sa marque de fabrique.",
@@ -4292,7 +4179,6 @@ const mangas = [
   "volumes": 33,
   "couverture": "images/covers/130.jpg",
   "couvertureLast": "images/covers/130_last.jpg",
-  "anime": "https://myanimelist.net/anime/238/Flame_of_Recca",
   "resume": "Recca Hanabishi est un lycéen obsédé par les ninjas qui découvre qu'il peut créer des flammes. Il jure fidélité à Yanagi Sakoshita, une fille capable de guérir les blessures. Quand elle est enlevée par Kurei, un homme qui maîtrise aussi le feu, Recca apprend la vérité : il est le dernier héritier du clan Hokage, des ninjas du passé. Avec ses amis Domon, Fuko et Mikagami, il participe au tournoi mortel Ura Butou Satsujin pour sauver Yanagi et affronter son destin.",
   "resume_en": "Recca Hanabishi is a high schooler obsessed with ninjas who discovers he can create flames. He swears loyalty to Yanagi Sakoshita, a girl who can heal wounds. When she is kidnapped by Kurei, a man who also masters fire, Recca learns the truth: he is the last heir of the Hokage clan, ninjas from the past. With his friends Domon, Fuko, and Mikagami, he participates in the deadly Ura Butou Satsujin tournament to save Yanagi and face his destiny.",
   "bioAuteur": "Nobuyuki Anzai est né le 5 juillet 1972. Après Flame of Recca, il a créé MÄR et Mixim. Son style mêle action intense et pouvoirs créatifs.",
@@ -4316,7 +4202,6 @@ const mangas = [
   "volumes": 39,
   "couverture": "images/covers/131.jpg",
   "couvertureLast": "images/covers/131_last.jpg",
-  "anime": "https://myanimelist.net/anime/132/GetBackers",
   "resume": "Ban Mido et Ginji Amano forment les GetBackers, un duo de récupérateurs avec un taux de réussite de quasi 100%. Ban possède le Jagan, un œil qui crée des illusions d'une minute, et une force de préhension de 200kg. Ginji, ancien chef des VOLTS dans la mystérieuse Forteresse Illimitée, peut générer de l'électricité. Ensemble, ils acceptent des missions pour récupérer tout ce qui a été volé, les menant dans des aventures de plus en plus dangereuses liées au passé de Ginji.",
   "resume_en": "Ban Mido and Ginji Amano form the GetBackers, a retrieval duo with an almost 100% success rate. Ban possesses the Jagan, an eye that creates one-minute illusions, and a grip strength of 200kg. Ginji, former leader of the VOLTS in the mysterious Limitless Fortress, can generate electricity. Together, they accept missions to retrieve anything that has been stolen, leading them into increasingly dangerous adventures connected to Ginji's past.",
   "bioAuteur": "Yuya Aoki (scénario) et Rando Ayamine (dessin) ont collaboré sur GetBackers de 1999 à 2007. Ayamine a aussi travaillé sur Samurai Deeper Kyo.",
@@ -4340,7 +4225,6 @@ const mangas = [
   "volumes": 14,
   "couverture": "images/covers/132.jpg",
   "couvertureLast": "images/covers/132_last.jpg",
-  "anime": "https://myanimelist.net/anime/2993/Rosario_to_Vampire",
   "resume": "Tsukune Aono, un lycéen ordinaire recalé partout, est inscrit par erreur à l'Académie Yokai, une école pour monstres déguisés en humains. Les humains y sont interdits sous peine de mort. Il rencontre Moka Akashiya, une belle vampire dont le rosaire scelle sa vraie personnalité. En retirant le rosaire, Moka devient une vampire surpuissante et arrogante. Tsukune doit survivre entouré de succubes, sorcières et autres monstres, tout en développant ses propres pouvoirs mystérieux.",
   "resume_en": "Tsukune Aono, an ordinary high schooler rejected everywhere, is enrolled by mistake at Yokai Academy, a school for monsters disguised as humans. Humans are forbidden under penalty of death. He meets Moka Akashiya, a beautiful vampire whose rosary seals her true personality. When the rosary is removed, Moka becomes an overpowered and arrogant vampire. Tsukune must survive surrounded by succubi, witches, and other monsters while developing his own mysterious powers.",
   "bioAuteur": "Akihisa Ikeda est un mangaka japonais. Rosario + Vampire a été publié de 2004 à 2014, avec une première partie plus comique et une seconde (Season II) plus orientée action.",
@@ -4363,7 +4247,6 @@ const mangas = [
   "statut": "En cours",
   "volumes": 33,
   "couverture": "images/covers/133.jpg",
-  "anime": "https://www.crunchyroll.com/series/GR5VX3JD6/twin-star-exorcists",
   "resume": "Rokuro Enmado a abandonné l'exorcisme après un traumatisme, mais le destin l'oblige à reprendre les armes quand il rencontre Benio Adashino, une exorciste prodige. Les Douze Gardiens les désignent comme les 'Twin Stars', destinés à se marier et engendrer le Miko, l'exorciste prophétisé pour détruire tous les Kegare (esprits impurs). Malgré leurs caractères opposés, Rokuro et Benio doivent apprendre à combattre ensemble et affronter le mystère de Magano, le monde des impuretés.",
   "resume_en": "Rokuro Enmado abandoned exorcism after a trauma, but fate forces him to take up arms again when he meets Benio Adashino, a prodigy exorcist. The Twelve Guardians designate them as the 'Twin Stars', destined to marry and give birth to the Miko, the prophesied exorcist to destroy all Kegare (impure spirits). Despite their opposite personalities, Rokuro and Benio must learn to fight together and face the mystery of Magano, the world of impurities.",
   "bioAuteur": "Yoshiaki Sukeno est un mangaka japonais, ancien assistant de Kazue Kato (Blue Exorcist). Twin Star Exorcists est son œuvre principale, publiée dans Jump Square.",
@@ -4387,7 +4270,6 @@ const mangas = [
   "volumes": 24,
   "couverture": "images/covers/134.jpg",
   "couvertureLast": "images/covers/134_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/G4PH0WKWV/the-elusive-samurai",
   "resume": "Japon, 1333. Le jeune Hojo Tokiyuki est l'héritier insouciant du shogunat de Kamakura. Quand Ashikaga Takauji trahit les Hojo et massacre sa famille, Tokiyuki doit fuir. Recueilli par le prêtre Suwa Yorishige, qui possède des visions du futur, Tokiyuki découvre son talent unique : il est incroyablement doué pour s'enfuir. Avec une bande de vassaux excentriques, il prépare sa reconquête en utilisant la fuite comme arme principale. Un shonen historique où courir est une force.",
   "resume_en": "Japan, 1333. Young Hojo Tokiyuki is the carefree heir of the Kamakura shogunate. When Ashikaga Takauji betrays the Hojo and massacres his family, Tokiyuki must flee. Taken in by priest Suwa Yorishige, who possesses visions of the future, Tokiyuki discovers his unique talent: he is incredibly skilled at running away. With a band of eccentric vassals, he prepares his reconquest using escape as his main weapon. A historical shonen where running is a strength.",
   "bioAuteur": "Yusei Matsui est né le 31 janvier 1979. Créateur d'Assassination Classroom et Majin Tantei Nougami Neuro, il est connu pour ses protagonistes atypiques et son humour décalé.",
@@ -4411,7 +4293,6 @@ const mangas = [
   "volumes": 37,
   "couverture": "images/covers/135.jpg",
   "couvertureLast": "images/covers/135_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/GG5H5XE73/dragon-quest-the-adventure-of-dai",
   "resume": "Dai est un jeune garçon élevé par des monstres sur une île isolée, rêvant de devenir un héros. Quand le seigneur démon Hadlar, vaincu autrefois par le héros Avan, ressuscite sous les ordres du Grand Roi Démon Vearn, Dai découvre qu'il possède la marque du Dragon. Entraîné par Avan aux côtés de Pop, un apprenti mage peureux, Dai part affronter l'armée des démons. Un classique qui a influencé toute une génération de shonen fantasy.",
   "resume_en": "Dai is a young boy raised by monsters on an isolated island, dreaming of becoming a hero. When the demon lord Hadlar, once defeated by the hero Avan, is resurrected under the orders of the Great Demon King Vearn, Dai discovers he bears the mark of the Dragon. Trained by Avan alongside Pop, a cowardly apprentice mage, Dai sets out to face the demon army. A classic that influenced an entire generation of fantasy shonen.",
   "bioAuteur": "Riku Sanjo (scénario) et Koji Inada (dessin) ont créé ce classique basé sur la licence Dragon Quest. Sanjo a aussi écrit Beet the Vandel Buster.",
@@ -4434,7 +4315,6 @@ const mangas = [
   "statut": "En cours",
   "volumes": 18,
   "couverture": "images/covers/136.jpg",
-  "anime": "https://www.crunchyroll.com/series/GR0DQP42Y/radiant",
   "resume": "Seth est un sorcier infecté par les Némésis, des créatures tombées du ciel qui transforment les humains en monstres. Mais Seth a survécu à l'infection, gagnant des pouvoirs magiques et des cornes. Rejeté par les humains et pourchassé par l'Inquisition, il rêve de trouver le Radiant, le nid originel des Némésis, pour les détruire et prouver que les sorciers ne sont pas des monstres. Un manga français inspiré des codes du shonen japonais, avec une critique sociale profonde.",
   "resume_en": "Seth is a sorcerer infected by the Nemeses, creatures that fall from the sky and transform humans into monsters. But Seth survived the infection, gaining magical powers and horns. Rejected by humans and hunted by the Inquisition, he dreams of finding the Radiant, the original nest of the Nemeses, to destroy them and prove that sorcerers are not monsters. A French manga inspired by Japanese shonen codes, with deep social commentary.",
   "bioAuteur": "Tony Valente est un mangaka français né en 1984. Radiant, son premier manga, est publié au Japon chez Euromanga et a été adapté en anime par NHK, une première pour un manga non-japonais.",
@@ -4458,7 +4338,6 @@ const mangas = [
   "volumes": 17,
   "couverture": "images/covers/137.jpg",
   "couvertureLast": "images/covers/137_last.jpg",
-  "anime": "https://www.crunchyroll.com/series/GRVNP9PZ6/cross-game",
   "resume": "Ko Kitamura est voisin des quatre sœurs Tsukishima. Proche de Wakaba, la cadette, il est souvent ignoré par Aoba, la sportive de la famille. Quand une tragédie frappe, Ko décide de réaliser le rêve de Wakaba : emmener son équipe de baseball au Koshien (le championnat national lycéen). Avec son bras de lanceur talentueux et l'aide réticente d'Aoba, excellente joueuse, Ko poursuit ce rêve tout en naviguant les complexités de l'amour et du deuil.",
   "resume_en": "Ko Kitamura is a neighbor to the four Tsukishima sisters. Close to Wakaba, the youngest, he is often ignored by Aoba, the athletic one of the family. When tragedy strikes, Ko decides to fulfill Wakaba's dream: taking his baseball team to Koshien (the national high school championship). With his talented pitching arm and the reluctant help of Aoba, an excellent player, Ko pursues this dream while navigating the complexities of love and grief.",
   "bioAuteur": "Mitsuru Adachi est né le 9 février 1951. Maître du manga de baseball romantique, il a créé Touch, H2 et Cross Game. Son style mêle sport, romance et tranches de vie avec une subtilité rare.",
@@ -4493,7 +4372,6 @@ const mangas = [
   ],
   "avis": "Un monument du manga sportif. La progression d'Ippo et l'intensité des combats sont captivantes. Chaque match est un chef-d'oeuvre de tension et d'émotion.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/fighting-spirit-34"
 },
 {
   "id": 139,
@@ -4517,7 +4395,6 @@ const mangas = [
   ],
   "avis": "Le manga qui a défini le genre post-apocalyptique. 'Tu es déjà mort' est devenu iconique. Violence stylisée et tragédie grecque se mêlent parfaitement.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/fist-of-the-north-star-532"
 },
 {
   "id": 140,
@@ -4541,7 +4418,6 @@ const mangas = [
   ],
   "avis": "Un western spatial unique qui questionne la violence avec intelligence. Vash est un héros inoubliable, drôle et tragique à la fois.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/trigun-266"
 },
 {
   "id": 141,
@@ -4565,7 +4441,6 @@ const mangas = [
   ],
   "avis": "Hilarant et touchant. Onizuka est un personnage légendaire dont les méthodes peu conventionnelles cachent une vraie sagesse.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/great-teacher-onizuka-42"
 },
 {
   "id": 142,
@@ -4589,7 +4464,6 @@ const mangas = [
   ],
   "avis": "Le manga le plus fou jamais créé. Impossible à décrire, il faut le vivre. Un humour qui ne convient pas à tout le monde mais qui est génial dans son absurdité.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/bobobo-bo-bo-bobo-1564"
 },
 {
   "id": 143,
@@ -4613,7 +4487,6 @@ const mangas = [
   ],
   "avis": "Un classique indémodable. Ryo est un personnage iconique et le mélange comédie/action/émotion est parfaitement dosé. Le Tokyo des années 80 y est sublimé.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/city-hunter-617"
 },
 {
   "id": 144,
@@ -4637,7 +4510,6 @@ const mangas = [
   ],
   "avis": "Un shonen classique mais excellemment exécuté. La relation Ushio-Tora est magnifique et le final est l'un des plus épiques du genre.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/ushio-tora-2nd-season-576"
 },
 {
   "id": 145,
@@ -4660,7 +4532,6 @@ const mangas = [
   ],
   "avis": "Un concept génial parfaitement exécuté. Chaque combat est un événement, mêlant action spectaculaire et profondeur émotionnelle.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/record-of-ragnarok-17390"
 },
 {
   "id": 146,
@@ -4684,7 +4555,6 @@ const mangas = [
   ],
   "avis": "Le digne héritier spirituel de Gintama. Hilarant dans sa comédie, touchant dans ses moments sérieux. Les personnages sont inoubliables.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/sket-dance-243"
 },
 {
   "id": 147,
@@ -4708,7 +4578,6 @@ const mangas = [
   ],
   "avis": "Une évolution impressionnante d'une comédie romantique vers un shonen d'action épique. Le cast énorme est géré avec brio.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/mahou-sensei-negima-shiroki-tsubasa-ala-alba-1640"
 },
 {
   "id": 148,
@@ -4755,7 +4624,6 @@ const mangas = [
   ],
   "avis": "Un mélange unique d'horreur authentique et d'humour. Excellent pour découvrir le folklore japonais tout en frissonnant.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/hell-teacher-nube-1441"
 },
 {
   "id": 150,
@@ -4779,7 +4647,6 @@ const mangas = [
   ],
   "avis": "Le père de tous les mangas de tournoi. L'humour absurde côtoie des combats épiques et émouvants. Un classique incontournable.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/ultimate-muscle-3969"
 },
 {
   "id": 151,
@@ -4802,7 +4669,6 @@ const mangas = [
   ],
   "avis": "Un shonen d'action explosif qui ne perd pas de temps. Chihiro est un protagoniste rafraîchissant, froid mais attachant, et les combats sont superbement chorégraphiés.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/kagurabachi-19318"
 },
 {
   "id": 152,
@@ -4826,7 +4692,6 @@ const mangas = [
   ],
   "avis": "Un seinen brutal et nihiliste qui ne fait aucun cadeau. L'action est spectaculaire et les enjeux toujours élevés. Âmes sensibles s'abstenir.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/gantz-503"
 },
 {
   "id": 153,
@@ -4850,7 +4715,6 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre absolu. Urasawa sublime l'héritage de Tezuka en créant une œuvre profonde sur l'humanité et la haine. Émouvant et intelligent.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/pluto-18612"
 },
 {
   "id": 154,
@@ -4897,7 +4761,6 @@ const mangas = [
   ],
   "avis": "Un survival game sanglant avec un concept original. L'intrigue et les pouvoirs sont captivants malgré une fin un peu précipitée.",
   "note": 7,
-  "anime": "https://aniwatchtv.to/deadman-wonderland-395"
 },
 {
   "id": 156,
@@ -4921,7 +4784,6 @@ const mangas = [
   ],
   "avis": "Un thriller émotionnel qui n'a pas vieilli. La relation entre Ash et Eiji est touchante et l'intrigue reste captivante du début à la fin.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/banana-fish-61"
 },
 {
   "id": 157,
@@ -4945,7 +4807,6 @@ const mangas = [
   ],
   "avis": "Une expérience visuelle unique. L'ambiance oppressante et l'échelle vertigineuse compensent le manque de dialogues. Du cyberpunk architectural pur.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/blame-1584"
 },
 {
   "id": 158,
@@ -4968,7 +4829,6 @@ const mangas = [
   ],
   "avis": "Un conte enchanteur qui prend son temps. L'atmosphère magique de la campagne anglaise est magnifiquement rendue. Parfait pour les amateurs de fantasy poétique.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/the-ancient-magus-bride-339"
 },
 {
   "id": 159,
@@ -4992,7 +4852,6 @@ const mangas = [
   ],
   "avis": "Une romance rafraîchissante qui va droit au but. Les personnages sont attachants et les moments de comédie équilibrent parfaitement les scènes romantiques.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/horimiya-952"
 },
 {
   "id": 160,
@@ -5016,7 +4875,6 @@ const mangas = [
   ],
   "avis": "Le meilleur manga sur la musique. On ressent vraiment la passion et les galères du monde du rock. Une ode au rêve et à la persévérance.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/beck-110"
 },
 {
   "id": 161,
@@ -5040,7 +4898,6 @@ const mangas = [
   ],
   "avis": "La meilleure parodie d'isekai. L'humour est constant et les personnages sont hilarants dans leur incompétence. Un must pour rire des clichés du genre.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/konosuba-gods-blessing-on-this-wonderful-world-1066"
 },
 {
   "id": 162,
@@ -5064,7 +4921,6 @@ const mangas = [
   ],
   "avis": "Une œuvre mature et fascinante qui utilise son cadre animalier pour explorer des thèmes profonds. Le triangle Legoshi-Haru-Louis est captivant.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/beastars-69"
 },
 {
   "id": 163,
@@ -5088,7 +4944,6 @@ const mangas = [
   ],
   "avis": "Un chef-d'œuvre d'aventure qui mélange action, humour, histoire et ethnographie. La culture aïnoue est présentée avec un respect remarquable.",
   "note": 10,
-  "anime": "https://aniwatchtv.to/golden-kamuy-1066"
 },
 {
   "id": 164,
@@ -5111,7 +4966,6 @@ const mangas = [
   ],
   "avis": "Une immersion fascinante dans le monde de l'art. La passion de Yatora est contagieuse et les réflexions sur la création sont profondes.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/blue-period-17526"
 },
 {
   "id": 165,
@@ -5135,7 +4989,6 @@ const mangas = [
   ],
   "avis": "Une œuvre d'une beauté mélancolique rare. La transformation de Phos est déchirante et les questions existentielles sont traitées avec subtilité.",
   "note": 9,
-  "anime": "https://aniwatchtv.to/land-of-the-lustrous-1241"
 },
 {
   "id": 166,
@@ -5159,7 +5012,6 @@ const mangas = [
   ],
   "avis": "Un thriller haletant avec un antagoniste mémorable. Les scènes de combat tactiques sont brillantes et les dilemmes moraux bien posés.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/ajin-demi-human-13"
 },
 {
   "id": 167,
@@ -5316,7 +5168,6 @@ const mangas = [
   ],
   "avis": "L'un des isekai les plus réussis du genre. Le world-building est impressionnant et le cast de personnages attachants. Un vrai plaisir à lire malgré quelques longueurs.",
   "note": 8,
-  "anime": "https://aniwatchtv.to/that-time-i-got-reincarnated-as-a-slime-782"
 }
 ];
 

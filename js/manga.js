@@ -214,14 +214,17 @@ function afficherDetailManga(id) {
             <span class="meta-label">Genres</span>
             <span class="meta-value">${manga.genre.join(', ')}</span>
           </div>
-          ${manga.anime ? `
           <div class="meta-item anime-link">
-            <span class="meta-label">${currentLang === 'en' ? 'Anime Adaptation' : 'Adaptation Anime'}</span>
-            <a href="${manga.anime}" target="_blank" class="anime-btn">
-              ▶ ${currentLang === 'en' ? 'Watch Anime' : 'Voir l\'anime'}
-            </a>
+            <span class="meta-label">${currentLang === 'en' ? 'Watch the anime' : 'Voir l\'anime'}</span>
+            <div class="anime-btns">
+              <a href="https://hianimes.se/search?keyword=${encodeURIComponent(manga.titre)}" target="_blank" rel="noopener" class="anime-btn anime-btn-hianime">
+                ▶ Hianime
+              </a>
+              <a href="https://franime.fr/search?query=${encodeURIComponent(manga.titre)}" target="_blank" rel="noopener" class="anime-btn anime-btn-franime">
+                ▶ Franime
+              </a>
+            </div>
           </div>
-          ` : ''}
         </div>
 
         <!-- Résumé -->

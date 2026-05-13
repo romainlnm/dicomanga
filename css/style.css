@@ -2126,7 +2126,29 @@ footer span {
 
 #favoritesGrid .manga-title,
 #alireGrid .manga-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.05rem * 1.3 * 2);
+  color: var(--text-primary);
+}
+
+#favoritesGrid .manga-author,
+#alireGrid .manga-author {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #favoritesGrid .manga-card,
@@ -2207,7 +2229,10 @@ footer span {
   #favoritesGrid .manga-info,
   #alireGrid .manga-info { padding: 12px 10px; }
   #favoritesGrid .manga-title,
-  #alireGrid .manga-title { font-size: 0.95rem; }
+  #alireGrid .manga-title {
+    font-size: 0.92rem;
+    min-height: calc(0.92rem * 1.3 * 2);
+  }
   #favoritesModal .modal-header h2,
   #alireModal .modal-header h2 { font-size: 1.3rem; }
 }

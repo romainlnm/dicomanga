@@ -23,19 +23,14 @@ let chatPublicReactions = {};
 let chatReactionsRealtime = null;
 let chatPublicReactionsRealtime = null;
 
-// Emojis pour le picker (input) — sélection curated
-const EMOJI_PICKER_LIST = [
-  '😀','😁','😂','🤣','😊','😍','😘','😎','🤔','😅','😢','😭','😡','🥺','😴','🤯',
-  '👍','👎','👏','🙏','🙌','💪','👌','✌️','🤝','🫶','💯','🔥',
-  '❤️','🧡','💛','💚','💙','💜','🤍','🖤','💔','💖','💕','✨',
-  '🎉','🎂','🎁','🌸','🌟','⭐','☀️','🌈','⚡','🍕','🍔','🍣','🍩','🍫','☕','🍻',
-  '⚽','🎮','🎵','🎬','📚','📖','🖼️','✏️','💡','💻','📱','⏰','🚀','✈️',
-  '🐶','🐱','🐼','🦊','🐸','🐵','🦁','🐯','🐨','🐰','🐢','🐙','🦄','🐉','🦋',
-  '😺','💀','👻','👽','🤖','🎃','💩','🤡','🥷','🧙','🧛','🧟'
-];
 
 // Emojis pour réactions rapides (limité)
 const QUICK_REACTIONS = ['👍','❤️','😂','😮','😢','🔥'];
+
+// Fichier image en attente d'envoi : { private: File|null, public: File|null }
+const pendingChatImage = { private: null, public: null };
+const MAX_CHAT_IMAGE_BYTES = 20 * 1024 * 1024; // 20 Mo
+
 
 function getChatText(key) {
   const lang = localStorage.getItem('lang') || 'fr';
@@ -167,13 +162,14 @@ function renderReactions(messageId, scope) {
 }
 
 function showReactionPicker(messageId, scope, btn) {
-  document.querySelectorAll('.reaction-quick-bar').forEach(b => b.remove());
   const bubble = btn.closest('.chat-bubble');
   if (!bubble) return;
-  const items = QUICK_REACTIONS.map(e =>
-    `<button type="button" class="reaction-quick" onclick="toggleReaction('${messageId}','${e}','${scope}'); this.parentElement.remove();">${e}</button>`
-  ).join('');
-  bubble.insertAdjacentHTML('beforeend', `<div class="reaction-quick-bar">${items}</div>`);
+  showQuickReactionBar(
+    bubble,
+    QUICK_REACTIONS,
+    (emoji) => toggleReaction(messageId, emoji, scope),
+    () => openFloatingFullPicker(bubble, `react-${scope}-${messageId}`, (emoji) => toggleReaction(messageId, emoji, scope))
+  );
 }
 
 async function toggleReaction(messageId, emoji, scope) {
@@ -264,46 +260,6 @@ function hideChatMain() {
   const layout = document.querySelector('.chat-layout');
   if (layout) layout.classList.remove('show-chat');
 }
-
-// ----- Emoji picker (input) -----
-
-function buildEmojiPickerHtml(targetInputId) {
-  const items = EMOJI_PICKER_LIST.map(e =>
-    `<button type="button" class="emoji-pick" onclick="insertEmoji('${targetInputId}','${e}')">${e}</button>`
-  ).join('');
-  return `<div class="emoji-picker" data-target="${targetInputId}">${items}</div>`;
-}
-
-function toggleEmojiPicker(targetInputId, btn) {
-  const existing = document.querySelector(`.emoji-picker[data-target="${targetInputId}"]`);
-  if (existing) { existing.remove(); return; }
-  // Ferme les autres pickers
-  document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
-  const wrap = btn.closest('.chat-input-form');
-  if (!wrap) return;
-  wrap.insertAdjacentHTML('beforeend', buildEmojiPickerHtml(targetInputId));
-}
-
-function insertEmoji(targetInputId, emoji) {
-  const input = document.getElementById(targetInputId);
-  if (!input) return;
-  const start = input.selectionStart ?? input.value.length;
-  const end = input.selectionEnd ?? input.value.length;
-  const before = input.value.slice(0, start);
-  const after = input.value.slice(end);
-  input.value = before + emoji + after;
-  const caret = start + emoji.length;
-  input.focus();
-  try { input.setSelectionRange(caret, caret); } catch (_) {}
-}
-
-// Ferme les pickers ouverts si on clique en dehors
-document.addEventListener('click', (e) => {
-  if (e.target.closest('.emoji-picker')) return;
-  if (e.target.closest('.emoji-toggle-btn')) return;
-  document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
-  document.querySelectorAll('.reaction-quick-bar').forEach(b => b.remove());
-});
 
 async function ouvrirChatModal() {
   if (!currentUser) { ouvrirAuthModal(); return; }
@@ -413,7 +369,7 @@ async function chargerConversations() {
   // Récupère tous les messages où je suis sender ou recipient, limités aux 200 derniers
   const { data: msgs, error } = await supabaseClient
     .from('messages')
-    .select('id, sender_id, recipient_id, content, created_at, read_at')
+    .select('id, sender_id, recipient_id, content, created_at, read_at, image_url')
     .or(`sender_id.eq.${currentUser.id},recipient_id.eq.${currentUser.id}`)
     .order('created_at', { ascending: false })
     .limit(200);
@@ -460,9 +416,10 @@ function renderConversations() {
   }
   container.innerHTML = chatConversations.map(c => {
     const p = c.profile;
+    const rawText = c.lastMessage.content || (c.lastMessage.image_url ? '📷 Photo' : '');
     const preview = c.lastMessage.sender_id === currentUser.id
-      ? '→ ' + escapeHtml(c.lastMessage.content.slice(0, 60))
-      : escapeHtml(c.lastMessage.content.slice(0, 60));
+      ? '→ ' + escapeHtml(rawText.slice(0, 60))
+      : escapeHtml(rawText.slice(0, 60));
     const active = chatActiveConversation && chatActiveConversation.userId === c.otherId ? ' active' : '';
     const badge = c.unread > 0 ? `<span class="chat-unread-badge">${c.unread}</span>` : '';
     return `
@@ -552,7 +509,7 @@ async function ouvrirConversation(otherUserId, username) {
 async function chargerMessages(otherUserId) {
   const { data, error } = await supabaseClient
     .from('messages')
-    .select('id, sender_id, recipient_id, content, created_at, read_at')
+    .select('id, sender_id, recipient_id, content, created_at, read_at, image_url')
     .or(`and(sender_id.eq.${currentUser.id},recipient_id.eq.${otherUserId}),and(sender_id.eq.${otherUserId},recipient_id.eq.${currentUser.id})`)
     .order('created_at', { ascending: true })
     .limit(200);
@@ -581,8 +538,9 @@ function renderChatView() {
       ${msgs.map(renderMessageBubble).join('')}
     </div>
     <div class="chat-typing" id="chatTypingIndicator" style="display:none;"></div>
-    <form class="chat-input-form" onsubmit="envoyerMessage(event)">
+    <form class="chat-input-form" data-scope="private" onsubmit="envoyerMessage(event)">
       <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatInput', this)" aria-label="Emojis">😊</button>
+      <button type="button" class="chat-attach-btn" onclick="pickChatImage('private')" aria-label="Joindre une photo">📎</button>
       <textarea id="chatInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         oninput="onChatInputType()"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatSendBtn').click(); }"></textarea>
@@ -601,9 +559,16 @@ function renderMessageBubble(m) {
        <button class="chat-report-btn" title="${escapeHtml(getChatText('report'))}" onclick="signalerMessage('${m.id}', '${m.sender_id}')" aria-label="${escapeHtml(getChatText('report'))}">🚩</button>
        <button class="chat-report-btn" title="${escapeHtml(getChatText('block'))}" onclick="bloquerUtilisateur('${m.sender_id}')" aria-label="${escapeHtml(getChatText('block'))}">🚫</button>`
     : reactBtn;
+  const image = m.image_url
+    ? `<img class="chat-bubble-image" src="${escapeHtml(m.image_url)}" alt="" loading="lazy" onclick="openImageLightbox('${escapeHtml(m.image_url)}')">`
+    : '';
+  const content = m.content
+    ? `<div class="chat-bubble-content">${escapeHtml(m.content)}</div>`
+    : '';
   return `
-    <div class="chat-bubble ${mine ? 'mine' : 'theirs'}" data-msg-id="${m.id}">
-      <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
+    <div class="chat-bubble ${mine ? 'mine' : 'theirs'}${image ? ' has-image' : ''}" data-msg-id="${m.id}">
+      ${image}
+      ${content}
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
         ${actions}
@@ -611,6 +576,67 @@ function renderMessageBubble(m) {
       ${renderReactions(m.id, 'private')}
     </div>
   `;
+}
+
+// ----- Pièces jointes image -----
+
+async function uploadChatImage(file) {
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+  const path = `${currentUser.id}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+  const { error } = await supabaseClient.storage
+    .from('chat-images')
+    .upload(path, file, { contentType: file.type || 'image/jpeg', upsert: false });
+  if (error) throw error;
+  const { data } = supabaseClient.storage.from('chat-images').getPublicUrl(path);
+  return data.publicUrl;
+}
+
+function pickChatImage(scope) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = () => {
+    const file = input.files && input.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) { showToast('Fichier non supporté'); return; }
+    if (file.size > MAX_CHAT_IMAGE_BYTES) { showToast('Image trop lourde (max 20 Mo)'); return; }
+    pendingChatImage[scope] = file;
+    renderChatImagePreview(scope);
+  };
+  input.click();
+}
+
+function clearChatImage(scope) {
+  pendingChatImage[scope] = null;
+  renderChatImagePreview(scope);
+}
+
+function renderChatImagePreview(scope) {
+  const form = document.querySelector(`.chat-input-form[data-scope="${scope}"]`);
+  if (!form) return;
+  const existing = form.querySelector(':scope > .chat-image-preview');
+  if (existing) existing.remove();
+  const file = pendingChatImage[scope];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  const html = `<div class="chat-image-preview">
+    <img src="${url}" alt="">
+    <button type="button" class="chat-image-preview-remove" aria-label="Retirer" onclick="clearChatImage('${scope}')">×</button>
+  </div>`;
+  form.insertAdjacentHTML('afterbegin', html);
+}
+
+function openImageLightbox(src) {
+  document.querySelectorAll('.chat-lightbox').forEach(l => l.remove());
+  const html = `<div class="chat-lightbox" onclick="this.remove()">
+    <img src="${src}" alt="">
+    <button type="button" class="chat-lightbox-close" aria-label="Fermer">×</button>
+  </div>`;
+  document.body.insertAdjacentHTML('beforeend', html);
+  document.addEventListener('keydown', _lightboxEsc, { once: true });
+}
+function _lightboxEsc(e) {
+  if (e.key === 'Escape') document.querySelectorAll('.chat-lightbox').forEach(l => l.remove());
 }
 
 async function signalerMessage(messageId, senderId) {
@@ -643,22 +669,34 @@ async function envoyerMessage(event) {
   const input = document.getElementById('chatInput');
   if (!input) return;
   const content = input.value.trim();
-  if (!content) { showToast(getChatText('messageEmpty')); return; }
+  const file = pendingChatImage.private;
+  if (!content && !file) { showToast(getChatText('messageEmpty')); return; }
   if (content.length > 2000) { showToast(getChatText('messageTooLong')); return; }
+
+  const sendBtn = document.getElementById('chatSendBtn');
+  if (sendBtn) sendBtn.disabled = true;
+  let image_url = null;
+  if (file) {
+    try { image_url = await uploadChatImage(file); }
+    catch (e) { console.error('Upload image:', e); showToast('Erreur upload image'); if (sendBtn) sendBtn.disabled = false; return; }
+  }
 
   const { data, error } = await supabaseClient
     .from('messages')
     .insert({
       sender_id: currentUser.id,
       recipient_id: chatActiveConversation.userId,
-      content
+      content: content || null,
+      image_url
     })
     .select()
     .single();
 
+  if (sendBtn) sendBtn.disabled = false;
   if (error) { console.error('Send message:', error); showToast('Erreur envoi'); return; }
 
   input.value = '';
+  pendingChatImage.private = null;
   const arr = chatMessagesCache[chatActiveConversation.userId] || [];
   arr.push(data);
   chatMessagesCache[chatActiveConversation.userId] = arr;
@@ -752,7 +790,7 @@ async function handleIncomingMessage(msg) {
     await markConversationAsRead(otherId);
   } else {
     updateChatBadge();
-    maybeNotify(convo.profile, msg.content);
+    maybeNotify(convo.profile, msg.content || (msg.image_url ? '📷 Photo' : ''));
   }
 }
 
@@ -861,7 +899,7 @@ async function chargerPublicMessages() {
 
   const { data, error } = await supabaseClient
     .from('public_messages')
-    .select('id, sender_id, content, created_at')
+    .select('id, sender_id, content, created_at, image_url')
     .order('created_at', { ascending: false })
     .limit(100);
 
@@ -898,8 +936,9 @@ function renderPublicView() {
         ? chatPublicMessages.map(renderPublicBubble).join('')
         : `<div class="chat-empty">${escapeHtml(getChatText('publicEmpty'))}</div>`}
     </div>
-    <form class="chat-input-form" onsubmit="envoyerPublicMessage(event)">
+    <form class="chat-input-form" data-scope="public" onsubmit="envoyerPublicMessage(event)">
       <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatPublicInput', this)" aria-label="Emojis">😊</button>
+      <button type="button" class="chat-attach-btn" onclick="pickChatImage('public')" aria-label="Joindre une photo">📎</button>
       <textarea id="chatPublicInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatPublicSendBtn').click(); }"></textarea>
       <button type="submit" id="chatPublicSendBtn" class="chat-send-btn">${escapeHtml(getChatText('send'))}</button>
@@ -927,10 +966,17 @@ function renderPublicBubble(m) {
          <span class="chat-public-name">${escapeHtml(username)}</span>
        </div>`
     : '';
+  const image = m.image_url
+    ? `<img class="chat-bubble-image" src="${escapeHtml(m.image_url)}" alt="" loading="lazy" onclick="openImageLightbox('${escapeHtml(m.image_url)}')">`
+    : '';
+  const content = m.content
+    ? `<div class="chat-bubble-content">${escapeHtml(m.content)}</div>`
+    : '';
   return `
-    <div class="chat-bubble chat-bubble-public ${mine ? 'mine' : 'theirs'}" data-msg-id="${m.id}">
+    <div class="chat-bubble chat-bubble-public ${mine ? 'mine' : 'theirs'}${image ? ' has-image' : ''}" data-msg-id="${m.id}">
       ${header}
-      <div class="chat-bubble-content">${escapeHtml(m.content)}</div>
+      ${image}
+      ${content}
       <div class="chat-bubble-footer">
         <span class="chat-bubble-time">${formatTime(m.created_at)}</span>
         ${actions}
@@ -946,18 +992,29 @@ async function envoyerPublicMessage(event) {
   const input = document.getElementById('chatPublicInput');
   if (!input) return;
   const content = input.value.trim();
-  if (!content) { showToast(getChatText('messageEmpty')); return; }
+  const file = pendingChatImage.public;
+  if (!content && !file) { showToast(getChatText('messageEmpty')); return; }
   if (content.length > 2000) { showToast(getChatText('messageTooLong')); return; }
+
+  const sendBtn = document.getElementById('chatPublicSendBtn');
+  if (sendBtn) sendBtn.disabled = true;
+  let image_url = null;
+  if (file) {
+    try { image_url = await uploadChatImage(file); }
+    catch (e) { console.error('Upload image:', e); showToast('Erreur upload image'); if (sendBtn) sendBtn.disabled = false; return; }
+  }
 
   const { data, error } = await supabaseClient
     .from('public_messages')
-    .insert({ sender_id: currentUser.id, content })
+    .insert({ sender_id: currentUser.id, content: content || null, image_url })
     .select()
     .single();
 
+  if (sendBtn) sendBtn.disabled = false;
   if (error) { console.error('Send public:', error); showToast('Erreur envoi'); return; }
 
   input.value = '';
+  pendingChatImage.public = null;
   // On laisse le realtime gérer l'affichage, mais on l'ajoute quand même en cas de latence
   if (!chatPublicMessages.some(m => m.id === data.id)) {
     chatPublicMessages.push(data);

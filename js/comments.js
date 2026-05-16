@@ -1,7 +1,12 @@
 // Commentaires sur les pages manga
-// Dépend de : supabase-config.js (supabaseClient, currentUser), manga.js (currentLang)
+// Dépend de : supabase-config.js (supabaseClient, currentUser), manga.js (currentLang),
+//             emoji-picker.js (EMOJI_CATEGORIES, showQuickReactionBar, openFloatingFullPicker, toggleEmojiPicker)
 
 const COMMENTS_MAX_WORDS = 1000;
+const COMMENT_QUICK_REACTIONS = ['👍','❤️','😂','😮','😢','🔥'];
+
+// Réactions sur les commentaires : { commentId: { emoji: Set<userId> } }
+let commentReactions = {};
 
 function countWords(s) {
   const trimmed = String(s).trim();
@@ -77,10 +82,114 @@ async function loadComments(mangaId) {
       (profs || []).forEach(p => { profiles[p.user_id] = p; });
     }
 
+    await loadCommentReactions((comments || []).map(c => c.id));
     renderComments(comments || [], profiles);
   } catch (e) {
     console.error('loadComments error', e);
     list.innerHTML = `<div class="comments-empty">${commentsT('error')}</div>`;
+  }
+}
+
+async function loadCommentReactions(commentIds) {
+  commentReactions = {};
+  if (!commentIds.length) return;
+  const { data, error } = await supabaseClient
+    .from('manga_comment_reactions')
+    .select('comment_id, user_id, emoji')
+    .in('comment_id', commentIds);
+  if (error) { console.error('loadCommentReactions error', error); return; }
+  (data || []).forEach(r => {
+    if (!commentReactions[r.comment_id]) commentReactions[r.comment_id] = {};
+    if (!commentReactions[r.comment_id][r.emoji]) commentReactions[r.comment_id][r.emoji] = new Set();
+    commentReactions[r.comment_id][r.emoji].add(r.user_id);
+  });
+}
+
+function renderCommentReactions(commentId) {
+  const entries = Object.entries(commentReactions[commentId] || {}).filter(([, set]) => set.size > 0);
+  const me = currentUser?.id;
+  const chips = entries.map(([emoji, set]) => {
+    const mine = me && set.has(me);
+    return `<button class="comment-reaction-chip${mine ? ' mine' : ''}" onclick="toggleCommentReaction('${commentId}','${emoji}')">${emoji} <span>${set.size}</span></button>`;
+  }).join('');
+  const addBtn = currentUser
+    ? `<button class="comment-reaction-add-btn" onclick="event.stopPropagation(); showCommentReactionPicker('${commentId}', this)" aria-label="Réagir">😊+</button>`
+    : '';
+  if (!chips && !addBtn) return '';
+  return `<div class="comment-reaction-row">${chips}${addBtn}</div>`;
+}
+
+function showCommentReactionPicker(commentId, btn) {
+  if (typeof showQuickReactionBar !== 'function') return;
+  const anchor = btn.closest('.comment-item');
+  if (!anchor) return;
+  showQuickReactionBar(
+    anchor,
+    COMMENT_QUICK_REACTIONS,
+    (emoji) => toggleCommentReaction(commentId, emoji),
+    () => openFloatingFullPicker(anchor, `comment-react-${commentId}`, (emoji) => toggleCommentReaction(commentId, emoji))
+  );
+}
+
+async function toggleCommentReaction(commentId, emoji) {
+  if (!currentUser) {
+    if (typeof ouvrirAuthModal === 'function') ouvrirAuthModal();
+    return;
+  }
+  if (!commentReactions[commentId]) commentReactions[commentId] = {};
+  if (!commentReactions[commentId][emoji]) commentReactions[commentId][emoji] = new Set();
+  const set = commentReactions[commentId][emoji];
+  const has = set.has(currentUser.id);
+
+  if (has) {
+    set.delete(currentUser.id);
+    if (set.size === 0) delete commentReactions[commentId][emoji];
+    rerenderCommentReactions(commentId);
+    const { error } = await supabaseClient
+      .from('manga_comment_reactions')
+      .delete()
+      .eq('comment_id', commentId)
+      .eq('user_id', currentUser.id)
+      .eq('emoji', emoji);
+    if (error) {
+      console.error('toggleCommentReaction delete error', error);
+      // rollback
+      if (!commentReactions[commentId][emoji]) commentReactions[commentId][emoji] = new Set();
+      commentReactions[commentId][emoji].add(currentUser.id);
+      rerenderCommentReactions(commentId);
+    }
+  } else {
+    set.add(currentUser.id);
+    rerenderCommentReactions(commentId);
+    const { error } = await supabaseClient
+      .from('manga_comment_reactions')
+      .insert({ comment_id: commentId, user_id: currentUser.id, emoji });
+    if (error) {
+      console.error('toggleCommentReaction insert error', error);
+      // rollback
+      set.delete(currentUser.id);
+      if (set.size === 0) delete commentReactions[commentId][emoji];
+      rerenderCommentReactions(commentId);
+    }
+  }
+}
+
+function rerenderCommentReactions(commentId) {
+  const item = document.querySelector(`.comment-item[data-comment-id="${commentId}"]`);
+  if (!item) return;
+  const existing = item.querySelector('.comment-reaction-row');
+  const newHtml = renderCommentReactions(commentId);
+  if (existing) {
+    if (newHtml) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = newHtml;
+      existing.replaceWith(tmp.firstElementChild);
+    } else {
+      existing.remove();
+    }
+  } else if (newHtml) {
+    const body = item.querySelector('.comment-body');
+    if (body) body.insertAdjacentHTML('beforeend', newHtml);
   }
 }
 
@@ -111,6 +220,7 @@ function renderComments(comments, profiles) {
             ${isMine ? `<button class="comment-delete" onclick="deleteComment('${c.id}')" title="${commentsT('confirmDelete')}">🗑️</button>` : ''}
           </div>
           <div class="comment-content">${escapeHtml(c.content)}</div>
+          ${renderCommentReactions(c.id)}
         </div>
       </div>
     `;
@@ -187,7 +297,7 @@ function buildCommentsSection(mangaId) {
   const isAuth = !!currentUser;
   const composer = isAuth
     ? `
-      <div class="comment-composer">
+      <div class="comment-composer emoji-picker-host">
         <textarea
           id="commentInput"
           class="comment-textarea"
@@ -195,6 +305,7 @@ function buildCommentsSection(mangaId) {
           oninput="updateCommentCounter()"
         ></textarea>
         <div class="comment-composer-footer">
+          <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('commentInput', this)" aria-label="Emojis">😊</button>
           <span class="comment-counter" id="commentCounter">0 / ${COMMENTS_MAX_WORDS}</span>
           <button id="commentSubmit" class="comment-submit-btn" onclick="postComment(${mangaId})">
             ${commentsT('submit')}

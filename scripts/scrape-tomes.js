@@ -142,6 +142,33 @@ const mangadexCache = new Map();
 const MD_API = 'https://api.mangadex.org';
 const MD_UPLOADS = 'https://uploads.mangadex.org';
 
+// Manual MangaDex overrides for series that the auto-search can't resolve to a
+// single entry. Each entry maps a manga.id from data.js to a list of segments
+// {mdId, globalStart, localStart, count} that together cover the full tome
+// range. Used for serialised-in-parts works like JoJo where each Part has its
+// own MangaDex manga record but our data.js numbers tomes globally.
+const MD_OVERRIDES = {
+  // JoJo's Bizarre Adventure — 131 tankōbon split across 8 Parts.
+  97: [
+    { mdId: '5a547d1d-576b-477f-8cb3-70a3b4187f8a', globalStart: 1,   localStart: 1, count: 5  }, // Part 1 Phantom Blood
+    { mdId: '61079efc-d1c4-4565-bbe6-de58e1d75fdf', globalStart: 6,   localStart: 1, count: 7  }, // Part 2 Battle Tendency
+    { mdId: '0d545e62-d4cd-4e65-a65c-a5c46b794918', globalStart: 13,  localStart: 1, count: 16 }, // Part 3 Stardust Crusaders
+    { mdId: '5ed1f8fc-a119-4cbc-aeae-26ce2bd3f838', globalStart: 29,  localStart: 1, count: 18 }, // Part 4 Diamond is Unbreakable (skip MD vol 19, bonus)
+    { mdId: '2725e983-81c3-4a62-8e97-5027c5996c2b', globalStart: 47,  localStart: 1, count: 17 }, // Part 5 Vento Aureo
+    { mdId: 'ea57752d-acb7-469e-aa60-43e694ded9a9', globalStart: 64,  localStart: 1, count: 17 }, // Part 6 Stone Ocean
+    { mdId: 'b30dfee3-9d1d-4e8d-bfbe-8fcabc3c96f6', globalStart: 81,  localStart: 1, count: 24 }, // Part 7 Steel Ball Run
+    { mdId: 'c086153a-0162-412a-9914-a7b2633d0cd3', globalStart: 105, localStart: 1, count: 27 }, // Part 8 JoJolion
+  ],
+  // Kenichi: The Mightiest Disciple — auto-search picked the "Plus" spinoff.
+  111: [
+    { mdId: '9d563964-e935-47d4-812a-abfd2f625384', globalStart: 1, localStart: 1, count: 61 }
+  ],
+  // Hell Teacher Nube — auto-search picked "Nube PLUS" spinoff (1 wrong cover).
+  149: [
+    { mdId: 'aeccf180-8e12-4dc9-90a5-d9b5898e9933', globalStart: 1, localStart: 1, count: 31 }
+  ]
+};
+
 function pickBestMdManga(items, manga) {
   const titleNorm = normalize(flags.titleOverride || manga.titre);
   const authorNorm = normalize(flags.authorOverride || manga.auteur);
@@ -223,8 +250,58 @@ function pickBestCoverForVolume(covers) {
   return covers[0];
 }
 
+function coversToVolumeMap(covers, mdId) {
+  // Group covers by integer volume number, then pick best per volume.
+  // Skip half-volumes ("12.5"), specials, "none", etc.
+  const byVolume = new Map();
+  for (const c of covers) {
+    const vRaw = String(c.attributes?.volume || '');
+    if (!/^\d+$/.test(vRaw)) continue;
+    const v = parseInt(vRaw, 10);
+    if (v < 1) continue;
+    if (!byVolume.has(v)) byVolume.set(v, []);
+    byVolume.get(v).push(c);
+  }
+  const urlByVolume = new Map();
+  for (const [v, list] of byVolume) {
+    const best = pickBestCoverForVolume(list);
+    if (best?.attributes?.fileName) {
+      urlByVolume.set(v, `${MD_UPLOADS}/covers/${mdId}/${best.attributes.fileName}.256.jpg`);
+    }
+  }
+  return urlByVolume;
+}
+
+async function loadMangadexCoversFromOverride(manga) {
+  const segments = MD_OVERRIDES[manga.id];
+  const coverUrlByVolume = new Map();
+  for (const seg of segments) {
+    let local;
+    try {
+      const covers = await fetchAllMdCovers(seg.mdId);
+      local = coversToVolumeMap(covers, seg.mdId);
+    } catch (e) {
+      continue;
+    }
+    // Remap localVolume -> globalVolume using the segment offset.
+    for (let i = 0; i < seg.count; i++) {
+      const localVol = seg.localStart + i;
+      const globalVol = seg.globalStart + i;
+      const url = local.get(localVol);
+      if (url) coverUrlByVolume.set(globalVol, url);
+    }
+    await sleep(200);
+  }
+  return { mdId: 'override', coverUrlByVolume };
+}
+
 async function loadMangadexCovers(manga) {
   if (mangadexCache.has(manga.id)) return mangadexCache.get(manga.id);
+  if (MD_OVERRIDES[manga.id]) {
+    const result = await loadMangadexCoversFromOverride(manga);
+    mangadexCache.set(manga.id, result);
+    return result;
+  }
   const mdId = await findMangadexMangaId(manga);
   if (!mdId) {
     mangadexCache.set(manga.id, null);
@@ -238,28 +315,7 @@ async function loadMangadexCovers(manga) {
     mangadexCache.set(manga.id, null);
     return null;
   }
-  // Group covers by integer volume number, then pick best per volume.
-  // Skip half-volumes ("12.5"), specials, "none", etc.
-  const byVolume = new Map();
-  for (const c of covers) {
-    const vRaw = String(c.attributes?.volume || '');
-    if (!/^\d+$/.test(vRaw)) continue;
-    const v = parseInt(vRaw, 10);
-    if (v < 1) continue;
-    if (!byVolume.has(v)) byVolume.set(v, []);
-    byVolume.get(v).push(c);
-  }
-  const coverUrlByVolume = new Map();
-  for (const [v, list] of byVolume) {
-    const best = pickBestCoverForVolume(list);
-    if (best?.attributes?.fileName) {
-      // 256.jpg thumbnail keeps things roughly in line with the Google Books
-      // covers we already have; bump to 512 if quality matters more than size.
-      const url = `${MD_UPLOADS}/covers/${mdId}/${best.attributes.fileName}.256.jpg`;
-      coverUrlByVolume.set(v, url);
-    }
-  }
-  const result = { mdId, coverUrlByVolume };
+  const result = { mdId, coverUrlByVolume: coversToVolumeMap(covers, mdId) };
   mangadexCache.set(manga.id, result);
   return result;
 }
@@ -408,6 +464,12 @@ async function loadSearchResults(manga) {
 }
 
 async function findCoverUrl(manga, num) {
+  // Series with an explicit MD override skip Google Books — the override
+  // exists precisely because GB's matches were wrong (e.g. US deluxe re-edition
+  // numbering for JoJo). Go straight to MangaDex with the correct mapping.
+  if (MD_OVERRIDES[manga.id]) {
+    return await findMangadexCoverUrl(manga, num);
+  }
   const items = await loadSearchResults(manga);
   // Look for the item whose detected volume number equals num
   for (const item of items) {

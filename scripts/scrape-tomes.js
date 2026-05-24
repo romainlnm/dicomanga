@@ -73,7 +73,9 @@ async function fetchJson(url) {
 async function downloadImage(url, dest) {
   // Google Books returns http URLs; force https for cleaner fetch
   const safeUrl = url.replace(/^http:/, 'https:');
-  const r = await fetch(safeUrl);
+  const r = await fetch(safeUrl, {
+    headers: { 'User-Agent': 'dico-manga-tome-scraper/1.0' }
+  });
   if (!r.ok) throw new Error(`Image HTTP ${r.status}`);
   const buf = Buffer.from(await r.arrayBuffer());
   fs.writeFileSync(dest, buf);
@@ -130,6 +132,143 @@ function extractVolumeNum(volumeInfo) {
 
 // Cache the search result per manga so we hit the API once instead of N times.
 const searchCache = new Map();
+
+// ---------- MangaDex fallback ----------
+// We hit MangaDex only when Google Books fails. The cache below stores, per
+// manga.id from data.js: either null (we already searched and found nothing
+// usable) or { mdId, coversByVolume } where coversByVolume is a map of
+// integer volume number -> URL of the .256.jpg thumbnail.
+const mangadexCache = new Map();
+const MD_API = 'https://api.mangadex.org';
+const MD_UPLOADS = 'https://uploads.mangadex.org';
+
+function pickBestMdManga(items, manga) {
+  const titleNorm = normalize(flags.titleOverride || manga.titre);
+  const authorNorm = normalize(flags.authorOverride || manga.auteur);
+  const firstWord = titleNorm.split(' ')[0];
+  const scored = items.map(it => {
+    const a = it.attributes || {};
+    const titles = [
+      ...Object.values(a.title || {}),
+      ...(a.altTitles || []).flatMap(t => Object.values(t))
+    ].map(normalize);
+    const titleHit = titles.some(t => t.includes(titleNorm) || titleNorm.includes(t));
+    const firstWordHit = titles.some(t => t.includes(firstWord));
+    // Penalize obvious alternate versions / fan-color editions
+    const allTitles = titles.join(' ');
+    const isAltVersion = /\b(fan colored|colored|side story|revolution|gaiden|extra|spinoff)\b/.test(allTitles);
+    // Prefer Japanese-origin works (real manga) over fan projects
+    const isJapanese = a.originalLanguage === 'ja';
+    // Author is reachable via relationships → name resolution, but we'd need an
+    // extra request. Skip it for now; titles + altTitles + originalLanguage are
+    // already strong enough in practice.
+    const score =
+      (titleHit ? 100 : 0)
+      + (firstWordHit ? 20 : 0)
+      + (isJapanese ? 5 : 0)
+      + (isAltVersion ? -50 : 0);
+    return { item: it, score };
+  }).filter(x => x.score > 0).sort((a, b) => b.score - a.score);
+  return scored[0]?.item || null;
+}
+
+async function findMangadexMangaId(manga) {
+  const title = (flags.titleOverride || manga.titre || '').trim();
+  if (!title) return null;
+  // The title we have is sometimes the FR licensed title — try the user's
+  // title first, then a stripped variant (remove parenthesized notes).
+  const candidates = [title, title.replace(/\s*\(.*?\)\s*/g, '').trim()].filter((t, i, arr) => t && arr.indexOf(t) === i);
+  for (const candidate of candidates) {
+    try {
+      const url = `${MD_API}/manga?title=${encodeURIComponent(candidate)}&limit=10&order%5Brelevance%5D=desc&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica`;
+      const data = await fetchJson(url);
+      const best = pickBestMdManga(data.data || [], manga);
+      if (best) return best.id;
+    } catch (e) { /* ignore */ }
+    await sleep(200);
+  }
+  return null;
+}
+
+async function fetchAllMdCovers(mdId) {
+  // The /cover endpoint is paginated (max 100 per page).
+  const all = [];
+  let offset = 0;
+  const limit = 100;
+  for (let safety = 0; safety < 10; safety++) {
+    const url = `${MD_API}/cover?manga%5B%5D=${mdId}&limit=${limit}&offset=${offset}&order%5Bvolume%5D=asc`;
+    const data = await fetchJson(url);
+    const items = data.data || [];
+    all.push(...items);
+    if (items.length < limit) break;
+    offset += limit;
+    await sleep(200);
+  }
+  return all;
+}
+
+// Prefer Japanese (original) cover, then French, then English, then anything else.
+const MD_LOCALE_PRIORITY = ['ja', 'fr', 'en'];
+
+function pickBestCoverForVolume(covers) {
+  if (!covers.length) return null;
+  const byLocale = new Map();
+  for (const c of covers) {
+    const loc = c.attributes?.locale || 'xx';
+    if (!byLocale.has(loc)) byLocale.set(loc, c);
+  }
+  for (const loc of MD_LOCALE_PRIORITY) {
+    if (byLocale.has(loc)) return byLocale.get(loc);
+  }
+  return covers[0];
+}
+
+async function loadMangadexCovers(manga) {
+  if (mangadexCache.has(manga.id)) return mangadexCache.get(manga.id);
+  const mdId = await findMangadexMangaId(manga);
+  if (!mdId) {
+    mangadexCache.set(manga.id, null);
+    return null;
+  }
+  await sleep(200);
+  let covers;
+  try {
+    covers = await fetchAllMdCovers(mdId);
+  } catch (e) {
+    mangadexCache.set(manga.id, null);
+    return null;
+  }
+  // Group covers by integer volume number, then pick best per volume.
+  // Skip half-volumes ("12.5"), specials, "none", etc.
+  const byVolume = new Map();
+  for (const c of covers) {
+    const vRaw = String(c.attributes?.volume || '');
+    if (!/^\d+$/.test(vRaw)) continue;
+    const v = parseInt(vRaw, 10);
+    if (v < 1) continue;
+    if (!byVolume.has(v)) byVolume.set(v, []);
+    byVolume.get(v).push(c);
+  }
+  const coverUrlByVolume = new Map();
+  for (const [v, list] of byVolume) {
+    const best = pickBestCoverForVolume(list);
+    if (best?.attributes?.fileName) {
+      // 256.jpg thumbnail keeps things roughly in line with the Google Books
+      // covers we already have; bump to 512 if quality matters more than size.
+      const url = `${MD_UPLOADS}/covers/${mdId}/${best.attributes.fileName}.256.jpg`;
+      coverUrlByVolume.set(v, url);
+    }
+  }
+  const result = { mdId, coverUrlByVolume };
+  mangadexCache.set(manga.id, result);
+  return result;
+}
+
+async function findMangadexCoverUrl(manga, num) {
+  const entry = await loadMangadexCovers(manga);
+  if (!entry) return null;
+  return entry.coverUrlByVolume.get(num) || null;
+}
 
 async function fetchAllResults(manga) {
   const all = [];
@@ -278,9 +417,13 @@ async function findCoverUrl(manga, num) {
       if (thumb) return thumb;
     }
   }
-  // Fallback: ciblage individuel sur ce tome (utile quand la recherche
+  // Fallback 1: ciblage individuel sur ce tome (utile quand la recherche
   // globale n'inclut pas les volumes les plus récents).
-  return await findCoverUrlForVolume(manga, num);
+  const gb = await findCoverUrlForVolume(manga, num);
+  if (gb) return gb;
+  // Fallback 2: MangaDex. Plus fiable pour les séries que Google Books indexe
+  // mal (mainstream JP only ou titres ambigus).
+  return await findMangadexCoverUrl(manga, num);
 }
 
 async function findCoverUrlForVolume(manga, num) {

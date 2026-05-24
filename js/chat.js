@@ -540,6 +540,7 @@ function renderChatView() {
     <div class="chat-typing" id="chatTypingIndicator" style="display:none;"></div>
     <form class="chat-input-form" data-scope="private" onsubmit="envoyerMessage(event)">
       <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatInput', this)" aria-label="Emojis">😊</button>
+      <button type="button" class="chat-gif-btn" onclick="toggleGifPicker('private', this)" aria-label="GIF">GIF</button>
       <button type="button" class="chat-attach-btn" onclick="pickChatImage('private')" aria-label="Joindre une photo">📎</button>
       <textarea id="chatInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         oninput="onChatInputType()"
@@ -659,6 +660,58 @@ async function signalerMessage(messageId, senderId) {
     return;
   }
   showToast(getChatText('reportSent'));
+}
+
+// ----- Envoyer un GIF (Giphy URL, pas d'upload) -----
+
+async function sendChatGif(scope, url) {
+  if (!currentUser || !url) return;
+  if (scope === 'private') {
+    if (!chatActiveConversation) return;
+    const { data, error } = await supabaseClient
+      .from('messages')
+      .insert({
+        sender_id: currentUser.id,
+        recipient_id: chatActiveConversation.userId,
+        content: null,
+        image_url: url
+      })
+      .select()
+      .single();
+    if (error) { console.error('Send GIF:', error); showToast('Erreur envoi'); return; }
+    const arr = chatMessagesCache[chatActiveConversation.userId] || [];
+    arr.push(data);
+    chatMessagesCache[chatActiveConversation.userId] = arr;
+    const existing = chatConversations.find(c => c.otherId === chatActiveConversation.userId);
+    if (existing) { existing.lastMessage = data; }
+    else {
+      chatConversations.unshift({
+        otherId: chatActiveConversation.userId,
+        lastMessage: data,
+        unread: 0,
+        profile: { ...chatActiveConversation, user_id: chatActiveConversation.userId }
+      });
+    }
+    chatConversations.sort((a, b) => new Date(b.lastMessage.created_at) - new Date(a.lastMessage.created_at));
+    renderConversations();
+    renderChatView();
+    return;
+  }
+  if (scope === 'public') {
+    const { data, error } = await supabaseClient
+      .from('public_messages')
+      .insert({ sender_id: currentUser.id, content: null, image_url: url })
+      .select()
+      .single();
+    if (error) { console.error('Send public GIF:', error); showToast('Erreur envoi'); return; }
+    if (!chatPublicMessages.some(m => m.id === data.id)) {
+      chatPublicMessages.push(data);
+      if (!chatPublicProfiles[currentUser.id] && chatMyProfile) {
+        chatPublicProfiles[currentUser.id] = chatMyProfile;
+      }
+      renderPublicView();
+    }
+  }
 }
 
 // ----- Envoyer un message -----
@@ -938,6 +991,7 @@ function renderPublicView() {
     </div>
     <form class="chat-input-form" data-scope="public" onsubmit="envoyerPublicMessage(event)">
       <button type="button" class="emoji-toggle-btn" onclick="toggleEmojiPicker('chatPublicInput', this)" aria-label="Emojis">😊</button>
+      <button type="button" class="chat-gif-btn" onclick="toggleGifPicker('public', this)" aria-label="GIF">GIF</button>
       <button type="button" class="chat-attach-btn" onclick="pickChatImage('public')" aria-label="Joindre une photo">📎</button>
       <textarea id="chatPublicInput" rows="1" placeholder="${escapeHtml(getChatText('typeMessage'))}" maxlength="2000"
         onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); document.getElementById('chatPublicSendBtn').click(); }"></textarea>

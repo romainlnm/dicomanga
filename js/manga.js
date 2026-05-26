@@ -34,8 +34,9 @@ function toggleLanguage() {
   updateBackButton();
 
   // Réafficher le manga avec la nouvelle langue
+  const bodyId = document.body.dataset.mangaId;
   const urlParams = new URLSearchParams(window.location.search);
-  const mangaId = urlParams.get('id');
+  const mangaId = bodyId || urlParams.get('id');
   if (mangaId) {
     afficherDetailManga(parseInt(mangaId));
   }
@@ -51,7 +52,11 @@ function updateLangToggleUI() {
 }
 
 function initLanguage() {
-  currentLang = localStorage.getItem('lang') || 'fr';
+  // Static EN pages (/manga/en/...) tag <body data-lang="en"> so the
+  // first paint matches the URL. localStorage only kicks in when the
+  // page is language-neutral (manga.html?id=X).
+  const bodyLang = document.body.dataset.lang;
+  currentLang = bodyLang || localStorage.getItem('lang') || 'fr';
   updateLangToggleUI();
   updateBackButton();
 }
@@ -92,8 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initLanguage();
 
+  // Static pages (manga/{slug}.html and manga/en/{slug}.html) expose the
+  // id via <body data-manga-id="…">. Fall back to ?id=X for legacy URLs.
+  const bodyId = document.body.dataset.mangaId;
   const urlParams = new URLSearchParams(window.location.search);
-  const mangaId = urlParams.get('id');
+  const mangaId = bodyId || urlParams.get('id');
 
   if (mangaId) {
     const id = parseInt(mangaId);
@@ -304,7 +312,7 @@ function afficherDetailManga(id) {
               const connexionManga = getMangaById(connexionId);
               if (!connexionManga) return '';
               return `
-                <div class="connexion-card" onclick="window.location.href='manga.html?id=${connexionManga.id}'">
+                <div class="connexion-card" onclick="window.location.href=mangaUrl(${connexionManga.id})">
                   <img src="${connexionManga.couverture}" alt="${connexionManga.titre}" class="connexion-cover" onerror="this.style.display='none'">
                   <div class="connexion-info">
                     <h3 class="connexion-title">${connexionManga.titre}</h3>
@@ -322,7 +330,7 @@ function afficherDetailManga(id) {
           <h2>${currentLang === 'en' ? 'Similar Manga' : 'Mangas similaires'}</h2>
           <div class="similar-grid">
             ${getRecommandations(manga).map(rec => `
-              <div class="similar-card" onclick="window.location.href='manga.html?id=${rec.id}'">
+              <div class="similar-card" onclick="window.location.href=mangaUrl(${rec.id})">
                 <img src="${rec.couverture}" alt="${rec.titre}" class="similar-cover" onerror="this.style.display='none'">
                 <div class="similar-info">
                   <h3 class="similar-title">${rec.titre}</h3>

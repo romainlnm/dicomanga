@@ -86,7 +86,7 @@ function isPast(dateStr) {
 function renderEntry(e) {
   const day = formatDay(e.date);
   const past = isPast(e.date) ? ' calendar-entry-past' : '';
-  const link = `manga.html?id=${e.mangaId}`;
+  const link = (typeof mangaUrl === 'function') ? mangaUrl(e.mangaId) : `manga.html?id=${e.mangaId}`;
   return `
     <a class="calendar-entry${past}" href="${link}">
       <div class="calendar-entry-day">${day}</div>

@@ -301,7 +301,7 @@ function afficherNotesPersonnelles() {
   }
 
   container.innerHTML = mangasNotes.map(manga => `
-    <div class="encours-card" onclick="window.location.href='manga.html?id=${manga.id}'">
+    <div class="encours-card" onclick="window.location.href=mangaUrl(${manga.id})">
       <img src="${manga.couverture}" alt="${manga.titre}" class="encours-cover" onerror="this.style.display='none'">
       <div class="encours-info">
         <h3 class="encours-title">${manga.titre}</h3>

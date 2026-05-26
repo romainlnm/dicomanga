@@ -1,3 +1,9 @@
+// Fallback when js/manga-slugs.js (which defines mangaUrl) hasn't loaded —
+// keeps the legacy ?id=X URLs alive instead of crashing.
+if (typeof mangaUrl !== 'function') {
+  window.mangaUrl = function (id) { return 'manga.html?id=' + id; };
+}
+
 // ===== THEME =====
 function initTheme() {
   const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -675,7 +681,7 @@ function restaurerPosition() {
 
 function allerVersManga(id) {
   sauvegarderPosition();
-  window.location.href = 'manga.html?id=' + id;
+  window.location.href = mangaUrl(id);
 }
 
 // ===== STATISTIQUES =====
@@ -1206,7 +1212,7 @@ function appliquerFiltres(searchTerm = '') {
 function mangaAleatoire() {
   const randomIndex = Math.floor(Math.random() * mangas.length);
   const randomManga = mangas[randomIndex];
-  window.location.href = 'manga.html?id=' + randomManga.id;
+  window.location.href = mangaUrl(randomManga.id);
 }
 
 // ===== SYSTEME DE FAVORIS =====
@@ -3314,10 +3320,10 @@ function allerVersMangaAvecTransition(id, direction = 'forward') {
 
     setTimeout(() => {
       sessionStorage.setItem('pageDirection', direction);
-      window.location.href = `manga.html?id=${id}`;
+      window.location.href = mangaUrl(id);
     }, 250);
   } else {
-    window.location.href = `manga.html?id=${id}`;
+    window.location.href = mangaUrl(id);
   }
 }
 

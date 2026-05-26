@@ -166,6 +166,45 @@ const MD_OVERRIDES = {
   // Hell Teacher Nube — auto-search picked "Nube PLUS" spinoff (1 wrong cover).
   149: [
     { mdId: 'aeccf180-8e12-4dc9-90a5-d9b5898e9933', globalStart: 1, localStart: 1, count: 31 }
+  ],
+  // Bobobo-bo Bo-bobo — auto-search picked "Shinsetsu" sequel (only 7 vols),
+  // which produced wrong covers for tomes 6-7 and no result past 7.
+  142: [
+    { mdId: '038740e2-13e5-4e5c-a774-405cf9419b51', globalStart: 1, localStart: 1, count: 21 }
+  ],
+  // Yu-Gi-Oh! — auto-search picked the 22-vol "Official Colored" edition,
+  // missing the 13 final tomes of the 38-vol original.
+  85: [
+    { mdId: 'edaae213-67c7-4a6c-ad5f-141001891741', globalStart: 1, localStart: 1, count: 38 }
+  ],
+  // Zatch Bell!! — auto-search picked a related spinoff; the 33-vol original
+  // exists under "Konjiki no Gash!!" / "Zatch Bell!!".
+  109: [
+    { mdId: '63e54dfd-f7a9-473e-a591-28558e229c5b', globalStart: 1, localStart: 1, count: 33 }
+  ],
+  // Trigun — original is 3 vols ("Trigun"), continued as "Trigun Maximum"
+  // 14 vols. data.js numbers tomes globally 1-17.
+  140: [
+    { mdId: 'c43bff07-d61d-4fc8-81ea-967817bb3b96', globalStart: 1, localStart: 1, count: 3  },
+    { mdId: '4644da00-8f23-44a8-aa99-e3661dcee901', globalStart: 4, localStart: 1, count: 14 }
+  ],
+  // Boruto — "Naruto Next Generations" 20 vols, then "Two Blue Vortex" starts
+  // its own numbering from vol 1. data.js continues globally from 21.
+  9: [
+    { mdId: '46e530ce-0766-4cbd-b005-5e6fb0ba5e71', globalStart: 1,  localStart: 1, count: 20 },
+    { mdId: '0b094aab-0cfb-4837-a49b-7267bdb86bec', globalStart: 21, localStart: 1, count: 7  }
+  ],
+  // Frieren — auto-search struggled with "Sousou no Frieren" (real title).
+  21: [
+    { mdId: 'b0b721ff-c388-4486-aa0f-c2b0bb321512', globalStart: 1, localStart: 1, count: 15 }
+  ],
+  // Radiant — French original by Tony Valente, listed on MD as lang=fr.
+  136: [
+    { mdId: '8de2456c-95ef-4958-8f27-af7a4cc275b7', globalStart: 1, localStart: 1, count: 19 }
+  ],
+  // Rosario + Vampire — data.js uses Season II numbering (14 vols).
+  132: [
+    { mdId: 'eda269d8-a529-4696-a88e-1e529e4e763f', globalStart: 1, localStart: 1, count: 14 }
   ]
 };
 

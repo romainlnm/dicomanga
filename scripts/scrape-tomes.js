@@ -198,6 +198,11 @@ const MD_OVERRIDES = {
   21: [
     { mdId: 'b0b721ff-c388-4486-aa0f-c2b0bb321512', globalStart: 1, localStart: 1, count: 15 }
   ],
+  // Komi Can't Communicate — main MD entry is only findable via the
+  // Japanese title "Komi-san wa Komyushou Desu.".
+  127: [
+    { mdId: 'a96676e5-8ae2-425e-b549-7f15dd34a6d8', globalStart: 1, localStart: 1, count: 37 }
+  ],
   // Radiant — French original by Tony Valente, listed on MD as lang=fr.
   136: [
     { mdId: '8de2456c-95ef-4958-8f27-af7a4cc275b7', globalStart: 1, localStart: 1, count: 19 }

@@ -2369,6 +2369,48 @@ footer span {
   box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
 }
 
+/* ===== BOUTONS D'ACHAT ===== */
+.achat-link {
+  grid-column: 1 / -1;
+}
+
+.achat-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.achat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.achat-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.achat-btn-amazon {
+  background: linear-gradient(135deg, #ff9900 0%, #e47911 100%);
+}
+.achat-btn-amazon:hover {
+  box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
+}
+
+.achat-btn-fnac {
+  background: linear-gradient(135deg, #c79a00 0%, #8a6d00 100%);
+}
+.achat-btn-fnac:hover {
+  box-shadow: 0 6px 20px rgba(199, 154, 0, 0.45);
+}
+
 /* ===== MODE HORS-LIGNE INDICATOR ===== */
 .offline-indicator {
   position: fixed;

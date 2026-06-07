@@ -242,6 +242,23 @@ function afficherDetailManga(id) {
               </a>
             </div>
           </div>
+          <div class="meta-item achat-link">
+            <span class="meta-label">${currentLang === 'en' ? 'Buy the manga' : 'Acheter le manga'}</span>
+            <div class="achat-btns">
+              ${currentLang === 'en' ? `
+              <a href="https://www.amazon.com/s?k=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-amazon">
+                🛒 Amazon
+              </a>
+              ` : `
+              <a href="https://www.amazon.fr/s?k=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-amazon">
+                🛒 Amazon
+              </a>
+              <a href="https://www.fnac.com/SearchResult/ResultList.aspx?Search=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-fnac">
+                🛒 Fnac
+              </a>
+              `}
+            </div>
+          </div>
         </div>
 
         <!-- Résumé -->

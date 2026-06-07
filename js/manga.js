@@ -1,3 +1,32 @@
+// ===== LIENS D'ACHAT =====
+// Amazon n'accepte que l'ISBN-10 dans ses URLs produit (/dp/…).
+function isbn13to10(isbn13) {
+  if (!/^978\d{10}$/.test(isbn13)) return null;
+  const core = isbn13.slice(3, 12);
+  let sum = 0;
+  for (let i = 0; i < 9; i++) sum += (10 - i) * parseInt(core[i], 10);
+  const check = (11 - (sum % 11)) % 11;
+  return core + (check === 10 ? 'X' : String(check));
+}
+
+// Fiche produit directe quand l'ISBN du tome 1 est connu (js/achats.js),
+// sinon recherche par titre chez le marchand.
+function buildAchatLinks(manga) {
+  if (currentLang === 'en') {
+    return [{ cls: 'amazon', label: 'Amazon', url: `https://www.amazon.com/s?k=${encodeURIComponent(manga.titre + ' manga')}` }];
+  }
+  const isbn = (typeof mangaIsbn !== 'undefined' && mangaIsbn[manga.id]) || null;
+  const isbn10 = isbn ? isbn13to10(isbn) : null;
+  const amazonUrl = isbn10 ? `https://www.amazon.fr/dp/${isbn10}`
+    : isbn ? `https://www.amazon.fr/s?k=${isbn}`
+    : `https://www.amazon.fr/s?k=${encodeURIComponent(manga.titre + ' manga')}`;
+  const fnacUrl = `https://www.fnac.com/SearchResult/ResultList.aspx?Search=${isbn || encodeURIComponent(manga.titre + ' manga')}`;
+  return [
+    { cls: 'amazon', label: 'Amazon', url: amazonUrl },
+    { cls: 'fnac', label: 'Fnac', url: fnacUrl }
+  ];
+}
+
 // ===== CHEMINS D'ASSETS =====
 // Les pages statiques vivent sous /manga/ (et /manga/en/) alors que les
 // chemins d'assets de data.js ("images/…") sont relatifs à la racine du
@@ -245,18 +274,10 @@ function afficherDetailManga(id) {
           <div class="meta-item achat-link">
             <span class="meta-label">${currentLang === 'en' ? 'Buy the manga' : 'Acheter le manga'}</span>
             <div class="achat-btns">
-              ${currentLang === 'en' ? `
-              <a href="https://www.amazon.com/s?k=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-amazon">
-                🛒 Amazon
-              </a>
-              ` : `
-              <a href="https://www.amazon.fr/s?k=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-amazon">
-                🛒 Amazon
-              </a>
-              <a href="https://www.fnac.com/SearchResult/ResultList.aspx?Search=${encodeURIComponent(manga.titre + ' manga')}" target="_blank" rel="noopener" class="achat-btn achat-btn-fnac">
-                🛒 Fnac
-              </a>
-              `}
+              ${buildAchatLinks(manga).map(l => `
+              <a href="${l.url}" target="_blank" rel="noopener" class="achat-btn achat-btn-${l.cls}">
+                🛒 ${l.label}
+              </a>`).join('')}
             </div>
           </div>
         </div>

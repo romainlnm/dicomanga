@@ -29,6 +29,168 @@
   --gradient-card: linear-gradient(145deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0) 100%);
 }
 
+/* Néon Tokyo — bleu nuit, cyan et violet électriques */
+[data-theme="neon"] {
+  --bg-primary: #070b21;
+  --bg-secondary: #0c1130;
+  --bg-card: #101638;
+  --bg-glass: rgba(16, 22, 56, 0.85);
+  --text-primary: #eaf6ff;
+  --text-secondary: #8fa3c8;
+  --accent: #00e5ff;
+  --accent-rgb: 0, 229, 255;
+  --accent-hover: #7c4dff;
+  --accent-glow: rgba(0, 229, 255, 0.45);
+  --border: #1d2657;
+  --shadow: rgba(2, 6, 30, 0.7);
+  --gradient-accent: linear-gradient(135deg, #7c4dff 0%, #00e5ff 60%, #18ffff 100%);
+  --gradient-card: linear-gradient(145deg, rgba(124,77,255,0.08) 0%, rgba(0,229,255,0.03) 100%);
+}
+
+[data-theme="neon"] body {
+  background-image:
+    radial-gradient(ellipse at top left, rgba(124, 77, 255, 0.16) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(0, 229, 255, 0.12) 0%, transparent 50%);
+}
+
+/* Librairie japonaise — papier crème, rouge torii, encre */
+[data-theme="washi"] {
+  --bg-primary: #f6f1e4;
+  --bg-secondary: #fffdf6;
+  --bg-card: #fffdf6;
+  --bg-glass: rgba(255, 253, 246, 0.88);
+  --text-primary: #2b2620;
+  --text-secondary: #7a6f5d;
+  --accent: #c0392f;
+  --accent-rgb: 192, 57, 47;
+  --accent-hover: #a32d24;
+  --accent-glow: rgba(192, 57, 47, 0.25);
+  --border: #e6dcc4;
+  --shadow: rgba(95, 75, 45, 0.18);
+  --gradient-accent: linear-gradient(135deg, #c0392f 0%, #e0703f 100%);
+  --gradient-card: linear-gradient(145deg, rgba(95,75,45,0.04) 0%, rgba(95,75,45,0) 100%);
+}
+
+[data-theme="washi"] body {
+  background-image:
+    radial-gradient(ellipse at top left, rgba(192, 57, 47, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(224, 112, 63, 0.05) 0%, transparent 50%);
+}
+
+/* Verre dépoli — sombre + rouge actuel, cartes translucides floutées */
+[data-theme="glass"] {
+  --bg-primary: #0d0f1d;
+  --bg-secondary: #141729;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --bg-glass: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #a8b0c8;
+  --border: rgba(255, 255, 255, 0.14);
+  --shadow: rgba(0, 0, 0, 0.55);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+[data-theme="glass"] body {
+  background-image:
+    radial-gradient(ellipse at 15% 10%, rgba(var(--accent-rgb), 0.22) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 25%, rgba(247, 37, 133, 0.16) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(63, 81, 181, 0.18) 0%, transparent 50%);
+}
+
+[data-theme="glass"] header,
+[data-theme="glass"] .manga-card,
+[data-theme="glass"] .manga-section,
+[data-theme="glass"] .modal-content,
+[data-theme="glass"] .stat-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Magazine minimal — noir & blanc strict, les couvertures font la couleur */
+[data-theme="mono"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --text-primary: #0a0a0a;
+  --text-secondary: #595959;
+  --accent: #0a0a0a;
+  --accent-rgb: 10, 10, 10;
+  --accent-hover: #3a3a3a;
+  --accent-glow: rgba(0, 0, 0, 0.15);
+  --border: #0a0a0a;
+  --shadow: rgba(0, 0, 0, 0.12);
+  --gradient-accent: linear-gradient(135deg, #0a0a0a 0%, #3a3a3a 100%);
+  --gradient-card: none;
+}
+
+[data-theme="mono"] body {
+  background-image: none;
+}
+
+[data-theme="mono"] * {
+  border-radius: 0 !important;
+}
+
+[data-theme="mono"] header {
+  background: #ffffff;
+  border-bottom: 2px solid #0a0a0a;
+}
+
+[data-theme="washi"] header {
+  background: linear-gradient(180deg, rgba(192, 57, 47, 0.85) 0%, var(--bg-primary) 100%);
+}
+
+[data-theme="washi"] .logo-img,
+[data-theme="mono"] .logo-img {
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+/* ===== MENU DES THÈMES ===== */
+.theme-menu {
+  position: fixed;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  min-width: 185px;
+  padding: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px var(--shadow);
+  animation: fadeInUp 0.18s ease;
+}
+
+.theme-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  border-radius: 9px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.theme-menu-item:hover {
+  background: rgba(var(--accent-rgb), 0.12);
+}
+
+.theme-menu-item.active {
+  background: rgba(var(--accent-rgb), 0.18);
+  color: var(--accent);
+}
+
+[data-theme="mono"] .theme-menu-item.active {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
 /* ===== RESET & BASE ===== */
 * {
   margin: 0;
@@ -43,14 +205,14 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   background-image:
-    radial-gradient(ellipse at top left, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at top left, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at bottom right, rgba(247, 37, 133, 0.06) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
 [data-theme="light"] body {
   background-image:
-    radial-gradient(ellipse at top left, rgba(230, 57, 70, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at top left, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at bottom right, rgba(247, 37, 133, 0.04) 0%, transparent 50%);
 }
 
@@ -469,7 +631,9 @@ main.animate-in {
   animation: shimmer 1.5s infinite ease-in-out;
 }
 
-[data-theme="light"] .skeleton {
+[data-theme="light"] .skeleton,
+[data-theme="washi"] .skeleton,
+[data-theme="mono"] .skeleton {
   background: linear-gradient(
     90deg,
     #e0e0e0 0%,
@@ -500,7 +664,9 @@ main.animate-in {
   animation: shimmer 1.5s infinite ease-in-out;
 }
 
-[data-theme="light"] .skeleton-cover {
+[data-theme="light"] .skeleton-cover,
+[data-theme="washi"] .skeleton-cover,
+[data-theme="mono"] .skeleton-cover {
   background: linear-gradient(
     90deg,
     #d0d0d0 0%,
@@ -554,7 +720,9 @@ main.animate-in {
   margin-top: 5px;
 }
 
-[data-theme="light"] .skeleton-text {
+[data-theme="light"] .skeleton-text,
+[data-theme="washi"] .skeleton-text,
+[data-theme="mono"] .skeleton-text {
   background: linear-gradient(
     90deg,
     #d0d0d0 0%,
@@ -624,7 +792,7 @@ header {
   width: 90px;
   height: 90px;
   transform: translateY(-50%);
-  background: radial-gradient(circle at center, var(--accent-glow, rgba(230, 57, 70, 0.25)) 0%, transparent 65%);
+  background: radial-gradient(circle at center, var(--accent-glow, rgba(var(--accent-rgb), 0.25)) 0%, transparent 65%);
   opacity: 0.45;
   filter: blur(2px);
   z-index: -1;
@@ -660,7 +828,7 @@ header {
   filter:
     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25))
     drop-shadow(0 0 12px rgba(255, 255, 255, 0.18))
-    drop-shadow(0 0 22px var(--accent-glow, rgba(230, 57, 70, 0.18)));
+    drop-shadow(0 0 22px var(--accent-glow, rgba(var(--accent-rgb), 0.18)));
   animation: logoFloat 4.5s ease-in-out infinite;
 }
 
@@ -674,7 +842,7 @@ header {
   filter:
     drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
     drop-shadow(0 0 18px rgba(255, 255, 255, 0.25))
-    drop-shadow(0 0 32px var(--accent-glow, rgba(230, 57, 70, 0.45)));
+    drop-shadow(0 0 32px var(--accent-glow, rgba(var(--accent-rgb), 0.45)));
   animation-play-state: paused;
 }
 
@@ -787,7 +955,7 @@ header {
 .search-bar:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.15), 0 0 30px rgba(230, 57, 70, 0.2);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15), 0 0 30px rgba(var(--accent-rgb), 0.2);
   transform: scale(1.02);
 }
 
@@ -832,8 +1000,8 @@ header {
 }
 
 .voice-search-btn.listening {
-  background: #e63946;
-  border-color: #e63946;
+  background: var(--accent);
+  border-color: var(--accent);
   animation: pulse-listening 1s ease-in-out infinite;
 }
 
@@ -843,10 +1011,10 @@ header {
 
 @keyframes pulse-listening {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.7);
   }
   50% {
-    box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
+    box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0);
   }
 }
 
@@ -1080,7 +1248,7 @@ main.loaded {
 }
 
 .alphabet-btn:hover {
-  background: rgba(230, 57, 70, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
   color: var(--accent);
   transform: scale(1.1);
 }
@@ -1160,7 +1328,7 @@ main.loaded {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(230, 57, 70, 0.1) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(var(--accent-rgb), 0.1) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
@@ -1187,8 +1355,8 @@ main.loaded {
 .manga-card[data-genre="Shojo"] { border-color: #ff69b4; }
 .manga-card[data-genre="Shojo"]:hover { box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3); }
 
-.manga-card[data-genre="Action"] { border-color: #e63946; }
-.manga-card[data-genre="Action"]:hover { box-shadow: 0 20px 40px rgba(230, 57, 70, 0.3); }
+.manga-card[data-genre="Action"] { border-color: var(--accent); }
+.manga-card[data-genre="Action"]:hover { box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.3); }
 
 .manga-card[data-genre="Aventure"] { border-color: #2ec4b6; }
 .manga-card[data-genre="Aventure"]:hover { box-shadow: 0 20px 40px rgba(46, 196, 182, 0.3); }
@@ -1266,7 +1434,7 @@ main.loaded {
 .genre-tag[data-genre="Shonen"] { color: #ff6b35; }
 .genre-tag[data-genre="Seinen"] { color: #4a90d9; }
 .genre-tag[data-genre="Shojo"] { color: #ff69b4; }
-.genre-tag[data-genre="Action"] { color: #e63946; }
+.genre-tag[data-genre="Action"] { color: var(--accent); }
 .genre-tag[data-genre="Aventure"] { color: #2ec4b6; }
 .genre-tag[data-genre="Comédie"] { color: #ffd166; }
 .genre-tag[data-genre="Romance"] { color: #ef476f; }
@@ -1282,7 +1450,7 @@ main.loaded {
 .genre-tag[data-genre="Tranche de vie"] { color: #80b918; }
 .genre-tag[data-genre="Arts martiaux"] { color: #d62828; }
 .genre-tag[data-genre="Historique"] { color: #bc6c25; }
-.genre-tag[data-genre="Musique"] { color: #f72585; }
+.genre-tag[data-genre="Musique"] { color: var(--accent-hover); }
 
 .manga-rating {
   display: flex;
@@ -1496,7 +1664,7 @@ main.loaded {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(230, 57, 70, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.1) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -1519,7 +1687,7 @@ main.loaded {
   object-position: center;
   margin-bottom: 15px;
   border: 3px solid var(--accent);
-  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
   background-color: var(--bg-secondary);
 }
 
@@ -1529,7 +1697,7 @@ main.loaded {
   border-radius: 50%;
   margin-bottom: 15px;
   border: 3px solid var(--accent);
-  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
   background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
   display: flex;
   align-items: center;
@@ -1553,7 +1721,7 @@ main.loaded {
 
 /* ===== AVIS / NOTE ===== */
 .review-section {
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(230, 57, 70, 0.1) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(var(--accent-rgb), 0.1) 100%);
   border-image: none;
   border-left: 4px solid var(--accent);
 }
@@ -2085,7 +2253,7 @@ footer span {
 #favoritesModal .modal-header,
 #alireModal .modal-header {
   position: relative;
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(230, 57, 70, 0.08) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(var(--accent-rgb), 0.08) 100%);
   border-bottom: 1px solid var(--border);
   padding: 22px 24px;
 }
@@ -2107,7 +2275,7 @@ footer span {
   font-weight: 800;
   color: var(--accent);
   letter-spacing: -0.3px;
-  text-shadow: 0 2px 12px var(--accent-glow, rgba(230, 57, 70, 0.35));
+  text-shadow: 0 2px 12px var(--accent-glow, rgba(var(--accent-rgb), 0.35));
 }
 
 #favoritesGrid,
@@ -2356,10 +2524,10 @@ footer span {
 }
 
 .anime-btn-hianime {
-  background: linear-gradient(135deg, #ff7a59 0%, #e63946 100%);
+  background: linear-gradient(135deg, #ff7a59 0%, var(--accent) 100%);
 }
 .anime-btn-hianime:hover {
-  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.45);
 }
 
 .anime-btn-franime {
@@ -3032,7 +3200,7 @@ footer span {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.2), transparent);
   transition: left 0.5s ease;
 }
 
@@ -3282,7 +3450,7 @@ footer span {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(230, 57, 70, 0.15) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.15) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -4097,9 +4265,9 @@ footer span {
   inset: -2px;
   background: conic-gradient(
     from 0deg,
-    #e63946, #e91e63, #ff6b35, #ffc107,
+    var(--accent), #e91e63, #ff6b35, #ffc107,
     #28a745, #20c997, #17a2b8, #4a90d9,
-    #9b5de5, #7c3aed, #e63946
+    #9b5de5, #7c3aed, var(--accent)
   );
   border-radius: 50%;
   z-index: -1;
@@ -4319,7 +4487,7 @@ footer span {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(230, 57, 70, 0.05) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(var(--accent-rgb), 0.05) 100%);
   pointer-events: none;
 }
 
@@ -4701,7 +4869,7 @@ footer span {
 }
 
 .toast-error {
-  border-left: 4px solid #e63946;
+  border-left: 4px solid var(--accent);
 }
 
 /* ===== NOTATION PERSONNELLE ===== */
@@ -5893,15 +6061,17 @@ footer span {
 
 /* ===== FUZZY SEARCH HIGHLIGHTING ===== */
 .search-highlight {
-  background: rgba(230, 57, 70, 0.3);
+  background: rgba(var(--accent-rgb), 0.3);
   color: var(--accent);
   font-weight: 600;
   padding: 0 2px;
   border-radius: 3px;
 }
 
-[data-theme="light"] .search-highlight {
-  background: rgba(230, 57, 70, 0.2);
+[data-theme="light"] .search-highlight,
+[data-theme="washi"] .search-highlight,
+[data-theme="mono"] .search-highlight {
+  background: rgba(var(--accent-rgb), 0.2);
 }
 
 /* ===== STATS WIDGET (Homepage) ===== */
@@ -6328,7 +6498,7 @@ footer span {
 
 .list-option.in-list {
   border-color: var(--accent);
-  background: rgba(230, 57, 70, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
 }
 
 .list-option-check {
@@ -6378,7 +6548,7 @@ footer span {
 
 .filters-toggle:hover {
   border-color: var(--accent);
-  background: rgba(230, 57, 70, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
 }
 
 .filters-label {
@@ -6435,7 +6605,7 @@ footer span {
 
 .filters-close:hover {
   color: var(--accent);
-  background: rgba(230, 57, 70, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
 }
 
 .filters-grid {

@@ -53,24 +53,11 @@
     <p class="footer-credit"><a href="privacy.html" data-i18n="privacyPolicy">Politique de confidentialité</a></p>
   </footer>
 
+  <script src="js/theme.js"></script>
   <script src="js/data.js"></script>
   <script src="js/manga-slugs.js"></script>
   <script src="js/calendar-2026.js"></script>
   <script src="js/calendar.js"></script>
-  <script>
-    // Reuse the theme toggle from app.js without loading the whole app:
-    function toggleTheme() {
-      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-      const next = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      document.getElementById('themeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
-    }
-    (function initTheme() {
-      const saved = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-      document.getElementById('themeIcon').textContent = saved === 'dark' ? '☀️' : '🌙';
-    })();
-  </script>
+  <!-- Thème : voir js/theme.js -->
 </body>
 </html>

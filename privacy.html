@@ -311,21 +311,8 @@
     <p class="footer-credit"><a href="privacy.html" data-i18n="privacyPolicy">Politique de confidentialité</a></p>
   </footer>
 
+  <script src="js/theme.js"></script>
   <script>
-    // Theme toggle (light/dark) — réplique minimale de app.js
-    (function() {
-      const saved = localStorage.getItem('theme') || 'dark';
-      document.body.classList.toggle('light-mode', saved === 'light');
-      const icon = document.getElementById('themeIcon');
-      if (icon) icon.textContent = saved === 'light' ? '🌙' : '☀️';
-    })();
-    function toggleTheme() {
-      const isLight = document.body.classList.toggle('light-mode');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      const icon = document.getElementById('themeIcon');
-      if (icon) icon.textContent = isLight ? '🌙' : '☀️';
-    }
-
     // Language toggle : switch entre les blocs FR/EN
     function applyPrivacyLang(lang) {
       document.querySelectorAll('[data-lang-block]').forEach(el => {

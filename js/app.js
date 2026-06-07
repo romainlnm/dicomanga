@@ -5,36 +5,9 @@ if (typeof mangaUrl !== 'function') {
 }
 
 // ===== THEME =====
-function initTheme() {
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-}
+// Géré par js/theme.js (sélecteur multi-thèmes partagé par toutes les pages)
 
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
-}
-
-function updateThemeIcon(theme) {
-  const icon = document.getElementById('themeIcon');
-  if (icon) {
-    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-  }
-}
-
-// Initialiser le thème immédiatement
-initTheme();
-
-// Initialiser le thème de couleur immédiatement
-(function() {
-  const savedColor = localStorage.getItem('colorTheme') || 'red';
-  document.documentElement.setAttribute('data-color', savedColor);
-})();
+// Le thème de couleur (data-color) est posé par js/theme.js au chargement
 
 // ===== VARIABLES GLOBALES =====
 let genreActif = 'Tous';
@@ -2110,6 +2083,10 @@ function applyTranslations() {
 
 // ===== THÈME DE COULEUR =====
 function initColorTheme() {
+  // Les thèmes stylés (néon, librairie…) imposent leur propre accent : le
+  // studio de couleurs ne s'applique qu'aux thèmes Sombre/Clair (js/theme.js).
+  const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+  if (theme !== 'dark' && theme !== 'light') return;
   const savedColor = localStorage.getItem('colorTheme') || 'red';
   setColorTheme(savedColor, false);
 }

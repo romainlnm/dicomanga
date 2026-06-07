@@ -208,11 +208,13 @@ function renderComments(comments, profiles) {
   list.innerHTML = comments.map(c => {
     const p = profiles[c.user_id] || {};
     const username = p.username || '?';
-    const avatar = p.avatar_url || (p.avatar ? `images/avatars/avatar${p.avatar}.svg` : 'images/avatars/avatar1.svg');
+    // Depuis les pages statiques /manga/…, les chemins racine doivent être absolus.
+    const avatarRoot = location.pathname.startsWith('/manga/') ? '/' : '';
+    const avatar = p.avatar_url || `${avatarRoot}images/avatars/avatar${p.avatar || 1}.svg`;
     const isMine = c.user_id === myId;
     return `
       <div class="comment-item" data-comment-id="${c.id}">
-        <img class="comment-avatar" src="${escapeHtml(avatar)}" alt="${escapeHtml(username)}" onerror="this.src='images/avatars/avatar1.svg'">
+        <img class="comment-avatar" src="${escapeHtml(avatar)}" alt="${escapeHtml(username)}" onerror="this.src='${avatarRoot}images/avatars/avatar1.svg'">
         <div class="comment-body">
           <div class="comment-head">
             <span class="comment-author">${escapeHtml(username)}</span>

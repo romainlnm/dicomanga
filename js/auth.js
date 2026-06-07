@@ -476,10 +476,9 @@ const avatarList = [
 
 function getAvatarUrl(avatarId) {
   const id = parseInt(avatarId) || 1;
-  if (id >= 1 && id <= avatarList.length) {
-    return avatarList[id - 1];
-  }
-  return avatarList[0];
+  const path = (id >= 1 && id <= avatarList.length) ? avatarList[id - 1] : avatarList[0];
+  // Depuis les pages statiques /manga/…, les chemins racine doivent être absolus.
+  return location.pathname.startsWith('/manga/') ? '/' + path : path;
 }
 
 function updateAuthUI(isLoggedIn) {

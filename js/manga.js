@@ -282,7 +282,7 @@ function afficherDetailManga(id) {
             ${getMangaCharacters(manga).map(perso => `
               <div class="character-card">
                 ${perso.image
-                  ? `<img src="${perso.image}" alt="${perso.nom}" class="character-img" onerror="this.style.display='none'">`
+                  ? `<img src="${assetUrl(perso.image)}" alt="${perso.nom}" class="character-img" onerror="this.style.display='none'">`
                   : ``
                 }
                 <h3 class="character-name">${perso.nom}</h3>

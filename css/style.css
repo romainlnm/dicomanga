@@ -1683,8 +1683,8 @@ main.loaded {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center top;
   margin-bottom: 15px;
   border: 3px solid var(--accent);
   box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);

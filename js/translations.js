@@ -1940,7 +1940,11 @@ function getMangaCharacters(manga) {
 
   const translation = mangaTranslations[lang]?.[manga.id];
   if (translation && translation.personnages) {
-    return translation.personnages;
+    // Les traductions ne portent pas les images : on les récupère depuis les données FR par index.
+    return translation.personnages.map((perso, i) => ({
+      ...perso,
+      image: perso.image || manga.personnages?.[i]?.image
+    }));
   }
 
   return manga.personnages;

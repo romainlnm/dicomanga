@@ -56,6 +56,9 @@ const translations = {
     compare: "Comparaison",
     recentlyViewed: "Récemment consultés",
     latestReleases: "Dernières sorties",
+    heroSubtitle: "Découvre, note et suis tes mangas préférés",
+    heroExplore: "Explorer la bibliothèque",
+    heroFind: "Trouver mon manga",
     library: "Bibliothèque",
     mangaOfDay: "Manga du jour",
     volumes: "volumes",
@@ -111,6 +114,9 @@ const translations = {
     manga: "manga",
     mangaPlural: "mangas",
     themeStudio: "Studio couleurs",
+    settings: "Réglages",
+    themeLabel: "Thème",
+    languageLabel: "Langue",
     accentColor: "Couleur d'accent",
     bgColor: "Couleur de fond",
     apply: "Appliquer",
@@ -204,6 +210,9 @@ const translations = {
     compare: "Compare",
     recentlyViewed: "Recently viewed",
     latestReleases: "Latest releases",
+    heroSubtitle: "Discover, rate and track your favorite manga",
+    heroExplore: "Explore the library",
+    heroFind: "Find my manga",
     library: "Library",
     mangaOfDay: "Manga of the day",
     volumes: "volumes",
@@ -259,6 +268,9 @@ const translations = {
     manga: "manga",
     mangaPlural: "manga",
     themeStudio: "Color studio",
+    settings: "Settings",
+    themeLabel: "Theme",
+    languageLabel: "Language",
     accentColor: "Accent color",
     bgColor: "Background color",
     apply: "Apply",
@@ -352,6 +364,9 @@ const translations = {
     compare: "Comparar",
     recentlyViewed: "Vistos recientemente",
     latestReleases: "Últimos lanzamientos",
+    heroSubtitle: "Descubre, califica y sigue tus mangas favoritos",
+    heroExplore: "Explorar la biblioteca",
+    heroFind: "Encontrar mi manga",
     library: "Biblioteca",
     mangaOfDay: "Manga del día",
     volumes: "tomos",
@@ -398,6 +413,9 @@ const translations = {
     manga: "manga",
     mangaPlural: "manga",
     themeStudio: "Estudio de colores",
+    settings: "Ajustes",
+    themeLabel: "Tema",
+    languageLabel: "Idioma",
     accentColor: "Color de acento",
     bgColor: "Color de fondo",
     apply: "Aplicar",
@@ -457,6 +475,9 @@ const translations = {
     compare: "比較",
     recentlyViewed: "最近見た作品",
     latestReleases: "最新リリース",
+    heroSubtitle: "お気に入りの漫画を発見・評価・フォロー",
+    heroExplore: "ライブラリを見る",
+    heroFind: "自分の漫画を探す",
     library: "ライブラリ",
     mangaOfDay: "今日の漫画",
     volumes: "巻",
@@ -503,6 +524,9 @@ const translations = {
     manga: "作品",
     mangaPlural: "作品",
     themeStudio: "カラースタジオ",
+    settings: "設定",
+    themeLabel: "テーマ",
+    languageLabel: "言語",
     accentColor: "アクセントカラー",
     bgColor: "背景色",
     apply: "適用",
@@ -621,6 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
   restaurerPosition();
   afficherFavoris();
   afficherALire();
+  renderHeroCollage();
   afficherActualites();
   afficherMangaDuJour();
   afficherHistorique();
@@ -636,8 +661,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initFont();
   loadCustomTheme();
   afficherClassement('all');
+  initClassementIndicator();
   initRecommandations();
 });
+
+// ===== HERO =====
+// Remplit le fond du hero avec un collage de couvertures existantes (assets locaux),
+// réparties sur toute la bibliothèque pour la variété. Fond décoratif : blur + overlay.
+function renderHeroCollage() {
+  const el = document.getElementById('heroCollage');
+  if (!el) return;
+  const covers = mangas.map(m => m.couverture).filter(Boolean);
+  if (!covers.length) return;
+  const N = 40; // assez pour couvrir les grands écrans
+  const step = Math.max(1, Math.floor(covers.length / N));
+  const picked = [];
+  for (let i = 0; i < covers.length && picked.length < N; i += step) picked.push(covers[i]);
+  let i = 0;
+  while (picked.length < N) picked.push(covers[i++ % covers.length]);
+  el.innerHTML = picked
+    .map(src => `<img src="${src}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'">`)
+    .join('');
+}
+
+// CTA hero : défilement doux vers la bibliothèque
+function heroExplorer() {
+  const grid = document.getElementById('mangaGrid');
+  const target = document.querySelector('.content-with-sidebar') || grid;
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 // ===== SAUVEGARDE ET RESTAURATION DE LA POSITION =====
 function sauvegarderPosition() {
@@ -752,6 +804,13 @@ function afficherMangas(listMangas) {
 
       const hasTwoCovers = manga.statut === 'Terminé' && manga.couvertureLast;
 
+      // Statut (pastille) + libellé traduit
+      const isOngoing = /en cours/i.test(manga.statut || '');
+      const statutLabel = currentLang === 'en' ? (isOngoing ? 'Ongoing' : 'Completed')
+        : currentLang === 'es' ? (isOngoing ? 'En curso' : 'Finalizado')
+        : currentLang === 'ja' ? (isOngoing ? '連載中' : '完結')
+        : (isOngoing ? 'En cours' : 'Terminé');
+
       return `
       <div class="manga-card ${modeComparaison ? 'compare-mode' : ''}" data-genre="${manga.genre[0]}" data-index="${index}" data-id="${manga.id}" onclick="${modeComparaison ? '' : 'allerVersManga(' + manga.id + ')'}">
         ${modeComparaison ? `
@@ -759,6 +818,8 @@ function afficherMangas(listMangas) {
             <span>✓</span>
           </div>
         ` : ''}
+        ${!modeComparaison ? `<span class="card-genre-badge" data-genre="${manga.genre[0]}">${manga.genre[0]}</span>` : ''}
+        ${manga.statut ? `<span class="card-status ${isOngoing ? 'ongoing' : 'completed'}"><span class="card-status-dot"></span>${statutLabel}</span>` : ''}
         ${hasTwoCovers ? `
           <div class="cover-slider">
             <div class="cover-slider-inner" id="slider-${manga.id}">
@@ -815,6 +876,7 @@ function setupRecherche() {
 // Masquer/afficher les sections selon si une recherche est active
 function toggleSectionsOnSearch(searchTerm) {
   const sectionsToHide = [
+    'heroSection',
     'mangaDuJourSection',
     'statsWidgetSection',
     'actualitesSection',
@@ -1618,6 +1680,26 @@ document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
   const group = document.getElementById('collectionGroup');
   if (group) group.classList.remove('open');
+});
+
+// ===== MENU RÉGLAGES (apparence : thème / langue / studio couleurs) =====
+function toggleSettingsMenu(event) {
+  if (event) event.stopPropagation();
+  const wrap = document.getElementById('settingsWrapper');
+  if (wrap) wrap.classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('settingsWrapper');
+  if (!wrap || !wrap.classList.contains('open')) return;
+  // Ne pas fermer si on interagit avec le sous-menu thème (rendu au niveau body)
+  const themeMenu = document.getElementById('themeMenu');
+  if (wrap.contains(e.target) || (themeMenu && themeMenu.contains(e.target))) return;
+  wrap.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const wrap = document.getElementById('settingsWrapper');
+  if (wrap) wrap.classList.remove('open');
 });
 
 // ===== SYSTEME DE COMPARAISON =====
@@ -2813,6 +2895,28 @@ function loadCustomTheme() {
 }
 
 // ===== CLASSEMENTS =====
+// Déplace la barre indicatrice sous l'onglet actif (Top Mangas)
+function moveClassementIndicator() {
+  const tabs = document.getElementById('classementsTabs');
+  const indicator = document.getElementById('classementIndicator');
+  if (!tabs || !indicator) return;
+  const active = tabs.querySelector('.classement-tab.active');
+  if (!active || active.offsetWidth === 0) return;
+  indicator.style.width = active.offsetWidth + 'px';
+  indicator.style.transform = `translateX(${active.offsetLeft}px)`;
+}
+
+// Repositionne l'indicateur au 1er rendu, au resize et quand la section réapparaît
+function initClassementIndicator() {
+  const tabs = document.getElementById('classementsTabs');
+  if (!tabs) return;
+  moveClassementIndicator();
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => moveClassementIndicator()).observe(tabs);
+  }
+  window.addEventListener('resize', moveClassementIndicator);
+}
+
 function afficherClassement(category = 'all') {
   const grid = document.getElementById('classementGrid');
   const tabs = document.querySelectorAll('.classement-tab');
@@ -2823,6 +2927,7 @@ function afficherClassement(category = 'all') {
   tabs.forEach(tab => {
     tab.classList.toggle('active', tab.dataset.category === category);
   });
+  moveClassementIndicator();
 
   let mangasTries = [...mangas];
 

@@ -22,13 +22,26 @@
           <span>Un dictionnaire de mangas</span>
         </a>
         <div class="theme-controls">
-          <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-            <span id="themeIcon">☀️</span>
-          </button>
-          <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
-            <span id="langIcon">FR</span>
-          </button>
-          <div class="theme-studio-wrapper">
+          <div class="settings-wrapper" id="settingsWrapper">
+            <button class="settings-btn" id="settingsBtn" onclick="toggleSettingsMenu(event)" title="Réglages" data-i18n-title="settings">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+            </button>
+            <div class="settings-menu" id="settingsMenu">
+              <div class="settings-row">
+                <span class="settings-row-label" data-i18n="themeLabel">Thème</span>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                  <span id="themeIcon">☀️</span>
+                </button>
+              </div>
+              <div class="settings-row">
+                <span class="settings-row-label" data-i18n="languageLabel">Langue</span>
+                <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
+                  <span id="langIcon">FR</span>
+                </button>
+              </div>
+              <div class="settings-row settings-row-studio">
+                <span class="settings-row-label" data-i18n="themeStudio">Studio couleurs</span>
+                <div class="theme-studio-wrapper">
             <button class="theme-studio-btn" id="themeStudioBtn" onclick="toggleThemeStudio()" title="Personnaliser les couleurs">
               <svg class="theme-studio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
@@ -75,12 +88,15 @@
               </div>
             </div>
           </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="search-container">
         <input type="text" class="search-bar" id="searchInput" placeholder="Rechercher un manga, auteur, genre...">
         <button class="voice-search-btn" id="voiceSearchBtn" onclick="toggleVoiceSearch()" title="Recherche vocale">
-          <span class="voice-icon">🎤</span>
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
         </button>
       </div>
       <div class="dropdown" id="genreDropdown">
@@ -93,33 +109,33 @@
         </div>
       </div>
       <button class="filters-toggle" onclick="toggleAdvancedFilters()" title="Filtres avancés">
-        <span>🔍</span>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></svg>
         <span class="filters-label" data-i18n="advancedFilters">Filtres</span>
       </button>
       <div class="collection-group" id="collectionGroup">
         <button class="collection-toggle" onclick="toggleCollectionMenu(event)" data-i18n-title="collection" title="Ma collection">
-          <span>📂</span>
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
           <span class="collection-label" data-i18n="collection">Collection</span>
           <span class="collection-total" id="collectionTotal">0</span>
           <span class="collection-arrow">▼</span>
         </button>
         <div class="collection-menu" id="collectionMenu">
           <button class="alire-toggle" onclick="ouvrirALire()">
-            <span>📚</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
             <span class="collection-item-label" data-i18n="toRead">Ma Liste À lire</span>
             <span class="alire-count" id="alireCount">0</span>
           </button>
           <button class="favorites-toggle" onclick="ouvrirFavoris()">
-            <span>★</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <span class="collection-item-label" data-i18n="favorites">Favoris</span>
             <span class="fav-count" id="favCount">0</span>
           </button>
           <button class="compare-toggle" onclick="toggleModeComparaison()">
-            <span>⚖️</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
             <span id="compareText" data-i18n="compareBtn">Comparer</span>
           </button>
           <button class="lists-toggle" onclick="ouvrirCustomLists()">
-            <span>📋</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
             <span class="collection-item-label" data-i18n="customLists">Mes listes</span>
             <span class="lists-count" id="customListsCount">0</span>
           </button>
@@ -128,14 +144,14 @@
 
       <!-- Chat Button (visible si connecté) -->
       <button class="chat-toggle" id="chatBtn" onclick="ouvrirChatModal()" title="Messages" data-i18n-title="chatMessages" style="display: none;">
-        <span>💬</span>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
         <span class="chat-unread-badge" id="chatUnreadBadge" style="display: none;">0</span>
       </button>
 
       <!-- Auth Button -->
       <div class="auth-container">
         <button class="auth-btn" id="authBtn" onclick="ouvrirAuthModal()">
-          <span class="auth-icon">👤</span>
+          <svg class="nav-icon auth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span class="auth-text" data-i18n="signIn">Connexion</span>
         </button>
         <div class="user-menu" id="userMenu" style="display: none;">
@@ -161,6 +177,26 @@
   </header>
 
   <main>
+    <!-- Hero -->
+    <section class="hero" id="heroSection">
+      <div class="hero-collage" id="heroCollage" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-title"><span class="hero-title-dico">DICO</span><span class="hero-title-dot">.</span><span class="hero-title-manga">MANGA</span></h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Découvre, note et suis tes mangas préférés</p>
+        <div class="hero-actions">
+          <button class="hero-cta hero-cta-primary" onclick="heroExplorer()">
+            <span data-i18n="heroExplore">Explorer la bibliothèque</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <button class="hero-cta hero-cta-secondary" onclick="ouvrirQuiz()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <span data-i18n="heroFind">Trouver mon manga</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Manga du jour -->
     <section class="manga-du-jour" id="mangaDuJourSection">
       <div class="mdj-badge" data-i18n="mangaOfDay">Manga du jour</div>
@@ -238,6 +274,7 @@
         <button class="classement-tab" data-category="shojo" onclick="afficherClassement('shojo')">Shojo</button>
         <button class="classement-tab" data-category="action" onclick="afficherClassement('action')">Action</button>
         <button class="classement-tab" data-category="recent" onclick="afficherClassement('recent')">Plus récents</button>
+        <span class="classement-tab-indicator" id="classementIndicator" aria-hidden="true"></span>
       </div>
       <div class="classement-grid" id="classementGrid">
         <!-- Généré par JS -->

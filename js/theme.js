@@ -5,17 +5,27 @@
 // Les palettes vivent dans css/style.css ([data-theme="…"]).
 
 const THEMES = [
-  { id: 'dark',  icon: '🌙', fr: 'Sombre',        en: 'Dark' },
-  { id: 'light', icon: '☀️', fr: 'Clair',         en: 'Light' },
-  { id: 'neon',  icon: '🌃', fr: 'Néon Tokyo',    en: 'Neon Tokyo' },
-  { id: 'washi', icon: '🏮', fr: 'Librairie',     en: 'Bookstore' },
-  { id: 'glass', icon: '🧊', fr: 'Verre dépoli',  en: 'Frosted glass' },
-  { id: 'mono',  icon: '📰', fr: 'Magazine',      en: 'Magazine' }
+  { id: 'dark',       icon: '🌙', fr: 'Sombre',        en: 'Dark' },
+  { id: 'light',      icon: '☀️', fr: 'Clair',         en: 'Light' },
+  { id: 'neon',       icon: '🌃', fr: 'Néon Tokyo',    en: 'Neon Tokyo' },
+  { id: 'washi',      icon: '🏮', fr: 'Librairie',     en: 'Bookstore' },
+  { id: 'glass',      icon: '🧊', fr: 'Verre dépoli',  en: 'Frosted glass' },
+  { id: 'mono',       icon: '📰', fr: 'Magazine',      en: 'Magazine' },
+  { id: 'sakura',     icon: '🌸', fr: 'Sakura',        en: 'Sakura' },
+  { id: 'ocean',      icon: '🌊', fr: 'Océan',         en: 'Ocean' },
+  { id: 'foret',      icon: '🌲', fr: 'Forêt',         en: 'Forest' },
+  { id: 'crepuscule', icon: '🌆', fr: 'Crépuscule',    en: 'Sunset' },
+  { id: 'terminal',   icon: '👾', fr: 'Terminal',      en: 'Terminal' },
+  { id: 'retro',      icon: '📺', fr: 'Rétro 70s',     en: 'Retro 70s' },
+  { id: 'encre',      icon: '🖋️', fr: 'Encre',         en: 'Ink' },
+  { id: 'cafe',       icon: '☕', fr: 'Café',          en: 'Coffee' },
+  { id: 'arctique',   icon: '❄️', fr: 'Arctique',      en: 'Arctic' },
+  { id: 'royal',      icon: '👑', fr: 'Royal',         en: 'Royal' }
 ];
 
 // Thèmes à fond clair : certains styles historiques (privacy.html) utilisent
 // la classe body.light-mode, on la maintient pour eux.
-const LIGHT_THEMES = ['light', 'washi', 'mono'];
+const LIGHT_THEMES = ['light', 'washi', 'mono', 'sakura', 'retro', 'arctique'];
 
 function applyTheme(id) {
   document.documentElement.setAttribute('data-theme', id);

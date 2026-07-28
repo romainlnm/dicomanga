@@ -823,8 +823,8 @@ function afficherMangas(listMangas) {
         ${hasTwoCovers ? `
           <div class="cover-slider">
             <div class="cover-slider-inner" id="slider-${manga.id}">
-              <img src="${manga.couverture}" alt="${manga.titre} - Tome 1" class="manga-cover" onerror="this.style.display='none'">
-              <img src="${manga.couvertureLast}" alt="${manga.titre} - Dernier tome" class="manga-cover" onerror="this.style.display='none'">
+              <img src="${manga.couverture}" alt="${manga.titre} - Tome 1" class="manga-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
+              <img src="${manga.couvertureLast}" alt="${manga.titre} - Dernier tome" class="manga-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </div>
             <span class="cover-slider-label" id="slider-label-${manga.id}">Tome 1</span>
             <div class="cover-slider-nav">
@@ -837,6 +837,8 @@ function afficherMangas(listMangas) {
             src="${manga.couverture}"
             alt="${manga.titre}"
             class="manga-cover"
+            loading="lazy"
+            decoding="async"
             onerror="this.style.display='none'"
           >
         `}
@@ -1304,6 +1306,8 @@ function afficherFavoris() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="manga-cover"
+        loading="lazy"
+        decoding="async"
         onerror="this.style.display='none'"
       >
       <div class="manga-info">
@@ -1409,6 +1413,8 @@ function afficherALire() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="manga-cover"
+        loading="lazy"
+        decoding="async"
         onerror="this.style.display='none'"
       >
       <div class="manga-info">
@@ -1606,7 +1612,7 @@ function afficherListeDetail(name) {
       ${mangasList.map(manga => `
         <div class="manga-card visible" data-genre="${manga.genre[0]}" onclick="allerVersManga(${manga.id})">
           <button class="remove-from-list-btn" onclick="retirerDeListe('${name}', ${manga.id}, event)" title="${t('removeFromList')}">✕</button>
-          <img src="${manga.couverture}" alt="${manga.titre}" class="manga-cover" onerror="this.style.display='none'">
+          <img src="${manga.couverture}" alt="${manga.titre}" class="manga-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
           <div class="manga-info">
             <h3 class="manga-title">${manga.titre}</h3>
             <p class="manga-author">${manga.auteur}</p>
@@ -1682,25 +1688,9 @@ document.addEventListener('keydown', (e) => {
   if (group) group.classList.remove('open');
 });
 
-// ===== MENU RÉGLAGES (apparence : thème / langue / studio couleurs) =====
-function toggleSettingsMenu(event) {
-  if (event) event.stopPropagation();
-  const wrap = document.getElementById('settingsWrapper');
-  if (wrap) wrap.classList.toggle('open');
-}
-document.addEventListener('click', (e) => {
-  const wrap = document.getElementById('settingsWrapper');
-  if (!wrap || !wrap.classList.contains('open')) return;
-  // Ne pas fermer si on interagit avec le sous-menu thème (rendu au niveau body)
-  const themeMenu = document.getElementById('themeMenu');
-  if (wrap.contains(e.target) || (themeMenu && themeMenu.contains(e.target))) return;
-  wrap.classList.remove('open');
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  const wrap = document.getElementById('settingsWrapper');
-  if (wrap) wrap.classList.remove('open');
-});
+// ===== MENU RÉGLAGES =====
+// toggleSettingsMenu + fermeture (clic extérieur / Échap) vivent dans
+// js/theme.js, partagés par toutes les pages.
 
 // ===== SYSTEME DE COMPARAISON =====
 let modeComparaison = false;
@@ -1844,6 +1834,8 @@ function afficherActualites() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="actualite-cover"
+        loading="lazy"
+        decoding="async"
         onerror="this.style.display='none'"
       >
       <div class="actualite-info">
@@ -1892,6 +1884,8 @@ function afficherHistorique() {
         src="${manga.couverture}"
         alt="${manga.titre}"
         class="historique-cover"
+        loading="lazy"
+        decoding="async"
         onerror="this.style.display='none'"
       >
       <div class="historique-info">
@@ -2288,7 +2282,7 @@ function afficherMangaDuJour() {
 
   content.innerHTML = `
     <img src="${manga.couverture}" alt="${manga.titre}" class="mdj-cover"
-         onerror="this.style.display='none'">
+         decoding="async" onerror="this.style.display='none'">
     <div class="mdj-info">
       <h2 class="mdj-title">${manga.titre}</h2>
       <p class="mdj-author">${t('by')} ${manga.auteur}</p>
@@ -2967,7 +2961,7 @@ function afficherClassement(category = 'all') {
       <div class="classement-card" onclick="allerVersManga(${manga.id})">
         <div class="classement-rank ${rankClass}">${index + 1}</div>
         <img src="${manga.couverture}" alt="${manga.titre}" class="classement-cover"
-             onerror="this.style.display='none'">
+             loading="lazy" decoding="async" onerror="this.style.display='none'">
         <div class="classement-info">
           <div class="classement-title">${manga.titre}</div>
           <div class="classement-meta">${manga.auteur} · ${manga.annee}</div>
@@ -3049,7 +3043,7 @@ function genererRecommandations() {
       ${recommandations.map((rec, index) => `
         <div class="manga-card" onclick="allerVersManga(${rec.id})" style="animation-delay: ${index * 0.1}s">
           <img src="${rec.couverture}" alt="${rec.titre}" class="manga-cover"
-               onerror="this.style.display='none'">
+               loading="lazy" decoding="async" onerror="this.style.display='none'">
           <div class="manga-info">
             <h3 class="manga-title">${rec.titre}</h3>
             <p class="manga-author">${rec.auteur}</p>
@@ -3190,7 +3184,7 @@ function showQuizResults() {
       <div class="manga-card" onclick="allerVersManga(${match.manga.id})" style="position: relative;">
         <span class="quiz-match-score">${match.score}% match</span>
         <img src="${match.manga.couverture}" alt="${match.manga.titre}" class="manga-cover"
-             onerror="this.style.display='none'">
+             loading="lazy" decoding="async" onerror="this.style.display='none'">
         <div class="manga-info">
           <h3 class="manga-title">${match.manga.titre}</h3>
           <p class="manga-author">${match.manga.auteur}</p>

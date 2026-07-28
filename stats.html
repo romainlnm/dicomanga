@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mes Statistiques - Dico.Manga</title>
+  <meta name="description" content="Tes statistiques de lecture manga : favoris, mangas notés, genres préférés et auteurs les plus lus sur Dico.Manga.">
+  <link rel="canonical" href="https://dicomanga.com/stats.html">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#e63946">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,10 +23,33 @@
           <img src="images/logo.svg" alt="DICO.MANGA" class="logo-img">
           <span data-i18n="siteSubtitle">Un dictionnaire de mangas</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-          <span id="themeIcon">☀️</span>
-        </button>
+        <div class="theme-controls">
+          <div class="settings-wrapper" id="settingsWrapper">
+            <button class="settings-btn" id="settingsBtn" onclick="toggleSettingsMenu(event)" title="Réglages">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+            </button>
+            <div class="settings-menu" id="settingsMenu">
+              <div class="settings-row">
+                <span class="settings-row-label">Thème</span>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                  <span id="themeIcon">☀️</span>
+                </button>
+              </div>
+              <div class="settings-row">
+                <span class="settings-row-label">Langue</span>
+                <button class="lang-toggle" id="langToggle" onclick="toggleLanguageBasic()" title="Change language">
+                  <span id="langIcon">FR</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <nav class="header-nav">
+        <a href="index.html" class="header-nav-link">Accueil</a>
+        <a href="calendrier.html" class="header-nav-link">📅 Sorties 2026</a>
+        <a href="stats.html" class="header-nav-link active">📊 Mes stats</a>
+      </nav>
     </div>
   </header>
 
@@ -33,7 +58,10 @@
       ← Retour à la bibliothèque
     </a>
 
-    <h1 class="page-title" data-i18n="myStatistics">Mes Statistiques</h1>
+    <div class="page-hero">
+      <h1 class="page-title" data-i18n="myStatistics">Mes Statistiques</h1>
+      <p class="page-subtitle" data-i18n="statsSubtitle">Ton activité de lecture en un coup d'œil</p>
+    </div>
 
     <!-- Stats globales -->
     <div class="stats-dashboard">
@@ -104,5 +132,22 @@
   <script src="js/data.js"></script>
   <script src="js/manga-slugs.js"></script>
   <script src="js/stats.js"></script>
+  <div class="offline-indicator" id="offlineIndicator">
+    Mode hors-ligne
+  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+    function updateOnlineStatus() {
+      const indicator = document.getElementById('offlineIndicator');
+      indicator.classList.toggle('show', !navigator.onLine);
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+  </script>
 </body>
 </html>

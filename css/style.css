@@ -868,6 +868,52 @@ header {
   gap: 20px;
 }
 
+/* ===== NAV DES SOUS-PAGES (calendrier / stats) ===== */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.header-nav-link {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.header-nav-link:hover {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.4);
+  background: rgba(var(--accent-rgb), 0.08);
+}
+.header-nav-link.active {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.5);
+  background: rgba(var(--accent-rgb), 0.12);
+}
+@media (max-width: 640px) {
+  .header-nav-link { padding: 6px 10px; font-size: 0.8rem; }
+}
+
+/* ===== EN-TÊTE DE SOUS-PAGE (titre + sous-titre) ===== */
+.page-hero {
+  text-align: left;
+  margin-bottom: 30px;
+}
+.page-hero .page-title {
+  margin-bottom: 6px;
+}
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
 .logo-group {
   display: flex;
   align-items: center;
@@ -1670,6 +1716,49 @@ main.loaded {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 40px;
+  position: relative;
+}
+
+/* Backdrop héro : la couverture floutée en fond, fondue vers le bas
+ * (même esprit que le collage du hero de l'accueil). Hors flux (absolute),
+ * donc n'occupe pas de piste de la grille. */
+.manga-detail-backdrop {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1400px;
+  height: 380px;
+  background-size: cover;
+  background-position: center 25%;
+  filter: blur(48px) saturate(1.35);
+  opacity: 0.32;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.6) 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.6) 55%, transparent 100%);
+}
+body.light-mode .manga-detail-backdrop { opacity: 0.22; }
+
+/* Badges sous le titre : réutilisent la palette des cartes de l'accueil
+ * (.card-genre-badge / .card-status) mais en flux normal, cliquables non. */
+.detail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: -6px 0 18px;
+}
+.detail-badges .card-genre-badge,
+.detail-badges .card-status {
+  position: static;
+  font-size: 0.74rem;
+  padding: 5px 12px;
+  max-width: none;
+}
+.detail-badges .card-status {
+  padding: 5px 11px 5px 9px;
 }
 
 /* Force la colonne droite à respecter sa largeur 1fr même si un enfant
@@ -6070,6 +6159,15 @@ footer span {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px var(--shadow);
 }
+
+/* Liseré coloré par carte (même palette ludique que les badges des cartes) */
+.stats-grid .stat-card { border-top: 3px solid var(--accent); }
+.stats-grid .stat-card:nth-child(1) { border-top-color: #ffd166; }
+.stats-grid .stat-card:nth-child(2) { border-top-color: #4a90d9; }
+.stats-grid .stat-card:nth-child(3) { border-top-color: #9b5de5; }
+.stats-grid .stat-card:nth-child(4) { border-top-color: #2ec4b6; }
+.stats-grid .stat-card:nth-child(5) { border-top-color: #ef476f; }
+.stats-grid .stat-card:nth-child(6) { border-top-color: #ff6b35; }
 
 .stat-icon {
   font-size: 2rem;

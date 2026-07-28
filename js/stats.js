@@ -6,6 +6,7 @@ const translations = {
     toRead: "Ma Liste À lire",
     backToLibrary: "← Retour à la bibliothèque",
     myStatistics: "Mes Statistiques",
+    statsSubtitle: "Ton activité de lecture en un coup d'œil",
     ratedManga: "Mangas notés",
     averageRating: "Note moyenne",
     viewed: "Consultés",
@@ -26,6 +27,7 @@ const translations = {
     toRead: "My Reading List",
     backToLibrary: "← Back to library",
     myStatistics: "My Statistics",
+    statsSubtitle: "Your reading activity at a glance",
     ratedManga: "Rated manga",
     averageRating: "Average rating",
     viewed: "Viewed",
@@ -46,6 +48,7 @@ const translations = {
     toRead: "Mi Lista de Lectura",
     backToLibrary: "← Volver a la biblioteca",
     myStatistics: "Mis Estadísticas",
+    statsSubtitle: "Tu actividad de lectura de un vistazo",
     ratedManga: "Manga valorados",
     averageRating: "Nota media",
     viewed: "Vistos",
@@ -66,6 +69,7 @@ const translations = {
     toRead: "読みたいリスト",
     backToLibrary: "← ライブラリに戻る",
     myStatistics: "マイ統計",
+    statsSubtitle: "読書アクティビティをひと目で",
     ratedManga: "評価した漫画",
     averageRating: "平均評価",
     viewed: "閲覧済み",
@@ -279,7 +283,7 @@ function afficherNotesPersonnelles() {
 
   container.innerHTML = mangasNotes.map(manga => `
     <div class="encours-card" onclick="window.location.href=mangaUrl(${manga.id})">
-      <img src="${manga.couverture}" alt="${manga.titre}" class="encours-cover" onerror="this.style.display='none'">
+      <img src="${manga.couverture}" alt="${manga.titre}" class="encours-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
       <div class="encours-info">
         <h3 class="encours-title">${manga.titre}</h3>
         <div class="encours-progress">

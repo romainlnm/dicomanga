@@ -91,4 +91,39 @@ function toggleTheme() {
   document.addEventListener('keydown', onThemeMenuEscape);
 }
 
+// ===== MENU RÉGLAGES (⚙️) =====
+// Partagé par toutes les pages (vivait dans app.js, déplacé ici pour que
+// manga/calendrier/stats aient le même menu que l'accueil).
+function toggleSettingsMenu(event) {
+  if (event) event.stopPropagation();
+  const wrap = document.getElementById('settingsWrapper');
+  if (wrap) wrap.classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('settingsWrapper');
+  if (!wrap || !wrap.classList.contains('open')) return;
+  // Ne pas fermer si on interagit avec le sous-menu thème (rendu au niveau body)
+  const themeMenu = document.getElementById('themeMenu');
+  if (wrap.contains(e.target) || (themeMenu && themeMenu.contains(e.target))) return;
+  wrap.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const wrap = document.getElementById('settingsWrapper');
+  if (wrap) wrap.classList.remove('open');
+});
+
+// Bascule de langue minimale pour les pages sans machinerie i18n complète
+// (stats.html : les traductions sont appliquées au chargement par stats.js,
+// un simple reload suffit donc à changer de langue).
+function toggleLanguageBasic() {
+  const next = (localStorage.getItem('lang') || 'fr') === 'fr' ? 'en' : 'fr';
+  localStorage.setItem('lang', next);
+  location.reload();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.getElementById('langIcon');
+  if (icon) icon.textContent = (localStorage.getItem('lang') || 'fr').toUpperCase();
+});
+
 initTheme();

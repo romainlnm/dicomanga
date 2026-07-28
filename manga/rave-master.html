@@ -9,7 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="../images/favicon.svg">
+  <link rel="apple-touch-icon" href="/images/icon-192.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="../css/style.css">
   <title>Rave Master — Hiro Mashima | Dico.Manga</title>
   <meta name="description" content="Il y a 50 ans, l&#39;Overdrive a failli détruire le monde à cause des Dark Brings, pierres maléfiques aux pouvoirs terribles. Shiba, le premier Rave Master, a…">
@@ -68,18 +69,33 @@
           <img src="../images/logo.svg" alt="DICO.MANGA" class="logo-img">
           <span>Un dictionnaire de mangas</span>
         </a>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-          <span id="themeIcon">☀️</span>
-        </button>
-        <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
-          <span id="langIcon">FR</span>
-        </button>
+        <div class="theme-controls">
+          <div class="settings-wrapper" id="settingsWrapper">
+            <button class="settings-btn" id="settingsBtn" onclick="toggleSettingsMenu(event)" title="Réglages" data-i18n-title="settings">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+            </button>
+            <div class="settings-menu" id="settingsMenu">
+              <div class="settings-row">
+                <span class="settings-row-label" data-i18n="themeLabel">Thème</span>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                  <span id="themeIcon">☀️</span>
+                </button>
+              </div>
+              <div class="settings-row">
+                <span class="settings-row-label" data-i18n="languageLabel">Langue</span>
+                <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
+                  <span id="langIcon">FR</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Auth Button -->
       <div class="auth-container">
         <button class="auth-btn" id="authBtn" onclick="ouvrirAuthModal()">
-          <span class="auth-icon">👤</span>
+          <svg class="nav-icon auth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span class="auth-text" data-i18n="signIn">Connexion</span>
         </button>
         <div class="user-menu" id="userMenu" style="display: none;">

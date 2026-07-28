@@ -170,15 +170,21 @@ function afficherDetailManga(id) {
   // Vérifier si le manga a deux couvertures
   const hasTwoCovers = manga.statut === 'Terminé' && manga.couvertureLast;
 
+  // Statut → pastille (même rendu que les cartes de l'accueil)
+  const isOngoing = /en cours/i.test(manga.statut || '');
+  const statutLabel = currentLang === 'en' ? (isOngoing ? 'Ongoing' : 'Completed')
+    : (isOngoing ? 'En cours' : 'Terminé');
+
   // Générer le HTML
   container.innerHTML = `
     <div class="manga-detail">
+      <div class="manga-detail-backdrop" style="background-image: url('${assetUrl(manga.couverture)}')" aria-hidden="true"></div>
       <div class="manga-detail-left">
         ${hasTwoCovers ? `
           <div class="cover-slider">
             <div class="cover-slider-inner" id="detail-slider">
-              <img src="${assetUrl(manga.couverture)}" alt="${manga.titre} - Tome 1" class="manga-detail-cover" onerror="this.style.display='none'">
-              <img src="${assetUrl(manga.couvertureLast)}" alt="${manga.titre} - Dernier tome" class="manga-detail-cover" onerror="this.style.display='none'">
+              <img src="${assetUrl(manga.couverture)}" alt="${manga.titre} - Tome 1" class="manga-detail-cover" fetchpriority="high" decoding="async" onerror="this.style.display='none'">
+              <img src="${assetUrl(manga.couvertureLast)}" alt="${manga.titre} - Dernier tome" class="manga-detail-cover" decoding="async" onerror="this.style.display='none'">
             </div>
             <span class="cover-slider-label" id="detail-slider-label">${currentLang === 'en' ? 'Volume 1' : 'Tome 1'}</span>
             <div class="cover-slider-nav">
@@ -191,6 +197,8 @@ function afficherDetailManga(id) {
             src="${assetUrl(manga.couverture)}"
             alt="${manga.titre}"
             class="manga-detail-cover"
+            fetchpriority="high"
+            decoding="async"
             onerror="this.style.display='none'"
           >
         `}
@@ -198,6 +206,11 @@ function afficherDetailManga(id) {
 
       <div class="manga-detail-info">
         <h1 class="title-neon" onclick="cycleTitleStyle(this)" title="Click to try another style">${manga.titre}</h1>
+
+        <div class="detail-badges">
+          ${manga.statut ? `<span class="card-status ${isOngoing ? 'ongoing' : 'completed'}"><span class="card-status-dot"></span>${statutLabel}</span>` : ''}
+          ${manga.genre.map(g => `<span class="card-genre-badge" data-genre="${g}">${g}</span>`).join('')}
+        </div>
 
         <div class="manga-actions">
           <button class="favorite-btn ${estFavori(manga.id) ? 'active' : ''}" onclick="toggleFavoriBtn(${manga.id})">
@@ -230,14 +243,6 @@ function afficherDetailManga(id) {
           <div class="meta-item">
             <span class="meta-label">Volumes</span>
             <span class="meta-value">${manga.volumes}</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">${currentLang === 'en' ? 'Status' : 'Statut'}</span>
-            <span class="meta-value">${manga.statut}</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Genres</span>
-            <span class="meta-value">${manga.genre.join(', ')}</span>
           </div>
           <div class="meta-item anime-link">
             <span class="meta-label">${currentLang === 'en' ? 'Watch the anime' : 'Voir l\'anime'}</span>
@@ -282,7 +287,7 @@ function afficherDetailManga(id) {
             ${getMangaCharacters(manga).map(perso => `
               <div class="character-card">
                 ${perso.image
-                  ? `<img src="${assetUrl(perso.image)}" alt="${perso.nom}" class="character-img" onerror="this.style.display='none'">`
+                  ? `<img src="${assetUrl(perso.image)}" alt="${perso.nom}" class="character-img" loading="lazy" decoding="async" onerror="this.style.display='none'">`
                   : ``
                 }
                 <h3 class="character-name">${perso.nom}</h3>
@@ -339,7 +344,7 @@ function afficherDetailManga(id) {
               if (!connexionManga) return '';
               return `
                 <div class="connexion-card" onclick="window.location.href=mangaUrl(${connexionManga.id})">
-                  <img src="${assetUrl(connexionManga.couverture)}" alt="${connexionManga.titre}" class="connexion-cover" onerror="this.style.display='none'">
+                  <img src="${assetUrl(connexionManga.couverture)}" alt="${connexionManga.titre}" class="connexion-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
                   <div class="connexion-info">
                     <h3 class="connexion-title">${connexionManga.titre}</h3>
                     <p class="connexion-univers">${connexionManga.univers || ''}</p>
@@ -357,7 +362,7 @@ function afficherDetailManga(id) {
           <div class="similar-grid">
             ${getRecommandations(manga).map(rec => `
               <div class="similar-card" onclick="window.location.href=mangaUrl(${rec.id})">
-                <img src="${assetUrl(rec.couverture)}" alt="${rec.titre}" class="similar-cover" onerror="this.style.display='none'">
+                <img src="${assetUrl(rec.couverture)}" alt="${rec.titre}" class="similar-cover" loading="lazy" decoding="async" onerror="this.style.display='none'">
                 <div class="similar-info">
                   <h3 class="similar-title">${rec.titre}</h3>
                   <p class="similar-genres">${rec.genre.slice(0, 2).join(', ')}</p>
@@ -789,7 +794,7 @@ function renderTomesSection(manga) {
             return `
               <div class="tome-card${isRead ? ' tome-read' : ''}" data-tome="${t.num}">
                 <div class="tome-cover-wrap">
-                  <img src="${assetUrl(t.cover)}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" onerror="handleTomeImageError(this)">
+                  <img src="${assetUrl(t.cover)}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" loading="lazy" decoding="async" onerror="handleTomeImageError(this)">
                   <span class="tome-num-badge">${t.num}</span>
                   <button type="button" class="tome-read-toggle" aria-pressed="${isRead}" aria-label="${ariaLabel}" title="${ariaLabel}" onclick="event.stopPropagation();toggleTomeRead(${manga.id}, ${t.num})">${isRead ? '✓' : '○'}</button>
                 </div>

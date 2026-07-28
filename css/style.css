@@ -9934,3 +9934,161 @@ body.light-mode .hero-overlay {
 @media (prefers-reduced-motion: reduce) {
   .hero-content { animation: none; }
 }
+
+/* =========================================================
+   COUCHE MOBILE — look & feel applicatif (≤768px)
+   Barre de navigation basse + polish général du téléphone.
+   ========================================================= */
+.bottom-nav { display: none; }
+
+@media (max-width: 768px) {
+  /* --- Barre de navigation basse flottante, style app --- */
+  .bottom-nav {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    z-index: 2500;
+    padding: 6px;
+    border-radius: 24px;
+    background: var(--bg-glass);
+    border: 1px solid rgba(var(--accent-rgb), 0.25);
+    box-shadow: 0 10px 40px var(--shadow), 0 0 24px rgba(var(--accent-rgb), 0.10);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+  }
+  .bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 7px 4px 6px;
+    border-radius: 18px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  }
+  .bottom-nav-item svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .bottom-nav-item:active { transform: scale(0.92); }
+  .bottom-nav-item.active {
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.14);
+  }
+  .bottom-nav-item.active svg {
+    filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.6));
+  }
+
+  /* Laisser la place à la barre en bas de chaque page */
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+
+  /* La nav du header des sous-pages devient redondante */
+  .header-nav { display: none; }
+
+  /* Le sous-titre du logo prend de la place pour rien */
+  .logo span { display: none; }
+
+  /* Toasts et bouton "haut de page" remontent au-dessus de la barre */
+  .toast { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .back-to-top { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+
+  /* Le bouton retour se fait plus discret (la barre navigue déjà) */
+  .back-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* --- Hero d'accueil resserré, plein cadre --- */
+  .hero {
+    min-height: 340px;
+    padding: 44px 18px;
+    border-radius: 22px;
+    margin-bottom: 26px;
+  }
+  .hero-title { margin-bottom: 12px; }
+  .hero-subtitle { font-size: 1rem; }
+
+  /* --- Manga du jour : badge centré au-dessus du contenu --- */
+  .manga-du-jour {
+    padding: 52px 18px 24px;
+    border-radius: 20px;
+  }
+  .mdj-badge {
+    top: 14px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* --- Sections : titres et marges resserrés --- */
+  .section-title { font-size: 1.35rem; }
+  .manga-du-jour, .stats-widget, .actualites, .historique,
+  .recommendations-hero, .classements { margin-bottom: 26px; }
+
+  /* --- Carrousels : cartes qui dépassent du bord, invitation au swipe --- */
+  .actualites-carousel,
+  .historique-carousel {
+    gap: 12px;
+    margin: 0 -12px;
+    padding: 10px 12px;
+    scroll-padding-left: 12px;
+  }
+
+  /* --- Page détail : couverture centrée, boutons en grille 2×2 --- */
+  .manga-detail { gap: 22px; }
+  .manga-detail-left {
+    max-width: 230px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .manga-detail-backdrop {
+    top: -20px;
+    height: 300px;
+    filter: blur(38px) saturate(1.35);
+  }
+  .manga-detail-info h1 { display: block; text-align: center; }
+  .detail-badges { justify-content: center; }
+  .manga-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .manga-actions > button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 8px;
+    font-size: 0.85rem;
+  }
+  .manga-meta {
+    border-radius: 16px;
+  }
+  .manga-section {
+    border-radius: 16px;
+  }
+
+  /* --- Stats : cartes 2 par ligne, compactes --- */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .stat-card { padding: 18px 12px; }
+  .stat-value { font-size: 1.9rem; }
+  .stat-icon { font-size: 1.6rem; margin-bottom: 6px; }
+
+  /* --- Page hero des sous-pages --- */
+  .page-hero .page-title { font-size: 1.8rem; }
+  .page-subtitle { font-size: 0.95rem; }
+}

@@ -146,6 +146,14 @@
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 }
 
+/* Thèmes à header clair : variante encre du logo (lettrage sombre) */
+[data-theme="mono"] .logo-img,
+[data-theme="sakura"] .logo-img,
+[data-theme="retro"] .logo-img,
+[data-theme="arctique"] .logo-img {
+  content: url("../images/logo-dark.svg");
+}
+
 /* Sakura — rose pâle, printemps japonais (clair) */
 [data-theme="sakura"] {
   --bg-primary: #fdf2f6;
@@ -9407,8 +9415,8 @@ footer span {
     gap: 6px;
   }
   .logo-img {
-    width: 32px;
-    height: 32px;
+    height: 40px;
+    width: auto;
   }
   .logo span,
   .logo h1 {
@@ -9571,8 +9579,8 @@ footer span {
     font-size: 0.95rem;
   }
   .logo-img {
-    width: 28px;
-    height: 28px;
+    height: 34px;
+    width: auto;
   }
 
   /* Cartes plus petites mais 2 par ligne */

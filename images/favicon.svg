@@ -1,22 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#e63946"/>
-      <stop offset="100%" style="stop-color:#ff6b6b"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Fond -->
-  <rect width="32" height="32" rx="6" fill="#1a1a2e"/>
-
-  <!-- Lignes de vitesse -->
-  <line x1="2" y1="8" x2="8" y2="8" stroke="#e63946" stroke-width="2" opacity="0.5"/>
-  <line x1="3" y1="12" x2="7" y2="12" stroke="#e63946" stroke-width="1.5" opacity="0.4"/>
-  <line x1="2" y1="24" x2="7" y2="24" stroke="#e63946" stroke-width="1.5" opacity="0.4"/>
-
-  <!-- Texte D stylisé -->
-  <text x="9" y="24" font-family="Arial Black, Impact, sans-serif" font-size="20" font-weight="900" fill="url(#grad)">D</text>
-
-  <!-- Point rouge -->
-  <circle cx="26" cy="22" r="3" fill="#e63946"/>
+  <!-- Sceau hanko : tampon rouge, kanji 漫 (manga) -->
+  <path d="M2.5 4.6 Q1.9 3 3.7 2.7 L27.4 1.6 Q29.4 1.6 29.5 3.6 L30.6 27.6 Q30.7 29.6 28.6 29.7 L4.9 30.9 Q2.9 31 2.8 29 Z" fill="#d92835"/>
+  <path d="M6 2.8 L8.8 2.7 L8.8 4.3 L6 4.4 Z" fill="#ffffff" opacity="0.14"/>
+  <path d="M25 27.2 L27.8 27.1 L27.8 28.9 L25 29 Z" fill="#ffffff" opacity="0.14"/>
+  <text x="16.2" y="23.4" text-anchor="middle" font-family="'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif" font-size="19" font-weight="800" fill="#ffffff">漫</text>
 </svg>

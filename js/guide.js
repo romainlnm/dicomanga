@@ -101,16 +101,16 @@ function startGuide() {
   overlay.className = 'guide-overlay';
   overlay.innerHTML = `
     <div class="guide-spotlight" id="guideSpotlight"></div>
-    <div class="guide-bubble" id="guideBubble" role="dialog" aria-live="polite">
-      <div class="guide-bubble-head">
-        <div class="guide-mascot">${GUIDE_MASCOT}</div>
+    <div class="guide-companion" id="guideCompanion">
+      <div class="guide-dicomi" id="guideDicomi">${GUIDE_MASCOT}</div>
+      <div class="guide-bubble" id="guideBubble" role="dialog" aria-live="polite">
         <h3 id="guideTitle"></h3>
-      </div>
-      <p id="guideText"></p>
-      <div class="guide-actions">
-        <button type="button" class="guide-btn-skip" id="guideSkip"></button>
-        <div class="guide-dots" id="guideDots"></div>
-        <button type="button" class="guide-btn-next" id="guideNext"></button>
+        <p id="guideText"></p>
+        <div class="guide-actions">
+          <button type="button" class="guide-btn-skip" id="guideSkip"></button>
+          <div class="guide-dots" id="guideDots"></div>
+          <button type="button" class="guide-btn-next" id="guideNext"></button>
+        </div>
       </div>
     </div>`;
   document.body.appendChild(overlay);
@@ -129,6 +129,12 @@ function startGuide() {
   document.addEventListener('keydown', onGuideKey);
   window.addEventListener('resize', showGuideStep);
   guideEls = overlay;
+
+  // Position de départ : Dicomi décolle depuis son bouton (en bas à gauche)
+  const comp = overlay.querySelector('#guideCompanion');
+  comp.style.left = '20px';
+  comp.style.top = (window.innerHeight - 200) + 'px';
+
   showGuideStep();
 }
 
@@ -148,6 +154,8 @@ function endGuide() {
   localStorage.setItem(GUIDE_DONE_KEY, '1');
 }
 
+let guideFlyTimer = null;
+
 function showGuideStep() {
   if (!guideEls) return;
   const fr = guideLang() === 'fr';
@@ -156,7 +164,7 @@ function showGuideStep() {
   const last = guideIndex >= steps.length - 1;
 
   const spot = document.getElementById('guideSpotlight');
-  const bubble = document.getElementById('guideBubble');
+  const comp = document.getElementById('guideCompanion');
   document.getElementById('guideTitle').textContent = step.title;
   document.getElementById('guideText').textContent = step.text;
   document.getElementById('guideSkip').textContent = fr ? 'Passer' : 'Skip';
@@ -165,17 +173,28 @@ function showGuideStep() {
   document.getElementById('guideDots').innerHTML = steps
     .map((_, i) => `<span class="guide-dot${i === guideIndex ? ' active' : ''}"></span>`).join('');
 
-  const positionBubble = () => {
+  const flyTo = (left, top) => {
+    // Vol : légère inclinaison dans le sens du déplacement pendant la transition
+    const fromLeft = parseFloat(comp.style.left) || 0;
+    comp.classList.remove('guide-fly-left', 'guide-fly-right');
+    comp.classList.add(left >= fromLeft ? 'guide-fly-right' : 'guide-fly-left');
+    comp.style.left = left + 'px';
+    comp.style.top = top + 'px';
+    clearTimeout(guideFlyTimer);
+    guideFlyTimer = setTimeout(() => {
+      comp.classList.remove('guide-fly-left', 'guide-fly-right');
+    }, 900);
+  };
+
+  const positionCompanion = () => {
     const isPhone = window.innerWidth <= 640;
+    const gw = comp.offsetWidth || 400;
+    const gh = comp.offsetHeight || 180;
+
     if (!step.target) {
-      // Étape centrale (intro / fin) : pas de projecteur
       spot.style.opacity = '0';
-      spot.style.left = '50%'; spot.style.top = '40%';
       spot.style.width = '0'; spot.style.height = '0';
-      bubble.style.left = '50%';
-      bubble.style.top = '50%';
-      bubble.style.transform = 'translate(-50%, -50%)';
-      bubble.style.bottom = 'auto';
+      flyTo(Math.max(12, (window.innerWidth - gw) / 2), Math.max(12, window.innerHeight * 0.4 - gh / 2));
       return;
     }
     const el = document.querySelector(step.target);
@@ -188,45 +207,36 @@ function showGuideStep() {
     spot.style.height = (r.height + pad * 2) + 'px';
 
     if (isPhone) {
-      // Sur téléphone : bulle fixée en bas, au-dessus de la barre de nav
-      bubble.style.left = '50%';
-      bubble.style.top = 'auto';
-      bubble.style.bottom = 'calc(100px + env(safe-area-inset-bottom, 0px))';
-      bubble.style.transform = 'translateX(-50%)';
+      // Sur téléphone : Dicomi + bulle posées au-dessus de la barre de nav
+      flyTo(12, window.innerHeight - gh - 100);
       return;
     }
-    // Desktop : sous la cible si la place le permet, sinon au-dessus
-    const bw = Math.min(360, window.innerWidth - 32);
-    const bh = bubble.offsetHeight || 190;
-    let top = r.bottom + 18;
-    if (top + bh > window.innerHeight - 16) top = Math.max(16, r.top - bh - 18);
-    let left = Math.max(16, Math.min(r.left + r.width / 2 - bw / 2, window.innerWidth - bw - 16));
-    bubble.style.left = left + 'px';
-    bubble.style.top = top + 'px';
-    bubble.style.bottom = 'auto';
-    bubble.style.transform = 'none';
+    // Desktop : sous la cible si possible, sinon au-dessus, sans sortir de l'écran
+    let top = r.bottom + 20;
+    if (top + gh > window.innerHeight - 14) top = Math.max(14, r.top - gh - 20);
+    let left = Math.max(14, Math.min(r.left + r.width / 2 - gw / 2, window.innerWidth - gw - 14));
+    flyTo(left, top);
   };
 
   if (step.target) {
     const el = document.querySelector(step.target);
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    // Attendre la fin du défilement avant de positionner
-    setTimeout(positionBubble, 420);
-    positionBubble();
+    setTimeout(positionCompanion, 420);
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    positionBubble();
+    setTimeout(positionCompanion, 60);
   }
 }
 
-// Bouton flottant (mascotte) pour relancer la visite
+// Bouton flottant : Dicomi + petite bulle d'invitation
 function createGuideFab() {
+  const fr = guideLang() === 'fr';
   const fab = document.createElement('button');
   fab.type = 'button';
   fab.className = 'guide-fab';
-  fab.title = guideLang() === 'fr' ? 'Revoir la visite guidée' : 'Replay the guided tour';
+  fab.title = fr ? 'Faire la visite guidée avec Dicomi' : 'Take the guided tour with Dicomi';
   fab.setAttribute('aria-label', fab.title);
-  fab.innerHTML = GUIDE_MASCOT;
+  fab.innerHTML = GUIDE_MASCOT + `<span class="guide-fab-hint">${fr ? 'On fait le tour ? ✨' : 'Wanna look around? ✨'}</span>`;
   fab.onclick = startGuide;
   document.body.appendChild(fab);
 }

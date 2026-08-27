@@ -10161,32 +10161,28 @@ body.light-mode .hero-overlay {
   .page-subtitle { font-size: 0.95rem; }
 }
 
-/* ===== GUIDE DE BIENVENUE (Kiko, esprit du dictionnaire) ===== */
-/* Bouton flottant pour (re)lancer la visite */
+/* ===== GUIDE DE BIENVENUE (Dicomi, mascotte volante) ===== */
+/* Bouton flottant : Dicomi + bulle d'invitation */
 .guide-fab {
   position: fixed;
   bottom: 22px;
   left: 22px;
-  width: 72px;
-  height: 78px;
-  padding: 4px;
+  width: 76px;
+  height: 92px;
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 2400;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
   transition: transform 0.25s ease;
 }
-.guide-fab:hover { transform: scale(1.1); }
-.guide-fab svg,
+.guide-fab:hover { transform: scale(1.08); }
 .guide-fab img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-/* Dicomi flotte et se balance doucement, comme un compagnon de jeu */
-.guide-fab .guide-mascot-svg,
-.guide-bubble .guide-mascot-svg {
+.guide-fab .guide-mascot-svg {
   animation: guideFloat 3.4s ease-in-out infinite;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
   user-select: none;
@@ -10196,16 +10192,47 @@ body.light-mode .hero-overlay {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-7px) rotate(2deg); }
 }
+/* Petite bulle d'invitation à côté du bouton */
+.guide-fab-hint {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 8px;
+  background: #ffffff;
+  color: #16161f;
+  border: 2px solid #16161f;
+  border-radius: 14px;
+  border-bottom-left-radius: 3px;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px) scale(0.9);
+  transform-origin: bottom left;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  animation: guideHintPop 9s ease 1.2s 1;
+}
+.guide-fab:hover .guide-fab-hint {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+@keyframes guideHintPop {
+  0%, 4%   { opacity: 0; transform: translateY(4px) scale(0.9); }
+  8%, 70%  { opacity: 1; transform: translateY(0) scale(1); }
+  78%, 100% { opacity: 0; transform: translateY(4px) scale(0.9); }
+}
 @media (max-width: 768px) {
   .guide-fab {
     bottom: calc(92px + env(safe-area-inset-bottom, 0px));
     left: 10px;
-    width: 58px;
-    height: 63px;
+    width: 60px;
+    height: 74px;
   }
+  .guide-fab-hint { display: none; }
 }
 
-/* Visite guidée : projecteur + bulle */
+/* Visite guidée : projecteur */
 .guide-overlay {
   position: fixed;
   inset: 0;
@@ -10216,57 +10243,84 @@ body.light-mode .hero-overlay {
   border-radius: 14px;
   box-shadow: 0 0 0 200vmax rgba(0, 0, 0, 0.68);
   border: 2px solid rgba(var(--accent-rgb), 0.9);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
   pointer-events: none;
 }
-/* Quand il n'y a pas de cible (intro/fin), l'ombre du spotlight disparaît :
-   on assombrit via le fond de l'overlay lui-même */
-.guide-overlay { background: rgba(0, 0, 0, 0.0); }
 .guide-overlay:has(.guide-spotlight[style*="opacity: 0"]) { background: rgba(0, 0, 0, 0.68); }
 
-.guide-bubble {
+/* Le duo volant : Dicomi + sa bulle de dialogue */
+.guide-companion {
   position: absolute;
-  width: min(360px, calc(100vw - 32px));
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
-  border-radius: 18px;
-  padding: 16px 18px 14px;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45), 0 0 30px rgba(var(--accent-rgb), 0.12);
-  animation: guideBubbleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  width: min(470px, calc(100vw - 24px));
+  transition: left 0.85s cubic-bezier(0.45, 0, 0.2, 1), top 0.85s cubic-bezier(0.45, 0, 0.2, 1);
+}
+.guide-dicomi {
+  width: 118px;
+  flex-shrink: 0;
+  margin-top: 26px;
+}
+.guide-dicomi img {
+  width: 100%;
+  height: auto;
+  animation: guideFloat 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Inclinaison pendant le vol */
+.guide-fly-right .guide-dicomi img { animation: none; transform: rotate(9deg); transition: transform 0.3s ease; }
+.guide-fly-left  .guide-dicomi img { animation: none; transform: rotate(-9deg) scaleX(-1); transition: transform 0.3s ease; }
+
+/* Bulle de dialogue façon manga : blanche, contour encre, queue vers Dicomi */
+.guide-bubble {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  background: #ffffff;
+  color: #16161f;
+  border: 2.5px solid #16161f;
+  border-radius: 22px;
+  padding: 15px 18px 12px;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.35);
+  animation: guideBubbleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Queue de la bulle (double triangle pour garder le contour) */
+.guide-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 42px;
+  border: 11px solid transparent;
+  border-right: 17px solid #16161f;
+  border-left: 0;
+}
+.guide-bubble::after {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 45px;
+  border: 8px solid transparent;
+  border-right: 13px solid #ffffff;
+  border-left: 0;
 }
 @keyframes guideBubbleIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; }
-}
-.guide-bubble-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-.guide-mascot {
-  width: 66px;
-  height: 82px;
-  flex-shrink: 0;
-}
-.guide-mascot svg,
-.guide-mascot img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
 }
 .guide-bubble h3 {
   font-family: var(--font-display);
-  font-size: 1.18rem;
-  color: var(--accent);
-  margin: 0;
+  font-size: 1.15rem;
+  color: #c22430;
+  margin: 0 0 6px;
 }
 .guide-bubble p {
-  color: var(--text-secondary);
+  color: #3d3a45;
   font-size: 0.92rem;
-  line-height: 1.55;
-  margin: 0 0 14px;
+  line-height: 1.5;
+  margin: 0 0 12px;
 }
 .guide-actions {
   display: flex;
@@ -10283,33 +10337,43 @@ body.light-mode .hero-overlay {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px var(--accent-glow);
+  transition: transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(217, 40, 53, 0.35);
 }
 .guide-btn-next:hover { transform: translateY(-1px); }
 .guide-btn-skip {
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: #8a8794;
   font-size: 0.85rem;
   cursor: pointer;
   padding: 6px 4px;
 }
-.guide-btn-skip:hover { color: var(--text-primary); }
+.guide-btn-skip:hover { color: #16161f; }
 .guide-dots { display: flex; gap: 5px; }
 .guide-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--border);
+  background: #ddd8d0;
   transition: all 0.25s ease;
 }
 .guide-dot.active {
-  background: var(--accent);
+  background: #c22430;
   width: 18px;
   border-radius: 4px;
 }
+
+@media (max-width: 640px) {
+  .guide-companion { gap: 0; }
+  .guide-dicomi { width: 86px; margin-top: 34px; }
+  .guide-bubble { padding: 13px 14px 10px; }
+  .guide-bubble h3 { font-size: 1.05rem; }
+  .guide-bubble p { font-size: 0.88rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   .guide-fab .guide-mascot-svg,
-  .guide-bubble .guide-mascot-svg { animation: none; }
+  .guide-dicomi img { animation: none; }
+  .guide-companion { transition: none; }
+  .guide-fab-hint { animation: none; }
 }

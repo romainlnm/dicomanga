@@ -6,14 +6,20 @@
   --bg-glass: rgba(26, 26, 26, 0.8);
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
-  --accent: #e63946;
-  --accent-rgb: 230, 57, 70;
-  --accent-hover: #ff4d5a;
-  --accent-glow: rgba(230, 57, 70, 0.4);
+  /* Rouge du sceau (aligné sur le logo inkan) */
+  --accent: #d92835;
+  --accent-rgb: 217, 40, 53;
+  --accent-hover: #e64250;
+  --accent-glow: rgba(217, 40, 53, 0.4);
+  /* Or du cadre gravé du sceau */
+  --gold: #c9a227;
+  --gold-light: #f2d272;
   --border: #2a2a2a;
   --shadow: rgba(0, 0, 0, 0.5);
-  --gradient-accent: linear-gradient(135deg, #e63946 0%, #ff6b6b 50%, #f72585 100%);
+  --gradient-accent: linear-gradient(135deg, #b81b29 0%, #e64250 55%, #ff7a5c 100%);
   --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+  /* Serif d'inspiration estampe, en écho au wordmark du logo */
+  --font-display: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, 'Times New Roman', serif;
 }
 
 /* Mode clair */
@@ -444,7 +450,7 @@ body {
   line-height: 1.6;
   background-image:
     radial-gradient(ellipse at top left, rgba(var(--accent-rgb), 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(247, 37, 133, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse at bottom right, rgba(201, 162, 39, 0.05) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
@@ -1556,17 +1562,31 @@ main.loaded {
 }
 
 .section-title {
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
   margin-bottom: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   display: inline-block;
   position: relative;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
+/* Petit carré hanko devant chaque titre de section */
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 12px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: rotate(3deg) translateY(0.02em);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Filet rouge terminé par une pointe dorée, comme le logo */
 .section-title::after {
   content: '';
   position: absolute;
@@ -1574,7 +1594,7 @@ main.loaded {
   left: 0;
   width: 100%;
   height: 3px;
-  background: var(--gradient-accent);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 78%, var(--gold-light) 100%);
   border-radius: 2px;
 }
 
@@ -2034,6 +2054,7 @@ body.light-mode .manga-detail-backdrop { opacity: 0.22; }
 }
 
 .manga-detail-info h1 {
+  font-family: var(--font-display);
   font-size: 2.5rem;
   margin-bottom: 18px;
   display: inline-block;
@@ -2164,7 +2185,8 @@ body.light-mode .manga-detail-backdrop { opacity: 0.22; }
 }
 
 .manga-section h2 {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   margin-bottom: 15px;
   color: var(--accent);
 }
@@ -3949,13 +3971,24 @@ footer span {
 
 /* ===== PAGE STATISTIQUES ===== */
 .page-title {
+  font-family: var(--font-display);
   font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 30px;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
   display: inline-block;
+  position: relative;
+  padding-bottom: 12px;
+}
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 78%, var(--gold-light) 100%);
 }
 
 .stats-dashboard {
@@ -4598,13 +4631,13 @@ footer span {
     radial-gradient(ellipse at bottom right, rgba(229, 81, 0, 0.06) 0%, transparent 50%);
 }
 
-/* Rouge (défaut) */
+/* Rouge (défaut) — aligné sur le rouge du sceau du logo */
 [data-color="red"] {
-  --accent: #e63946;
-  --accent-rgb: 230, 57, 70;
-  --accent-hover: #ff4d5a;
-  --accent-glow: rgba(230, 57, 70, 0.4);
-  --gradient-accent: linear-gradient(135deg, #e63946 0%, #ff6b6b 50%, #f72585 100%);
+  --accent: #d92835;
+  --accent-rgb: 217, 40, 53;
+  --accent-hover: #e64250;
+  --accent-glow: rgba(217, 40, 53, 0.4);
+  --gradient-accent: linear-gradient(135deg, #b81b29 0%, #e64250 55%, #ff7a5c 100%);
 }
 
 /* Rose */
@@ -5076,13 +5109,11 @@ footer span {
 }
 
 .mdj-title {
+  font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 10px;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .mdj-author {
@@ -6442,7 +6473,8 @@ footer span {
 }
 
 .stats-section h2 {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -9864,21 +9896,49 @@ body.light-mode .hero-overlay {
 }
 
 .hero-title {
+  font-family: var(--font-display);
   font-size: clamp(2.6rem, 7vw, 4.6rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: 0.01em;
   line-height: 1;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
+  position: relative;
+  display: inline-block;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
 }
 .hero-title-dico { color: var(--text-primary); }
-.hero-title-manga {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero-title-manga { color: var(--accent); }
+.hero-title-dot { color: var(--gold-light); }
+
+/* Filet rouge à pointe dorée sous le titre, comme le logo */
+.hero-title::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -10px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 12%, var(--accent) 80%, var(--gold-light) 100%);
 }
-.hero-title-dot { color: var(--accent); }
+
+/* Kanji 漫画 en filigrane dans le hero */
+.hero-content::before {
+  content: '漫画';
+  position: absolute;
+  top: 50%;
+  right: -0.4em;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 22vw, 13rem);
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.09;
+  pointer-events: none;
+  line-height: 1;
+  z-index: -1;
+  writing-mode: vertical-rl;
+}
 
 .hero-subtitle {
   font-size: clamp(1.05rem, 2.4vw, 1.5rem);

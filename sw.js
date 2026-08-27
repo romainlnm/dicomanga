@@ -1,5 +1,5 @@
 // Service Worker pour Dico.Manga - Mode hors-ligne
-const CACHE_NAME = 'dico-manga-v52';
+const CACHE_NAME = 'dico-manga-v53';
 const IMAGE_CACHE = 'dico-manga-img-v3';
 
 // Fichiers à mettre en cache dès l'installation
@@ -13,6 +13,7 @@ const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/css/style.css',
   '/js/theme.js',
+  '/js/guide.js',
   '/js/app.js',
   '/js/manga.js',
   '/js/manga-slugs.js',
@@ -31,7 +32,8 @@ const ASSETS_TO_CACHE = [
   '/images/logo.svg',
   '/images/favicon.svg',
   '/images/icon-192.png',
-  '/images/icon-512.png'
+  '/images/icon-512.png',
+  '/images/mascot-dicomi.png'
 ];
 
 // Installation du Service Worker

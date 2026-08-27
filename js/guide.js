@@ -5,9 +5,18 @@
 
 const GUIDE_DONE_KEY = 'dicoGuideDone';
 
-// Dicomi, la mascotte officielle (illustration fournie par Romain, fond détouré).
-// Le chemin est absolu pour fonctionner aussi depuis /manga/ si besoin.
-const GUIDE_MASCOT = `<img src="images/mascot-dicomi.png" alt="" class="guide-mascot-svg" draggable="false">`;
+// Dicomi, la mascotte officielle (illustrations fournies par Romain, fond
+// détouré). Une pose par étape, comme un personnage de jeu vidéo.
+const GUIDE_POSES = {
+  full:     'images/mascot/dicomi-full.png',
+  ravie:    'images/mascot/dicomi-ravie.png',
+  pense:    'images/mascot/dicomi-pense.png',
+  tropbien: 'images/mascot/dicomi-tropbien.png',
+  lecture:  'images/mascot/dicomi-lecture.png',
+  coeur:    'images/mascot/dicomi-coeur.png',
+  surprise: 'images/mascot/dicomi-surprise.png'
+};
+const GUIDE_MASCOT = `<img src="${GUIDE_POSES.full}" alt="" class="guide-mascot-svg" draggable="false">`;
 
 function guideLang() {
   const l = (typeof currentLang !== 'undefined' && currentLang) || localStorage.getItem('lang') || 'fr';
@@ -19,6 +28,7 @@ function guideSteps() {
   return [
     {
       target: null,
+      pose: 'full',
       title: fr ? 'Bienvenue sur DicoManga !' : 'Welcome to DicoManga!',
       text: fr
         ? "Moi c'est Dicomi, la guide de tous les mondes manga ✨ Je te fais visiter ? C'est rapide, promis !"
@@ -26,6 +36,7 @@ function guideSteps() {
     },
     {
       target: '.search-container',
+      pose: 'pense',
       title: fr ? 'La recherche' : 'Search',
       text: fr
         ? 'Tape un titre, un auteur ou un genre — les résultats apparaissent instantanément. Tu peux même chercher à la voix 🎙️'
@@ -33,6 +44,7 @@ function guideSteps() {
     },
     {
       target: '#genreDropdown',
+      pose: 'surprise',
       title: fr ? 'Les filtres' : 'Filters',
       text: fr
         ? 'Filtre par genre ici, et ouvre les filtres avancés juste à côté pour trier par note, année ou statut.'
@@ -40,6 +52,7 @@ function guideSteps() {
     },
     {
       target: '#mangaDuJourSection',
+      pose: 'coeur',
       title: fr ? 'Le manga du jour' : 'Manga of the day',
       text: fr
         ? 'Chaque jour, une œuvre mise en avant pour te faire découvrir de nouvelles pépites.'
@@ -47,6 +60,7 @@ function guideSteps() {
     },
     {
       target: '.manga-grid',
+      pose: 'lecture',
       title: fr ? 'La bibliothèque' : 'The library',
       text: fr
         ? "172 mangas t'attendent ! Clique sur une carte pour la fiche complète : tomes, personnages, avis, liens d'achat…"
@@ -54,6 +68,7 @@ function guideSteps() {
     },
     {
       target: '#collectionGroup',
+      pose: 'tropbien',
       title: fr ? 'Ta collection' : 'Your collection',
       text: fr
         ? 'Tes favoris ⭐, ta liste à lire 📚 et tes listes personnalisées vivent ici. Crée un compte pour tout synchroniser.'
@@ -61,6 +76,7 @@ function guideSteps() {
     },
     {
       target: '#settingsBtn',
+      pose: 'pense',
       title: fr ? 'Les réglages' : 'Settings',
       text: fr
         ? '16 thèmes (Néon Tokyo, Sakura, Terminal…), 4 langues et un studio de couleurs pour tout personnaliser.'
@@ -68,6 +84,7 @@ function guideSteps() {
     },
     {
       target: window.innerWidth <= 768 ? '.bottom-nav' : 'a[href="calendrier.html"]',
+      pose: 'surprise',
       title: fr ? 'Sorties & statistiques' : 'Releases & stats',
       text: fr
         ? 'Le calendrier des sorties 2026 et tes statistiques de lecture sont à un tap d\'ici.'
@@ -75,6 +92,7 @@ function guideSteps() {
     },
     {
       target: null,
+      pose: 'ravie',
       title: fr ? 'À toi de jouer !' : 'Your turn!',
       text: fr
         ? 'Tu peux me retrouver en bas à gauche si tu veux revoir la visite. Bonne lecture ! 📖'
@@ -130,6 +148,9 @@ function startGuide() {
   window.addEventListener('resize', showGuideStep);
   guideEls = overlay;
 
+  // Précharger toutes les poses pour des changements instantanés
+  Object.values(GUIDE_POSES).forEach(src => { const im = new Image(); im.src = src; });
+
   // Position de départ : Dicomi décolle depuis son bouton (en bas à gauche)
   const comp = overlay.querySelector('#guideCompanion');
   comp.style.left = '20px';
@@ -139,8 +160,10 @@ function startGuide() {
 }
 
 function onGuideKey(e) {
-  if (e.key === 'Escape') endGuide();
+  if (e.key === 'Escape') { endGuide(); return; }
   if (e.key === 'ArrowRight' || e.key === 'Enter') {
+    // Si un bouton du guide a le focus, son clic natif suffit (évite la double avance)
+    if (e.key === 'Enter' && document.activeElement && document.activeElement.closest('.guide-bubble')) return;
     const next = document.getElementById('guideNext');
     if (next) next.click();
   }
@@ -165,6 +188,18 @@ function showGuideStep() {
 
   const spot = document.getElementById('guideSpotlight');
   const comp = document.getElementById('guideCompanion');
+
+  // Changement d'expression : nouvelle pose + petit rebond de jeu vidéo
+  const dicoImg = comp.querySelector('.guide-dicomi img');
+  const poseSrc = GUIDE_POSES[step.pose || 'full'];
+  comp.classList.toggle('guide-pose-full', (step.pose || 'full') === 'full');
+  if (dicoImg && !dicoImg.src.endsWith(poseSrc)) {
+    dicoImg.src = poseSrc;
+    dicoImg.classList.remove('guide-pop');
+    void dicoImg.offsetWidth; // relancer l'animation
+    dicoImg.classList.add('guide-pop');
+  }
+
   document.getElementById('guideTitle').textContent = step.title;
   document.getElementById('guideText').textContent = step.text;
   document.getElementById('guideSkip').textContent = fr ? 'Passer' : 'Skip';
@@ -200,11 +235,16 @@ function showGuideStep() {
     const el = document.querySelector(step.target);
     const r = el.getBoundingClientRect();
     const pad = 8;
+    // Projecteur borné au viewport (les très grands blocs, ex. la grille)
+    const sx = Math.max(r.left - pad, 4);
+    const sy = Math.max(r.top - pad, 4);
+    const sw = Math.min(r.right + pad, window.innerWidth - 4) - sx;
+    const sh = Math.min(r.bottom + pad, window.innerHeight - 4) - sy;
     spot.style.opacity = '1';
-    spot.style.left = (r.left - pad) + 'px';
-    spot.style.top = (r.top - pad) + 'px';
-    spot.style.width = (r.width + pad * 2) + 'px';
-    spot.style.height = (r.height + pad * 2) + 'px';
+    spot.style.left = sx + 'px';
+    spot.style.top = sy + 'px';
+    spot.style.width = sw + 'px';
+    spot.style.height = sh + 'px';
 
     if (isPhone) {
       // Sur téléphone : Dicomi + bulle posées au-dessus de la barre de nav
@@ -220,8 +260,17 @@ function showGuideStep() {
 
   if (step.target) {
     const el = document.querySelector(step.target);
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTimeout(positionCompanion, 420);
+    if (el.closest('header') || el.closest('.bottom-nav')) {
+      // Éléments fixes/sticky : ne pas utiliser scrollIntoView (comportement erratique)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (el.getBoundingClientRect().height > window.innerHeight * 0.7) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    // Deux passes : pendant puis après la fin du défilement
+    setTimeout(positionCompanion, 450);
+    setTimeout(positionCompanion, 1100);
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(positionCompanion, 60);

@@ -3573,6 +3573,11 @@ footer span {
 
 .actualite-card::before {
   content: 'NOUVEAU';
+}
+html[lang="ja"] .actualite-card::before {
+  content: '新着';
+}
+.actualite-card::before {
   position: absolute;
   top: 10px;
   right: -30px;

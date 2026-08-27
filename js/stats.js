@@ -42,27 +42,6 @@ const translations = {
     manga: "manga",
     mangaPlural: "manga"
   },
-  es: {
-    siteSubtitle: "Un diccionario de manga",
-    favorites: "Mis Favoritos",
-    toRead: "Mi Lista de Lectura",
-    backToLibrary: "← Volver a la biblioteca",
-    myStatistics: "Mis Estadísticas",
-    statsSubtitle: "Tu actividad de lectura de un vistazo",
-    ratedManga: "Manga valorados",
-    averageRating: "Nota media",
-    viewed: "Vistos",
-    activeDays: "Días activo",
-    favoriteGenres: "Géneros favoritos",
-    topAuthors: "Top 3 Autores",
-    myPersonalRatings: "Mis notas personales",
-    noGenresYet: "Añade manga a tus favoritos para ver tus géneros favoritos.",
-    noAuthorsYet: "Añade manga a tus favoritos para ver tus autores favoritos.",
-    noRatingsYet: "Valora manga en sus páginas para verlos aquí.",
-    myRating: "Mi nota",
-    manga: "manga",
-    mangaPlural: "manga"
-  },
   ja: {
     siteSubtitle: "漫画辞典",
     favorites: "お気に入り",
@@ -87,6 +66,7 @@ const translations = {
 };
 
 let currentLang = localStorage.getItem('lang') || 'fr';
+if (!['fr', 'en', 'ja'].includes(currentLang)) currentLang = 'fr';
 
 function t(key) {
   return translations[currentLang]?.[key] || translations['fr'][key] || key;

@@ -20,83 +20,87 @@ const GUIDE_MASCOT = `<img src="${GUIDE_POSES.full}" alt="" class="guide-mascot-
 
 function guideLang() {
   const l = (typeof currentLang !== 'undefined' && currentLang) || localStorage.getItem('lang') || 'fr';
-  return l === 'fr' ? 'fr' : 'en';
+  return ['fr', 'en', 'ja'].includes(l) ? l : 'en';
+}
+// Helper trilingue pour les textes du guide
+function guideT(fr, en, ja) {
+  const l = guideLang();
+  return l === 'ja' ? ja : l === 'en' ? en : fr;
 }
 
 function guideSteps() {
-  const fr = guideLang() === 'fr';
   return [
     {
       target: null,
       pose: 'full',
-      title: fr ? 'Bienvenue sur DicoManga !' : 'Welcome to DicoManga!',
-      text: fr
-        ? "Moi c'est Dicomi, la guide de tous les mondes manga ✨ Je te fais visiter ? C'est rapide, promis !"
-        : "I'm Dicomi, your guide through every manga world ✨ Want a quick tour? It'll be fast, promise!"
+      title: guideT('Bienvenue sur DicoManga !', 'Welcome to DicoManga!', 'DicoMangaへようこそ！'),
+      text: guideT("Moi c'est Dicomi, la guide de tous les mondes manga ✨ Je te fais visiter ? C'est rapide, promis !",
+        "I'm Dicomi, your guide through every manga world ✨ Want a quick tour? It'll be fast, promise!",
+        'ディコミだよ、漫画の世界の案内人✨ サイトを案内するね。すぐ終わるから安心して！')
     },
     {
       target: '.search-container',
       pose: 'pense',
-      title: fr ? 'La recherche' : 'Search',
-      text: fr
-        ? 'Tape un titre, un auteur ou un genre — les résultats apparaissent instantanément. Tu peux même chercher à la voix 🎙️'
-        : 'Type a title, author or genre — results appear instantly. Voice search works too 🎙️'
+      title: guideT('La recherche', 'Search', '検索'),
+      text: guideT('Tape un titre, un auteur ou un genre — les résultats apparaissent instantanément. Tu peux même chercher à la voix 🎙️',
+        'Type a title, author or genre — results appear instantly. Voice search works too 🎙️',
+        'タイトル・作者・ジャンルを入力すると、すぐに結果が表示されるよ。音声検索もできる🎙️')
     },
     {
       target: '#genreDropdown',
       pose: 'surprise',
-      title: fr ? 'Les filtres' : 'Filters',
-      text: fr
-        ? 'Filtre par genre ici, et ouvre les filtres avancés juste à côté pour trier par note, année ou statut.'
-        : 'Filter by genre here, and open advanced filters next door to sort by rating, year or status.'
+      title: guideT('Les filtres', 'Filters', '絞り込み'),
+      text: guideT('Filtre par genre ici, et ouvre les filtres avancés juste à côté pour trier par note, année ou statut.',
+        'Filter by genre here, and open advanced filters next door to sort by rating, year or status.',
+        'ここでジャンルを絞り込めるよ。隣の詳細フィルターで評価・年代・連載状況でも並べ替えられる。')
     },
     {
       target: '#mangaDuJourSection',
       pose: 'coeur',
-      title: fr ? 'Le manga du jour' : 'Manga of the day',
-      text: fr
-        ? 'Chaque jour, une œuvre mise en avant pour te faire découvrir de nouvelles pépites.'
-        : 'Every day, one featured work to help you discover hidden gems.'
+      title: guideT('Le manga du jour', 'Manga of the day', '今日の漫画'),
+      text: guideT('Chaque jour, une œuvre mise en avant pour te faire découvrir de nouvelles pépites.',
+        'Every day, one featured work to help you discover hidden gems.',
+        '毎日1作品をピックアップ。新しい名作との出会いがあるかも。')
     },
     {
       target: '.manga-grid',
       pose: 'lecture',
-      title: fr ? 'La bibliothèque' : 'The library',
-      text: fr
-        ? "172 mangas t'attendent ! Clique sur une carte pour la fiche complète : tomes, personnages, avis, liens d'achat…"
-        : '172 manga await! Click any card for the full page: volumes, characters, reviews, buy links…'
+      title: guideT('La bibliothèque', 'The library', 'ライブラリ'),
+      text: guideT("172 mangas t'attendent ! Clique sur une carte pour la fiche complète : tomes, personnages, avis, liens d'achat…",
+        '172 manga await! Click any card for the full page: volumes, characters, reviews, buy links…',
+        '172作品が待ってるよ！カードをクリックすると、巻数・登場人物・レビュー・購入リンクつきの詳細ページへ。')
     },
     {
       target: '#collectionGroup',
       pose: 'tropbien',
-      title: fr ? 'Ta collection' : 'Your collection',
-      text: fr
-        ? 'Tes favoris ⭐, ta liste à lire 📚 et tes listes personnalisées vivent ici. Crée un compte pour tout synchroniser.'
-        : 'Your favorites ⭐, reading list 📚 and custom lists live here. Create an account to sync everything.'
+      title: guideT('Ta collection', 'Your collection', 'マイコレクション'),
+      text: guideT('Tes favoris ⭐, ta liste à lire 📚 et tes listes personnalisées vivent ici. Crée un compte pour tout synchroniser.',
+        'Your favorites ⭐, reading list 📚 and custom lists live here. Create an account to sync everything.',
+        'お気に入り⭐、読みたいリスト📚、カスタムリストはここに。アカウントを作れば全部同期できるよ。')
     },
     {
       target: '#settingsBtn',
       pose: 'pense',
-      title: fr ? 'Les réglages' : 'Settings',
-      text: fr
-        ? '16 thèmes (Néon Tokyo, Sakura, Terminal…), 4 langues et un studio de couleurs pour tout personnaliser.'
-        : '16 themes (Neon Tokyo, Sakura, Terminal…), 4 languages and a color studio to make it yours.'
+      title: guideT('Les réglages', 'Settings', '設定'),
+      text: guideT('16 thèmes (Néon Tokyo, Sakura, Terminal…), 4 langues et un studio de couleurs pour tout personnaliser.',
+        '16 themes (Neon Tokyo, Sakura, Terminal…), 4 languages and a color studio to make it yours.',
+        '16種類のテーマ（ネオン東京、さくら、ターミナル…）、多言語対応、カラースタジオで自分好みにカスタマイズ。')
     },
     {
       target: window.innerWidth <= 768 ? '.bottom-nav' : 'a[href="calendrier.html"]',
       pose: 'surprise',
-      title: fr ? 'Sorties & statistiques' : 'Releases & stats',
-      text: fr
-        ? 'Le calendrier des sorties 2026 et tes statistiques de lecture sont à un tap d\'ici.'
-        : 'The 2026 release calendar and your reading stats are one tap away.'
+      title: guideT('Sorties & statistiques', 'Releases & stats', '新刊と統計'),
+      text: guideT("Le calendrier des sorties 2026 et tes statistiques de lecture sont à un tap d'ici.",
+        'The 2026 release calendar and your reading stats are one tap away.',
+        '2026年の新刊カレンダーと読書統計はここからすぐ見られるよ。')
     },
     {
       target: null,
       pose: 'ravie',
-      title: fr ? 'À toi de jouer !' : 'Your turn!',
-      text: fr
-        ? 'Tu peux me retrouver en bas à gauche si tu veux revoir la visite. Bonne lecture ! 📖'
-        : 'You can find me in the bottom-left corner to replay the tour anytime. Happy reading! 📖'
+      title: guideT('À toi de jouer !', 'Your turn!', 'さあ、始めよう！'),
+      text: guideT('Tu peux me retrouver en bas à gauche si tu veux revoir la visite. Bonne lecture ! 📖',
+        'You can find me in the bottom-left corner to replay the tour anytime. Happy reading! 📖',
+        'また案内してほしくなったら左下にいるよ。楽しい読書を！📖')
     }
   ];
 }
@@ -128,7 +132,7 @@ function startGuide() {
         <div class="guide-dots" id="guideDots"></div>
         <button type="button" class="guide-skip" id="guideSkip"></button>
       </div>
-      <div class="guide-dlg-name">Dicomi</div>
+      <div class="guide-dlg-name">${guideLang() === 'ja' ? 'ディコミ' : 'Dicomi'}</div>
       <p class="guide-dlg-text" id="guideText"></p>
       <div class="guide-dlg-next" id="guideNext" aria-hidden="true"></div>
     </div>`;
@@ -191,7 +195,6 @@ function endGuide() {
 
 function showGuideStep() {
   if (!guideEls) return;
-  const fr = guideLang() === 'fr';
   const steps = guideSteps().filter(s => guideVisible(s.target));
   const step = steps[Math.min(guideIndex, steps.length - 1)];
   const last = guideIndex >= steps.length - 1;
@@ -219,7 +222,7 @@ function showGuideStep() {
   banner.classList.add('show');
 
   // Boutons / points
-  document.getElementById('guideSkip').textContent = fr ? 'Passer la visite' : 'Skip the tour';
+  document.getElementById('guideSkip').textContent = guideT('Passer la visite', 'Skip the tour', 'ツアーをスキップ');
   document.getElementById('guideDots').innerHTML = steps
     .map((_, i) => `<span class="guide-dot${i === guideIndex ? ' active' : ''}"></span>`).join('');
   document.getElementById('guideNext').classList.toggle('guide-last', last);
@@ -308,13 +311,12 @@ function showGuideStep() {
 
 // Bouton flottant : Dicomi + bulle d'invitation
 function createGuideFab() {
-  const fr = guideLang() === 'fr';
   const fab = document.createElement('button');
   fab.type = 'button';
   fab.className = 'guide-fab';
-  fab.title = fr ? 'Faire la visite guidée avec Dicomi' : 'Take the guided tour with Dicomi';
+  fab.title = guideT('Faire la visite guidée avec Dicomi', 'Take the guided tour with Dicomi', 'ディコミとサイトを見て回る');
   fab.setAttribute('aria-label', fab.title);
-  fab.innerHTML = GUIDE_MASCOT + `<span class="guide-fab-hint">${fr ? 'On fait le tour ? ✨' : 'Wanna look around? ✨'}</span>`;
+  fab.innerHTML = GUIDE_MASCOT + `<span class="guide-fab-hint">${guideT('On fait le tour ? ✨', 'Wanna look around? ✨', '案内しようか？✨')}</span>`;
   fab.onclick = startGuide;
   document.body.appendChild(fab);
 }

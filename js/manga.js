@@ -12,6 +12,9 @@ function isbn13to10(isbn13) {
 // Fiche produit directe quand l'ISBN du tome 1 est connu (js/achats.js),
 // sinon recherche par titre chez le marchand.
 function buildAchatLinks(manga) {
+  if (currentLang === 'ja') {
+    return [{ cls: 'amazon', label: 'Amazon', url: `https://www.amazon.co.jp/s?k=${encodeURIComponent(manga.titre + ' 漫画')}` }];
+  }
   if (currentLang === 'en') {
     return [{ cls: 'amazon', label: 'Amazon', url: `https://www.amazon.com/s?k=${encodeURIComponent(manga.titre + ' manga')}` }];
   }
@@ -44,8 +47,30 @@ function assetUrl(p) {
 // ===== LANGUE =====
 let currentLang = localStorage.getItem('lang') || 'fr';
 
+// Petit helper i18n : TL(fr, en, ja)
+function TL(fr, en, ja) {
+  return currentLang === 'ja' ? ja : currentLang === 'en' ? en : fr;
+}
+
+// Genres en japonais (l'attribut data-genre reste en français : le CSS
+// des couleurs de badge est indexé dessus)
+const GENRE_JA = {
+  'Shonen': '少年', 'Seinen': '青年', 'Shojo': '少女', 'Action': 'アクション',
+  'Aventure': '冒険', 'Comédie': 'コメディ', 'Romance': 'ロマンス',
+  'Fantasy': 'ファンタジー', 'Dark Fantasy': 'ダークファンタジー',
+  'Thriller': 'スリラー', 'Horreur': 'ホラー', 'Sport': 'スポーツ',
+  'Science-fiction': 'SF', 'Cyberpunk': 'サイバーパンク', 'Drame': 'ドラマ',
+  'Mystère': 'ミステリー', 'Surnaturel': '超自然', 'Psychologique': '心理',
+  'Tranche de vie': '日常', 'Arts martiaux': '格闘技', 'Historique': '歴史',
+  'Musique': '音楽'
+};
+function genreLabel(g) {
+  return currentLang === 'ja' ? (GENRE_JA[g] || g) : g;
+}
+
 function toggleLanguage() {
-  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  const order = ['fr', 'en', 'ja'];
+  currentLang = order[(order.indexOf(currentLang) + 1) % order.length];
   localStorage.setItem('lang', currentLang);
   updateLangToggleUI();
   updateBackButton();
@@ -58,10 +83,11 @@ function toggleLanguage() {
     afficherDetailManga(parseInt(mangaId));
   }
 
-  showToast(currentLang === 'fr' ? 'Français activé' : 'English enabled');
+  showToast(TL('Français activé', 'English enabled', '日本語に切り替えました'));
 }
 
 function updateLangToggleUI() {
+  document.documentElement.lang = currentLang;
   const langIcon = document.getElementById('langIcon');
   if (langIcon) {
     langIcon.textContent = currentLang.toUpperCase();
@@ -71,9 +97,12 @@ function updateLangToggleUI() {
 function initLanguage() {
   // Static EN pages (/manga/en/...) tag <body data-lang="en"> so the
   // first paint matches the URL. localStorage only kicks in when the
-  // page is language-neutral (manga.html?id=X).
+  // page is language-neutral (manga.html?id=X) — sauf pour le japonais,
+  // qui n'a pas de pages statiques : le choix de l'utilisateur gagne.
+  const stored = localStorage.getItem('lang');
   const bodyLang = document.body.dataset.lang;
-  currentLang = bodyLang || localStorage.getItem('lang') || 'fr';
+  currentLang = stored === 'ja' ? 'ja' : (bodyLang || stored || 'fr');
+  if (!['fr', 'en', 'ja'].includes(currentLang)) currentLang = 'fr';
   updateLangToggleUI();
   updateBackButton();
 }
@@ -81,7 +110,7 @@ function initLanguage() {
 function updateBackButton() {
   const backBtn = document.querySelector('.back-btn');
   if (backBtn) {
-    backBtn.textContent = currentLang === 'en' ? '← Back to library' : '← Retour à la bibliothèque';
+    backBtn.textContent = TL('← Retour à la bibliothèque', '← Back to library', '← ライブラリに戻る');
   }
 }
 
@@ -93,12 +122,12 @@ function switchDetailCover(position) {
 
   if (position === 'last') {
     slider.classList.add('show-last');
-    if (label) label.textContent = currentLang === 'en' ? 'Last volume' : 'Dernier tome';
+    if (label) label.textContent = TL('Dernier tome', 'Last volume', '最終巻');
     buttons[0].classList.remove('active');
     buttons[1].classList.add('active');
   } else {
     slider.classList.remove('show-last');
-    if (label) label.textContent = currentLang === 'en' ? 'Volume 1' : 'Tome 1';
+    if (label) label.textContent = TL('Tome 1', 'Volume 1', '第1巻');
     buttons[0].classList.add('active');
     buttons[1].classList.remove('active');
   }
@@ -156,24 +185,25 @@ function afficherDetailManga(id) {
   if (!manga) {
     container.innerHTML = `
       <div class="no-results">
-        <h2>${currentLang === 'en' ? 'Manga not found' : 'Manga non trouvé'}</h2>
-        <p>${currentLang === 'en' ? 'This manga does not exist in our database.' : 'Ce manga n\'existe pas dans notre base de données.'}</p>
-        <a href="index.html" class="back-btn">${currentLang === 'en' ? 'Back to library' : 'Retour à la bibliothèque'}</a>
+        <h2>${TL('Manga non trouvé', 'Manga not found', '漫画が見つかりません')}</h2>
+        <p>${TL('Ce manga n\'existe pas dans notre base de données.', 'This manga does not exist in our database.', 'この漫画はデータベースに存在しません。')}</p>
+        <a href="index.html" class="back-btn">${TL('Retour à la bibliothèque', 'Back to library', 'ライブラリに戻る')}</a>
       </div>
     `;
     return;
   }
 
   // Mettre à jour le titre de la page
-  document.title = `${manga.titre} - Dico.Manga`;
+  document.title = `${getMangaText(manga, 'titre')} - Dico.Manga`;
 
   // Vérifier si le manga a deux couvertures
   const hasTwoCovers = manga.statut === 'Terminé' && manga.couvertureLast;
 
   // Statut → pastille (même rendu que les cartes de l'accueil)
   const isOngoing = /en cours/i.test(manga.statut || '');
-  const statutLabel = currentLang === 'en' ? (isOngoing ? 'Ongoing' : 'Completed')
-    : (isOngoing ? 'En cours' : 'Terminé');
+  const statutLabel = isOngoing
+    ? TL('En cours', 'Ongoing', '連載中')
+    : TL('Terminé', 'Completed', '完結');
 
   // Générer le HTML
   container.innerHTML = `
@@ -186,10 +216,10 @@ function afficherDetailManga(id) {
               <img src="${assetUrl(manga.couverture)}" alt="${manga.titre} - Tome 1" class="manga-detail-cover" fetchpriority="high" decoding="async" onerror="this.style.display='none'">
               <img src="${assetUrl(manga.couvertureLast)}" alt="${manga.titre} - Dernier tome" class="manga-detail-cover" decoding="async" onerror="this.style.display='none'">
             </div>
-            <span class="cover-slider-label" id="detail-slider-label">${currentLang === 'en' ? 'Volume 1' : 'Tome 1'}</span>
+            <span class="cover-slider-label" id="detail-slider-label">${TL('Tome 1', 'Volume 1', '第1巻')}</span>
             <div class="cover-slider-nav">
-              <button class="cover-slider-btn active" onclick="switchDetailCover('first')" title="${currentLang === 'en' ? 'First volume' : 'Premier tome'}">◀</button>
-              <button class="cover-slider-btn" onclick="switchDetailCover('last')" title="${currentLang === 'en' ? 'Last volume' : 'Dernier tome'}">▶</button>
+              <button class="cover-slider-btn active" onclick="switchDetailCover('first')" title="${TL('Premier tome', 'First volume', '第1巻')}">◀</button>
+              <button class="cover-slider-btn" onclick="switchDetailCover('last')" title="${TL('Dernier tome', 'Last volume', '最終巻')}">▶</button>
             </div>
           </div>
         ` : `
@@ -205,47 +235,47 @@ function afficherDetailManga(id) {
       </div>
 
       <div class="manga-detail-info">
-        <h1 class="title-neon" onclick="cycleTitleStyle(this)" title="Click to try another style">${manga.titre}</h1>
+        <h1 class="title-neon" onclick="cycleTitleStyle(this)" title="Click to try another style">${getMangaText(manga, 'titre')}</h1>
 
         <div class="detail-badges">
           ${manga.statut ? `<span class="card-status ${isOngoing ? 'ongoing' : 'completed'}"><span class="card-status-dot"></span>${statutLabel}</span>` : ''}
-          ${manga.genre.map(g => `<span class="card-genre-badge" data-genre="${g}">${g}</span>`).join('')}
+          ${manga.genre.map(g => `<span class="card-genre-badge" data-genre="${g}">${genreLabel(g)}</span>`).join('')}
         </div>
 
         <div class="manga-actions">
           <button class="favorite-btn ${estFavori(manga.id) ? 'active' : ''}" onclick="toggleFavoriBtn(${manga.id})">
             <span id="favIcon">${estFavori(manga.id) ? '★' : '☆'}</span>
-            <span id="favText">${estFavori(manga.id) ? (currentLang === 'en' ? 'In favorites' : 'Dans mes favoris') : (currentLang === 'en' ? 'Add to favorites' : 'Ajouter aux favoris')}</span>
+            <span id="favText">${estFavori(manga.id) ? (TL('Dans mes favoris', 'In favorites', 'お気に入り済み')) : (TL('Ajouter aux favoris', 'Add to favorites', 'お気に入りに追加'))}</span>
           </button>
           <button class="alire-btn ${estALire(manga.id) ? 'active' : ''}" onclick="toggleALireBtn(${manga.id})">
             <span id="alireIcon">${estALire(manga.id) ? '📖' : '📚'}</span>
-            <span id="alireText">${estALire(manga.id) ? (currentLang === 'en' ? 'In my list' : 'Dans ma liste') : (currentLang === 'en' ? 'To read' : 'À lire')}</span>
+            <span id="alireText">${estALire(manga.id) ? (TL('Dans ma liste', 'In my list', 'リスト追加済み')) : (TL('À lire', 'To read', '読みたい'))}</span>
           </button>
           <button class="download-btn ${isOfflineAvailable(manga.id) ? 'downloaded' : ''}" onclick="downloadForOffline(${manga.id})">
             <span id="downloadIcon">${isOfflineAvailable(manga.id) ? '✓' : '↓'}</span>
-            <span id="downloadText">${isOfflineAvailable(manga.id) ? (currentLang === 'en' ? 'Offline' : 'Hors-ligne') : (currentLang === 'en' ? 'Download' : 'Télécharger')}</span>
+            <span id="downloadText">${isOfflineAvailable(manga.id) ? (TL('Hors-ligne', 'Offline', 'オフライン')) : (TL('Télécharger', 'Download', 'ダウンロード'))}</span>
           </button>
           <button class="list-btn" onclick="ouvrirAjouterAListe(${manga.id})">
             <span>📋</span>
-            <span>${currentLang === 'en' ? 'Add to list' : 'Ajouter à une liste'}</span>
+            <span>${TL('Ajouter à une liste', 'Add to list', 'リストに追加')}</span>
           </button>
         </div>
 
         <div class="manga-meta">
           <div class="meta-item">
-            <span class="meta-label">${currentLang === 'en' ? 'Author' : 'Auteur'}</span>
+            <span class="meta-label">${TL('Auteur', 'Author', '作者')}</span>
             <span class="meta-value">${manga.auteur}</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">${currentLang === 'en' ? 'Year' : 'Année'}</span>
+            <span class="meta-label">${TL('Année', 'Year', '年')}</span>
             <span class="meta-value">${manga.annee}</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">Volumes</span>
+            <span class="meta-label">${TL('Volumes', 'Volumes', '巻数')}</span>
             <span class="meta-value">${manga.volumes}</span>
           </div>
           <div class="meta-item anime-link">
-            <span class="meta-label">${currentLang === 'en' ? 'Watch the anime' : 'Voir l\'anime'}</span>
+            <span class="meta-label">${TL('Voir l\'anime', 'Watch the anime', 'アニメを見る')}</span>
             <div class="anime-btns">
               <a href="https://hianimes.se/search?keyword=${encodeURIComponent(manga.titre)}" target="_blank" rel="noopener" class="anime-btn anime-btn-hianime">
                 ▶ Hianime
@@ -256,7 +286,7 @@ function afficherDetailManga(id) {
             </div>
           </div>
           <div class="meta-item achat-link">
-            <span class="meta-label">${currentLang === 'en' ? 'Buy the manga' : 'Acheter le manga'}</span>
+            <span class="meta-label">${TL('Acheter le manga', 'Buy the manga', '漫画を購入')}</span>
             <div class="achat-btns">
               ${buildAchatLinks(manga).map(l => `
               <a href="${l.url}" target="_blank" rel="noopener" class="achat-btn achat-btn-${l.cls}">
@@ -268,13 +298,13 @@ function afficherDetailManga(id) {
 
         <!-- Résumé -->
         <div class="manga-section">
-          <h2>${currentLang === 'en' ? 'Summary' : 'Résumé'}</h2>
+          <h2>${TL('Résumé', 'Summary', 'あらすじ')}</h2>
           <p>${getMangaText(manga, 'resume')}</p>
         </div>
 
         <!-- Biographie de l'auteur -->
         <div class="manga-section">
-          <h2>${currentLang === 'en' ? 'About the Author' : 'À propos de l\'auteur'}</h2>
+          <h2>${TL('À propos de l\'auteur', 'About the Author', '作者について')}</h2>
           <p>${getMangaText(manga, 'bioAuteur')}</p>
         </div>
 
@@ -282,7 +312,7 @@ function afficherDetailManga(id) {
 
         <!-- Personnages -->
         <div class="manga-section">
-          <h2>${currentLang === 'en' ? 'Main Characters' : 'Personnages principaux'}</h2>
+          <h2>${TL('Personnages principaux', 'Main Characters', '主な登場人物')}</h2>
           <div class="characters-grid">
             ${getMangaCharacters(manga).map(perso => `
               <div class="character-card">
@@ -299,7 +329,7 @@ function afficherDetailManga(id) {
 
         <!-- Avis général -->
         <div class="manga-section review-section">
-          <h2>${currentLang === 'en' ? 'Our Review' : 'Notre avis'}</h2>
+          <h2>${TL('Notre avis', 'Our Review', 'レビュー')}</h2>
           <div class="rating-display">
             <span class="rating-number">${manga.note}</span>
             <span class="rating-stars">${'★'.repeat(manga.note)}${'☆'.repeat(10 - manga.note)}</span>
@@ -309,35 +339,35 @@ function afficherDetailManga(id) {
 
         <!-- Ma note personnelle -->
         <div class="manga-section user-rating-section">
-          <h2>${currentLang === 'en' ? 'My Rating' : 'Ma note'}</h2>
+          <h2>${TL('Ma note', 'My Rating', 'マイ評価')}</h2>
           <div class="user-rating-container">
             <div class="user-rating-stars" id="userRatingStars">
               ${[1,2,3,4,5,6,7,8,9,10].map(n => `
                 <span class="user-star ${getUserRating(manga.id) >= n ? 'active' : ''}" data-rating="${n}" onclick="setUserRating(${manga.id}, ${n})">★</span>
               `).join('')}
             </div>
-            <span class="user-rating-value" id="userRatingValue">${getUserRating(manga.id) ? getUserRating(manga.id) + '/10' : (currentLang === 'en' ? 'Not rated' : 'Non noté')}</span>
+            <span class="user-rating-value" id="userRatingValue">${getUserRating(manga.id) ? getUserRating(manga.id) + '/10' : (TL('Non noté', 'Not rated', '未評価'))}</span>
           </div>
         </div>
 
         <!-- Notes personnelles -->
         <div class="manga-section notes-section">
-          <h2>${currentLang === 'en' ? 'My Notes' : 'Mes notes'}</h2>
+          <h2>${TL('Mes notes', 'My Notes', 'マイメモ')}</h2>
           <textarea
             class="notes-textarea"
             id="notesTextarea"
-            placeholder="${currentLang === 'en' ? 'Write your notes about this manga...' : 'Écris tes notes sur ce manga...'}"
+            placeholder="${TL('Écris tes notes sur ce manga...', 'Write your notes about this manga...', 'この漫画についてメモを書こう…')}"
             onchange="saveNote(${manga.id}, this.value)"
           >${getNote(manga.id)}</textarea>
           <div class="notes-footer">
-            <span class="notes-hint">${currentLang === 'en' ? 'Auto-saved' : 'Sauvegarde automatique'}</span>
+            <span class="notes-hint">${TL('Sauvegarde automatique', 'Auto-saved', '自動保存')}</span>
           </div>
         </div>
 
         ${manga.connexions && manga.connexions.length > 0 ? `
         <!-- Connexions / Même univers -->
         <div class="manga-section connexions-section">
-          <h2>${currentLang === 'en' ? 'Same Universe' : 'Même univers'} : ${manga.univers}</h2>
+          <h2>${TL('Même univers', 'Same Universe', '同じ世界観')} : ${manga.univers}</h2>
           <div class="connexions-grid">
             ${manga.connexions.map(connexionId => {
               const connexionManga = getMangaById(connexionId);
@@ -358,7 +388,7 @@ function afficherDetailManga(id) {
 
         <!-- Recommandations -->
         <div class="manga-section">
-          <h2>${currentLang === 'en' ? 'Similar Manga' : 'Mangas similaires'}</h2>
+          <h2>${TL('Mangas similaires', 'Similar Manga', '似ている漫画')}</h2>
           <div class="similar-grid">
             ${getRecommandations(manga).map(rec => `
               <div class="similar-card" onclick="window.location.href=mangaUrl(${rec.id})">
@@ -418,14 +448,14 @@ function toggleALireBtn(id) {
     aLire.push(id);
     btn.classList.add('active');
     icon.textContent = '📖';
-    text.textContent = 'Dans ma liste';
-    showToast(`${manga.titre} ajouté à la liste 📚`);
+    text.textContent = TL('Dans ma liste', 'In my list', 'リスト追加済み');
+    showToast(currentLang === 'ja' ? `${manga.titre}を読みたいリストに追加しました 📚` : currentLang === 'en' ? `${manga.titre} added to your list 📚` : `${manga.titre} ajouté à la liste 📚`);
   } else {
     aLire.splice(index, 1);
     btn.classList.remove('active');
     icon.textContent = '📚';
-    text.textContent = 'À lire';
-    showToast(`${manga.titre} retiré de la liste`);
+    text.textContent = TL('À lire', 'To read', '読みたい');
+    showToast(currentLang === 'ja' ? `${manga.titre}をリストから削除しました` : currentLang === 'en' ? `${manga.titre} removed from your list` : `${manga.titre} retiré de la liste`);
   }
 
   localStorage.setItem('mangaALire', JSON.stringify(aLire));
@@ -443,14 +473,14 @@ function toggleFavoriBtn(id) {
     favoris.push(id);
     btn.classList.add('active');
     icon.textContent = '★';
-    text.textContent = 'Dans mes favoris';
-    showToast(`${manga.titre} ajouté aux favoris ★`);
+    text.textContent = TL('Dans mes favoris', 'In favorites', 'お気に入り済み');
+    showToast(currentLang === 'ja' ? `${manga.titre}をお気に入りに追加しました ★` : currentLang === 'en' ? `${manga.titre} added to favorites ★` : `${manga.titre} ajouté aux favoris ★`);
   } else {
     favoris.splice(index, 1);
     btn.classList.remove('active');
     icon.textContent = '☆';
-    text.textContent = 'Ajouter aux favoris';
-    showToast(`${manga.titre} retiré des favoris`);
+    text.textContent = TL('Ajouter aux favoris', 'Add to favorites', 'お気に入りに追加');
+    showToast(currentLang === 'ja' ? `${manga.titre}をお気に入りから削除しました` : currentLang === 'en' ? `${manga.titre} removed from favorites` : `${manga.titre} retiré des favoris`);
   }
 
   localStorage.setItem('mangaFavoris', JSON.stringify(favoris));
@@ -502,7 +532,7 @@ function setUserRating(id, rating) {
   valueDisplay.textContent = rating + '/10';
 
   const manga = getMangaById(id);
-  showToast(`${manga.titre} noté ${rating}/10`);
+  showToast(currentLang === 'ja' ? `${manga.titre}を${rating}/10と評価しました` : currentLang === 'en' ? `${manga.titre} rated ${rating}/10` : `${manga.titre} noté ${rating}/10`);
 }
 
 // ===== NOTES PERSONNELLES =====
@@ -517,7 +547,7 @@ function saveNote(id, text) {
   const data = notes ? JSON.parse(notes) : {};
   data[id] = text;
   localStorage.setItem('mangaNotes', JSON.stringify(data));
-  showToast('Notes sauvegardées');
+  showToast(TL('Notes sauvegardées', 'Notes saved', 'メモを保存しました'));
 }
 
 // ===== MODE HORS-LIGNE =====
@@ -532,7 +562,7 @@ function downloadForOffline(mangaId) {
 
   // Vérifier si déjà téléchargé
   if (isOfflineAvailable(mangaId)) {
-    showToast(`${manga.titre} est déjà disponible hors-ligne`);
+    showToast(currentLang === 'ja' ? `${manga.titre}は既にオフラインで利用できます` : currentLang === 'en' ? `${manga.titre} is already available offline` : `${manga.titre} est déjà disponible hors-ligne`);
     return;
   }
 
@@ -557,7 +587,7 @@ function downloadForOffline(mangaId) {
     text.textContent = 'Hors-ligne';
   }
 
-  showToast(`${manga.titre} disponible hors-ligne`);
+  showToast(currentLang === 'ja' ? `${manga.titre}をオフライン保存しました` : currentLang === 'en' ? `${manga.titre} available offline` : `${manga.titre} disponible hors-ligne`);
 }
 
 // ===== RECOMMANDATIONS =====
@@ -618,13 +648,13 @@ function ouvrirAjouterAListe(mangaId) {
   modal.innerHTML = `
     <div class="modal-content modal-small">
       <div class="modal-header">
-        <h2>${currentLang === 'en' ? 'Add to list' : 'Ajouter à une liste'}</h2>
+        <h2>${TL('Ajouter à une liste', 'Add to list', 'リストに追加')}</h2>
         <button class="modal-close" onclick="fermerAjouterAListe()">✕</button>
       </div>
       <div class="modal-body">
         ${listNames.length === 0 ? `
-          <p class="no-lists-message">${currentLang === 'en' ? 'No lists created yet.' : 'Aucune liste créée.'}</p>
-          <p class="no-lists-hint">${currentLang === 'en' ? 'Create lists from the homepage (📋 button)' : 'Crée des listes depuis l\'accueil (bouton 📋)'}</p>
+          <p class="no-lists-message">${TL('Aucune liste créée.', 'No lists created yet.', 'まだリストがありません。')}</p>
+          <p class="no-lists-hint">${TL('Crée des listes depuis l\'accueil (bouton 📋)', 'Create lists from the homepage (📋 button)', 'ホームの📋ボタンからリストを作成できます')}</p>
         ` : `
           <div class="lists-selection">
             ${listNames.map(name => {
@@ -665,11 +695,11 @@ function toggleMangaInList(listName, mangaId) {
   if (index === -1) {
     // Ajouter à la liste
     lists[listName].push(mangaId);
-    showToast(`${manga.titre} ${currentLang === 'en' ? 'added to' : 'ajouté à'} "${listName}"`);
+    showToast(currentLang === 'ja' ? `${manga.titre}を「${listName}」に追加しました` : `${manga.titre} ${TL('ajouté à', 'added to', '')} "${listName}"`);
   } else {
     // Retirer de la liste
     lists[listName].splice(index, 1);
-    showToast(`${manga.titre} ${currentLang === 'en' ? 'removed from' : 'retiré de'} "${listName}"`);
+    showToast(currentLang === 'ja' ? `${manga.titre}を「${listName}」から削除しました` : `${manga.titre} ${TL('retiré de', 'removed from', '')} "${listName}"`);
   }
 
   saveCustomLists(lists);
@@ -737,7 +767,7 @@ function formatTomeDate(iso, lang) {
   if (!iso) return '';
   const d = new Date(iso);
   if (isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', {
+  return d.toLocaleDateString(lang === 'ja' ? 'ja-JP' : lang === 'en' ? 'en-US' : 'fr-FR', {
     year: 'numeric', month: 'short'
   });
 }
@@ -768,18 +798,18 @@ function renderTomesSection(manga) {
   const tomes = buildTomesArray(manga);
   if (!tomes.length) return '';
   const lang = currentLang || 'fr';
-  const prevLabel = lang === 'en' ? 'Previous volumes' : 'Tomes précédents';
-  const nextLabel = lang === 'en' ? 'Next volumes' : 'Tomes suivants';
+  const prevLabel = TL('Tomes précédents', 'Previous volumes', '前の巻');
+  const nextLabel = TL('Tomes suivants', 'Next volumes', '次の巻');
   const readSet = getReadTomes(manga.id);
-  const readLabel = lang === 'en' ? 'Mark as read' : 'Marquer comme lu';
-  const unreadLabel = lang === 'en' ? 'Mark as unread' : 'Marquer comme non lu';
+  const readLabel = TL('Marquer comme lu', 'Mark as read', '既読にする');
+  const unreadLabel = TL('Marquer comme non lu', 'Mark as unread', '未読にする');
 
   // On rend tous les tomes ; ceux dont la couverture ne charge pas
   // seront retirés du DOM via l'onerror (voir handleTomeImageError).
   return `
     <div class="manga-section tomes-section" data-manga-id="${manga.id}">
       <h2>
-        ${lang === 'en' ? 'Volumes' : 'Tomes'}
+        ${TL('Tomes', 'Volumes', '巻一覧')}
         <span class="tomes-count" id="tomesCount">${tomes.length}</span>
         <span class="tomes-progress" id="tomesProgress">${readSet.size} / ${tomes.length}</span>
       </h2>
@@ -794,12 +824,12 @@ function renderTomesSection(manga) {
             return `
               <div class="tome-card${isRead ? ' tome-read' : ''}" data-tome="${t.num}">
                 <div class="tome-cover-wrap">
-                  <img src="${assetUrl(t.cover)}" alt="${lang === 'en' ? 'Volume' : 'Tome'} ${t.num}" class="tome-cover" loading="lazy" decoding="async" onerror="handleTomeImageError(this)">
+                  <img src="${assetUrl(t.cover)}" alt="${TL('Tome', 'Volume', '巻')} ${t.num}" class="tome-cover" loading="lazy" decoding="async" onerror="handleTomeImageError(this)">
                   <span class="tome-num-badge">${t.num}</span>
                   <button type="button" class="tome-read-toggle" aria-pressed="${isRead}" aria-label="${ariaLabel}" title="${ariaLabel}" onclick="event.stopPropagation();toggleTomeRead(${manga.id}, ${t.num})">${isRead ? '✓' : '○'}</button>
                 </div>
                 <div class="tome-info">
-                  <span class="tome-num">${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}</span>
+                  <span class="tome-num">${lang === 'ja' ? `第${t.num}巻` : `${lang === 'en' ? 'Vol.' : 'Tome'} ${t.num}`}</span>
                   ${dateLabel ? `<span class="tome-date">${dateLabel}</span>` : ''}
                 </div>
               </div>

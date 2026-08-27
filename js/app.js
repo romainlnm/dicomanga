@@ -15,6 +15,7 @@ let lettreActive = 'Tous';
 mangas.sort((a, b) => a.titre.localeCompare(b.titre, 'fr'));
 let mangasFiltres = mangas;
 let currentLang = localStorage.getItem('lang') || 'fr';
+if (!['fr', 'en', 'ja'].includes(currentLang)) currentLang = 'fr';
 
 // Filtres avancés
 let filtresAvances = {
@@ -355,118 +356,50 @@ const translations = {
     changeAvatar: "Change photo",
     save: "Save"
   },
-  es: {
-    siteSubtitle: "Un diccionario de manga",
-    searchPlaceholder: "Buscar manga, autor, género...",
-    allGenres: "Todos los géneros",
-    favorites: "Mis Favoritos",
-    toRead: "Mi Lista de Lectura",
-    compare: "Comparar",
-    recentlyViewed: "Vistos recientemente",
-    latestReleases: "Últimos lanzamientos",
-    heroSubtitle: "Descubre, califica y sigue tus mangas favoritos",
-    heroExplore: "Explorar la biblioteca",
-    heroFind: "Encontrar mi manga",
-    library: "Biblioteca",
-    mangaOfDay: "Manga del día",
-    volumes: "tomos",
-    all: "Todos",
-    gridView: "Vista cuadrícula",
-    listView: "Vista lista",
-    quiz: "Quiz",
-    stats: "Stats",
-    noResults: "No se encontró ningún manga",
-    author: "Autor",
-    year: "Año",
-    status: "Estado",
-    genres: "Géneros",
-    summary: "Resumen",
-    characters: "Personajes principales",
-    ourReview: "Nuestra opinión",
-    similarManga: "Manga similares",
-    myNotes: "Mis notas",
-    notesPlaceholder: "Escribe tus notas sobre este manga...",
-    autoSave: "Guardado automático",
-    addToFavorites: "Añadir a favoritos",
-    inFavorites: "En mis favoritos",
-    addToList: "Por leer",
-    inList: "En mi lista",
-    watchAnime: "Ver anime",
-    aboutAuthor: "Sobre el autor",
-    sameUniverse: "Mismo universo",
-    totalMangas: "manga",
-    totalAuthors: "autores",
-    by: "Por",
-    backToLibrary: "← Volver a la biblioteca",
-    myStatistics: "Mis Estadísticas",
-    ratedManga: "Manga valorados",
-    averageRating: "Nota media",
-    viewed: "Vistos",
-    activeDays: "Días activo",
-    favoriteGenres: "Géneros favoritos",
-    topAuthors: "Top 3 Autores",
-    myPersonalRatings: "Mis notas personales",
-    noGenresYet: "Añade manga a tus favoritos para ver tus géneros favoritos.",
-    noAuthorsYet: "Añade manga a tus favoritos para ver tus autores favoritos.",
-    noRatingsYet: "Valora manga en sus páginas para verlos aquí.",
-    myRating: "Mi nota",
-    manga: "manga",
-    mangaPlural: "manga",
-    themeStudio: "Estudio de colores",
-    settings: "Ajustes",
-    themeLabel: "Tema",
-    languageLabel: "Idioma",
-    accentColor: "Color de acento",
-    bgColor: "Color de fondo",
-    apply: "Aplicar",
-    reset: "Restablecer",
-    lastViewed: "Último visto",
-    streak: "Racha",
-    viewAllStats: "Ver todas mis estadísticas →",
-    collection: "Mi colección",
-    customLists: "Mis listas",
-    createList: "Crear una lista",
-    listName: "Nombre de la lista",
-    addToList: "Añadir a una lista",
-    removeFromList: "Quitar de la lista",
-    noLists: "No hay listas creadas",
-    deleteList: "Eliminar lista",
-    created: "creada",
-    deleted: "eliminada",
-    addedTo: "añadido a",
-    removedFrom: "eliminado de",
-    emptyList: "Esta lista está vacía",
-    listExists: "Esta lista ya existe",
-    enterListName: "Introduce un nombre de lista",
-    discoveryTitle: "Encuentra tu manga ideal",
-    discoverySubtitle: "Responde algunas preguntas y descubre el manga hecho para ti",
-    quizMood: "¿Cuál es tu estado de ánimo hoy?",
-    moodAction: "Quiero acción",
-    moodEmotion: "Quiero emociones",
-    moodLaugh: "Quiero reír",
-    moodThink: "Quiero pensar",
-    moodEscape: "Quiero escapar",
-    moodThrill: "Quiero escalofríos",
-    quizType: "¿Qué tipo de manga prefieres?",
-    typeShonen: "Acción, amistad, superación",
-    typeSeinen: "Maduro, complejo, realista",
-    typeShojo: "Romance, emociones, relaciones",
-    typeAny: "Cualquiera",
-    typeAnyDesc: "¡Sorpréndeme!",
-    quizLength: "¿Cuánto quieres leer?",
-    lengthShort: "Corto",
-    lengthShortDesc: "Menos de 10 tomos",
-    lengthMedium: "Medio",
-    lengthMediumDesc: "10 a 30 tomos",
-    lengthLong: "Largo",
-    lengthLongDesc: "Más de 30 tomos",
-    lengthAny: "Cualquiera",
-    lengthAnyDesc: "La calidad primero",
-    previous: "Anterior",
-    restart: "Reiniciar",
-    quizResultTitle: "Tu manga ideal:"
-  },
   ja: {
+    compareBtn: "比較",
+    findNextManga: "次に読む漫画を見つけよう",
+    topManga: "トップ漫画",
+    findManga: "漫画を探す",
+    randomManga: "ランダム",
+    myStats: "マイ統計",
+    chooseManga: "漫画を選ぶ...",
+    recommend: "おすすめして",
+    recoSubtitle: "大好きな漫画を選んで、魔法にお任せ",
+    signIn: "ログイン",
+    signUp: "新規登録",
+    signOut: "ログアウト",
+    email: "メールアドレス",
+    password: "パスワード",
+    confirmPassword: "パスワード（確認）",
+    username: "ユーザー名",
+    chooseAvatar: "アバターを選ぶ",
+    forgotPassword: "パスワードをお忘れですか？",
+    continueWithGoogle: "Googleで続ける",
+    or: "または",
+    guestInfo: "アカウントなしの場合、データはこの端末にのみ保存されます。",
+    synced: "同期済み",
+    syncNow: "今すぐ同期",
+    privacyPolicy: "プライバシーポリシー",
+    chatMessages: "メッセージ",
+    chatSearchUser: "ユーザーを検索...",
+    chatSelectConversation: "会話を選択してください",
+    chatTabPrivate: "プライベート",
+    chatTabPublic: "みんなの広場",
+    chatPublicIntro: "コミュニティチャットへようこそ！",
+    advancedFilters: "絞り込み",
+    filterStatus: "連載状況",
+    filterYear: "年代",
+    filterRating: "評価",
+    filterVolumes: "巻数",
+    completed: "完結",
+    ongoing: "連載中",
+    shortSeries: "短編（〜10巻）",
+    mediumSeries: "中編（11〜30巻）",
+    longSeries: "長編（31巻〜）",
+    resetFilters: "リセット",
+    changeAvatar: "写真を変更",
+    save: "保存",
     siteSubtitle: "漫画辞典",
     searchPlaceholder: "漫画、作者、ジャンルを検索...",
     allGenres: "すべてのジャンル",
@@ -582,7 +515,6 @@ const translations = {
 const langFlags = {
   fr: '🇫🇷',
   en: '🇬🇧',
-  es: '🇪🇸',
   ja: '🇯🇵'
 };
 
@@ -807,7 +739,6 @@ function afficherMangas(listMangas) {
       // Statut (pastille) + libellé traduit
       const isOngoing = /en cours/i.test(manga.statut || '');
       const statutLabel = currentLang === 'en' ? (isOngoing ? 'Ongoing' : 'Completed')
-        : currentLang === 'es' ? (isOngoing ? 'En curso' : 'Finalizado')
         : currentLang === 'ja' ? (isOngoing ? '連載中' : '完結')
         : (isOngoing ? 'En cours' : 'Terminé');
 
@@ -818,7 +749,7 @@ function afficherMangas(listMangas) {
             <span>✓</span>
           </div>
         ` : ''}
-        ${!modeComparaison ? `<span class="card-genre-badge" data-genre="${manga.genre[0]}">${manga.genre[0]}</span>` : ''}
+        ${!modeComparaison ? `<span class="card-genre-badge" data-genre="${manga.genre[0]}">${translateGenre(manga.genre[0])}</span>` : ''}
         ${manga.statut ? `<span class="card-status ${isOngoing ? 'ongoing' : 'completed'}"><span class="card-status-dot"></span>${statutLabel}</span>` : ''}
         ${hasTwoCovers ? `
           <div class="cover-slider">
@@ -924,7 +855,7 @@ function initVoiceSearch() {
   }
 
   recognition = new SpeechRecognition();
-  recognition.lang = currentLang === 'ja' ? 'ja-JP' : currentLang === 'es' ? 'es-ES' : currentLang === 'en' ? 'en-US' : 'fr-FR';
+  recognition.lang = currentLang === 'ja' ? 'ja-JP' : currentLang === 'en' ? 'en-US' : 'fr-FR';
   recognition.continuous = false;
   recognition.interimResults = false;
 
@@ -987,7 +918,7 @@ function toggleVoiceSearch() {
     recognition.stop();
   } else {
     // Mettre à jour la langue avant de démarrer
-    recognition.lang = currentLang === 'ja' ? 'ja-JP' : currentLang === 'es' ? 'es-ES' : currentLang === 'en' ? 'en-US' : 'fr-FR';
+    recognition.lang = currentLang === 'ja' ? 'ja-JP' : currentLang === 'en' ? 'en-US' : 'fr-FR';
     recognition.start();
   }
 }
@@ -2053,7 +1984,7 @@ function setLanguage(lang) {
     afficherMangaDuJour();
   });
 
-  showToast(lang === 'fr' ? 'Langue changée' : lang === 'en' ? 'Language changed' : lang === 'es' ? 'Idioma cambiado' : '言語を変更しました');
+  showToast(lang === 'fr' ? 'Langue changée' : lang === 'en' ? 'Language changed' : '言語を変更しました');
 }
 
 function toggleLanguage() {
@@ -2079,6 +2010,7 @@ function updateLangToggleUI() {
 }
 
 function updateLangUI() {
+  document.documentElement.lang = currentLang;
   // Mettre à jour le drapeau du bouton
   const flagEl = document.getElementById('langFlag');
   if (flagEl) {
@@ -2278,7 +2210,8 @@ function afficherMangaDuJour() {
   const manga = mangas[index];
 
   // Utiliser le résumé traduit si disponible
-  const resume = (currentLang === 'en' && manga.resume_en) ? manga.resume_en : manga.resume;
+  const resume = (typeof getMangaText === 'function') ? getMangaText(manga, 'resume')
+    : (currentLang === 'en' && manga.resume_en) ? manga.resume_en : manga.resume;
 
   content.innerHTML = `
     <img src="${manga.couverture}" alt="${manga.titre}" class="mdj-cover"
@@ -3591,28 +3524,6 @@ const badgeTranslations = {
       night_owl: { name: 'Night Owl', desc: 'Visit between midnight and 5am' },
       perfectionist: { name: 'Perfectionist', desc: 'Give a 10/10 rating' },
       theme_changer: { name: 'Stylist', desc: 'Change the theme color' }
-    }
-  },
-  es: {
-    badgesTitle: 'Mis Insignias',
-    badgeUnlocked: '¡Insignia desbloqueada!',
-    unlockedOn: 'Desbloqueado el',
-    badges: {
-      first_favorite: { name: 'Primer favorito', desc: 'Añadir un primer favorito' },
-      collector_10: { name: 'Coleccionista', desc: 'Tener 10 favoritos' },
-      collector_25: { name: 'Gran coleccionista', desc: 'Tener 25 favoritos' },
-      first_rating: { name: 'Crítico principiante', desc: 'Valorar un primer manga' },
-      critic_10: { name: 'Crítico experimentado', desc: 'Valorar 10 mangas' },
-      critic_25: { name: 'Crítico experto', desc: 'Valorar 25 mangas' },
-      reader_list: { name: 'Lista de lectura', desc: 'Añadir 5 mangas para leer' },
-      explorer_20: { name: 'Explorador', desc: 'Consultar 20 mangas' },
-      explorer_50: { name: 'Gran explorador', desc: 'Consultar 50 mangas' },
-      streak_3: { name: 'En racha', desc: '3 días consecutivos' },
-      streak_7: { name: 'Dedicado', desc: '7 días consecutivos' },
-      streak_30: { name: 'Legendario', desc: '30 días consecutivos' },
-      night_owl: { name: 'Ave nocturna', desc: 'Visitar entre medianoche y 5am' },
-      perfectionist: { name: 'Perfeccionista', desc: 'Dar una nota de 10/10' },
-      theme_changer: { name: 'Estilista', desc: 'Cambiar el color del tema' }
     }
   },
   ja: {

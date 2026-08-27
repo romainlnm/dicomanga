@@ -1,5 +1,5 @@
 // Service Worker pour Dico.Manga - Mode hors-ligne
-const CACHE_NAME = 'dico-manga-v54';
+const CACHE_NAME = 'dico-manga-v55';
 const IMAGE_CACHE = 'dico-manga-img-v3';
 
 // Fichiers à mettre en cache dès l'installation
@@ -23,6 +23,7 @@ const ASSETS_TO_CACHE = [
   '/js/data.js',
   '/js/achats.js',
   '/js/translations.js',
+  '/js/translations-ja.js',
   '/js/chat.js',
   '/js/auth.js',
   '/js/sync.js',

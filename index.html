@@ -56,9 +56,16 @@
               </div>
               <div class="settings-row">
                 <span class="settings-row-label" data-i18n="languageLabel">Langue</span>
-                <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Change language">
-                  <span id="langIcon">FR</span>
-                </button>
+                <div class="lang-picker-wrapper">
+                  <button class="lang-picker-btn" id="langPickerBtn" onclick="toggleLangPicker()" title="Changer de langue">
+                    <span class="lang-flag" id="langFlag">🇫🇷</span>
+                  </button>
+                  <div class="lang-picker" id="langPicker">
+                    <button type="button" class="lang-option active" data-lang="fr" onclick="setLanguage('fr')"><span class="lang-flag">🇫🇷</span> Français</button>
+                    <button type="button" class="lang-option" data-lang="en" onclick="setLanguage('en')"><span class="lang-flag">🇬🇧</span> English</button>
+                    <button type="button" class="lang-option" data-lang="ja" onclick="setLanguage('ja')"><span class="lang-flag">🇯🇵</span> 日本語</button>
+                  </div>
+                </div>
               </div>
               <div class="settings-row settings-row-studio">
                 <span class="settings-row-label" data-i18n="themeStudio">Studio couleurs</span>
@@ -570,6 +577,7 @@
   <script src="js/data.js"></script>
   <script src="js/manga-slugs.js"></script>
   <script src="js/translations.js"></script>
+  <script src="js/translations-ja.js"></script>
   <script src="js/supabase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/sync.js"></script>

@@ -125,9 +125,11 @@ document.addEventListener('keydown', (e) => {
 
 // Bascule de langue minimale pour les pages sans machinerie i18n complète
 // (stats.html : les traductions sont appliquées au chargement par stats.js,
-// un simple reload suffit donc à changer de langue).
+// un simple reload suffit donc à changer de langue). Cycle sur les 4 langues.
 function toggleLanguageBasic() {
-  const next = (localStorage.getItem('lang') || 'fr') === 'fr' ? 'en' : 'fr';
+  const order = ['fr', 'en', 'ja'];
+  const cur = localStorage.getItem('lang') || 'fr';
+  const next = order[(order.indexOf(cur) + 1) % order.length];
   localStorage.setItem('lang', next);
   location.reload();
 }

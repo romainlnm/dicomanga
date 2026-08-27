@@ -112,6 +112,8 @@ function guideVisible(sel) {
   return r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== 'hidden';
 }
 
+let guideTyping = null; // interval de la machine à écrire
+
 function startGuide() {
   endGuide();
   guideIndex = 0;
@@ -119,65 +121,73 @@ function startGuide() {
   overlay.className = 'guide-overlay';
   overlay.innerHTML = `
     <div class="guide-spotlight" id="guideSpotlight"></div>
-    <div class="guide-companion" id="guideCompanion">
-      <div class="guide-dicomi" id="guideDicomi">${GUIDE_MASCOT}</div>
-      <div class="guide-bubble" id="guideBubble" role="dialog" aria-live="polite">
-        <h3 id="guideTitle"></h3>
-        <p id="guideText"></p>
-        <div class="guide-actions">
-          <button type="button" class="guide-btn-skip" id="guideSkip"></button>
-          <div class="guide-dots" id="guideDots"></div>
-          <button type="button" class="guide-btn-next" id="guideNext"></button>
-        </div>
+    <div class="guide-dicomi" id="guideDicomi">${GUIDE_MASCOT}</div>
+    <div class="guide-banner" id="guideBanner" aria-hidden="true"></div>
+    <div class="guide-dialogue" role="dialog" aria-live="polite">
+      <div class="guide-dlg-top">
+        <div class="guide-dots" id="guideDots"></div>
+        <button type="button" class="guide-skip" id="guideSkip"></button>
       </div>
+      <div class="guide-dlg-name">Dicomi</div>
+      <p class="guide-dlg-text" id="guideText"></p>
+      <div class="guide-dlg-next" id="guideNext" aria-hidden="true"></div>
     </div>`;
   document.body.appendChild(overlay);
   document.body.classList.add('guide-open');
 
-  overlay.querySelector('#guideSkip').onclick = endGuide;
-  overlay.querySelector('#guideNext').onclick = () => {
-    const steps = guideSteps().filter(s => guideVisible(s.target));
-    if (guideIndex >= steps.length - 1) { endGuide(); return; }
-    guideIndex++;
-    showGuideStep();
-  };
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.querySelector('#guideNext').click();
-  });
+  overlay.querySelector('#guideSkip').onclick = (e) => { e.stopPropagation(); endGuide(); };
+  // Comme dans le jeu : cliquer n'importe où avance (1er clic = texte complet,
+  // 2e clic = réplique suivante)
+  overlay.addEventListener('click', guideAdvance);
   document.addEventListener('keydown', onGuideKey);
   window.addEventListener('resize', showGuideStep);
   guideEls = overlay;
 
-  // Précharger toutes les poses pour des changements instantanés
+  // Précharger toutes les poses
   Object.values(GUIDE_POSES).forEach(src => { const im = new Image(); im.src = src; });
 
-  // Position de départ : Dicomi décolle depuis son bouton (en bas à gauche)
-  const comp = overlay.querySelector('#guideCompanion');
-  comp.style.left = '20px';
-  comp.style.top = (window.innerHeight - 200) + 'px';
+  // Dicomi décolle depuis son bouton
+  const dico = overlay.querySelector('#guideDicomi');
+  dico.style.left = '20px';
+  dico.style.top = (window.innerHeight - 240) + 'px';
 
+  showGuideStep();
+}
+
+function guideAdvance() {
+  if (!guideEls) return;
+  const steps = guideSteps().filter(s => guideVisible(s.target));
+  const step = steps[Math.min(guideIndex, steps.length - 1)];
+  const textEl = document.getElementById('guideText');
+  if (guideTyping) {
+    // Texte en cours d'écriture : l'afficher en entier
+    clearInterval(guideTyping);
+    guideTyping = null;
+    textEl.textContent = step.text;
+    document.querySelector('.guide-dialogue').classList.add('guide-dlg-done');
+    return;
+  }
+  if (guideIndex >= steps.length - 1) { endGuide(); return; }
+  guideIndex++;
   showGuideStep();
 }
 
 function onGuideKey(e) {
   if (e.key === 'Escape') { endGuide(); return; }
-  if (e.key === 'ArrowRight' || e.key === 'Enter') {
-    // Si un bouton du guide a le focus, son clic natif suffit (évite la double avance)
-    if (e.key === 'Enter' && document.activeElement && document.activeElement.closest('.guide-bubble')) return;
-    const next = document.getElementById('guideNext');
-    if (next) next.click();
+  if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    guideAdvance();
   }
 }
 
 function endGuide() {
+  if (guideTyping) { clearInterval(guideTyping); guideTyping = null; }
   if (guideEls) { guideEls.remove(); guideEls = null; }
   document.body.classList.remove('guide-open');
   document.removeEventListener('keydown', onGuideKey);
   window.removeEventListener('resize', showGuideStep);
   localStorage.setItem(GUIDE_DONE_KEY, '1');
 }
-
-let guideFlyTimer = null;
 
 function showGuideStep() {
   if (!guideEls) return;
@@ -187,55 +197,80 @@ function showGuideStep() {
   const last = guideIndex >= steps.length - 1;
 
   const spot = document.getElementById('guideSpotlight');
-  const comp = document.getElementById('guideCompanion');
+  const dico = document.getElementById('guideDicomi');
+  const dlg = document.querySelector('.guide-dialogue');
 
-  // Changement d'expression : nouvelle pose + petit rebond de jeu vidéo
-  const dicoImg = comp.querySelector('.guide-dicomi img');
+  // Pose + rebond de sprite
+  const dicoImg = dico.querySelector('img');
   const poseSrc = GUIDE_POSES[step.pose || 'full'];
-  comp.classList.toggle('guide-pose-full', (step.pose || 'full') === 'full');
+  dico.classList.toggle('guide-pose-full', (step.pose || 'full') === 'full');
   if (dicoImg && !dicoImg.src.endsWith(poseSrc)) {
     dicoImg.src = poseSrc;
     dicoImg.classList.remove('guide-pop');
-    void dicoImg.offsetWidth; // relancer l'animation
+    void dicoImg.offsetWidth;
     dicoImg.classList.add('guide-pop');
   }
 
-  document.getElementById('guideTitle').textContent = step.title;
-  document.getElementById('guideText').textContent = step.text;
-  document.getElementById('guideSkip').textContent = fr ? 'Passer' : 'Skip';
-  document.getElementById('guideNext').textContent = last ? (fr ? 'Terminer' : 'Done')
-    : guideIndex === 0 ? (fr ? 'C’est parti !' : 'Let’s go!') : (fr ? 'Suivant' : 'Next');
+  // Bannière de titre (façon "zone découverte")
+  const banner = document.getElementById('guideBanner');
+  banner.textContent = step.title;
+  banner.classList.remove('show');
+  void banner.offsetWidth;
+  banner.classList.add('show');
+
+  // Boutons / points
+  document.getElementById('guideSkip').textContent = fr ? 'Passer la visite' : 'Skip the tour';
   document.getElementById('guideDots').innerHTML = steps
     .map((_, i) => `<span class="guide-dot${i === guideIndex ? ' active' : ''}"></span>`).join('');
+  document.getElementById('guideNext').classList.toggle('guide-last', last);
 
+  // Machine à écrire
+  if (guideTyping) { clearInterval(guideTyping); guideTyping = null; }
+  const textEl = document.getElementById('guideText');
+  textEl.textContent = '';
+  dlg.classList.remove('guide-dlg-done');
+  let i = 0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    textEl.textContent = step.text;
+    dlg.classList.add('guide-dlg-done');
+  } else {
+    guideTyping = setInterval(() => {
+      i++;
+      textEl.textContent = step.text.slice(0, i);
+      if (i >= step.text.length) {
+        clearInterval(guideTyping);
+        guideTyping = null;
+        dlg.classList.add('guide-dlg-done');
+      }
+    }, 20);
+  }
+
+  // Vol de Dicomi vers la cible
   const flyTo = (left, top) => {
-    // Vol : légère inclinaison dans le sens du déplacement pendant la transition
-    const fromLeft = parseFloat(comp.style.left) || 0;
-    comp.classList.remove('guide-fly-left', 'guide-fly-right');
-    comp.classList.add(left >= fromLeft ? 'guide-fly-right' : 'guide-fly-left');
-    comp.style.left = left + 'px';
-    comp.style.top = top + 'px';
+    const fromLeft = parseFloat(dico.style.left) || 0;
+    dico.classList.remove('guide-fly-left', 'guide-fly-right');
+    dico.classList.add(left >= fromLeft ? 'guide-fly-right' : 'guide-fly-left');
+    dico.style.left = left + 'px';
+    dico.style.top = top + 'px';
     clearTimeout(guideFlyTimer);
-    guideFlyTimer = setTimeout(() => {
-      comp.classList.remove('guide-fly-left', 'guide-fly-right');
-    }, 900);
+    guideFlyTimer = setTimeout(() => dico.classList.remove('guide-fly-left', 'guide-fly-right'), 900);
   };
 
-  const positionCompanion = () => {
-    const isPhone = window.innerWidth <= 640;
-    const gw = comp.offsetWidth || 400;
-    const gh = comp.offsetHeight || 180;
+  const positionDicomi = () => {
+    const w = dico.offsetWidth || 130;
+    const h = dico.offsetHeight || 170;
+    const dlgTop = window.innerHeight - (dlg.offsetHeight || 210) - 10;
 
     if (!step.target) {
       spot.style.opacity = '0';
       spot.style.width = '0'; spot.style.height = '0';
-      flyTo(Math.max(12, (window.innerWidth - gw) / 2), Math.max(12, window.innerHeight * 0.4 - gh / 2));
+      flyTo((window.innerWidth - w) / 2, Math.max(14, dlgTop - h - 24));
       return;
     }
     const el = document.querySelector(step.target);
     const r = el.getBoundingClientRect();
     const pad = 8;
-    // Projecteur borné au viewport (les très grands blocs, ex. la grille)
     const sx = Math.max(r.left - pad, 4);
     const sy = Math.max(r.top - pad, 4);
     const sw = Math.min(r.right + pad, window.innerWidth - 4) - sx;
@@ -246,38 +281,32 @@ function showGuideStep() {
     spot.style.width = sw + 'px';
     spot.style.height = sh + 'px';
 
-    if (isPhone) {
-      // Sur téléphone : Dicomi + bulle posées au-dessus de la barre de nav
-      flyTo(12, window.innerHeight - gh - 100);
-      return;
-    }
-    // Desktop : sous la cible si possible, sinon au-dessus, sans sortir de l'écran
-    let top = r.bottom + 20;
-    if (top + gh > window.innerHeight - 14) top = Math.max(14, r.top - gh - 20);
-    let left = Math.max(14, Math.min(r.left + r.width / 2 - gw / 2, window.innerWidth - gw - 14));
+    // Elle se place sous la cible (au-dessus si pas la place), jamais sur le dialogue
+    let top = sy + sh + 14;
+    if (top + h > dlgTop) top = sy - h - 14;
+    top = Math.max(10, Math.min(top, dlgTop - h - 6));
+    let left = Math.max(12, Math.min(sx + sw / 2 - w / 2, window.innerWidth - w - 12));
     flyTo(left, top);
   };
 
   if (step.target) {
     const el = document.querySelector(step.target);
     if (el.closest('header') || el.closest('.bottom-nav')) {
-      // Éléments fixes/sticky : ne pas utiliser scrollIntoView (comportement erratique)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (el.getBoundingClientRect().height > window.innerHeight * 0.7) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    // Deux passes : pendant puis après la fin du défilement
-    setTimeout(positionCompanion, 450);
-    setTimeout(positionCompanion, 1100);
+    setTimeout(positionDicomi, 450);
+    setTimeout(positionDicomi, 1100);
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(positionCompanion, 60);
+    setTimeout(positionDicomi, 60);
   }
 }
 
-// Bouton flottant : Dicomi + petite bulle d'invitation
+// Bouton flottant : Dicomi + bulle d'invitation
 function createGuideFab() {
   const fr = guideLang() === 'fr';
   const fab = document.createElement('button');
